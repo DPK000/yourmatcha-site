@@ -10,14 +10,14 @@ const Footer = () => (
         <div className="md:col-span-1">
           <img src={logo} alt="YourMatcha" className="h-14 w-auto mb-4 brightness-0 invert opacity-90" />
           <p className="text-primary-foreground/70 text-sm leading-relaxed">
-            Premium Japanse matcha, rechtstreeks uit de Uji-regio. Puur, duurzaam en met liefde geselecteerd.
+            Premium Japanse matcha, rechtstreeks uit de Uji-regio. Puur, duurzaam en met liefde geselecteerd. 🍵
           </p>
         </div>
 
         {/* Shop */}
         <div>
           <h4 className="font-heading text-lg font-semibold mb-4">Shop</h4>
-          <ul className="space-y-2 text-sm text-primary-foreground/70">
+          <ul className="space-y-2.5 text-sm text-primary-foreground/70">
             <li><Link to="/shop" className="hover:text-primary-foreground transition-colors">Alle Producten</Link></li>
             <li><Link to="/shop?category=matcha-powder" className="hover:text-primary-foreground transition-colors">Matcha Poeder</Link></li>
             <li><Link to="/shop?category=kits-sets" className="hover:text-primary-foreground transition-colors">Kits & Sets</Link></li>
@@ -29,7 +29,7 @@ const Footer = () => (
         {/* Info */}
         <div>
           <h4 className="font-heading text-lg font-semibold mb-4">Informatie</h4>
-          <ul className="space-y-2 text-sm text-primary-foreground/70">
+          <ul className="space-y-2.5 text-sm text-primary-foreground/70">
             <li><Link to="/over-ons" className="hover:text-primary-foreground transition-colors">Over Ons</Link></li>
             <li><Link to="/blog" className="hover:text-primary-foreground transition-colors">Blog</Link></li>
             <li><span className="cursor-default">Verzending & Retour</span></li>

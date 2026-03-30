@@ -43,7 +43,7 @@ const Shop = () => {
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
         <div className="mb-10">
-          <h1 className="font-heading text-4xl md:text-5xl font-semibold">Shop</h1>
+          <h1 className="font-heading text-4xl md:text-5xl font-semibold">Shop 🍵</h1>
           <p className="text-muted-foreground mt-2">Ontdek onze complete collectie premium matcha en accessoires</p>
         </div>
 
@@ -54,9 +54,9 @@ const Shop = () => {
               <button
                 key={cat.value}
                 onClick={() => handleCategory(cat.value)}
-                className={`px-4 py-2 text-xs font-medium tracking-wide uppercase rounded transition-colors ${
+                className={`px-4 py-2 text-xs font-medium tracking-wide uppercase rounded-full transition-all duration-200 ${
                   category === cat.value
-                    ? "bg-primary text-primary-foreground"
+                    ? "bg-primary text-primary-foreground shadow-sm"
                     : "bg-secondary text-secondary-foreground hover:bg-primary/10"
                 }`}
               >
@@ -67,7 +67,7 @@ const Shop = () => {
           <select
             value={sort}
             onChange={e => setSort(e.target.value as SortOption)}
-            className="px-3 py-2 text-sm border border-border rounded bg-background text-foreground focus:outline-none focus:ring-2 focus:ring-primary/30"
+            className="px-4 py-2.5 text-sm border border-border rounded-full bg-background text-foreground focus:outline-none focus:ring-2 focus:ring-primary/30"
           >
             {sortOptions.map(opt => (
               <option key={opt.value} value={opt.value}>{opt.label}</option>
@@ -76,7 +76,7 @@ const Shop = () => {
         </div>
 
         {/* Grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
           {filtered.map(product => (
             <ProductCard key={product.id} product={product} />
           ))}
