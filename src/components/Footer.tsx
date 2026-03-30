@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import { Instagram, Mail, MapPin } from "lucide-react";
+import logo from "@/assets/yourmatcha-logo.png";
 
 const Footer = () => (
   <footer className="bg-primary text-primary-foreground">
@@ -7,7 +8,7 @@ const Footer = () => (
       <div className="grid grid-cols-1 md:grid-cols-4 gap-10">
         {/* Brand */}
         <div className="md:col-span-1">
-          <h3 className="font-heading text-2xl font-semibold mb-4">YourMatcha</h3>
+          <img src={logo} alt="YourMatcha" className="h-14 w-auto mb-4 brightness-0 invert opacity-90" />
           <p className="text-primary-foreground/70 text-sm leading-relaxed">
             Premium Japanse matcha, rechtstreeks uit de Uji-regio. Puur, duurzaam en met liefde geselecteerd.
           </p>
