@@ -1,3 +1,15 @@
+import productCeremonial30 from "@/assets/product-ceremonial-30.jpg";
+import productStarterKit from "@/assets/product-starter-kit.jpg";
+import productPremiumSet from "@/assets/product-premium-set.jpg";
+import productGiftBox from "@/assets/product-gift-box.jpg";
+import productChasen from "@/assets/product-chasen.jpg";
+import productMatchaBowl from "@/assets/product-matcha-bowl.jpg";
+import productChashaku from "@/assets/product-chashaku.jpg";
+import productFrother from "@/assets/product-frother.jpg";
+import productHojicha from "@/assets/product-hojicha.jpg";
+import productGenmaicha from "@/assets/product-genmaicha.jpg";
+import productMatchaYuzu from "@/assets/product-matcha-yuzu.jpg";
+
 export interface Product {
   id: string;
   name: string;
@@ -36,7 +48,7 @@ export const products: Product[] = [
     shortDescription: "Handgeplukt in Uji, Japan. Zuivere umami smaak.",
     category: "matcha-powder",
     categoryLabel: "Matcha Poeder",
-    images: ["/placeholder.svg"],
+    images: [productCeremonial30],
     badge: "Bestseller",
     bestseller: true,
     ingredients: "100% biologische Japanse matcha (Camellia sinensis)",
@@ -59,7 +71,7 @@ export const products: Product[] = [
     shortDescription: "Premium kwaliteit, voordeelverpakking.",
     category: "matcha-powder",
     categoryLabel: "Matcha Poeder",
-    images: ["/placeholder.svg"],
+    images: [productCeremonial30],
     badge: "Voordeel",
     ingredients: "100% biologische Japanse matcha (Camellia sinensis)",
     origin: "Uji, Kyoto, Japan",
@@ -79,7 +91,7 @@ export const products: Product[] = [
     shortDescription: "Ideaal voor lattes, smoothies & recepten.",
     category: "matcha-powder",
     categoryLabel: "Matcha Poeder",
-    images: ["/placeholder.svg"],
+    images: [productCeremonial30],
     relatedIds: ["frother", "ceremonial-30"],
     ingredients: "100% Japanse matcha (Camellia sinensis)",
     origin: "Kagoshima, Japan",
@@ -97,7 +109,7 @@ export const products: Product[] = [
     shortDescription: "30g matcha + bamboe klopper + keramische kom.",
     category: "kits-sets",
     categoryLabel: "Kits & Sets",
-    images: ["/placeholder.svg"],
+    images: [productStarterKit],
     badge: "Populair",
     bestseller: true,
     relatedIds: ["ceremonial-30", "chashaku", "chasen"],
@@ -115,7 +127,7 @@ export const products: Product[] = [
     shortDescription: "100g matcha + klopper + kom + chakin doek.",
     category: "kits-sets",
     categoryLabel: "Kits & Sets",
-    images: ["/placeholder.svg"],
+    images: [productPremiumSet],
     badge: "Premium",
     relatedIds: ["ceremonial-100", "chashaku"],
     reviews: [
@@ -131,7 +143,7 @@ export const products: Product[] = [
     shortDescription: "Gecureerde selectie in premium verpakking.",
     category: "kits-sets",
     categoryLabel: "Kits & Sets",
-    images: ["/placeholder.svg"],
+    images: [productGiftBox],
     relatedIds: ["starter-kit", "premium-set"],
     reviews: [],
   },
@@ -144,7 +156,7 @@ export const products: Product[] = [
     shortDescription: "Handgemaakt, 80 tanden, traditioneel bamboe.",
     category: "accessories",
     categoryLabel: "Accessoires",
-    images: ["/placeholder.svg"],
+    images: [productChasen],
     relatedIds: ["matcha-bowl", "chashaku", "ceremonial-30"],
     reviews: [
       { name: "Ruben H.", rating: 4, text: "Mooie kwaliteit klopper.", date: "2024-02-20" },
@@ -159,7 +171,7 @@ export const products: Product[] = [
     shortDescription: "Uniek handgemaakt, ambachtelijk glazuur.",
     category: "accessories",
     categoryLabel: "Accessoires",
-    images: ["/placeholder.svg"],
+    images: [productMatchaBowl],
     relatedIds: ["chasen", "chashaku", "ceremonial-30"],
     reviews: [
       { name: "Lotte S.", rating: 5, text: "Prachtig! Elk stuk is echt uniek.", date: "2024-01-30" },
@@ -174,7 +186,7 @@ export const products: Product[] = [
     shortDescription: "Traditionele bamboe maatlepel.",
     category: "accessories",
     categoryLabel: "Accessoires",
-    images: ["/placeholder.svg"],
+    images: [productChashaku],
     relatedIds: ["chasen", "matcha-bowl"],
     reviews: [],
   },
@@ -187,7 +199,7 @@ export const products: Product[] = [
     shortDescription: "Snel & eenvoudig matcha lattes maken.",
     category: "accessories",
     categoryLabel: "Accessoires",
-    images: ["/placeholder.svg"],
+    images: [productFrother],
     relatedIds: ["culinary-100"],
     reviews: [],
   },
@@ -200,7 +212,7 @@ export const products: Product[] = [
     shortDescription: "Gerosterde thee, warm & karamelachtig.",
     category: "teas-drinks",
     categoryLabel: "Thee & Dranken",
-    images: ["/placeholder.svg"],
+    images: [productHojicha],
     relatedIds: ["genmaicha", "matcha-yuzu"],
     ingredients: "100% Japanse hojicha (Camellia sinensis)",
     origin: "Kyoto, Japan",
@@ -218,7 +230,7 @@ export const products: Product[] = [
     shortDescription: "Groene thee met geroosterde rijst.",
     category: "teas-drinks",
     categoryLabel: "Thee & Dranken",
-    images: ["/placeholder.svg"],
+    images: [productGenmaicha],
     relatedIds: ["hojicha", "matcha-yuzu"],
     ingredients: "Japanse groene thee, geroosterde rijst",
     origin: "Shizuoka, Japan",
@@ -234,7 +246,7 @@ export const products: Product[] = [
     shortDescription: "Verfrissende matcha met Japanse yuzu citrus.",
     category: "teas-drinks",
     categoryLabel: "Thee & Dranken",
-    images: ["/placeholder.svg"],
+    images: [productMatchaYuzu],
     badge: "Nieuw",
     relatedIds: ["ceremonial-30", "hojicha"],
     ingredients: "Japanse matcha, yuzu schilpoeder",

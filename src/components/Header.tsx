@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { ShoppingBag, Menu, X } from "lucide-react";
 import { useCart } from "@/context/CartContext";
 import { motion, AnimatePresence } from "framer-motion";
+import logo from "@/assets/yourmatcha-logo.png";
 
 const navLinks = [
   { to: "/shop", label: "Shop" },
@@ -20,8 +21,8 @@ const Header = () => {
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16 md:h-20">
           {/* Logo */}
-          <Link to="/" className="font-heading text-2xl md:text-3xl font-semibold tracking-wide text-primary">
-            YourMatcha
+          <Link to="/" className="flex items-center gap-2.5">
+            <img src={logo} alt="YourMatcha logo" className="h-10 md:h-12 w-auto" />
           </Link>
 
           {/* Desktop Nav */}
