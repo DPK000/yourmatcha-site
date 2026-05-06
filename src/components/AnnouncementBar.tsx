@@ -1,13 +1,9 @@
 import { motion } from "framer-motion";
-
-const messages = [
-  "🍵 GRATIS VERZENDING BOVEN €35",
-  "🚚 SNELLE LEVERING IN NL & BE",
-  "🌿 100% CEREMONIËLE KWALITEIT",
-  "✨ BESPAAR 15% MET EEN ABONNEMENT",
-];
+import { useTranslation } from "react-i18next";
 
 const AnnouncementBar = () => {
+  const { t } = useTranslation();
+  const messages = t("announcement", { returnObjects: true }) as string[];
   const doubled = [...messages, ...messages];
 
   return (
@@ -15,7 +11,7 @@ const AnnouncementBar = () => {
       <motion.div
         className="flex whitespace-nowrap gap-8"
         animate={{ x: ["0%", "-50%"] }}
-        transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
+        transition={{ duration: 25, repeat: Infinity, ease: "linear" }}
       >
         {doubled.map((msg, i) => (
           <span key={i} className="text-xs font-medium tracking-widest px-4">
