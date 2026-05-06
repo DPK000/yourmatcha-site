@@ -4,7 +4,6 @@ import { ShoppingBag, Menu, X, Search, ChevronRight } from "lucide-react";
 import { useCart } from "@/context/CartContext";
 import { motion, AnimatePresence } from "framer-motion";
 import { useTranslation } from "react-i18next";
-import logo from "@/assets/yourmatcha-logo.png";
 import AnnouncementBar from "./AnnouncementBar";
 import LanguageSwitcher from "./LanguageSwitcher";
 import { products, getFeaturedProducts } from "@/data/products";
@@ -55,59 +54,70 @@ const Header = () => {
         onMouseLeave={() => setMegaOpen(null)}
       >
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex items-center justify-between h-16 md:h-20 relative">
-            {/* Mobile toggle */}
-            <button
-              onClick={() => setMobileOpen(!mobileOpen)}
-              className="md:hidden p-2 text-foreground/70 hover:text-foreground transition-colors"
-              aria-label={t("nav.menu")}
-            >
-              {mobileOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
-            </button>
-
-            {/* Desktop Nav Left */}
-            <nav className="hidden md:flex items-center gap-7">
-              {navItems.slice(0, 2).map(link => (
-                <div
-                  key={link.key}
-                  onMouseEnter={() => link.hasMega ? setMegaOpen(link.key) : setMegaOpen(null)}
-                  className="relative"
-                >
-                  <Link
-                    to={link.to}
-                    className="text-sm font-medium text-foreground/75 hover:text-primary transition-colors duration-200 tracking-wide py-2"
+          <div className="grid grid-cols-[1fr_auto_1fr] items-center h-16 md:h-20 gap-4">
+            {/* Left: Mobile toggle + Desktop Nav Left */}
+            <div className="flex items-center">
+              <button
+                onClick={() => setMobileOpen(!mobileOpen)}
+                className="md:hidden -ml-2 p-2 text-foreground/70 hover:text-foreground transition-colors"
+                aria-label={t("nav.menu")}
+              >
+                {mobileOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
+              </button>
+              <nav className="hidden md:flex items-center gap-8">
+                {navItems.slice(0, 2).map(link => (
+                  <div
+                    key={link.key}
+                    onMouseEnter={() => link.hasMega ? setMegaOpen(link.key) : setMegaOpen(null)}
+                    className="relative group py-2"
                   >
-                    {link.label}
-                  </Link>
-                </div>
-              ))}
-            </nav>
+                    <Link
+                      to={link.to}
+                      className="text-[13px] font-medium text-foreground/80 hover:text-primary transition-colors duration-200 tracking-[0.08em] uppercase"
+                    >
+                      {link.label}
+                    </Link>
+                    <span className="absolute left-0 right-0 -bottom-0.5 h-px bg-primary scale-x-0 group-hover:scale-x-100 origin-left transition-transform duration-300" />
+                  </div>
+                ))}
+              </nav>
+            </div>
 
-            {/* Center Logo */}
-            <Link to="/" className="absolute left-1/2 -translate-x-1/2 flex items-center" onMouseEnter={() => setMegaOpen(null)}>
-              <img src={logo} alt="YourMatcha" className="h-10 md:h-12 w-auto" />
+            {/* Center: Wordmark Logo */}
+            <Link
+              to="/"
+              className="flex flex-col items-center group select-none"
+              onMouseEnter={() => setMegaOpen(null)}
+              aria-label="YourMatcha home"
+            >
+              <span className="font-heading text-xl md:text-2xl font-semibold tracking-[0.15em] text-primary leading-none">
+                YOUR<span className="text-foreground">MATCHA</span>
+              </span>
+              <span className="hidden md:block mt-1 text-[9px] tracking-[0.4em] uppercase text-muted-foreground">
+                Premium Japanese
+              </span>
             </Link>
 
-            {/* Desktop Nav Right */}
-            <nav className="hidden md:flex items-center gap-7" onMouseEnter={() => setMegaOpen(null)}>
-              {navItems.slice(2).map(link => (
-                <Link
-                  key={link.key}
-                  to={link.to}
-                  className="text-sm font-medium text-foreground/75 hover:text-primary transition-colors duration-200 tracking-wide"
-                >
-                  {link.label}
-                </Link>
-              ))}
-            </nav>
-
-            {/* Right utility */}
-            <div className="flex items-center gap-1" onMouseEnter={() => setMegaOpen(null)}>
+            {/* Right: Desktop Nav Right + Utility */}
+            <div className="flex items-center justify-end gap-2 md:gap-4" onMouseEnter={() => setMegaOpen(null)}>
+              <nav className="hidden md:flex items-center gap-8 mr-2">
+                {navItems.slice(2).map(link => (
+                  <div key={link.key} className="relative group py-2">
+                    <Link
+                      to={link.to}
+                      className="text-[13px] font-medium text-foreground/80 hover:text-primary transition-colors duration-200 tracking-[0.08em] uppercase"
+                    >
+                      {link.label}
+                    </Link>
+                    <span className="absolute left-0 right-0 -bottom-0.5 h-px bg-primary scale-x-0 group-hover:scale-x-100 origin-left transition-transform duration-300" />
+                  </div>
+                ))}
+              </nav>
               <button
                 className="hidden sm:inline-flex p-2 text-foreground/70 hover:text-primary transition-colors"
                 aria-label={t("nav.search")}
               >
-                <Search className="w-5 h-5" />
+                <Search className="w-[18px] h-[18px]" />
               </button>
               <LanguageSwitcher />
               <button
@@ -115,13 +125,13 @@ const Header = () => {
                 className="relative p-2 text-foreground/70 hover:text-primary transition-colors"
                 aria-label={t("nav.cart")}
               >
-                <ShoppingBag className="w-5 h-5" />
+                <ShoppingBag className="w-[18px] h-[18px]" />
                 {totalItems > 0 && (
                   <motion.span
                     key={totalItems}
                     initial={{ scale: 0 }}
                     animate={{ scale: 1 }}
-                    className="absolute -top-0.5 -right-0.5 w-5 h-5 rounded-full bg-accent text-accent-foreground text-[10px] flex items-center justify-center font-bold"
+                    className="absolute top-0 right-0 w-[18px] h-[18px] rounded-full bg-primary text-primary-foreground text-[10px] flex items-center justify-center font-bold"
                   >
                     {totalItems}
                   </motion.span>
