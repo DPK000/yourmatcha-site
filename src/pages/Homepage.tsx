@@ -29,10 +29,6 @@ const Homepage = () => {
   const heroY = useTransform(scrollYProgress, [0, 1], ["0%", "30%"]);
   const heroOpacity = useTransform(scrollYProgress, [0, 0.8], [1, 0]);
 
-  const pillars = [
-    { emoji: "🍃", title: t("home.whyTitle") === "Why YourMatcha?" ? "Ceremonial Quality" : t("home.whyTitle") === "Pourquoi YourMatcha ?" ? "Qualité Cérémonielle" : t("home.whyTitle") === "Warum YourMatcha?" ? "Zeremonielle Qualität" : "Ceremoniële Kwaliteit", desc: t("home.heroSub") },
-  ];
-  // Use simpler hardcoded structure relying on translations:
   const pillarsList = [
     { emoji: "🍃", titleKey: "p1Title", descKey: "p1Desc" },
     { emoji: "🌏", titleKey: "p2Title", descKey: "p2Desc" },
