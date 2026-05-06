@@ -142,10 +142,10 @@ const Homepage = () => {
               >
                 <div className="text-4xl mb-4">{pillar.emoji}</div>
                 <h3 className="font-heading text-xl font-semibold mb-2">
-                  {[t("home.heroTitle1")] && (i === 0 ? (t("home.benefitsEyebrow") === "The benefits" ? "Ceremonial Quality" : t("home.benefitsEyebrow") === "Les bienfaits" ? "Qualité Cérémonielle" : t("home.benefitsEyebrow") === "Die Vorteile" ? "Zeremonielle Qualität" : "Ceremoniële Kwaliteit") : i === 1 ? (t("home.benefitsEyebrow") === "The benefits" ? "Sustainably Sourced" : t("home.benefitsEyebrow") === "Les bienfaits" ? "Sourcing Durable" : t("home.benefitsEyebrow") === "Die Vorteile" ? "Nachhaltig Bezogen" : "Duurzaam Ingekocht") : (t("home.benefitsEyebrow") === "The benefits" ? "Japanese Craftsmanship" : t("home.benefitsEyebrow") === "Les bienfaits" ? "Savoir-faire Japonais" : t("home.benefitsEyebrow") === "Die Vorteile" ? "Japanische Handwerkskunst" : "Japans Vakmanschap"))}
+                  {t(`home.${pillar.titleKey}`)}
                 </h3>
                 <p className="text-muted-foreground text-sm leading-relaxed">
-                  {i === 0 ? t("home.differenceText") : i === 1 ? t("home.storyText") : t("home.heroSub")}
+                  {t(`home.${pillar.descKey}`)}
                 </p>
               </motion.div>
             ))}
