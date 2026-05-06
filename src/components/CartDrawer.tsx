@@ -2,11 +2,12 @@ import { X, Plus, Minus, ShoppingBag } from "lucide-react";
 import { useCart } from "@/context/CartContext";
 import { Link } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
-
-const formatPrice = (price: number) =>
-  new Intl.NumberFormat("nl-NL", { style: "currency", currency: "EUR" }).format(price);
+import { useTranslation } from "react-i18next";
 
 const CartDrawer = () => {
+  const { t, i18n } = useTranslation();
+  const formatPrice = (price: number) =>
+    new Intl.NumberFormat(i18n.language || "nl-NL", { style: "currency", currency: "EUR" }).format(price);
   const { items, isOpen, setIsOpen, removeItem, updateQuantity, subtotal, totalItems } = useCart();
 
   return (
@@ -33,7 +34,7 @@ const CartDrawer = () => {
             <div className="flex items-center justify-between p-6 border-b border-border">
               <div className="flex items-center gap-2">
                 <ShoppingBag className="w-5 h-5 text-primary" />
-                <h2 className="font-heading text-xl font-semibold">Winkelwagen ({totalItems})</h2>
+                <h2 className="font-heading text-xl font-semibold">{t("cart.title")} ({totalItems})</h2>
               </div>
               <button onClick={() => setIsOpen(false)} className="p-1 text-muted-foreground hover:text-foreground transition-colors">
                 <X className="w-5 h-5" />
@@ -45,12 +46,12 @@ const CartDrawer = () => {
               {items.length === 0 ? (
                 <div className="flex flex-col items-center justify-center h-full text-center">
                   <ShoppingBag className="w-12 h-12 text-muted-foreground/40 mb-4" />
-                  <p className="text-muted-foreground">Je winkelwagen is leeg</p>
+                  <p className="text-muted-foreground">{t("cart.empty")}</p>
                   <button
                     onClick={() => setIsOpen(false)}
                     className="mt-4 text-sm text-primary hover:underline"
                   >
-                    Verder winkelen
+                    {t("cart.continueShopping")}
                   </button>
                 </div>
               ) : (
@@ -95,22 +96,22 @@ const CartDrawer = () => {
             {items.length > 0 && (
               <div className="border-t border-border p-6 space-y-4">
                 <div className="flex justify-between text-base">
-                  <span className="text-muted-foreground">Subtotaal</span>
+                  <span className="text-muted-foreground">{t("cart.subtotal")}</span>
                   <span className="font-semibold">{formatPrice(subtotal)}</span>
                 </div>
-                <p className="text-xs text-muted-foreground">Verzendkosten worden berekend bij het afrekenen</p>
+                <p className="text-xs text-muted-foreground">{t("cart.shippingNote")}</p>
                 <Link
                   to="/checkout"
                   onClick={() => setIsOpen(false)}
-                  className="block w-full py-3 px-6 bg-primary text-primary-foreground text-center font-medium text-sm rounded hover:opacity-90 transition-opacity tracking-wide uppercase"
+                  className="block w-full py-3 px-6 bg-primary text-primary-foreground text-center font-medium text-sm rounded-full hover:opacity-90 transition-opacity tracking-wide uppercase"
                 >
-                  Afrekenen
+                  {t("cart.checkout")}
                 </Link>
                 <button
                   onClick={() => setIsOpen(false)}
                   className="block w-full text-center text-sm text-muted-foreground hover:text-foreground transition-colors"
                 >
-                  Verder winkelen
+                  {t("cart.continueShopping")}
                 </button>
               </div>
             )}
