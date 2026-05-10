@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { Instagram, Mail, MapPin } from "lucide-react";
+import { Instagram, Mail } from "lucide-react";
 import { useTranslation } from "react-i18next";
 import logo from "@/assets/yourmatcha-logo.png";
 
