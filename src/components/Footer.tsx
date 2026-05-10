@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { Instagram, Mail, MapPin } from "lucide-react";
+import { Instagram, Mail } from "lucide-react";
 import { useTranslation } from "react-i18next";
 import logo from "@/assets/yourmatcha-logo.png";
 
@@ -29,18 +29,21 @@ const Footer = () => {
             <h4 className="font-heading text-lg font-semibold mb-4">{t("footer.info")}</h4>
             <ul className="space-y-2.5 text-sm text-primary-foreground/70">
               <li><Link to="/over-ons" className="hover:text-primary-foreground transition-colors">{t("nav.about")}</Link></li>
+              <li><Link to="/duurzaamheid" className="hover:text-primary-foreground transition-colors">Duurzaamheid</Link></li>
+              <li><Link to="/recepten" className="hover:text-primary-foreground transition-colors">Recepten</Link></li>
               <li><Link to="/blog" className="hover:text-primary-foreground transition-colors">{t("nav.blog")}</Link></li>
-              <li><span className="cursor-default">{t("footer.shipping")}</span></li>
-              <li><span className="cursor-default">{t("footer.privacy")}</span></li>
-              <li><span className="cursor-default">{t("footer.terms")}</span></li>
+              <li><Link to="/faq" className="hover:text-primary-foreground transition-colors">FAQ</Link></li>
             </ul>
           </div>
 
           <div>
             <h4 className="font-heading text-lg font-semibold mb-4">{t("footer.contact")}</h4>
-            <ul className="space-y-3 text-sm text-primary-foreground/70">
-              <li className="flex items-center gap-2"><Mail className="w-4 h-4" /> info@yourmatcha.nl</li>
-              <li className="flex items-center gap-2"><MapPin className="w-4 h-4" /> Amsterdam, Nederland</li>
+            <ul className="space-y-2.5 text-sm text-primary-foreground/70">
+              <li><Link to="/contact" className="hover:text-primary-foreground transition-colors">Contact</Link></li>
+              <li><Link to="/verzending" className="hover:text-primary-foreground transition-colors">{t("footer.shipping")}</Link></li>
+              <li><Link to="/privacy" className="hover:text-primary-foreground transition-colors">{t("footer.privacy")}</Link></li>
+              <li><Link to="/voorwaarden" className="hover:text-primary-foreground transition-colors">{t("footer.terms")}</Link></li>
+              <li className="flex items-center gap-2 pt-2"><Mail className="w-4 h-4" /> info@yourmatcha.nl</li>
               <li className="flex items-center gap-2"><Instagram className="w-4 h-4" /> @yourmatcha</li>
             </ul>
           </div>
