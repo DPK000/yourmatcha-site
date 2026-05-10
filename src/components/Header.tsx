@@ -54,39 +54,20 @@ const Header = () => {
         onMouseLeave={() => setMegaOpen(null)}
       >
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-[1fr_auto_1fr] items-center h-16 md:h-20 gap-4">
-            {/* Left: Mobile toggle + Desktop Nav Left */}
-            <div className="flex items-center">
-              <button
-                onClick={() => setMobileOpen(!mobileOpen)}
-                className="md:hidden -ml-2 p-2 text-foreground/70 hover:text-foreground transition-colors"
-                aria-label={t("nav.menu")}
-              >
-                {mobileOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
-              </button>
-              <nav className="hidden md:flex items-center gap-8">
-                {navItems.slice(0, 2).map(link => (
-                  <div
-                    key={link.key}
-                    onMouseEnter={() => link.hasMega ? setMegaOpen(link.key) : setMegaOpen(null)}
-                    className="relative group py-2"
-                  >
-                    <Link
-                      to={link.to}
-                      className="text-[13px] font-medium text-foreground/80 hover:text-primary transition-colors duration-200 tracking-[0.08em] uppercase"
-                    >
-                      {link.label}
-                    </Link>
-                    <span className="absolute left-0 right-0 -bottom-0.5 h-px bg-primary scale-x-0 group-hover:scale-x-100 origin-left transition-transform duration-300" />
-                  </div>
-                ))}
-              </nav>
-            </div>
+          <div className="flex items-center h-16 md:h-20 gap-4">
+            {/* Mobile toggle */}
+            <button
+              onClick={() => setMobileOpen(!mobileOpen)}
+              className="md:hidden -ml-2 p-2 text-foreground/70 hover:text-foreground transition-colors"
+              aria-label={t("nav.menu")}
+            >
+              {mobileOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
+            </button>
 
-            {/* Center: Wordmark Logo */}
+            {/* Left: Wordmark Logo */}
             <Link
               to="/"
-              className="flex flex-col items-center group select-none"
+              className="flex flex-col items-start group select-none mr-2 md:mr-10"
               onMouseEnter={() => setMegaOpen(null)}
               aria-label="YourMatcha home"
             >
@@ -98,21 +79,27 @@ const Header = () => {
               </span>
             </Link>
 
-            {/* Right: Desktop Nav Right + Utility */}
-            <div className="flex items-center justify-end gap-2 md:gap-4" onMouseEnter={() => setMegaOpen(null)}>
-              <nav className="hidden md:flex items-center gap-8 mr-2">
-                {navItems.slice(2).map(link => (
-                  <div key={link.key} className="relative group py-2">
-                    <Link
-                      to={link.to}
-                      className="text-[13px] font-medium text-foreground/80 hover:text-primary transition-colors duration-200 tracking-[0.08em] uppercase"
-                    >
-                      {link.label}
-                    </Link>
-                    <span className="absolute left-0 right-0 -bottom-0.5 h-px bg-primary scale-x-0 group-hover:scale-x-100 origin-left transition-transform duration-300" />
-                  </div>
-                ))}
-              </nav>
+            {/* Center-left: Nav */}
+            <nav className="hidden md:flex items-center gap-8 flex-1">
+              {navItems.map(link => (
+                <div
+                  key={link.key}
+                  onMouseEnter={() => link.hasMega ? setMegaOpen(link.key) : setMegaOpen(null)}
+                  className="relative group py-2"
+                >
+                  <Link
+                    to={link.to}
+                    className="text-[13px] font-medium text-foreground/80 hover:text-primary transition-colors duration-200 tracking-[0.08em] uppercase"
+                  >
+                    {link.label}
+                  </Link>
+                  <span className="absolute left-0 right-0 -bottom-0.5 h-px bg-primary scale-x-0 group-hover:scale-x-100 origin-left transition-transform duration-300" />
+                </div>
+              ))}
+            </nav>
+
+            {/* Right: Utility */}
+            <div className="flex items-center justify-end gap-2 md:gap-3 ml-auto" onMouseEnter={() => setMegaOpen(null)}>
               <button
                 className="hidden sm:inline-flex p-2 text-foreground/70 hover:text-primary transition-colors"
                 aria-label={t("nav.search")}
