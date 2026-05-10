@@ -14,6 +14,7 @@ import productTinReserve from "@/assets/product-tin-reserve.jpg";
 import productRecipeBook from "@/assets/product-recipe-book.jpg";
 import productTravelKit from "@/assets/product-travel-kit.jpg";
 import productCupsSet from "@/assets/product-cups-set.jpg";
+import productDiscoveryBox from "@/assets/product-discovery-box.jpg";
 import productStarterKit from "@/assets/product-starter-kit.jpg";
 import productPremiumSet from "@/assets/product-premium-set.jpg";
 import productGiftBox from "@/assets/product-gift-box.jpg";
@@ -188,7 +189,7 @@ export const products: Product[] = [
     shortDescription: "Proefbox met 4 Japanse thee specialiteiten.",
     category: "kits-sets",
     categoryLabel: "Kits & Sets",
-    images: [productGiftBox],
+    images: [productDiscoveryBox],
     badge: "Nieuw",
     relatedIds: ["hojicha", "sencha", "genmaicha"],
     reviews: [],
