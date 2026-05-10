@@ -16,6 +16,13 @@ import Blog from "@/pages/Blog";
 import BlogPost from "@/pages/BlogPost";
 import Subscriptions from "@/pages/Subscriptions";
 import Checkout from "@/pages/Checkout";
+import Contact from "@/pages/Contact";
+import FAQ from "@/pages/FAQ";
+import Shipping from "@/pages/Shipping";
+import Privacy from "@/pages/Privacy";
+import Terms from "@/pages/Terms";
+import Recipes from "@/pages/Recipes";
+import Sustainability from "@/pages/Sustainability";
 import NotFound from "@/pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -33,6 +40,13 @@ const AnimatedRoutes = () => {
         <Route path="/blog/:slug" element={<PageTransition><BlogPost /></PageTransition>} />
         <Route path="/abonnementen" element={<PageTransition><Subscriptions /></PageTransition>} />
         <Route path="/checkout" element={<PageTransition><Checkout /></PageTransition>} />
+        <Route path="/contact" element={<PageTransition><Contact /></PageTransition>} />
+        <Route path="/faq" element={<PageTransition><FAQ /></PageTransition>} />
+        <Route path="/verzending" element={<PageTransition><Shipping /></PageTransition>} />
+        <Route path="/privacy" element={<PageTransition><Privacy /></PageTransition>} />
+        <Route path="/voorwaarden" element={<PageTransition><Terms /></PageTransition>} />
+        <Route path="/recepten" element={<PageTransition><Recipes /></PageTransition>} />
+        <Route path="/duurzaamheid" element={<PageTransition><Sustainability /></PageTransition>} />
         <Route path="*" element={<PageTransition><NotFound /></PageTransition>} />
       </Routes>
     </AnimatePresence>
