@@ -332,6 +332,141 @@ const Homepage = () => {
         </div>
       </section>
 
+      {/* Collections */}
+      <section className="py-20">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+          <ScrollReveal className="text-center mb-14">
+            <p className="text-xs tracking-[0.3em] uppercase text-muted-foreground mb-2">{t("home.collectionsEyebrow")}</p>
+            <h2 className="font-heading text-3xl md:text-5xl font-semibold">{t("home.collectionsTitle")}</h2>
+          </ScrollReveal>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
+            {[
+              { img: productPouchCeremonial, key: "matcha-powder", label: t("categories.matcha-powder") },
+              { img: productStarterKit, key: "kits-sets", label: t("categories.kits-sets") },
+              { img: productPouchHojicha, key: "teas-drinks", label: t("categories.teas-drinks") },
+            ].map((c, i) => (
+              <motion.div
+                key={c.key}
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, margin: "-40px" }}
+                transition={{ delay: i * 0.1, duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
+              >
+                <Link to={`/shop?category=${c.key}`} className="group block relative overflow-hidden rounded-2xl aspect-[4/5]">
+                  <img src={c.img} alt={c.label} loading="lazy" className="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 ease-out" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-foreground/70 via-foreground/10 to-transparent" />
+                  <div className="absolute inset-x-0 bottom-0 p-6 md:p-8 text-cream">
+                    <p className="text-[10px] tracking-[0.3em] uppercase opacity-80 mb-1">{t("home.collectionShop")}</p>
+                    <h3 className="font-heading text-2xl font-semibold flex items-center gap-2">
+                      {c.label}
+                      <ArrowRight className="w-5 h-5 -translate-x-1 opacity-0 group-hover:translate-x-0 group-hover:opacity-100 transition-all" />
+                    </h3>
+                  </div>
+                </Link>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Ritual: How to prepare */}
+      <section className="py-20 bg-secondary">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+          <ScrollReveal className="text-center mb-14 max-w-2xl mx-auto">
+            <p className="text-xs tracking-[0.3em] uppercase text-muted-foreground mb-2">{t("home.ritualEyebrow")}</p>
+            <h2 className="font-heading text-3xl md:text-5xl font-light">{t("home.ritualTitle1")} <span className="italic">{t("home.ritualTitle2")}</span></h2>
+            <p className="text-muted-foreground mt-4">{t("home.ritualSub")}</p>
+          </ScrollReveal>
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-6 md:gap-10">
+            {[1, 2, 3, 4].map((step, i) => (
+              <motion.div
+                key={step}
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, margin: "-40px" }}
+                transition={{ delay: i * 0.12, duration: 0.6 }}
+                className="text-center"
+              >
+                <div className="font-heading text-5xl md:text-6xl font-light text-primary/30 mb-3">0{step}</div>
+                <h3 className="font-heading text-lg font-semibold mb-2">{t(`home.ritualStep${step}Title`)}</h3>
+                <p className="text-sm text-muted-foreground leading-relaxed">{t(`home.ritualStep${step}Desc`)}</p>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Press strip */}
+      <section className="py-12 border-y border-border">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+          <p className="text-center text-[10px] tracking-[0.3em] uppercase text-muted-foreground mb-6">{t("home.pressEyebrow")}</p>
+          <div className="flex flex-wrap items-center justify-center gap-x-12 gap-y-4">
+            {["VOGUE", "ELLE", "DE VOLKSKRANT", "VICE", "&C MAGAZINE", "LINDA."].map(name => (
+              <span key={name} className="font-heading text-base md:text-lg tracking-[0.3em] text-foreground/40 hover:text-foreground/70 transition-colors">
+                {name}
+              </span>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Journal preview */}
+      <section className="py-20">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="flex items-end justify-between mb-12">
+            <ScrollReveal>
+              <p className="text-xs tracking-[0.3em] uppercase text-muted-foreground mb-2">{t("home.journalEyebrow")}</p>
+              <h2 className="font-heading text-3xl md:text-5xl font-semibold">{t("home.journalTitle")}</h2>
+            </ScrollReveal>
+            <Link to="/blog" className="hidden sm:inline-flex items-center gap-1.5 text-sm text-primary hover:underline font-semibold">
+              {t("home.allArticles")} <ArrowRight className="w-4 h-4" />
+            </Link>
+          </div>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            {blogPosts.slice(0, 3).map((post, i) => (
+              <motion.div
+                key={post.id}
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, margin: "-40px" }}
+                transition={{ delay: i * 0.1, duration: 0.6 }}
+              >
+                <Link to={`/blog/${post.slug}`} className="group block">
+                  <div className="aspect-[4/3] rounded-2xl overflow-hidden mb-5 bg-secondary">
+                    <img src={post.image} alt={post.title} loading="lazy" className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" />
+                  </div>
+                  <p className="text-[10px] tracking-[0.25em] uppercase text-muted-foreground mb-2">{post.category} · {post.readTime}</p>
+                  <h3 className="font-heading text-xl font-semibold leading-snug group-hover:text-primary transition-colors mb-2">{post.title}</h3>
+                  <p className="text-sm text-muted-foreground leading-relaxed line-clamp-2">{post.excerpt}</p>
+                </Link>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* FAQ */}
+      <section className="py-20 bg-secondary">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-3xl">
+          <ScrollReveal className="text-center mb-12">
+            <p className="text-xs tracking-[0.3em] uppercase text-muted-foreground mb-2">{t("home.faqEyebrow")}</p>
+            <h2 className="font-heading text-3xl md:text-5xl font-semibold">{t("home.faqTitle")}</h2>
+          </ScrollReveal>
+          <Accordion type="single" collapsible className="w-full">
+            {[1, 2, 3, 4, 5].map(n => (
+              <AccordionItem key={n} value={`q${n}`} className="border-border/60">
+                <AccordionTrigger className="text-left font-heading text-base md:text-lg font-medium hover:no-underline hover:text-primary py-5">
+                  {t(`home.faq${n}Q`)}
+                </AccordionTrigger>
+                <AccordionContent className="text-muted-foreground leading-relaxed text-[15px]">
+                  {t(`home.faq${n}A`)}
+                </AccordionContent>
+              </AccordionItem>
+            ))}
+          </Accordion>
+        </div>
+      </section>
+
       {/* Newsletter */}
       <section className="py-20 bg-primary text-primary-foreground">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 text-center">
