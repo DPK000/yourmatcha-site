@@ -42,6 +42,11 @@ const Shop = () => {
 
   return (
     <div className="py-12">
+      <SEO
+        title="Shop — Premium matcha, thee & accessoires"
+        description="Shop ceremoniële Japanse matcha, latte blends, theeaccessoires en cadeausets. Single-origin uit Uji, gratis verzending in NL & BE vanaf €50."
+        canonical="/shop"
+      />
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="mb-10">
           <h1 className="font-heading text-4xl md:text-5xl font-semibold">{t("shop.title")} 🍵</h1>
