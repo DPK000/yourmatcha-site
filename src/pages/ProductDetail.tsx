@@ -289,6 +289,42 @@ const ProductDetail = () => {
               </button>
             </div>
 
+            {/* Rating distribution */}
+            {allReviews.length > 0 && avgRating && (
+              <div className="grid grid-cols-1 md:grid-cols-[auto,1fr] gap-8 md:gap-12 bg-secondary/60 rounded-2xl p-6 md:p-8 mb-8">
+                <div className="text-center md:text-left md:border-r md:border-border md:pr-12">
+                  <p className="font-heading text-5xl font-light leading-none mb-2">{avgRating.toFixed(1)}</p>
+                  <div className="flex items-center justify-center md:justify-start gap-0.5 mb-2">
+                    {[1,2,3,4,5].map(s => (
+                      <Star key={s} className={`w-4 h-4 ${s <= Math.round(avgRating) ? "text-accent fill-accent" : "text-border"}`} />
+                    ))}
+                  </div>
+                  <p className="text-xs text-muted-foreground">Op basis van {allReviews.length} {allReviews.length === 1 ? "beoordeling" : "beoordelingen"}</p>
+                </div>
+                <div className="space-y-1.5">
+                  {[5,4,3,2,1].map(stars => {
+                    const count = allReviews.filter(r => r.rating === stars).length;
+                    const pct = (count / allReviews.length) * 100;
+                    return (
+                      <div key={stars} className="flex items-center gap-3 text-xs">
+                        <span className="w-6 text-muted-foreground tabular-nums">{stars}★</span>
+                        <div className="flex-1 h-2 bg-background rounded-full overflow-hidden">
+                          <motion.div
+                            initial={{ width: 0 }}
+                            whileInView={{ width: `${pct}%` }}
+                            viewport={{ once: true }}
+                            transition={{ duration: 0.8, ease: "easeOut" }}
+                            className="h-full bg-accent rounded-full"
+                          />
+                        </div>
+                        <span className="w-10 text-right text-muted-foreground tabular-nums">{count}</span>
+                      </div>
+                    );
+                  })}
+                </div>
+              </div>
+            )}
+
             {showReviewForm && (
               <motion.form
                 initial={{ opacity: 0, y: -10 }}
@@ -334,10 +370,15 @@ const ProductDetail = () => {
               <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
                 {allReviews.map((review, i) => (
                   <div key={i} className="p-6 bg-card rounded-2xl border border-border/60">
-                    <div className="flex items-center gap-0.5 mb-3">
-                      {[1, 2, 3, 4, 5].map(s => (
-                        <Star key={s} className={`w-4 h-4 ${s <= review.rating ? "text-accent fill-accent" : "text-border"}`} />
-                      ))}
+                    <div className="flex items-center justify-between mb-3">
+                      <div className="flex items-center gap-0.5">
+                        {[1, 2, 3, 4, 5].map(s => (
+                          <Star key={s} className={`w-4 h-4 ${s <= review.rating ? "text-accent fill-accent" : "text-border"}`} />
+                        ))}
+                      </div>
+                      <span className="inline-flex items-center gap-1 text-[10px] text-primary font-medium tracking-wider uppercase">
+                        <ShieldCheck className="w-3 h-3" /> Geverifieerd
+                      </span>
                     </div>
                     <p className="text-sm text-foreground/85 leading-relaxed mb-4">"{review.text}"</p>
                     <p className="text-xs font-semibold">— {review.name}</p>
