@@ -401,7 +401,7 @@ const ProductDetail = () => {
                         <ShieldCheck className="w-3 h-3" /> Geverifieerd
                       </span>
                     </div>
-                    <p className="text-sm text-foreground/85 leading-relaxed mb-4">"{review.text}"</p>
+                    <p className="text-sm text-foreground/85 leading-relaxed mb-4">"{tReview(review.text)}"</p>
                     <p className="text-xs font-semibold">— {review.name}</p>
                     <p className="text-[10px] text-muted-foreground mt-0.5">{new Date(review.date).toLocaleDateString("nl-NL")}</p>
                   </div>
