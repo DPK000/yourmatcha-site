@@ -46,7 +46,7 @@ Een matcha latte is meer dan alleen matcha en melk. Het is een ritueel, een mome
     category: "Recepten",
     readTime: "4 min",
     date: "2024-03-15",
-    image: "/placeholder.svg",
+    image: blogMatchaLatte,
   },
   {
     id: "2",
@@ -76,7 +76,7 @@ Drink je matcha puur met alleen water? Kies ceremonial grade. Meng je het met me
     category: "Matcha 101",
     readTime: "3 min",
     date: "2024-03-01",
-    image: "/placeholder.svg",
+    image: blogCeremonialVsCulinary,
   },
   {
     id: "3",
@@ -104,7 +104,7 @@ De tijdloze favoriet die altijd werkt.`,
     category: "Recepten",
     readTime: "5 min",
     date: "2024-02-20",
-    image: "/placeholder.svg",
+    image: blogSeasonalRecipes,
   },
 ];
 
