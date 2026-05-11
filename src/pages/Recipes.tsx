@@ -2,10 +2,10 @@ import PageHero from "@/components/PageHero";
 import ScrollReveal from "@/components/ScrollReveal";
 import { Link } from "react-router-dom";
 import { Clock, ArrowRight } from "lucide-react";
-import lifestyle1 from "@/assets/lifestyle-1.jpg";
-import lifestyle2 from "@/assets/lifestyle-2.jpg";
-import lifestyle3 from "@/assets/lifestyle-3.jpg";
-import lifestyle4 from "@/assets/lifestyle-4.jpg";
+import recipeIcedLatte from "@/assets/recipe-iced-latte.jpg";
+import recipeEnergyBites from "@/assets/recipe-energy-bites.jpg";
+import recipeMatchaCookies from "@/assets/recipe-matcha-cookies.jpg";
+import recipeHojichaLatte from "@/assets/recipe-hojicha-latte.jpg";
 
 const recipes = [
   {
