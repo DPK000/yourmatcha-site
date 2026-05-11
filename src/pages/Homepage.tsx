@@ -76,7 +76,14 @@ const Homepage = () => {
       {/* Hero with Parallax */}
       <section ref={heroRef} className="relative h-[88vh] min-h-[620px] flex items-center overflow-hidden">
         <motion.div className="absolute inset-0" style={{ y: heroY }}>
-          <img src={heroImg} alt="Premium matcha thee" className="w-full h-full object-cover scale-110" />
+          <motion.img
+            src={heroImg}
+            alt="Premium matcha thee"
+            className="w-full h-full object-cover"
+            initial={{ scale: 1.15 }}
+            animate={{ scale: 1.25 }}
+            transition={{ duration: 18, ease: "easeOut" }}
+          />
           <div className="absolute inset-0 bg-gradient-to-r from-foreground/65 via-foreground/35 to-transparent" />
         </motion.div>
         <motion.div style={{ opacity: heroOpacity }} className="relative container mx-auto px-4 sm:px-6 lg:px-8">
