@@ -123,9 +123,9 @@ const ProductDetail = () => {
                 key={activeImg}
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
-                className="aspect-square rounded-2xl overflow-hidden bg-secondary mb-3"
+                className="mb-3"
               >
-                <img src={gallery[activeImg]} alt={product.name} className="w-full h-full object-cover" />
+                <ProductImageZoom src={gallery[activeImg]} alt={product.name} />
               </motion.div>
               {gallery.length > 1 && (
                 <div className="grid grid-cols-5 gap-2">
