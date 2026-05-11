@@ -53,7 +53,7 @@ const NewsletterPopup = () => {
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, y: 20, scale: 0.96 }}
             transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
-            className="fixed left-1/2 top-1/2 z-[61] w-[92%] max-w-md -translate-x-1/2 -translate-y-1/2 bg-background rounded-2xl shadow-elevated overflow-hidden"
+            className="fixed left-1/2 top-1/2 z-[61] w-[calc(100%-2rem)] max-w-md -translate-x-1/2 -translate-y-1/2 bg-background rounded-2xl shadow-elevated overflow-hidden"
           >
             <button
               onClick={close}
