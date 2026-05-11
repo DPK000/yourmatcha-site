@@ -35,9 +35,12 @@ const Footer = () => {
             <h4 className="font-heading text-lg font-semibold mb-4">{t("footer.info")}</h4>
             <ul className="space-y-2.5 text-sm text-primary-foreground/70">
               <li><Link to="/over-ons" className="hover:text-primary-foreground transition-colors">{t("nav.about")}</Link></li>
+              <li><Link to="/herkomst" className="hover:text-primary-foreground transition-colors">Herkomst</Link></li>
+              <li><Link to="/kennis" className="hover:text-primary-foreground transition-colors">Matcha kennis</Link></li>
               <li><Link to="/duurzaamheid" className="hover:text-primary-foreground transition-colors">Duurzaamheid</Link></li>
               <li><Link to="/recepten" className="hover:text-primary-foreground transition-colors">Recepten</Link></li>
               <li><Link to="/blog" className="hover:text-primary-foreground transition-colors">{t("nav.blog")}</Link></li>
+              <li><Link to="/bundel" className="hover:text-primary-foreground transition-colors">Bundle builder</Link></li>
               <li><Link to="/faq" className="hover:text-primary-foreground transition-colors">FAQ</Link></li>
             </ul>
           </div>

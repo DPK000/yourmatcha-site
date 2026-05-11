@@ -19,6 +19,7 @@ import productPouchHojicha from "@/assets/product-pouch-hojicha.jpg";
 import { useState, useRef } from "react";
 import { useTranslation } from "react-i18next";
 import { toast } from "sonner";
+import SEO from "@/components/SEO";
 
 const fadeUp = {
   hidden: { opacity: 0, y: 24 },
@@ -63,6 +64,15 @@ const Homepage = () => {
 
   return (
     <div className="overflow-hidden">
+      <SEO
+        title="YourMatcha — Premium Japanse matcha uit Uji, Kyoto"
+        description="Single-origin ceremoniële matcha, thee en rituelen rechtstreeks uit Uji. Gratis verzending in NL & BE vanaf €50. Ontdek de YourMatcha collectie."
+        canonical="/"
+        jsonLd={[
+          { "@context": "https://schema.org", "@type": "Organization", name: "YourMatcha", url: "https://yourmatcha.nl/", sameAs: ["https://www.instagram.com/yourmatcha"] },
+          { "@context": "https://schema.org", "@type": "WebSite", name: "YourMatcha", url: "https://yourmatcha.nl/", potentialAction: { "@type": "SearchAction", target: "https://yourmatcha.nl/shop?q={search_term_string}", "query-input": "required name=search_term_string" } },
+        ]}
+      />
       {/* Hero with Parallax */}
       <section ref={heroRef} className="relative h-[88vh] min-h-[620px] flex items-center overflow-hidden">
         <motion.div className="absolute inset-0" style={{ y: heroY }}>
