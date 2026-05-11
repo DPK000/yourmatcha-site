@@ -8,6 +8,8 @@ import ProductImageZoom from "@/components/ProductImageZoom";
 import SEO from "@/components/SEO";
 import { motion } from "framer-motion";
 import { toast } from "sonner";
+import { useTranslation } from "react-i18next";
+import { reviewTranslations } from "@/data/reviewTranslations";
 
 const formatPrice = (price: number) =>
   new Intl.NumberFormat("nl-NL", { style: "currency", currency: "EUR" }).format(price);
