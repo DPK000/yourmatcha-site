@@ -31,6 +31,7 @@ import Origin from "@/pages/Origin";
 import BundleBuilder from "@/pages/BundleBuilder";
 import Knowledge from "@/pages/Knowledge";
 import KnowledgeArticle from "@/pages/KnowledgeArticle";
+import Compare from "@/pages/Compare";
 import NotFound from "@/pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -45,6 +46,7 @@ const AnimatedRoutes = () => {
         <Route path="/shop" element={<PageTransition><Shop /></PageTransition>} />
         <Route path="/product/:slug" element={<PageTransition><ProductDetail /></PageTransition>} />
         <Route path="/bundel" element={<PageTransition><BundleBuilder /></PageTransition>} />
+        <Route path="/matcha-vergelijken" element={<PageTransition><Compare /></PageTransition>} />
         <Route path="/winkelwagen" element={<PageTransition><Cart /></PageTransition>} />
         <Route path="/over-ons" element={<PageTransition><About /></PageTransition>} />
         <Route path="/herkomst" element={<PageTransition><Origin /></PageTransition>} />

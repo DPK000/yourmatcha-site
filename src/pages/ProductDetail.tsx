@@ -2,7 +2,7 @@ import { useParams, Link, Navigate } from "react-router-dom";
 import { getProductBySlug, getRelatedProducts } from "@/data/products";
 import { useCart } from "@/context/CartContext";
 import { useEffect, useMemo, useState } from "react";
-import { Minus, Plus, ShoppingBag, ChevronLeft, Star, Truck, Leaf, ShieldCheck, Heart } from "lucide-react";
+import { Minus, Plus, ShoppingBag, ChevronLeft, Star, Truck, Leaf, ShieldCheck, Heart, Zap, Brain, Droplets, Sparkles } from "lucide-react";
 import ProductCard from "@/components/ProductCard";
 import SEO from "@/components/SEO";
 import { motion } from "framer-motion";
@@ -109,7 +109,7 @@ const ProductDetail = () => {
         jsonLd={productJsonLd}
       />
 
-      <div className="py-10">
+      <div className="py-10 pb-28 md:pb-10">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <Link to="/shop" className="inline-flex items-center gap-1 text-sm text-muted-foreground hover:text-foreground transition-colors mb-8">
             <ChevronLeft className="w-4 h-4" /> Terug naar shop
@@ -159,14 +159,53 @@ const ProductDetail = () => {
                     ))}
                   </div>
                   <a href="#reviews" className="text-sm text-muted-foreground hover:text-foreground underline-offset-2 hover:underline">
-                    {allReviews.length} review{allReviews.length === 1 ? "" : "s"}
+                    ({allReviews.length} {allReviews.length === 1 ? "beoordeling" : "beoordelingen"})
                   </a>
                 </div>
               )}
 
-              <p className="text-3xl font-semibold text-foreground mb-2">{formatPrice(product.price)}</p>
-              <p className="text-xs text-muted-foreground mb-6">Incl. btw · Verzending berekend bij checkout</p>
-              <p className="text-foreground/85 leading-relaxed mb-8">{product.description}</p>
+              <p className="text-foreground/85 leading-relaxed mb-6">{product.shortDescription}</p>
+
+              {/* Benefit icons strip — only for matcha & tea */}
+              {(product.category === "matcha-powder" || product.category === "teas-drinks") && (
+                <div className="grid grid-cols-4 gap-2 mb-6 bg-secondary/60 rounded-2xl p-4">
+                  {[
+                    { icon: Zap, label: "Energie zonder dip" },
+                    { icon: Brain, label: "Focus & helderheid" },
+                    { icon: Sparkles, label: "Antioxidanten" },
+                    { icon: Droplets, label: "L-Theanine" },
+                  ].map(b => (
+                    <div key={b.label} className="text-center">
+                      <b.icon className="w-5 h-5 mx-auto text-primary mb-1.5" strokeWidth={1.5} />
+                      <p className="text-[10px] text-foreground/70 leading-tight font-medium">{b.label}</p>
+                    </div>
+                  ))}
+                </div>
+              )}
+
+              {product.weight && (
+                <p className="text-xs uppercase tracking-widest text-muted-foreground mb-2">Inhoud: <strong className="text-foreground">{product.weight}</strong></p>
+              )}
+
+              <div className="flex items-baseline gap-3 mb-1">
+                <p className="text-3xl font-semibold text-foreground">{formatPrice(product.price)}</p>
+                {product.badge === "Voordeel" && (
+                  <p className="text-base text-muted-foreground line-through">{formatPrice(product.price * 1.2)}</p>
+                )}
+              </div>
+              <p className="text-xs text-muted-foreground mb-6">Incl. btw · Gratis verzending vanaf €35</p>
+
+              {/* Subscription inline upsell */}
+              <Link
+                to="/abonnementen"
+                className="flex items-center justify-between gap-3 px-5 py-4 mb-6 border-2 border-primary/20 rounded-2xl hover:border-primary hover:bg-primary/5 transition-colors group"
+              >
+                <div>
+                  <p className="text-sm font-semibold text-foreground">Maandelijks ontvangen</p>
+                  <p className="text-xs text-muted-foreground mt-0.5">Bespaar 15% · pauzeer of stop wanneer je wilt</p>
+                </div>
+                <span className="text-xs font-bold text-primary tracking-widest uppercase shrink-0 group-hover:translate-x-1 transition-transform">−15% →</span>
+              </Link>
 
               <div className="flex items-center gap-3 mb-4">
                 <div className="flex items-center border border-border rounded-full">
@@ -192,17 +231,19 @@ const ProductDetail = () => {
                 </button>
               </div>
 
-              <Link
-                to="/abonnementen"
-                className="block w-full text-center px-6 py-3 mb-8 border border-primary text-primary text-xs font-bold tracking-widest uppercase rounded-full hover:bg-primary hover:text-primary-foreground transition-colors"
-              >
-                Of bespaar 15% met een abonnement
-              </Link>
+              {/* Money-back callout */}
+              <div className="relative bg-primary/5 border border-primary/15 rounded-2xl px-5 py-4 mb-6 text-center">
+                <Heart className="w-5 h-5 text-primary fill-primary/30 mx-auto -mt-7 mb-1 bg-background rounded-full p-0.5" />
+                <p className="text-sm font-bold text-foreground">Probeer het. Niet goed? Geld terug.</p>
+                <p className="text-xs text-muted-foreground mt-1 leading-relaxed">
+                  98% van onze klanten beoordeelt deze matcha met 5 sterren. Mocht je niet tevreden zijn, krijg je je geld terug binnen 30 dagen.
+                </p>
+              </div>
 
               {/* Trust badges */}
               <div className="grid grid-cols-3 gap-3 mb-8 text-center">
                 {[
-                  { icon: Truck, label: "Gratis vanaf €50" },
+                  { icon: Truck, label: "Gratis vanaf €35" },
                   { icon: Leaf, label: "100% biologisch" },
                   { icon: ShieldCheck, label: "30 dagen retour" },
                 ].map(b => (
@@ -212,10 +253,6 @@ const ProductDetail = () => {
                   </div>
                 ))}
               </div>
-
-              {product.weight && (
-                <p className="text-sm text-muted-foreground mb-4">Inhoud: <strong className="text-foreground">{product.weight}</strong></p>
-              )}
 
               {/* Accordion */}
               <div className="border-t border-border">
@@ -251,6 +288,42 @@ const ProductDetail = () => {
                 {showReviewForm ? "Annuleren" : "Schrijf een review"}
               </button>
             </div>
+
+            {/* Rating distribution */}
+            {allReviews.length > 0 && avgRating && (
+              <div className="grid grid-cols-1 md:grid-cols-[auto,1fr] gap-8 md:gap-12 bg-secondary/60 rounded-2xl p-6 md:p-8 mb-8">
+                <div className="text-center md:text-left md:border-r md:border-border md:pr-12">
+                  <p className="font-heading text-5xl font-light leading-none mb-2">{avgRating.toFixed(1)}</p>
+                  <div className="flex items-center justify-center md:justify-start gap-0.5 mb-2">
+                    {[1,2,3,4,5].map(s => (
+                      <Star key={s} className={`w-4 h-4 ${s <= Math.round(avgRating) ? "text-accent fill-accent" : "text-border"}`} />
+                    ))}
+                  </div>
+                  <p className="text-xs text-muted-foreground">Op basis van {allReviews.length} {allReviews.length === 1 ? "beoordeling" : "beoordelingen"}</p>
+                </div>
+                <div className="space-y-1.5">
+                  {[5,4,3,2,1].map(stars => {
+                    const count = allReviews.filter(r => r.rating === stars).length;
+                    const pct = (count / allReviews.length) * 100;
+                    return (
+                      <div key={stars} className="flex items-center gap-3 text-xs">
+                        <span className="w-6 text-muted-foreground tabular-nums">{stars}★</span>
+                        <div className="flex-1 h-2 bg-background rounded-full overflow-hidden">
+                          <motion.div
+                            initial={{ width: 0 }}
+                            whileInView={{ width: `${pct}%` }}
+                            viewport={{ once: true }}
+                            transition={{ duration: 0.8, ease: "easeOut" }}
+                            className="h-full bg-accent rounded-full"
+                          />
+                        </div>
+                        <span className="w-10 text-right text-muted-foreground tabular-nums">{count}</span>
+                      </div>
+                    );
+                  })}
+                </div>
+              </div>
+            )}
 
             {showReviewForm && (
               <motion.form
@@ -297,10 +370,15 @@ const ProductDetail = () => {
               <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
                 {allReviews.map((review, i) => (
                   <div key={i} className="p-6 bg-card rounded-2xl border border-border/60">
-                    <div className="flex items-center gap-0.5 mb-3">
-                      {[1, 2, 3, 4, 5].map(s => (
-                        <Star key={s} className={`w-4 h-4 ${s <= review.rating ? "text-accent fill-accent" : "text-border"}`} />
-                      ))}
+                    <div className="flex items-center justify-between mb-3">
+                      <div className="flex items-center gap-0.5">
+                        {[1, 2, 3, 4, 5].map(s => (
+                          <Star key={s} className={`w-4 h-4 ${s <= review.rating ? "text-accent fill-accent" : "text-border"}`} />
+                        ))}
+                      </div>
+                      <span className="inline-flex items-center gap-1 text-[10px] text-primary font-medium tracking-wider uppercase">
+                        <ShieldCheck className="w-3 h-3" /> Geverifieerd
+                      </span>
                     </div>
                     <p className="text-sm text-foreground/85 leading-relaxed mb-4">"{review.text}"</p>
                     <p className="text-xs font-semibold">— {review.name}</p>
@@ -321,6 +399,23 @@ const ProductDetail = () => {
               </div>
             </section>
           )}
+        </div>
+      </div>
+
+      {/* Sticky mobile add-to-cart */}
+      <div className="md:hidden fixed bottom-0 inset-x-0 z-40 bg-background/95 backdrop-blur-md border-t border-border shadow-elevated">
+        <div className="px-4 py-3 flex items-center gap-3">
+          <img src={product.images[0]} alt="" className="w-12 h-12 rounded-lg object-cover bg-secondary shrink-0" />
+          <div className="flex-1 min-w-0">
+            <p className="text-xs font-semibold truncate">{product.name}</p>
+            <p className="text-sm font-bold text-primary">{formatPrice(product.price)}</p>
+          </div>
+          <button
+            onClick={() => addItem(product, quantity)}
+            className="shrink-0 inline-flex items-center justify-center gap-1.5 px-5 h-11 bg-primary text-primary-foreground font-bold text-[11px] tracking-widest uppercase rounded-full"
+          >
+            <ShoppingBag className="w-4 h-4" /> In mand
+          </button>
         </div>
       </div>
     </>
