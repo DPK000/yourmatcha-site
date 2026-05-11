@@ -12,6 +12,26 @@ import recipeMochi from "@/assets/recipe-matcha-mochi.jpg";
 import recipeOats from "@/assets/recipe-matcha-oats.jpg";
 import recipeTonic from "@/assets/recipe-matcha-tonic.jpg";
 import recipeBrownies from "@/assets/recipe-matcha-brownies.jpg";
+import recipeAffogato from "@/assets/recipe-matcha-affogato.jpg";
+import recipeChiaPudding from "@/assets/recipe-matcha-chia-pudding.jpg";
+import recipeWaffles from "@/assets/recipe-matcha-waffles.jpg";
+import recipeGranola from "@/assets/recipe-matcha-granola.jpg";
+import recipeFrenchToast from "@/assets/recipe-matcha-french-toast.jpg";
+import recipeStrawberryLatte from "@/assets/recipe-matcha-strawberry-latte.jpg";
+import recipeEspressoTonic from "@/assets/recipe-matcha-espresso-tonic.jpg";
+import recipeLemonade from "@/assets/recipe-matcha-lemonade.jpg";
+import recipeHotChocolate from "@/assets/recipe-matcha-hot-chocolate.jpg";
+import recipeBubbleTea from "@/assets/recipe-matcha-bubble-tea.jpg";
+import recipeYogurtBowl from "@/assets/recipe-matcha-yogurt-bowl.jpg";
+import recipeTruffles from "@/assets/recipe-matcha-truffles.jpg";
+import recipePopcorn from "@/assets/recipe-matcha-popcorn.jpg";
+import recipeMacarons from "@/assets/recipe-matcha-macarons.jpg";
+import recipeMadeleines from "@/assets/recipe-matcha-madeleines.jpg";
+import recipeBananaBread from "@/assets/recipe-matcha-banana-bread.jpg";
+import recipeScones from "@/assets/recipe-matcha-scones.jpg";
+import recipeCroissants from "@/assets/recipe-matcha-croissants.jpg";
+import recipeCremeBrulee from "@/assets/recipe-matcha-creme-brulee.jpg";
+import recipePannaCotta from "@/assets/recipe-matcha-panna-cotta.jpg";
 
 export type Recipe = {
   slug: string;
