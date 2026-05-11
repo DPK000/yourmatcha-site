@@ -47,7 +47,7 @@ const Blog = () => {
             >
               <Link to={`/blog/${post.slug}`} className="group block">
                 <div className="aspect-[3/2] bg-secondary rounded overflow-hidden mb-4">
-                  <img src={post.image} alt={post.title} className="w-full h-full object-cover opacity-40 group-hover:scale-105 transition-transform duration-500" />
+                  <img src={post.image} alt={post.title} loading="lazy" className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" />
                 </div>
                 <div className="flex items-center gap-3 mb-2">
                   <span className="text-xs text-accent font-medium tracking-wide uppercase">{post.category}</span>
