@@ -401,6 +401,23 @@ const ProductDetail = () => {
           )}
         </div>
       </div>
+
+      {/* Sticky mobile add-to-cart */}
+      <div className="md:hidden fixed bottom-0 inset-x-0 z-40 bg-background/95 backdrop-blur-md border-t border-border shadow-elevated">
+        <div className="px-4 py-3 flex items-center gap-3">
+          <img src={product.images[0]} alt="" className="w-12 h-12 rounded-lg object-cover bg-secondary shrink-0" />
+          <div className="flex-1 min-w-0">
+            <p className="text-xs font-semibold truncate">{product.name}</p>
+            <p className="text-sm font-bold text-primary">{formatPrice(product.price)}</p>
+          </div>
+          <button
+            onClick={() => addItem(product, quantity)}
+            className="shrink-0 inline-flex items-center justify-center gap-1.5 px-5 h-11 bg-primary text-primary-foreground font-bold text-[11px] tracking-widest uppercase rounded-full"
+          >
+            <ShoppingBag className="w-4 h-4" /> In mand
+          </button>
+        </div>
+      </div>
     </>
   );
 };
