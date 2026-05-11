@@ -73,7 +73,7 @@ const RecipeSwiper = () => {
                 className="group flex-[0_0_85%] sm:flex-[0_0_55%] md:flex-[0_0_38%] lg:flex-[0_0_28%] min-w-0"
               >
                 <Link
-                  to={`/recepten#${slugify(r.title)}`}
+                  to={`/recepten/${r.slug}`}
                   aria-label={`Bekijk recept: ${r.title}`}
                   className="block relative aspect-[4/5] rounded-3xl overflow-hidden bg-muted shadow-sm group-hover:shadow-2xl transition-all duration-500 focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2"
                 >
