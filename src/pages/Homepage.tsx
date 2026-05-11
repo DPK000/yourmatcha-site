@@ -19,6 +19,7 @@ import productPouchHojicha from "@/assets/product-pouch-hojicha.jpg";
 import { useState, useRef } from "react";
 import { useTranslation } from "react-i18next";
 import { toast } from "sonner";
+import SEO from "@/components/SEO";
 
 const fadeUp = {
   hidden: { opacity: 0, y: 24 },

@@ -3,6 +3,7 @@ import { products, categories } from "@/data/products";
 import ProductCard from "@/components/ProductCard";
 import { useSearchParams } from "react-router-dom";
 import { useTranslation } from "react-i18next";
+import SEO from "@/components/SEO";
 
 type SortOption = "newest" | "price-asc" | "price-desc" | "bestseller";
 
