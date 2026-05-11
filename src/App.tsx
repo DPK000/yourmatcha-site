@@ -26,6 +26,7 @@ import Shipping from "@/pages/Shipping";
 import Privacy from "@/pages/Privacy";
 import Terms from "@/pages/Terms";
 import Recipes from "@/pages/Recipes";
+import RecipeDetail from "@/pages/RecipeDetail";
 import Sustainability from "@/pages/Sustainability";
 import Origin from "@/pages/Origin";
 import BundleBuilder from "@/pages/BundleBuilder";
@@ -62,6 +63,7 @@ const AnimatedRoutes = () => {
         <Route path="/privacy" element={<PageTransition><Privacy /></PageTransition>} />
         <Route path="/voorwaarden" element={<PageTransition><Terms /></PageTransition>} />
         <Route path="/recepten" element={<PageTransition><Recipes /></PageTransition>} />
+        <Route path="/recepten/:slug" element={<PageTransition><RecipeDetail /></PageTransition>} />
         <Route path="/duurzaamheid" element={<PageTransition><Sustainability /></PageTransition>} />
         <Route path="*" element={<PageTransition><NotFound /></PageTransition>} />
       </Routes>

@@ -1,48 +1,10 @@
 import { useState, useCallback, useEffect } from "react";
+import { Link } from "react-router-dom";
 import useEmblaCarousel from "embla-carousel-react";
-import { ChevronLeft, ChevronRight, Clock, ChefHat } from "lucide-react";
+import { ChevronLeft, ChevronRight, Clock, ChefHat, ArrowUpRight } from "lucide-react";
 import { motion } from "framer-motion";
 
-import recipeIcedLatte from "@/assets/recipe-iced-latte.jpg";
-import recipeEnergyBites from "@/assets/recipe-energy-bites.jpg";
-import recipeMatchaCookies from "@/assets/recipe-matcha-cookies.jpg";
-import recipeHojichaLatte from "@/assets/recipe-hojicha-latte.jpg";
-import recipeTiramisu from "@/assets/recipe-matcha-tiramisu.jpg";
-import recipePancakes from "@/assets/recipe-matcha-pancakes.jpg";
-import recipeSmoothieBowl from "@/assets/recipe-matcha-smoothie-bowl.jpg";
-import recipeCheesecake from "@/assets/recipe-matcha-cheesecake.jpg";
-import recipeIcecream from "@/assets/recipe-matcha-icecream.jpg";
-import recipeHotLatte from "@/assets/recipe-matcha-hotlatte.jpg";
-import recipeMochi from "@/assets/recipe-matcha-mochi.jpg";
-import recipeOats from "@/assets/recipe-matcha-oats.jpg";
-import recipeTonic from "@/assets/recipe-matcha-tonic.jpg";
-import recipeBrownies from "@/assets/recipe-matcha-brownies.jpg";
-
-type Recipe = {
-  title: string;
-  category: string;
-  time: string;
-  level: string;
-  image: string;
-  description: string;
-};
-
-const recipes: Recipe[] = [
-  { title: "Iced Matcha Latte", category: "Drinks", time: "5 min", level: "Eenvoudig", image: recipeIcedLatte, description: "De klassieke verfrissing — romig, koel, met een diepe matchasmaak." },
-  { title: "Hot Matcha Latte", category: "Drinks", time: "5 min", level: "Eenvoudig", image: recipeHotLatte, description: "Warme troost in een kop — fluweelzacht met perfecte latte art." },
-  { title: "Hojicha Oat Latte", category: "Drinks", time: "5 min", level: "Eenvoudig", image: recipeHojichaLatte, description: "Geroosterd, nootachtig en zacht — de perfecte avondthee." },
-  { title: "Sparkling Matcha Tonic", category: "Drinks", time: "3 min", level: "Eenvoudig", image: recipeTonic, description: "Bruisend, citrusachtig en verfrissend voor warme dagen." },
-  { title: "Matcha Smoothie Bowl", category: "Ontbijt", time: "10 min", level: "Eenvoudig", image: recipeSmoothieBowl, description: "Een vibrant ontbijt vol antioxidanten en energie." },
-  { title: "Matcha Pancakes", category: "Ontbijt", time: "20 min", level: "Eenvoudig", image: recipePancakes, description: "Fluffy pannenkoeken met een vrolijke groene twist." },
-  { title: "Matcha Overnight Oats", category: "Ontbijt", time: "5 min + nacht", level: "Eenvoudig", image: recipeOats, description: "Bereid 's avonds — ontbijt klaar als je wakker wordt." },
-  { title: "Energy Bites", category: "Snacks", time: "15 min", level: "Eenvoudig", image: recipeEnergyBites, description: "Natuurlijk zoet, vol focus en pure energie." },
-  { title: "Matcha Cookies", category: "Bakken", time: "30 min", level: "Medium", image: recipeMatchaCookies, description: "Knapperig, smelten met witte chocolade." },
-  { title: "Matcha Brownies", category: "Bakken", time: "40 min", level: "Medium", image: recipeBrownies, description: "Fudgy met witte chocolade — onweerstaanbaar." },
-  { title: "Matcha Cheesecake", category: "Desserts", time: "45 min + koelen", level: "Medium", image: recipeCheesecake, description: "Romig, elegant en perfect voor speciale gelegenheden." },
-  { title: "Matcha Tiramisu", category: "Desserts", time: "30 min + koelen", level: "Medium", image: recipeTiramisu, description: "Italiaanse klassieker met een Japanse twist." },
-  { title: "Matcha Mochi", category: "Desserts", time: "60 min", level: "Gevorderd", image: recipeMochi, description: "Zachte rijst-bolletjes met witte chocolade vulling." },
-  { title: "Matcha Ice Cream", category: "Desserts", time: "20 min + vriezen", level: "Medium", image: recipeIcecream, description: "Romig, intens en eindeloos verslavend." },
-];
+import { recipes } from "@/data/recipes";
 
 const RecipeSwiper = () => {
   const [emblaRef, emblaApi] = useEmblaCarousel({
@@ -110,7 +72,11 @@ const RecipeSwiper = () => {
                 transition={{ duration: 0.4, delay: (i % 5) * 0.05 }}
                 className="group flex-[0_0_85%] sm:flex-[0_0_55%] md:flex-[0_0_38%] lg:flex-[0_0_28%] min-w-0"
               >
-                <div className="relative aspect-[4/5] rounded-3xl overflow-hidden bg-muted shadow-sm group-hover:shadow-2xl transition-all duration-500">
+                <Link
+                  to={`/recepten/${r.slug}`}
+                  aria-label={`Bekijk recept: ${r.title}`}
+                  className="block relative aspect-[4/5] rounded-3xl overflow-hidden bg-muted shadow-sm group-hover:shadow-2xl transition-all duration-500 focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2"
+                >
                   <img
                     src={r.image}
                     alt={r.title}
@@ -125,6 +91,9 @@ const RecipeSwiper = () => {
                       {r.category}
                     </span>
                   </div>
+                  <div className="absolute top-4 right-4 w-10 h-10 rounded-full bg-background/90 backdrop-blur flex items-center justify-center opacity-0 group-hover:opacity-100 translate-y-1 group-hover:translate-y-0 transition-all duration-300">
+                    <ArrowUpRight className="w-4 h-4 text-foreground" />
+                  </div>
                   <div className="absolute inset-x-0 bottom-0 p-6 text-white">
                     <h3 className="font-heading text-2xl font-semibold mb-2 leading-tight">{r.title}</h3>
                     <p className="text-sm text-white/85 line-clamp-2 mb-4">{r.description}</p>
@@ -133,7 +102,7 @@ const RecipeSwiper = () => {
                       <span className="inline-flex items-center gap-1.5"><ChefHat className="w-3.5 h-3.5" /> {r.level}</span>
                     </div>
                   </div>
-                </div>
+                </Link>
               </motion.article>
             ))}
           </div>
