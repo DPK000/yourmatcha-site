@@ -118,7 +118,8 @@ const ProductDetail = () => {
         canonical={`/product/${product.slug}`}
         type="product"
         image={product.images[0]}
-        jsonLd={productJsonLd}
+        jsonLd={[productJsonLd, breadcrumbJsonLd]}
+        keywords={`${product.name}, ${product.categoryLabel}, Japanse matcha, ceremoniële matcha, matcha kopen, ${product.weight || ""}`}
       />
 
       <div className="py-10 pb-28 md:pb-10">
