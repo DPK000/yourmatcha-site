@@ -23,7 +23,7 @@ const LanguageSwitcher = ({ minimal = false }: { minimal?: boolean }) => {
         aria-label="Taal kiezen"
       >
         <Globe className="w-3.5 h-3.5" />
-        {!minimal && <span className="tracking-wide">{current.short}</span>}
+        {!minimal && <span className="tracking-wide hidden sm:inline">{current.short}</span>}
       </DropdownMenuTrigger>
       <DropdownMenuContent align="end" className="min-w-[160px]">
         {languages.map(l => (
