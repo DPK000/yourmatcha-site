@@ -1,7 +1,11 @@
 import { useState, useCallback, useEffect } from "react";
+import { Link } from "react-router-dom";
 import useEmblaCarousel from "embla-carousel-react";
-import { ChevronLeft, ChevronRight, Clock, ChefHat } from "lucide-react";
+import { ChevronLeft, ChevronRight, Clock, ChefHat, ArrowUpRight } from "lucide-react";
 import { motion } from "framer-motion";
+
+const slugify = (s: string) =>
+  s.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "").replace(/[^a-z0-9]+/g, "-").replace(/(^-|-$)/g, "");
 
 import recipeIcedLatte from "@/assets/recipe-iced-latte.jpg";
 import recipeEnergyBites from "@/assets/recipe-energy-bites.jpg";
