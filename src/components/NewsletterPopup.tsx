@@ -53,7 +53,7 @@ const NewsletterPopup = () => {
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, y: 20, scale: 0.96 }}
             transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
-            className="fixed left-1/2 top-1/2 z-[61] w-[92%] max-w-md -translate-x-1/2 -translate-y-1/2 bg-background rounded-2xl shadow-elevated overflow-hidden"
+            className="fixed left-1/2 top-1/2 z-[61] w-[calc(100%-2rem)] max-w-md -translate-x-1/2 -translate-y-1/2 bg-background rounded-2xl shadow-elevated overflow-hidden"
           >
             <button
               onClick={close}
@@ -62,17 +62,17 @@ const NewsletterPopup = () => {
             >
               <X className="w-4 h-4" />
             </button>
-            <div className="bg-primary text-primary-foreground py-8 px-8 text-center">
-              <Sparkles className="w-8 h-8 mx-auto mb-3 text-accent" />
+            <div className="bg-primary text-primary-foreground py-6 px-5 sm:py-8 sm:px-8 text-center">
+              <Sparkles className="w-7 h-7 sm:w-8 sm:h-8 mx-auto mb-3 text-accent" />
               <p className="text-[10px] tracking-[0.3em] uppercase text-primary-foreground/70 mb-2">
                 Welkomstcadeau
               </p>
-              <h3 className="font-heading text-3xl font-light leading-tight">
+              <h3 className="font-heading text-2xl sm:text-3xl font-light leading-tight">
                 10% korting<br />
                 <span className="italic">op je eerste bestelling</span>
               </h3>
             </div>
-            <form onSubmit={submit} className="p-8 space-y-4">
+            <form onSubmit={submit} className="p-5 sm:p-8 space-y-4">
               <p className="text-sm text-muted-foreground text-center leading-relaxed">
                 Word lid van de YourMatcha community en ontvang exclusieve recepten, nieuwe producten en een welkomstcode.
               </p>
