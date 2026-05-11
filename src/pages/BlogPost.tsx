@@ -53,6 +53,10 @@ const BlogPost = () => {
           </div>
           <h1 className="font-heading text-3xl md:text-4xl font-semibold mb-8 leading-tight">{post.title}</h1>
 
+          <div className="aspect-[16/9] rounded-2xl overflow-hidden bg-secondary mb-10">
+            <img src={post.image} alt={post.title} className="w-full h-full object-cover" />
+          </div>
+
           <div className="prose prose-sm max-w-none text-muted-foreground leading-relaxed">
             {renderContent(post.content)}
           </div>
