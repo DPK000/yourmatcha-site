@@ -87,6 +87,17 @@ const ProductDetail = () => {
       : {}),
   }), [product, avgRating, allReviews]);
 
+  const breadcrumbJsonLd = useMemo(() => ({
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      { "@type": "ListItem", position: 1, name: "Home", item: "https://yourmatcha.nl/" },
+      { "@type": "ListItem", position: 2, name: "Shop", item: "https://yourmatcha.nl/shop" },
+      { "@type": "ListItem", position: 3, name: product.categoryLabel, item: `https://yourmatcha.nl/shop?category=${product.category}` },
+      { "@type": "ListItem", position: 4, name: product.name, item: `https://yourmatcha.nl/product/${product.slug}` },
+    ],
+  }), [product]);
+
   // Multiple images: use main + reuse for gallery thumbs (lifestyle effect)
   const gallery = product.images.length > 1 ? product.images : [product.images[0]];
 
