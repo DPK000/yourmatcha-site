@@ -70,10 +70,49 @@ export const products: Product[] = [
     weight: "30g",
     relatedIds: ["ceremonial-100", "starter-kit", "chasen"],
     reviews: [
-      { name: "Sophie V.", rating: 5, text: "De beste matcha die ik ooit heb geproefd. Prachtige kleur en smaak.", date: "2024-02-15" },
-      { name: "Lars M.", rating: 5, text: "Geweldige kwaliteit, mijn dagelijkse ritueel.", date: "2024-01-20" },
-      { name: "Emma D.", rating: 4, text: "Heerlijke matcha, snelle levering.", date: "2024-03-01" },
-    ],
+        {
+          "name": "Sophie V.",
+          "rating": 5,
+          "text": "De beste matcha die ik ooit heb geproefd. Prachtige kleur en smaak.",
+          "date": "2024-02-15"
+        },
+        {
+          "name": "Lars M.",
+          "rating": 5,
+          "text": "Geweldige kwaliteit, mijn dagelijkse ritueel.",
+          "date": "2024-01-20"
+        },
+        {
+          "name": "Emma D.",
+          "rating": 4,
+          "text": "Heerlijke matcha, snelle levering.",
+          "date": "2024-03-01"
+        },
+        {
+          "name": "Julia K.",
+          "rating": 5,
+          "text": "Levendig groen en zo'n zachte umami. Echt verschil met supermarkt matcha.",
+          "date": "2024-03-18"
+        },
+        {
+          "name": "Tom S.",
+          "rating": 5,
+          "text": "Mooie verpakking, perfect kopje matcha. Wordt vaste bestelling.",
+          "date": "2024-04-05"
+        },
+        {
+          "name": "Sanne B.",
+          "rating": 5,
+          "text": "Smaak is fluweelzacht, bijna romig. Aanrader voor de echte liefhebber.",
+          "date": "2024-04-22"
+        },
+        {
+          "name": "Marit H.",
+          "rating": 4,
+          "text": "Fijne matcha, klopt zonder klontjes. Iets pittiger dan verwacht.",
+          "date": "2024-05-09"
+        }
+      ],
   },
   {
     id: "ceremonial-100",
@@ -93,8 +132,37 @@ export const products: Product[] = [
     weight: "100g",
     relatedIds: ["ceremonial-30", "premium-set", "matcha-bowl"],
     reviews: [
-      { name: "Thomas K.", rating: 5, text: "Perfecte waarde voor deze kwaliteit.", date: "2024-02-28" },
-    ],
+        {
+          "name": "Thomas K.",
+          "rating": 5,
+          "text": "Perfecte waarde voor deze kwaliteit.",
+          "date": "2024-02-28"
+        },
+        {
+          "name": "Linde V.",
+          "rating": 5,
+          "text": "100g gaat lang mee en blijft vers in de pouch. Top!",
+          "date": "2024-03-15"
+        },
+        {
+          "name": "Bram J.",
+          "rating": 5,
+          "text": "Heldere umami en lange afdronk. Beste prijs-kwaliteit.",
+          "date": "2024-04-01"
+        },
+        {
+          "name": "Esmee P.",
+          "rating": 5,
+          "text": "Voor mijn ochtend ritueel — dagelijks genot.",
+          "date": "2024-04-19"
+        },
+        {
+          "name": "Joris D.",
+          "rating": 4,
+          "text": "Hoge kwaliteit, levering keurig binnen 2 dagen.",
+          "date": "2024-05-03"
+        }
+      ],
   },
   {
     id: "culinary-100",
@@ -111,8 +179,37 @@ export const products: Product[] = [
     origin: "Kagoshima, Japan",
     weight: "100g",
     reviews: [
-      { name: "Anna B.", rating: 5, text: "Perfect voor mijn ochtend latte!", date: "2024-01-15" },
-    ],
+        {
+          "name": "Anna B.",
+          "rating": 5,
+          "text": "Perfect voor mijn ochtend latte!",
+          "date": "2024-01-15"
+        },
+        {
+          "name": "Mees T.",
+          "rating": 5,
+          "text": "Mengt prachtig met haver- en amandelmelk. Mooi groen schuim.",
+          "date": "2024-02-12"
+        },
+        {
+          "name": "Iris W.",
+          "rating": 4,
+          "text": "Stevige smaak, ideaal voor bakken. Mijn matcha brownies zijn een hit.",
+          "date": "2024-03-08"
+        },
+        {
+          "name": "Sander R.",
+          "rating": 5,
+          "text": "Beste culinary die ik geprobeerd heb. Geen bittere ondertoon.",
+          "date": "2024-04-14"
+        },
+        {
+          "name": "Kim L.",
+          "rating": 5,
+          "text": "Gebruik het dagelijks voor smoothies. Top kwaliteit voor de prijs.",
+          "date": "2024-05-01"
+        }
+      ],
   },
   {
     id: "vanilla-matcha",
@@ -130,8 +227,31 @@ export const products: Product[] = [
     weight: "50g",
     relatedIds: ["culinary-100", "frother", "matcha-yuzu"],
     reviews: [
-      { name: "Noor P.", rating: 5, text: "Verslavend lekker in een latte!", date: "2024-03-10" },
-    ],
+        {
+          "name": "Noor P.",
+          "rating": 5,
+          "text": "Verslavend lekker in een latte!",
+          "date": "2024-03-10"
+        },
+        {
+          "name": "Femke A.",
+          "rating": 5,
+          "text": "De vanille is écht echt — geen kunstmatige smaak.",
+          "date": "2024-03-28"
+        },
+        {
+          "name": "Roos D.",
+          "rating": 5,
+          "text": "Mijn favoriete avond drankje, zo romig.",
+          "date": "2024-04-15"
+        },
+        {
+          "name": "Jasper V.",
+          "rating": 4,
+          "text": "Lekker zoet zonder suiker toe te voegen. Aanrader.",
+          "date": "2024-05-02"
+        }
+      ],
   },
   {
     id: "starter-kit",
@@ -147,9 +267,43 @@ export const products: Product[] = [
     bestseller: true,
     relatedIds: ["ceremonial-30", "chashaku", "chasen"],
     reviews: [
-      { name: "Mila J.", rating: 5, text: "Prachtige set, geweldig cadeau!", date: "2024-02-10" },
-      { name: "Daan V.", rating: 5, text: "Alles van hoge kwaliteit. Aanrader.", date: "2024-01-25" },
-    ],
+        {
+          "name": "Mila J.",
+          "rating": 5,
+          "text": "Prachtige set, geweldig cadeau!",
+          "date": "2024-02-10"
+        },
+        {
+          "name": "Daan V.",
+          "rating": 5,
+          "text": "Alles van hoge kwaliteit. Aanrader.",
+          "date": "2024-01-25"
+        },
+        {
+          "name": "Lieke S.",
+          "rating": 5,
+          "text": "Perfect om te beginnen met matcha. Duidelijke uitleg erbij.",
+          "date": "2024-03-12"
+        },
+        {
+          "name": "Wouter F.",
+          "rating": 5,
+          "text": "Mooi verpakt, ideaal als verjaardagscadeau gegeven.",
+          "date": "2024-04-08"
+        },
+        {
+          "name": "Eline B.",
+          "rating": 4,
+          "text": "Fijne starter, kom is prachtig handgemaakt.",
+          "date": "2024-04-25"
+        },
+        {
+          "name": "Nina H.",
+          "rating": 5,
+          "text": "Binnen 5 minuten mijn eerste perfecte kopje. Topservice.",
+          "date": "2024-05-10"
+        }
+      ],
   },
   {
     id: "premium-set",
@@ -164,8 +318,37 @@ export const products: Product[] = [
     badge: "Premium",
     relatedIds: ["ceremonial-100", "chashaku"],
     reviews: [
-      { name: "Isabel R.", rating: 5, text: "Schitterend! Voelt als een luxe ritueel.", date: "2024-03-05" },
-    ],
+        {
+          "name": "Isabel R.",
+          "rating": 5,
+          "text": "Schitterend! Voelt als een luxe ritueel.",
+          "date": "2024-03-05"
+        },
+        {
+          "name": "Olivier M.",
+          "rating": 5,
+          "text": "Verpakking is een belevenis op zich. Cadeau gegeven aan moeder — ze was sprakeloos.",
+          "date": "2024-03-22"
+        },
+        {
+          "name": "Camille D.",
+          "rating": 5,
+          "text": "De kom is een kunstwerk en de matcha is sublime.",
+          "date": "2024-04-09"
+        },
+        {
+          "name": "Hugo P.",
+          "rating": 5,
+          "text": "Premium in elk detail, geld dubbel en dwars waard.",
+          "date": "2024-04-28"
+        },
+        {
+          "name": "Saskia V.",
+          "rating": 5,
+          "text": "Mijn dagelijks ritueel sinds ik deze set heb. Geweldig.",
+          "date": "2024-05-14"
+        }
+      ],
   },
   {
     id: "gift-box",
@@ -178,7 +361,32 @@ export const products: Product[] = [
     categoryLabel: "Kits & Sets",
     images: [productGiftBox],
     relatedIds: ["starter-kit", "premium-set"],
-    reviews: [],
+    reviews: [
+        {
+          "name": "Hannah L.",
+          "rating": 5,
+          "text": "Cadeau gegeven aan mijn zus — ze was helemaal verrast door de mooie verpakking.",
+          "date": "2024-02-20"
+        },
+        {
+          "name": "Vincent K.",
+          "rating": 5,
+          "text": "Perfect Sinterklaas cadeau. Voelt echt premium aan.",
+          "date": "2024-03-15"
+        },
+        {
+          "name": "Britt M.",
+          "rating": 5,
+          "text": "Inhoud is goed gekozen, niets overbodigs. Mooi kaartje erbij.",
+          "date": "2024-04-02"
+        },
+        {
+          "name": "Tessa W.",
+          "rating": 4,
+          "text": "Mooi cadeau, snelle levering met handgeschreven kaart.",
+          "date": "2024-04-20"
+        }
+      ],
   },
   {
     id: "discovery-box",
@@ -192,7 +400,32 @@ export const products: Product[] = [
     images: [productDiscoveryBox],
     badge: "Nieuw",
     relatedIds: ["hojicha", "sencha", "genmaicha"],
-    reviews: [],
+    reviews: [
+        {
+          "name": "Robin J.",
+          "rating": 5,
+          "text": "Geweldige manier om de hele lijn te proeven. Hojicha was mijn favoriet!",
+          "date": "2024-03-01"
+        },
+        {
+          "name": "Demi V.",
+          "rating": 5,
+          "text": "Perfect om te ontdekken wat bij je past. Goede portiegrootte.",
+          "date": "2024-03-25"
+        },
+        {
+          "name": "Sven P.",
+          "rating": 4,
+          "text": "Leuke box, alleen wel snel doorheen.",
+          "date": "2024-04-12"
+        },
+        {
+          "name": "Anouk B.",
+          "rating": 5,
+          "text": "Ideaal als kennismaking. Heb daarna meteen sencha bijbesteld.",
+          "date": "2024-05-05"
+        }
+      ],
   },
   {
     id: "chasen",
@@ -206,8 +439,31 @@ export const products: Product[] = [
     images: [productChasen],
     relatedIds: ["matcha-bowl", "chashaku", "ceremonial-30"],
     reviews: [
-      { name: "Ruben H.", rating: 4, text: "Mooie kwaliteit klopper.", date: "2024-02-20" },
-    ],
+        {
+          "name": "Ruben H.",
+          "rating": 4,
+          "text": "Mooie kwaliteit klopper.",
+          "date": "2024-02-20"
+        },
+        {
+          "name": "Maud E.",
+          "rating": 5,
+          "text": "Veel beter dan goedkope varianten — schuim is veel fijner.",
+          "date": "2024-03-10"
+        },
+        {
+          "name": "Quinn L.",
+          "rating": 5,
+          "text": "Echte vakmanschap, voelt licht en stevig tegelijk.",
+          "date": "2024-04-01"
+        },
+        {
+          "name": "Stijn M.",
+          "rating": 5,
+          "text": "Gaat mij lang mee, behandel ik met zorg. Top product.",
+          "date": "2024-04-22"
+        }
+      ],
   },
   {
     id: "matcha-bowl",
@@ -221,8 +477,31 @@ export const products: Product[] = [
     images: [productMatchaBowl],
     relatedIds: ["chasen", "chashaku", "ceremonial-30"],
     reviews: [
-      { name: "Lotte S.", rating: 5, text: "Prachtig! Elk stuk is echt uniek.", date: "2024-01-30" },
-    ],
+        {
+          "name": "Lotte S.",
+          "rating": 5,
+          "text": "Prachtig! Elk stuk is echt uniek.",
+          "date": "2024-01-30"
+        },
+        {
+          "name": "Floortje N.",
+          "rating": 5,
+          "text": "Ligt perfect in de hand, mooi glazuur. Voelt warm aan.",
+          "date": "2024-02-25"
+        },
+        {
+          "name": "Bas K.",
+          "rating": 5,
+          "text": "Voelt ambachtelijk. Goede afmeting voor klassieke bereiding.",
+          "date": "2024-03-19"
+        },
+        {
+          "name": "Yara D.",
+          "rating": 4,
+          "text": "Heel mooi stuk, levering goed verpakt.",
+          "date": "2024-04-15"
+        }
+      ],
   },
   {
     id: "chashaku",
@@ -235,7 +514,26 @@ export const products: Product[] = [
     categoryLabel: "Accessoires",
     images: [productChashaku],
     relatedIds: ["chasen", "matcha-bowl"],
-    reviews: [],
+    reviews: [
+        {
+          "name": "Thijs B.",
+          "rating": 5,
+          "text": "Perfecte hoeveelheid in één scoop. Mooi bamboe.",
+          "date": "2024-02-08"
+        },
+        {
+          "name": "Iris H.",
+          "rating": 5,
+          "text": "Klein detail dat veel verschil maakt in het ritueel.",
+          "date": "2024-03-04"
+        },
+        {
+          "name": "Niek V.",
+          "rating": 4,
+          "text": "Goede prijs, doet wat het moet doen.",
+          "date": "2024-04-10"
+        }
+      ],
   },
   {
     id: "frother",
@@ -248,7 +546,32 @@ export const products: Product[] = [
     categoryLabel: "Accessoires",
     images: [productFrother],
     relatedIds: ["culinary-100", "vanilla-matcha"],
-    reviews: [],
+    reviews: [
+        {
+          "name": "Sophia M.",
+          "rating": 5,
+          "text": "Snel, krachtig en stil. Mijn lattes zijn nu perfect schuimig.",
+          "date": "2024-02-14"
+        },
+        {
+          "name": "Dennis R.",
+          "rating": 5,
+          "text": "Klein maar krachtig, perfect voor culinary matcha.",
+          "date": "2024-03-03"
+        },
+        {
+          "name": "Lara K.",
+          "rating": 4,
+          "text": "Werkt goed, batterijen gaan lang mee.",
+          "date": "2024-03-28"
+        },
+        {
+          "name": "Mark V.",
+          "rating": 5,
+          "text": "Voor wie geen chasen wil — dit is de oplossing.",
+          "date": "2024-04-19"
+        }
+      ],
   },
   {
     id: "hojicha",
@@ -265,8 +588,31 @@ export const products: Product[] = [
     origin: "Kyoto, Japan",
     weight: "50g",
     reviews: [
-      { name: "Eva T.", rating: 5, text: "Heerlijk voor 's avonds, laag in cafeïne.", date: "2024-02-18" },
-    ],
+        {
+          "name": "Eva T.",
+          "rating": 5,
+          "text": "Heerlijk voor 's avonds, laag in cafeïne.",
+          "date": "2024-02-18"
+        },
+        {
+          "name": "Pim D.",
+          "rating": 5,
+          "text": "Karamel- en notenaroma, echt verrassend lekker.",
+          "date": "2024-03-09"
+        },
+        {
+          "name": "Inge V.",
+          "rating": 5,
+          "text": "Geweldig in een latte met havermelk. Comfort in een kop.",
+          "date": "2024-04-02"
+        },
+        {
+          "name": "Suze L.",
+          "rating": 4,
+          "text": "Warme smaak, perfect voor herfstavonden.",
+          "date": "2024-04-23"
+        }
+      ],
   },
   {
     id: "sencha",
@@ -283,7 +629,32 @@ export const products: Product[] = [
     origin: "Shizuoka, Japan",
     weight: "75g",
     relatedIds: ["genmaicha", "hojicha"],
-    reviews: [],
+    reviews: [
+        {
+          "name": "Bart W.",
+          "rating": 5,
+          "text": "Zacht grasachtig en zoet — niet bitter zoals andere sencha's.",
+          "date": "2024-03-06"
+        },
+        {
+          "name": "Karlijn R.",
+          "rating": 5,
+          "text": "Mijn dagelijkse middagthee. Hoge kwaliteit losse blad.",
+          "date": "2024-03-29"
+        },
+        {
+          "name": "Hidde M.",
+          "rating": 4,
+          "text": "Verfrissend, mooie heldergele kleur na zetten.",
+          "date": "2024-04-18"
+        },
+        {
+          "name": "Saar B.",
+          "rating": 5,
+          "text": "Heerlijk verfrissend, goed te zetten meerdere keren.",
+          "date": "2024-05-08"
+        }
+      ],
   },
   {
     id: "genmaicha",
@@ -299,7 +670,26 @@ export const products: Product[] = [
     ingredients: "Japanse groene thee, geroosterde rijst",
     origin: "Shizuoka, Japan",
     weight: "50g",
-    reviews: [],
+    reviews: [
+        {
+          "name": "Jeroen H.",
+          "rating": 5,
+          "text": "Nootachtig en hartig, perfect bij het ontbijt.",
+          "date": "2024-02-22"
+        },
+        {
+          "name": "Lisanne K.",
+          "rating": 5,
+          "text": "De geroosterde rijst geeft echt een extra dimensie. Top!",
+          "date": "2024-03-17"
+        },
+        {
+          "name": "Casper N.",
+          "rating": 4,
+          "text": "Verrassend lekker, ook voor wie niet van groene thee houdt.",
+          "date": "2024-04-09"
+        }
+      ],
   },
   {
     id: "matcha-yuzu",
@@ -316,7 +706,26 @@ export const products: Product[] = [
     origin: "Uji, Japan",
     weight: "40g",
     relatedIds: ["ceremonial-30", "hojicha", "vanilla-matcha"],
-    reviews: [],
+    reviews: [
+        {
+          "name": "Romee S.",
+          "rating": 5,
+          "text": "Frisse citrustwist, ideaal in een iced latte.",
+          "date": "2024-03-12"
+        },
+        {
+          "name": "Tijn B.",
+          "rating": 5,
+          "text": "Heel zomers, gebruikt in een matcha gin tonic. Geweldig!",
+          "date": "2024-04-05"
+        },
+        {
+          "name": "Maartje V.",
+          "rating": 4,
+          "text": "Aromatisch en uniek. Hou wel van een uitgesproken smaak.",
+          "date": "2024-04-25"
+        }
+      ],
   },
   {
     id: "matcha-mint",
@@ -333,7 +742,26 @@ export const products: Product[] = [
     origin: "Kagoshima, Japan",
     weight: "40g",
     relatedIds: ["ceremonial-30", "matcha-yuzu", "iced-matcha"],
-    reviews: [],
+    reviews: [
+        {
+          "name": "Nora J.",
+          "rating": 5,
+          "text": "Koel en verfrissend, perfect na een workout.",
+          "date": "2024-04-01"
+        },
+        {
+          "name": "Olivia P.",
+          "rating": 5,
+          "text": "Alsof je een matcha mojito drinkt. Heerlijk!",
+          "date": "2024-04-22"
+        },
+        {
+          "name": "Lucas T.",
+          "rating": 4,
+          "text": "Munt is subtiel, niet overheersend. Top.",
+          "date": "2024-05-10"
+        }
+      ],
   },
   {
     id: "matcha-cacao",
@@ -349,7 +777,26 @@ export const products: Product[] = [
     origin: "Kagoshima, Japan",
     weight: "50g",
     relatedIds: ["vanilla-matcha", "frother", "ceremonial-30"],
-    reviews: [],
+    reviews: [
+        {
+          "name": "Sara D.",
+          "rating": 5,
+          "text": "Smaakt als gezonde chocolademelk, maar dan met focus boost!",
+          "date": "2024-03-18"
+        },
+        {
+          "name": "Roel V.",
+          "rating": 5,
+          "text": "Mijn middag pick-me-up. Diep en romig.",
+          "date": "2024-04-14"
+        },
+        {
+          "name": "Veerle K.",
+          "rating": 5,
+          "text": "Geweldig in een warme latte met kaneel. Verslavend.",
+          "date": "2024-05-02"
+        }
+      ],
   },
   {
     id: "matcha-berry",
@@ -366,7 +813,26 @@ export const products: Product[] = [
     origin: "Kagoshima, Japan",
     weight: "40g",
     relatedIds: ["matcha-mint", "vanilla-matcha", "iced-matcha"],
-    reviews: [],
+    reviews: [
+        {
+          "name": "Lynn B.",
+          "rating": 5,
+          "text": "Vrolijke smaak, heerlijk in smoothies met banaan.",
+          "date": "2024-04-08"
+        },
+        {
+          "name": "Fenna H.",
+          "rating": 5,
+          "text": "Mooie roze matcha latte gemaakt — Instagram-waardig.",
+          "date": "2024-04-29"
+        },
+        {
+          "name": "Jelle M.",
+          "rating": 4,
+          "text": "Fruitig en niet te zoet, leuke afwisseling.",
+          "date": "2024-05-15"
+        }
+      ],
   },
   {
     id: "iced-matcha",
@@ -383,7 +849,26 @@ export const products: Product[] = [
     origin: "Kagoshima, Japan",
     weight: "60g",
     relatedIds: ["matcha-mint", "matcha-berry", "frother"],
-    reviews: [],
+    reviews: [
+        {
+          "name": "Amber R.",
+          "rating": 5,
+          "text": "Echt geen klontjes in koud water, geweldig!",
+          "date": "2024-04-20"
+        },
+        {
+          "name": "Bram L.",
+          "rating": 5,
+          "text": "Perfect voor zomerse iced lattes. Shaken en klaar.",
+          "date": "2024-05-05"
+        },
+        {
+          "name": "Cato V.",
+          "rating": 5,
+          "text": "Game changer voor cold brew matcha lovers.",
+          "date": "2024-05-18"
+        }
+      ],
   },
   {
     id: "tin-reserve",
@@ -402,8 +887,31 @@ export const products: Product[] = [
     preparation: "Zeef 2g matcha, voeg 70ml water (75°C) toe en klop tot fijn schuim ontstaat.",
     relatedIds: ["ceremonial-100", "premium-set", "cups-set"],
     reviews: [
-      { name: "Charlotte W.", rating: 5, text: "Ongekend verfijnd. Een echte traktatie.", date: "2024-04-02" },
-    ],
+        {
+          "name": "Charlotte W.",
+          "rating": 5,
+          "text": "Ongekend verfijnd. Een echte traktatie.",
+          "date": "2024-04-02"
+        },
+        {
+          "name": "Maximilian D.",
+          "rating": 5,
+          "text": "De diepste umami die ik ooit heb geproefd. De moeite waard.",
+          "date": "2024-04-20"
+        },
+        {
+          "name": "Beatrice M.",
+          "rating": 5,
+          "text": "Het blik alleen al is een sieraad. Inhoud sublim.",
+          "date": "2024-05-07"
+        },
+        {
+          "name": "Henry K.",
+          "rating": 5,
+          "text": "Echt premium niveau, vergelijkbaar met Tokyo theehuizen.",
+          "date": "2024-05-19"
+        }
+      ],
   },
   {
     id: "travel-kit",
@@ -418,8 +926,25 @@ export const products: Product[] = [
     badge: "Nieuw",
     relatedIds: ["starter-kit", "ceremonial-30", "cups-set"],
     reviews: [
-      { name: "Pieter L.", rating: 5, text: "Eindelijk goede matcha tijdens reizen!", date: "2024-03-22" },
-    ],
+        {
+          "name": "Pieter L.",
+          "rating": 5,
+          "text": "Eindelijk goede matcha tijdens reizen!",
+          "date": "2024-03-22"
+        },
+        {
+          "name": "Janneke V.",
+          "rating": 5,
+          "text": "Compact, alles past perfect. Meegenomen op city trip.",
+          "date": "2024-04-12"
+        },
+        {
+          "name": "Rik B.",
+          "rating": 4,
+          "text": "Reisklopper werkt goed, etui is mooi gemaakt.",
+          "date": "2024-05-04"
+        }
+      ],
   },
   {
     id: "cups-set",
@@ -432,7 +957,26 @@ export const products: Product[] = [
     categoryLabel: "Accessoires",
     images: [productCupsSet],
     relatedIds: ["matcha-bowl", "tin-reserve", "premium-set"],
-    reviews: [],
+    reviews: [
+        {
+          "name": "Indy K.",
+          "rating": 5,
+          "text": "Twee unieke kunstwerkjes. Mooi cadeau gegeven.",
+          "date": "2024-02-28"
+        },
+        {
+          "name": "Loes M.",
+          "rating": 5,
+          "text": "Voelt warm in de hand, perfecte grootte voor een matcha shot.",
+          "date": "2024-03-20"
+        },
+        {
+          "name": "Stef D.",
+          "rating": 5,
+          "text": "Glazuur is werkelijk prachtig, geen twee dezelfde.",
+          "date": "2024-04-15"
+        }
+      ],
   },
   {
     id: "recipe-book",
@@ -446,8 +990,25 @@ export const products: Product[] = [
     images: [productRecipeBook],
     relatedIds: ["starter-kit", "premium-set", "gift-box"],
     reviews: [
-      { name: "Floor B.", rating: 5, text: "Inspirerend en mooi vormgegeven.", date: "2024-04-10" },
-    ],
+        {
+          "name": "Floor B.",
+          "rating": 5,
+          "text": "Inspirerend en mooi vormgegeven.",
+          "date": "2024-04-10"
+        },
+        {
+          "name": "Nadia V.",
+          "rating": 5,
+          "text": "Veel meer dan alleen recepten — ook prachtige verhalen.",
+          "date": "2024-04-26"
+        },
+        {
+          "name": "Pepijn J.",
+          "rating": 4,
+          "text": "Goed boek, recepten zijn duidelijk en goed te volgen.",
+          "date": "2024-05-12"
+        }
+      ],
   },
 ];
 
