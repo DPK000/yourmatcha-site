@@ -204,6 +204,9 @@ const Homepage = () => {
         </div>
       </section>
 
+      {/* Recipe Swiper */}
+      <RecipeSwiper />
+
       {/* Bestsellers */}
       <section className="py-20 bg-secondary">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
