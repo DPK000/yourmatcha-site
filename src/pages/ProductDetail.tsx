@@ -4,6 +4,7 @@ import { useCart } from "@/context/CartContext";
 import { useEffect, useMemo, useState } from "react";
 import { Minus, Plus, ShoppingBag, ChevronLeft, Star, Truck, Leaf, ShieldCheck, Heart, Zap, Brain, Droplets, Sparkles } from "lucide-react";
 import ProductCard from "@/components/ProductCard";
+import ProductImageZoom from "@/components/ProductImageZoom";
 import SEO from "@/components/SEO";
 import { motion } from "framer-motion";
 import { toast } from "sonner";
@@ -86,6 +87,17 @@ const ProductDetail = () => {
       : {}),
   }), [product, avgRating, allReviews]);
 
+  const breadcrumbJsonLd = useMemo(() => ({
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      { "@type": "ListItem", position: 1, name: "Home", item: "https://yourmatcha.nl/" },
+      { "@type": "ListItem", position: 2, name: "Shop", item: "https://yourmatcha.nl/shop" },
+      { "@type": "ListItem", position: 3, name: product.categoryLabel, item: `https://yourmatcha.nl/shop?category=${product.category}` },
+      { "@type": "ListItem", position: 4, name: product.name, item: `https://yourmatcha.nl/product/${product.slug}` },
+    ],
+  }), [product]);
+
   // Multiple images: use main + reuse for gallery thumbs (lifestyle effect)
   const gallery = product.images.length > 1 ? product.images : [product.images[0]];
 
@@ -106,7 +118,8 @@ const ProductDetail = () => {
         canonical={`/product/${product.slug}`}
         type="product"
         image={product.images[0]}
-        jsonLd={productJsonLd}
+        jsonLd={[productJsonLd, breadcrumbJsonLd]}
+        keywords={`${product.name}, ${product.categoryLabel}, Japanse matcha, ceremoniële matcha, matcha kopen, ${product.weight || ""}`}
       />
 
       <div className="py-10 pb-28 md:pb-10">
@@ -122,9 +135,9 @@ const ProductDetail = () => {
                 key={activeImg}
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
-                className="aspect-square rounded-2xl overflow-hidden bg-secondary mb-3"
+                className="mb-3"
               >
-                <img src={gallery[activeImg]} alt={product.name} className="w-full h-full object-cover" />
+                <ProductImageZoom src={gallery[activeImg]} alt={product.name} />
               </motion.div>
               {gallery.length > 1 && (
                 <div className="grid grid-cols-5 gap-2">
