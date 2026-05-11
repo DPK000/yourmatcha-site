@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import { Instagram, Mail } from "lucide-react";
 import { useTranslation } from "react-i18next";
+import { BrandMark } from "@/components/Logo";
 
 const Footer = () => {
   const { t } = useTranslation();

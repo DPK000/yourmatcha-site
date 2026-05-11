@@ -3,6 +3,7 @@ import { Link, useLocation } from "react-router-dom";
 import { ShoppingBag, Menu, X, Search, ChevronRight } from "lucide-react";
 import { useCart } from "@/context/CartContext";
 import { motion, AnimatePresence } from "framer-motion";
+import Logo from "@/components/Logo";
 import { useTranslation } from "react-i18next";
 import AnnouncementBar from "./AnnouncementBar";
 import LanguageSwitcher from "./LanguageSwitcher";
