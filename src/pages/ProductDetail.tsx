@@ -2,7 +2,7 @@ import { useParams, Link, Navigate } from "react-router-dom";
 import { getProductBySlug, getRelatedProducts } from "@/data/products";
 import { useCart } from "@/context/CartContext";
 import { useEffect, useMemo, useState } from "react";
-import { Minus, Plus, ShoppingBag, ChevronLeft, Star, Truck, Leaf, ShieldCheck, Heart } from "lucide-react";
+import { Minus, Plus, ShoppingBag, ChevronLeft, Star, Truck, Leaf, ShieldCheck, Heart, Zap, Brain, Droplets, Sparkles } from "lucide-react";
 import ProductCard from "@/components/ProductCard";
 import SEO from "@/components/SEO";
 import { motion } from "framer-motion";
@@ -159,14 +159,53 @@ const ProductDetail = () => {
                     ))}
                   </div>
                   <a href="#reviews" className="text-sm text-muted-foreground hover:text-foreground underline-offset-2 hover:underline">
-                    {allReviews.length} review{allReviews.length === 1 ? "" : "s"}
+                    ({allReviews.length} {allReviews.length === 1 ? "beoordeling" : "beoordelingen"})
                   </a>
                 </div>
               )}
 
-              <p className="text-3xl font-semibold text-foreground mb-2">{formatPrice(product.price)}</p>
-              <p className="text-xs text-muted-foreground mb-6">Incl. btw · Verzending berekend bij checkout</p>
-              <p className="text-foreground/85 leading-relaxed mb-8">{product.description}</p>
+              <p className="text-foreground/85 leading-relaxed mb-6">{product.shortDescription}</p>
+
+              {/* Benefit icons strip — only for matcha & tea */}
+              {(product.category === "matcha-powder" || product.category === "teas-drinks") && (
+                <div className="grid grid-cols-4 gap-2 mb-6 bg-secondary/60 rounded-2xl p-4">
+                  {[
+                    { icon: Zap, label: "Energie zonder dip" },
+                    { icon: Brain, label: "Focus & helderheid" },
+                    { icon: Sparkles, label: "Antioxidanten" },
+                    { icon: Droplets, label: "L-Theanine" },
+                  ].map(b => (
+                    <div key={b.label} className="text-center">
+                      <b.icon className="w-5 h-5 mx-auto text-primary mb-1.5" strokeWidth={1.5} />
+                      <p className="text-[10px] text-foreground/70 leading-tight font-medium">{b.label}</p>
+                    </div>
+                  ))}
+                </div>
+              )}
+
+              {product.weight && (
+                <p className="text-xs uppercase tracking-widest text-muted-foreground mb-2">Inhoud: <strong className="text-foreground">{product.weight}</strong></p>
+              )}
+
+              <div className="flex items-baseline gap-3 mb-1">
+                <p className="text-3xl font-semibold text-foreground">{formatPrice(product.price)}</p>
+                {product.badge === "Voordeel" && (
+                  <p className="text-base text-muted-foreground line-through">{formatPrice(product.price * 1.2)}</p>
+                )}
+              </div>
+              <p className="text-xs text-muted-foreground mb-6">Incl. btw · Gratis verzending vanaf €35</p>
+
+              {/* Subscription inline upsell */}
+              <Link
+                to="/abonnementen"
+                className="flex items-center justify-between gap-3 px-5 py-4 mb-6 border-2 border-primary/20 rounded-2xl hover:border-primary hover:bg-primary/5 transition-colors group"
+              >
+                <div>
+                  <p className="text-sm font-semibold text-foreground">Maandelijks ontvangen</p>
+                  <p className="text-xs text-muted-foreground mt-0.5">Bespaar 15% · pauzeer of stop wanneer je wilt</p>
+                </div>
+                <span className="text-xs font-bold text-primary tracking-widest uppercase shrink-0 group-hover:translate-x-1 transition-transform">−15% →</span>
+              </Link>
 
               <div className="flex items-center gap-3 mb-4">
                 <div className="flex items-center border border-border rounded-full">
@@ -192,17 +231,19 @@ const ProductDetail = () => {
                 </button>
               </div>
 
-              <Link
-                to="/abonnementen"
-                className="block w-full text-center px-6 py-3 mb-8 border border-primary text-primary text-xs font-bold tracking-widest uppercase rounded-full hover:bg-primary hover:text-primary-foreground transition-colors"
-              >
-                Of bespaar 15% met een abonnement
-              </Link>
+              {/* Money-back callout */}
+              <div className="relative bg-primary/5 border border-primary/15 rounded-2xl px-5 py-4 mb-6 text-center">
+                <Heart className="w-5 h-5 text-primary fill-primary/30 mx-auto -mt-7 mb-1 bg-background rounded-full p-0.5" />
+                <p className="text-sm font-bold text-foreground">Probeer het. Niet goed? Geld terug.</p>
+                <p className="text-xs text-muted-foreground mt-1 leading-relaxed">
+                  98% van onze klanten beoordeelt deze matcha met 5 sterren. Mocht je niet tevreden zijn, krijg je je geld terug binnen 30 dagen.
+                </p>
+              </div>
 
               {/* Trust badges */}
               <div className="grid grid-cols-3 gap-3 mb-8 text-center">
                 {[
-                  { icon: Truck, label: "Gratis vanaf €50" },
+                  { icon: Truck, label: "Gratis vanaf €35" },
                   { icon: Leaf, label: "100% biologisch" },
                   { icon: ShieldCheck, label: "30 dagen retour" },
                 ].map(b => (
@@ -212,10 +253,6 @@ const ProductDetail = () => {
                   </div>
                 ))}
               </div>
-
-              {product.weight && (
-                <p className="text-sm text-muted-foreground mb-4">Inhoud: <strong className="text-foreground">{product.weight}</strong></p>
-              )}
 
               {/* Accordion */}
               <div className="border-t border-border">
