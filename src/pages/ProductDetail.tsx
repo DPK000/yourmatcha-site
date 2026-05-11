@@ -4,6 +4,7 @@ import { useCart } from "@/context/CartContext";
 import { useEffect, useMemo, useState } from "react";
 import { Minus, Plus, ShoppingBag, ChevronLeft, Star, Truck, Leaf, ShieldCheck, Heart, Zap, Brain, Droplets, Sparkles } from "lucide-react";
 import ProductCard from "@/components/ProductCard";
+import ProductImageZoom from "@/components/ProductImageZoom";
 import SEO from "@/components/SEO";
 import { motion } from "framer-motion";
 import { toast } from "sonner";
