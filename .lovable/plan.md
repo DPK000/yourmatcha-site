@@ -1,70 +1,81 @@
-# YourMatcha — Visuele Consistentie & Uitbreidingsplan
+# Inspiratie uit de concurrenten
 
-## Deel 1 — Alle afbeeldingen uniform branden
+**Matcha & Co** valt op door:
+- Marquee announcement bar (gratis verzending, snelle levering, herhalend)
+- Productpagina met benefit-iconen rij (Energie, Focus, Detox)
+- Inline abonnement-upsell ("Maandelijks ontvangen — bespaar 10%") direct bij de prijs
+- Maat selector als radio-cards met prijs per variant
+- Money-back garantie callout in groen
+- Strikethrough sale-prijzen met duidelijke korting
+- Lifestyle PDP-foto (hand met product, crème achtergrond)
 
-**Brand referentie (uit upload):** Deep matcha green verpakking, goud "YOURMATCHA" wordmark + cirkelvormig leaf-logo, cream linnen achtergrond, zacht natuurlijk licht, schaduw rechts-onder. Dit wordt **de** YourMatcha look.
+**Nami Matcha** valt op door:
+- Full-bleed seizoens-lifestyle hero (kersenbloesem, natuur)
+- Verhalende, minimalistische sfeer
+- Crème achtergrond door de hele site
+- Sterk merkgevoel via beeld i.p.v. tekst
 
-### Visuele regels (op alle product- en lifestylebeelden)
-- **Achtergrond:** crème/zandkleurig linnen of papier, geen wit
-- **Licht:** zacht zijlicht van links, warme schaduwen
-- **Verpakking:** deep matcha green (#0F3D2E richting) met goudfolie wordmark
-- **Composities:** vierkante 1:1 producten, 4:3 voor lifestyle
-- **Geen losse stockfoto's meer** — alles in één lookbook-stijl
+# Wat we toevoegen aan YourMatcha
 
-### Te hergenereren / bij te werken
-1. **Productafbeeldingen** (24 stuks) — alle pouches, tins, kits, accessoires opnieuw met identieke styling, props en licht
-2. **Blog hero's** (3) — zelfde linnen + goud accenten
-3. **Recipe shots** (4) — zelfde keramiek, linnen, props
-4. **Homepage hero & lifestyle** — opnieuw editorial in dezelfde palette
-5. **Open Graph / favicon** — gebaseerd op het cirkel-leaf logo
+## 1. Productpagina v3 (de grootste impact)
+- **Benefit icons strip** boven de varianten: Energie zonder dip · Focus & Helderheid · Antioxidanten · L-Theanine — met matcha-groene iconen
+- **Maat-selector als radio cards** (30g / 100g / 200g) met prijs per gram en "meest gekozen" badge
+- **Inline abonnement-toggle** "Maandelijks ontvangen — bespaar 10%" direct onder de maat
+- **Money-back garantie callout** in zachte groene tint met hart-icoon
+- **Sale price** strikethrough + besparingsbadge
+- **Lifestyle hero shot** als eerste image (hand met tin, crème linnen achtergrond)
+- **Sticky add-to-cart bar** op mobiel met prijs + CTA
 
-### Aanpak
-Per categorie batch genereren met een vast prompt-template (achtergrond, licht, props, kleur), zodat de hele set visueel rijmt.
+## 2. Marquee announcement bar
+- Vervang de statische bar door een doorlopende marquee met 4 boodschappen die afwisselen (Gratis verzending vanaf €35 · Levering 48u · 100% biologisch uit Uji · 30 dagen niet goed geld terug)
+- Iconen tussen de items, subtiele beige tint
 
----
+## 3. Seizoens-hero op homepage
+- Full-bleed lifestyle hero (matcha tin in natuurlijke setting, bv. bamboe/kersenbloesem) met overlay tekst rechts uitgelijnd
+- Seizoenstag boven de titel ("Lente-editie" / "Ceremonial drop")
+- Subtiele Ken Burns zoom-animatie
 
-## Deel 2 — Site verder uitbreiden
+## 4. Categorie-herstructurering in header
+Naar voorbeeld van Matcha&Co groeperen:
+- **Matcha** (alle poeders)
+- **Bundels & Deals** (gift boxen, starter kits, bundle builder)
+- **Accessoires** (chasen, chashaku, bowls, frother)
+- **Thee & Drinks** (hojicha, sencha, genmaicha, iced)
+- Submenu met featured product + USP
 
-### A. Conversie & shop
-- **Productpagina v2:** image gallery met meerdere shots per product (lifestyle + macro + verpakking), sticky add-to-cart, "vaak samen gekocht"
-- **Bundle builder:** kies pouch + accessoire + cadeauverpakking, met korting
-- **Reviews systeem:** sterren-aggregatie op productkaart + filter op shop
-- **Wishlist** (localStorage)
-- **Search** met instant resultaten (header)
+## 5. "Matcha familie" vergelijkingspagina
+Nieuwe `/matcha-vergelijken` pagina met side-by-side tabel:
+- Ceremonial 30g vs 100g vs Reserve Tin
+- Smaak, gebruik, prijs/g, kleur-zwatch, ideaal voor (puur/latte/koken)
+- Helpt twijfelende kopers de juiste matcha kiezen → minder support, hogere conversie
 
-### B. Nieuwe pagina's & content
-- **Origin / Herkomst** — verhaal van Uji & Kagoshima boerderijen, kaartje, fotoreportage
-- **Het Ritueel** — stap-voor-stap gids met video/animatie
-- **Matcha Academy** — leerpaden (beginner → kenner), gekoppeld aan blogs
-- **Pers & Reviews** — logo wall en quotes
-- **Cadeaubon** pagina (digitale gift card flow)
-- **Wholesale / B2B** — café- en hotelpartners formulier
+## 6. Lifestyle gallery sectie ("In de praktijk")
+- Op homepage en PDP: 4-6 vierkante lifestyle foto's (matcha bereiding, latte art, ochtendritueel) in een masonry grid met hover-zoom
+- Tagline "Geliefd door 12.000+ matcha-liefhebbers"
 
-### C. Loyaliteit & retentie
-- **Newsletter pop-up** met 10% korting (na 20s of exit-intent)
-- **Abonnement upgrade flow** op productpagina ("kies eenmalig of abonneer & bespaar 15%")
-- **Loyalty points** weergave in account (mockup als geen Cloud)
+## 7. Sticky mobile add-to-cart + variant in CartDrawer
+- Mobiel: floating bottom bar op PDP met mini-product, prijs en "In winkelmand"
+- CartDrawer: toon gekozen variant + abonnement-status duidelijker
 
-### D. Checkout & vertrouwen
-- Volwaardige **checkout flow** (adres, verzending, betaalkeuze mock)
-- **Order tracking** pagina
-- **Account dashboard:** bestellingen, abonnementen, adressen, wishlist
+## 8. Reviews upgrade
+- Sterren-distributie balk (5★ 78%, 4★ 15%...)
+- Filter op variant en op rating
+- "Geverifieerde koper" badge
+- Foto-reviews ondersteuning (preview thumbnails)
 
-### E. Polish & techniek
-- **SEO:** unieke title/description per pagina, JSON-LD voor Product & Article, sitemap.xml
-- **Performance:** lazy loading op alle galleries, responsive `<img srcset>` waar zinvol
-- **Animaties:** subtiele parallax op hero's, staggered reveals consistent doorvoeren
-- **Volledige NL-vertaling check** + EN/FR/DE doorlopen
-- **404 pagina** in brand stijl
-- **Cookie banner** (NL/BE wetgeving)
+## 9. Polish
+- Cream achtergrond consistenter doortrekken (alle hero-secties)
+- Schaduwen zachter, meer ruimte tussen secties
+- Page-transitions iets trager (320ms → 450ms) voor luxer gevoel
 
-### F. Backend (Lovable Cloud) — optioneel later
-Voor echte accounts, bestellingen, reviews, nieuwsbrief en gift cards. Pas inschakelen wanneer je richting live gaat.
+# Volgorde van uitvoeren
+1. Marquee bar + categorie-herstructurering header (snelle visuele upgrade)
+2. Productpagina v3 (grootste conversie-impact)
+3. Seizoens-hero + lifestyle gallery (merkgevoel)
+4. Vergelijkingspagina (SEO + conversie)
+5. Reviews upgrade + sticky mobile bar (polish)
 
----
-
-## Voorgestelde uitvoervolgorde
-1. **Nu:** alle product- en blog/recipe-afbeeldingen rebranden naar één stijl (Deel 1)
-2. Daarna kies jij welke uitbreidingsblokken (A–F) je als eerste wilt — ik raad **A + Origin pagina + Newsletter pop-up** aan als snelste impact.
-
-Laat me weten of ik mag starten met het rebranden van de beelden, en welke uitbreidingsblokken prioriteit hebben.
+# Wat we NIET doen
+- Geen Shopify-koppeling (nog steeds frontend-only met localStorage cart)
+- Geen backend / login / orderhistorie (komt in een latere fase met Lovable Cloud)
+- Geen wijziging aan de productdata of prijzen
