@@ -20,6 +20,7 @@ import { useState, useRef } from "react";
 import { useTranslation } from "react-i18next";
 import { toast } from "sonner";
 import SEO from "@/components/SEO";
+import RecipeSwiper from "@/components/RecipeSwiper";
 
 const fadeUp = {
   hidden: { opacity: 0, y: 24 },
