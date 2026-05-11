@@ -1,3 +1,7 @@
+import blogMatchaLatte from "@/assets/blog-matcha-latte.jpg";
+import blogCeremonialVsCulinary from "@/assets/blog-ceremonial-vs-culinary.jpg";
+import blogSeasonalRecipes from "@/assets/blog-seasonal-recipes.jpg";
+
 export interface BlogPost {
   id: string;
   slug: string;
