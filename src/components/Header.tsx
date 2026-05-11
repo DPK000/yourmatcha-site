@@ -57,12 +57,12 @@ const Header = () => {
         }`}
         onMouseLeave={() => setMegaOpen(null)}
       >
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="container mx-auto px-5 sm:px-6 lg:px-8">
           <div className="flex items-center h-16 md:h-20 gap-4">
             {/* Mobile toggle */}
             <button
               onClick={() => setMobileOpen(!mobileOpen)}
-              className="md:hidden -ml-2 p-2 text-foreground/70 hover:text-foreground transition-colors"
+              className="md:hidden p-2 text-foreground/70 hover:text-foreground transition-colors"
               aria-label={t("nav.menu")}
             >
               {mobileOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
