@@ -8,6 +8,8 @@ import ProductImageZoom from "@/components/ProductImageZoom";
 import SEO from "@/components/SEO";
 import { motion } from "framer-motion";
 import { toast } from "sonner";
+import { useTranslation } from "react-i18next";
+import { reviewTranslations } from "@/data/reviewTranslations";
 
 const formatPrice = (price: number) =>
   new Intl.NumberFormat("nl-NL", { style: "currency", currency: "EUR" }).format(price);
@@ -29,6 +31,12 @@ const useUserReviews = (productId: string) => {
 };
 
 const ProductDetail = () => {
+  const { i18n } = useTranslation();
+  const lang = (i18n.language || "nl").slice(0, 2) as "nl" | "en" | "de" | "fr";
+  const tReview = (text: string) => {
+    if (lang === "nl") return text;
+    return reviewTranslations[text]?.[lang] || text;
+  };
   const { slug } = useParams<{ slug: string }>();
   const product = getProductBySlug(slug || "");
   const { addItem } = useCart();
@@ -80,7 +88,7 @@ const ProductDetail = () => {
             "@type": "Review",
             author: { "@type": "Person", name: r.name },
             reviewRating: { "@type": "Rating", ratingValue: r.rating, bestRating: 5 },
-            reviewBody: r.text,
+            reviewBody: tReview(r.text),
             datePublished: r.date,
           })),
         }
@@ -393,7 +401,7 @@ const ProductDetail = () => {
                         <ShieldCheck className="w-3 h-3" /> Geverifieerd
                       </span>
                     </div>
-                    <p className="text-sm text-foreground/85 leading-relaxed mb-4">"{review.text}"</p>
+                    <p className="text-sm text-foreground/85 leading-relaxed mb-4">"{tReview(review.text)}"</p>
                     <p className="text-xs font-semibold">— {review.name}</p>
                     <p className="text-[10px] text-muted-foreground mt-0.5">{new Date(review.date).toLocaleDateString("nl-NL")}</p>
                   </div>
