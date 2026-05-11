@@ -114,7 +114,11 @@ const RecipeSwiper = () => {
                 transition={{ duration: 0.4, delay: (i % 5) * 0.05 }}
                 className="group flex-[0_0_85%] sm:flex-[0_0_55%] md:flex-[0_0_38%] lg:flex-[0_0_28%] min-w-0"
               >
-                <div className="relative aspect-[4/5] rounded-3xl overflow-hidden bg-muted shadow-sm group-hover:shadow-2xl transition-all duration-500">
+                <Link
+                  to={`/recepten#${slugify(r.title)}`}
+                  aria-label={`Bekijk recept: ${r.title}`}
+                  className="block relative aspect-[4/5] rounded-3xl overflow-hidden bg-muted shadow-sm group-hover:shadow-2xl transition-all duration-500 focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2"
+                >
                   <img
                     src={r.image}
                     alt={r.title}
@@ -129,6 +133,9 @@ const RecipeSwiper = () => {
                       {r.category}
                     </span>
                   </div>
+                  <div className="absolute top-4 right-4 w-10 h-10 rounded-full bg-background/90 backdrop-blur flex items-center justify-center opacity-0 group-hover:opacity-100 translate-y-1 group-hover:translate-y-0 transition-all duration-300">
+                    <ArrowUpRight className="w-4 h-4 text-foreground" />
+                  </div>
                   <div className="absolute inset-x-0 bottom-0 p-6 text-white">
                     <h3 className="font-heading text-2xl font-semibold mb-2 leading-tight">{r.title}</h3>
                     <p className="text-sm text-white/85 line-clamp-2 mb-4">{r.description}</p>
@@ -137,7 +144,7 @@ const RecipeSwiper = () => {
                       <span className="inline-flex items-center gap-1.5"><ChefHat className="w-3.5 h-3.5" /> {r.level}</span>
                     </div>
                   </div>
-                </div>
+                </Link>
               </motion.article>
             ))}
           </div>
