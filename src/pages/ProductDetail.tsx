@@ -88,7 +88,7 @@ const ProductDetail = () => {
             "@type": "Review",
             author: { "@type": "Person", name: r.name },
             reviewRating: { "@type": "Rating", ratingValue: r.rating, bestRating: 5 },
-            reviewBody: r.text,
+            reviewBody: tReview(r.text),
             datePublished: r.date,
           })),
         }
