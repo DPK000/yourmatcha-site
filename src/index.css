@@ -95,9 +95,8 @@
     @apply border-border;
   }
 
-  html, body {
+  body {
     overflow-x: clip;
-    max-width: 100%;
   }
 
   body {
