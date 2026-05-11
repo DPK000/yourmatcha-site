@@ -1,5 +1,6 @@
 import PageHero from "@/components/PageHero";
 import ScrollReveal from "@/components/ScrollReveal";
+import RecipeSwiper from "@/components/RecipeSwiper";
 import { Link } from "react-router-dom";
 import { Clock, ArrowRight } from "lucide-react";
 import recipeIcedLatte from "@/assets/recipe-iced-latte.jpg";
