@@ -31,6 +31,12 @@ const useUserReviews = (productId: string) => {
 };
 
 const ProductDetail = () => {
+  const { i18n } = useTranslation();
+  const lang = (i18n.language || "nl").slice(0, 2) as "nl" | "en" | "de" | "fr";
+  const tReview = (text: string) => {
+    if (lang === "nl") return text;
+    return reviewTranslations[text]?.[lang] || text;
+  };
   const { slug } = useParams<{ slug: string }>();
   const product = getProductBySlug(slug || "");
   const { addItem } = useCart();
