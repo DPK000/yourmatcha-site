@@ -9,13 +9,16 @@ const Footer = () => {
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-16">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-10">
           <div className="md:col-span-1">
-            <Link to="/" className="flex flex-col items-start group select-none mb-5">
-              <span className="font-heading text-2xl font-semibold tracking-[0.18em] text-primary-foreground leading-none">
-                YOURMATCHA
-              </span>
-              <span className="mt-2 text-[9px] tracking-[0.4em] uppercase text-primary-foreground/60">
-                Premium Japanese
-              </span>
+            <Link to="/" className="flex items-center gap-2.5 group select-none mb-5 text-primary-foreground">
+              <BrandMark className="w-7 h-7" />
+              <div className="flex flex-col items-start leading-none">
+                <span className="font-heading text-xl font-semibold tracking-[0.22em]">
+                  YOURMATCHA
+                </span>
+                <span className="mt-1.5 text-[8px] tracking-[0.45em] uppercase text-primary-foreground/60">
+                  Premium · Japan
+                </span>
+              </div>
             </Link>
             <p className="text-primary-foreground/70 text-sm leading-relaxed">{t("footer.tagline")}</p>
           </div>

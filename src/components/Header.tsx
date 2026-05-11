@@ -67,20 +67,10 @@ const Header = () => {
               {mobileOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
             </button>
 
-            {/* Left: Wordmark Logo */}
-            <Link
-              to="/"
-              className="flex flex-col items-start group select-none mr-2 md:mr-10"
-              onMouseEnter={() => setMegaOpen(null)}
-              aria-label="YourMatcha home"
-            >
-              <span className="font-heading text-xl md:text-2xl font-semibold tracking-[0.15em] text-primary leading-none">
-                YOUR<span className="text-foreground">MATCHA</span>
-              </span>
-              <span className="hidden md:block mt-1 text-[9px] tracking-[0.4em] uppercase text-muted-foreground">
-                Premium Japanese
-              </span>
-            </Link>
+            {/* Left: Brand Logo */}
+            <div className="mr-2 md:mr-10" onMouseEnter={() => setMegaOpen(null)}>
+              <Logo />
+            </div>
 
             {/* Center-left: Nav */}
             <nav className="hidden md:flex items-center gap-8 flex-1">
