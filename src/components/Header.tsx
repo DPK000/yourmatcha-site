@@ -36,12 +36,13 @@ const Header = () => {
   ];
 
   const navItems = [
-    { key: "shop", to: "/shop", label: t("nav.shop"), hasMega: true },
-    { key: "bundel", to: "/bundel", label: "Bundel" },
+    { key: "shop", to: "/shop", label: "Matcha", hasMega: true },
+    { key: "bundles", to: "/bundel", label: "Bundels & Deals" },
+    { key: "accessories", to: "/shop?category=accessories", label: "Accessoires" },
+    { key: "compare", to: "/matcha-vergelijken", label: "Vergelijk" },
     { key: "subscriptions", to: "/abonnementen", label: t("nav.subscriptions") },
     { key: "knowledge", to: "/kennis", label: "Kennis" },
     { key: "about", to: "/over-ons", label: t("nav.about") },
-    { key: "blog", to: "/blog", label: t("nav.blog") },
   ];
 
   return (
