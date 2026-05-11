@@ -101,18 +101,19 @@ const CartDrawer = () => {
                 </div>
                 <p className="text-xs text-muted-foreground">{t("cart.shippingNote")}</p>
                 <Link
+                  to="/winkelwagen"
+                  onClick={() => setIsOpen(false)}
+                  className="block w-full py-3 px-6 bg-primary text-primary-foreground text-center font-bold text-xs tracking-widest rounded-full hover:opacity-90 transition-opacity uppercase"
+                >
+                  Bekijk winkelwagen
+                </Link>
+                <Link
                   to="/checkout"
                   onClick={() => setIsOpen(false)}
-                  className="block w-full py-3 px-6 bg-primary text-primary-foreground text-center font-medium text-sm rounded-full hover:opacity-90 transition-opacity tracking-wide uppercase"
+                  className="block w-full text-center text-sm text-primary font-semibold hover:underline"
                 >
-                  {t("cart.checkout")}
+                  Direct afrekenen →
                 </Link>
-                <button
-                  onClick={() => setIsOpen(false)}
-                  className="block w-full text-center text-sm text-muted-foreground hover:text-foreground transition-colors"
-                >
-                  {t("cart.continueShopping")}
-                </button>
               </div>
             )}
           </motion.div>
