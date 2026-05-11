@@ -109,7 +109,7 @@ const ProductDetail = () => {
         jsonLd={productJsonLd}
       />
 
-      <div className="py-10">
+      <div className="py-10 pb-28 md:pb-10">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <Link to="/shop" className="inline-flex items-center gap-1 text-sm text-muted-foreground hover:text-foreground transition-colors mb-8">
             <ChevronLeft className="w-4 h-4" /> Terug naar shop
