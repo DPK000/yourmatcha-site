@@ -50,6 +50,7 @@ const Recipes = () => (
       title="Maak het zelf"
       subtitle="Onze favoriete recepten — van klassieke bereidingen tot moderne creaties met matcha en hojicha."
     />
+    <RecipeSwiper />
     <section className="py-20">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-5xl space-y-20">
         {recipes.map((r, idx) => (
