@@ -1,0 +1,13 @@
+# Supabase project link config — gegenereerd voor BUQE Commerce setup.
+# Run `supabase link --project-ref exniwwddrdreihvwjokq` om aan dit project te koppelen.
+
+project_id = "exniwwddrdreihvwjokq"
+
+[functions.stripe-create-checkout]
+verify_jwt = false
+
+[functions.stripe-verify-session]
+verify_jwt = false
+
+[functions.send-order-email]
+verify_jwt = false

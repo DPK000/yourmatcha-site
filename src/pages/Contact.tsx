@@ -3,6 +3,7 @@ import { Mail, MapPin, Instagram, Phone, Send } from "lucide-react";
 import { toast } from "sonner";
 import PageHero from "@/components/PageHero";
 import ScrollReveal from "@/components/ScrollReveal";
+import SEO from "@/components/SEO";
 
 const Contact = () => {
   const [form, setForm] = useState({ name: "", email: "", subject: "", message: "" });
@@ -15,6 +16,11 @@ const Contact = () => {
 
   return (
     <>
+      <SEO
+        title="Contact — Vragen over matcha of je bestelling? We helpen je"
+        description="Neem contact op met YourMatcha — bereikbaar via e-mail, telefoon en Instagram. We reageren binnen 1 werkdag op vragen over matcha, bestellingen of samenwerkingen."
+        canonical="/contact"
+      />
       <PageHero
         eyebrow="Contact"
         title="Laat van je horen"

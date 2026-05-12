@@ -1,6 +1,7 @@
 import PageHero from "@/components/PageHero";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 import ScrollReveal from "@/components/ScrollReveal";
+import SEO from "@/components/SEO";
 
 const sections = [
   {
@@ -37,8 +38,27 @@ const sections = [
   },
 ];
 
+const faqSchema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  mainEntity: sections.flatMap(s =>
+    s.items.map(([q, a]) => ({
+      "@type": "Question",
+      name: q,
+      acceptedAnswer: { "@type": "Answer", text: a },
+    }))
+  ),
+};
+
 const FAQ = () => (
   <>
+    <SEO
+      title="Veelgestelde vragen over matcha — bereiding, kwaliteit, verzending"
+      description="Alle antwoorden over ceremoniële matcha kopen: verschil ceremonial vs culinary, bereiding, bewaren, verzending in NL & BE, retourbeleid en abonnementen."
+      canonical="/faq"
+      keywords="matcha veelgestelde vragen, ceremonial vs culinary matcha, matcha bewaren, matcha bereiden, matcha kwaliteit"
+      jsonLd={faqSchema}
+    />
     <PageHero
       eyebrow="Veelgestelde Vragen"
       title="Goed om te weten"

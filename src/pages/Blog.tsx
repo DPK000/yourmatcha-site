@@ -2,6 +2,7 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 import { blogPosts, blogCategories } from "@/data/blog";
 import { motion } from "framer-motion";
+import SEO from "@/components/SEO";
 
 const Blog = () => {
   const [activeCategory, setActiveCategory] = useState("Alle");
@@ -12,6 +13,12 @@ const Blog = () => {
 
   return (
     <div className="py-12">
+      <SEO
+        title="Matcha Blog — Tips, rituelen en recepten voor matcha liefhebbers"
+        description="Alles over matcha: bereiding, gezondheidsvoordelen, ceremoniële rituelen, recepten en het verhaal achter Japanse thee. Gratis tips van YourMatcha."
+        canonical="/blog"
+        keywords="matcha blog, matcha bereiding tips, matcha gezondheid, Japanse theeceremonie, matcha recepten"
+      />
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="mb-10">
           <h1 className="font-heading text-4xl md:text-5xl font-semibold">Blog & Recepten</h1>

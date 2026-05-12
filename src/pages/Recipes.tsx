@@ -47,6 +47,12 @@ const Recipes = () => {
 
   return (
     <>
+      <SEO
+        title="Matcha Recepten — 20+ matcha latte, smoothie en bak ideeën met Japanse matcha"
+        description="Ontdek heerlijke matcha recepten: ijskoffie matcha latte, matcha smoothie bowl, matcha cookies, hojicha latte en meer. Gemakkelijk te maken met ceremoniële Japanse matcha."
+        canonical="/recepten"
+        keywords="matcha recepten, matcha latte recept, matcha smoothie, matcha cookies, hojicha latte, matcha bakken, matcha gerechten"
+      />
       <PageHero
         eyebrow="Recepten"
         title="Maak het zelf"

@@ -2,6 +2,7 @@ import { useParams, Link } from "react-router-dom";
 import { getBlogBySlug, blogPosts } from "@/data/blog";
 import { ChevronLeft, Clock } from "lucide-react";
 import { motion } from "framer-motion";
+import SEO from "@/components/SEO";
 
 const BlogPost = () => {
   const { slug } = useParams<{ slug: string }>();
@@ -37,8 +38,30 @@ const BlogPost = () => {
     });
   };
 
+  const articleSchema = {
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    headline: post.title,
+    image: post.image?.startsWith("http") ? post.image : `https://yourmatcha.nl${post.image}`,
+    datePublished: post.date,
+    author: { "@type": "Organization", name: "YourMatcha" },
+    publisher: { "@type": "Organization", name: "YourMatcha", logo: { "@type": "ImageObject", url: "https://yourmatcha.nl/logo.png" } },
+    mainEntityOfPage: `https://yourmatcha.nl/blog/${post.slug}`,
+    articleSection: post.category,
+  };
+
   return (
     <div className="py-12">
+      <SEO
+        title={post.title}
+        description={post.excerpt || `${post.title} — Lees alles over matcha op de YourMatcha blog.`}
+        canonical={`/blog/${post.slug}`}
+        type="article"
+        image={post.image}
+        publishedTime={post.date}
+        jsonLd={articleSchema}
+        keywords={`${post.category}, matcha, ${post.title.toLowerCase()}`}
+      />
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-3xl">
         <Link to="/blog" className="inline-flex items-center gap-1 text-sm text-muted-foreground hover:text-foreground transition-colors mb-8">
           <ChevronLeft className="w-4 h-4" /> Terug naar blog

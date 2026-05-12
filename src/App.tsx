@@ -10,6 +10,7 @@ import Footer from "@/components/Footer";
 import CartDrawer from "@/components/CartDrawer";
 import PageTransition from "@/components/PageTransition";
 import ScrollToTop from "@/components/ScrollToTop";
+import { useGAPageView } from "@/hooks/useGAPageView";
 import NewsletterPopup from "@/components/NewsletterPopup";
 import Homepage from "@/pages/Homepage";
 import Shop from "@/pages/Shop";
@@ -19,6 +20,7 @@ import Blog from "@/pages/Blog";
 import BlogPost from "@/pages/BlogPost";
 import Subscriptions from "@/pages/Subscriptions";
 import Checkout from "@/pages/Checkout";
+import ThankYou from "@/pages/ThankYou";
 import Cart from "@/pages/Cart";
 import Contact from "@/pages/Contact";
 import FAQ from "@/pages/FAQ";
@@ -35,10 +37,25 @@ import KnowledgeArticle from "@/pages/KnowledgeArticle";
 import Compare from "@/pages/Compare";
 import NotFound from "@/pages/NotFound";
 
+// BUQE Commerce admin
+import AdminLayout from "@/pages/admin/AdminLayout";
+import AdminLogin from "@/pages/admin/AdminLogin";
+import AdminDashboard from "@/pages/admin/AdminDashboard";
+import AdminOrders from "@/pages/admin/AdminOrders";
+import AdminOrderDetail from "@/pages/admin/AdminOrderDetail";
+import AdminProducts from "@/pages/admin/AdminProducts";
+import AdminDiscountCodes from "@/pages/admin/AdminDiscountCodes";
+import AdminNewsletter from "@/pages/admin/AdminNewsletter";
+import AdminEmailLog from "@/pages/admin/AdminEmailLog";
+import AdminPartners from "@/pages/admin/AdminPartners";
+import AdminB2B from "@/pages/admin/AdminB2B";
+import AdminPixels from "@/pages/admin/AdminPixels";
+
 const queryClient = new QueryClient();
 
 const AnimatedRoutes = () => {
   const location = useLocation();
+  useGAPageView();
   return (
     <AnimatePresence mode="wait">
       <ScrollToTop />
@@ -57,6 +74,8 @@ const AnimatedRoutes = () => {
         <Route path="/blog/:slug" element={<PageTransition><BlogPost /></PageTransition>} />
         <Route path="/abonnementen" element={<PageTransition><Subscriptions /></PageTransition>} />
         <Route path="/checkout" element={<PageTransition><Checkout /></PageTransition>} />
+        <Route path="/checkout/success" element={<PageTransition><ThankYou /></PageTransition>} />
+        <Route path="/bedankt" element={<PageTransition><ThankYou /></PageTransition>} />
         <Route path="/contact" element={<PageTransition><Contact /></PageTransition>} />
         <Route path="/faq" element={<PageTransition><FAQ /></PageTransition>} />
         <Route path="/verzending" element={<PageTransition><Shipping /></PageTransition>} />
@@ -71,6 +90,18 @@ const AnimatedRoutes = () => {
   );
 };
 
+const PublicShell = () => (
+  <div className="flex flex-col min-h-screen">
+    <Header />
+    <CartDrawer />
+    {/* <NewsletterPopup /> */}
+    <main className="flex-1">
+      <AnimatedRoutes />
+    </main>
+    <Footer />
+  </div>
+);
+
 const App = () => (
   <HelmetProvider>
     <QueryClientProvider client={queryClient}>
@@ -78,15 +109,25 @@ const App = () => (
         <Sonner />
         <BrowserRouter>
           <CartProvider>
-            <div className="flex flex-col min-h-screen">
-              <Header />
-              <CartDrawer />
-              {/* <NewsletterPopup /> */}
-              <main className="flex-1">
-                <AnimatedRoutes />
-              </main>
-              <Footer />
-            </div>
+            <Routes>
+              {/* BUQE Commerce Admin — geen header/footer */}
+              <Route path="/admin/login" element={<AdminLogin />} />
+              <Route path="/admin" element={<AdminLayout />}>
+                <Route index element={<AdminDashboard />} />
+                <Route path="orders" element={<AdminOrders />} />
+                <Route path="orders/:id" element={<AdminOrderDetail />} />
+                <Route path="products" element={<AdminProducts />} />
+                <Route path="discounts" element={<AdminDiscountCodes />} />
+                <Route path="newsletter" element={<AdminNewsletter />} />
+                <Route path="email-log" element={<AdminEmailLog />} />
+                <Route path="partners" element={<AdminPartners />} />
+                <Route path="b2b" element={<AdminB2B />} />
+                <Route path="pixels" element={<AdminPixels />} />
+              </Route>
+
+              {/* Publieke site — met header/footer */}
+              <Route path="/*" element={<PublicShell />} />
+            </Routes>
           </CartProvider>
         </BrowserRouter>
       </TooltipProvider>

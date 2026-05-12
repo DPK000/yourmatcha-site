@@ -2,6 +2,7 @@ import PageHero from "@/components/PageHero";
 import ScrollReveal from "@/components/ScrollReveal";
 import { Leaf, Recycle, HandHeart, Globe2 } from "lucide-react";
 import lifestyle3 from "@/assets/lifestyle-3.jpg";
+import SEO from "@/components/SEO";
 
 const pillars = [
   { icon: Leaf, title: "100% Biologisch", text: "Al onze thee is gecertificeerd biologisch (EU-Bio en JAS). Geen pesticiden, geen kunstmest, geen kortere wegen." },
@@ -12,6 +13,12 @@ const pillars = [
 
 const Sustainability = () => (
   <>
+    <SEO
+      title="Duurzaamheid — Biologische matcha, direct trade en CO₂-gecompenseerde verzending"
+      description="YourMatcha is biologisch gecertificeerd (EU-Bio + JAS), werkt direct met Japanse familieboerderijen in Uji en Kagoshima, en compenseert 100% van de verzendingen."
+      canonical="/duurzaamheid"
+      keywords="biologische matcha, duurzame matcha, direct trade thee, eerlijke matcha, CO2 neutraal verzenden"
+    />
     <PageHero
       eyebrow="Duurzaamheid"
       title="Met respect voor land, mens en plant"

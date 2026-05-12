@@ -1,6 +1,7 @@
 import { Check, ArrowRight } from "lucide-react";
 import { motion } from "framer-motion";
 import { toast } from "sonner";
+import SEO from "@/components/SEO";
 
 const plans = [
   {
@@ -35,6 +36,12 @@ const formatPrice = (price: number) =>
 
 const Subscriptions = () => (
   <div className="py-12">
+    <SEO
+      title="Matcha abonnement — maandelijks ceremoniële matcha aan huis, bespaar 15%"
+      description="Start je matcha ritueel: maandelijks verse ceremoniële matcha uit Uji, 15% korting, gratis verzending en op elk moment opzegbaar. Vanaf €16,11 per maand."
+      canonical="/abonnementen"
+      keywords="matcha abonnement, maandelijks matcha, matcha thuisbezorgd, ceremoniële matcha abonnement, matcha box"
+    />
     <div className="container mx-auto px-4 sm:px-6 lg:px-8">
       {/* Header */}
       <div className="text-center max-w-2xl mx-auto mb-16">

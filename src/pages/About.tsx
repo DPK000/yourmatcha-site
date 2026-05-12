@@ -2,9 +2,16 @@ import { motion } from "framer-motion";
 import aboutHero from "@/assets/about-hero.jpg";
 import lifestyle3 from "@/assets/lifestyle-3.jpg";
 import { Leaf, Award, Heart } from "lucide-react";
+import SEO from "@/components/SEO";
 
 const About = () => (
   <div>
+    <SEO
+      title="Over YourMatcha — Het verhaal achter onze ceremoniële matcha uit Uji"
+      description="Ontdek het verhaal van YourMatcha: single-origin ceremoniële matcha direct van familieboerderijen in Uji en Kagoshima. Eerlijke handel, biologische teelt, oprecht Japans vakmanschap."
+      canonical="/over-ons"
+      keywords="over yourmatcha, ceremoniële matcha Japan, single origin matcha, matcha uit Uji, Japanse matcha boer, direct trade matcha"
+    />
     {/* Hero */}
     <section className="relative h-[50vh] min-h-[400px] flex items-center">
       <div className="absolute inset-0">

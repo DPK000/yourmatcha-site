@@ -1,6 +1,7 @@
 import PageHero from "@/components/PageHero";
 import { Truck, Package, RotateCcw, Clock, MapPin, ShieldCheck } from "lucide-react";
 import ScrollReveal from "@/components/ScrollReveal";
+import SEO from "@/components/SEO";
 
 const Shipping = () => {
   const items = [
@@ -14,6 +15,12 @@ const Shipping = () => {
 
   return (
     <>
+      <SEO
+        title="Verzending & retouren — Gratis bezorging in NL en België"
+        description="Bestel je matcha vandaag, ontvang 'm morgen. Gratis verzending vanaf €35 in Nederland en België, zorgvuldig verpakt, 14 dagen retour, track & trace."
+        canonical="/verzending"
+        keywords="matcha verzendkosten, gratis verzending matcha, levertijd matcha, matcha retourneren"
+      />
       <PageHero
         eyebrow="Verzending & Retour"
         title="Snel, veilig en duurzaam"
