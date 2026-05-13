@@ -1,9 +1,55 @@
 import { useParams, Link, Navigate } from "react-router-dom";
-import { ArrowLeft, Clock, ChefHat, Share2 } from "lucide-react";
+import { ArrowLeft, Clock, ChefHat, Share2, ArrowRight } from "lucide-react";
 import PageHero from "@/components/PageHero";
 import SEO from "@/components/SEO";
 import ScrollReveal from "@/components/ScrollReveal";
-import { getRecipeBySlug, recipes } from "@/data/recipes";
+import { getRecipeBySlug, recipes, type Recipe } from "@/data/recipes";
+import { getProductBySlug } from "@/data/products";
+
+const recommendedProductSlugs = (recipe: Recipe): string[] => {
+  const slug = recipe.slug.toLowerCase();
+
+  if (slug.includes("hojicha")) {
+    return ["hojicha-poeder-50g", "ceremonial-matcha-100g", "starter-kit"];
+  }
+
+  const isIced =
+    slug.includes("iced") ||
+    slug.includes("lemonade") ||
+    slug.includes("tonic") ||
+    slug.includes("bubble") ||
+    slug.includes("strawberry-latte");
+
+  if (isIced) {
+    return ["iced-matcha-blend-60g", "culinary-matcha-100g", "ceremonial-matcha-100g"];
+  }
+
+  if (recipe.category === "Drinks") {
+    return ["ceremonial-matcha-100g", "culinary-matcha-100g", "starter-kit"];
+  }
+
+  return ["culinary-matcha-100g", "ceremonial-matcha-30g", "starter-kit"];
+};
+
+const recommendationReason = (recipe: Recipe): string => {
+  const slug = recipe.slug.toLowerCase();
+  if (slug.includes("hojicha")) {
+    return "Hojicha poeder is essentieel voor dit recept. Onze ceremonial matcha is een mooie tegenhanger voor andere bereidingen.";
+  }
+  if (
+    slug.includes("iced") ||
+    slug.includes("lemonade") ||
+    slug.includes("tonic") ||
+    slug.includes("bubble") ||
+    slug.includes("strawberry-latte")
+  ) {
+    return "Voor koude bereidingen is een speciaal gemalen iced blend ideaal — lost direct op, geen klontjes.";
+  }
+  if (recipe.category === "Drinks") {
+    return "Voor een fluweelzachte latte: ceremonial voor de pure smaak, culinary voor dagelijks gebruik.";
+  }
+  return "Voor bakken en koken kies je culinary grade — robuust, hittebestendig en kosteneffectief.";
+};
 
 const RecipeDetail = () => {
   const { slug } = useParams<{ slug: string }>();
@@ -14,6 +60,11 @@ const RecipeDetail = () => {
   const related = recipes
     .filter((r) => r.slug !== recipe.slug && r.category === recipe.category)
     .slice(0, 3);
+
+  const recommended = recommendedProductSlugs(recipe)
+    .map((s) => getProductBySlug(s))
+    .filter((p): p is NonNullable<typeof p> => Boolean(p));
+  const priceFormatter = new Intl.NumberFormat("nl-NL", { style: "currency", currency: "EUR" });
 
   const recipeJsonLd = {
     "@context": "https://schema.org",
@@ -91,6 +142,51 @@ const RecipeDetail = () => {
               </div>
             </ScrollReveal>
           </div>
+
+          {recommended.length > 0 && (
+            <div className="mt-24 pt-16 border-t border-border">
+              <div className="mb-8 max-w-2xl">
+                <p className="text-[10px] tracking-[0.3em] uppercase text-primary mb-3">Bij dit recept</p>
+                <h2 className="font-heading text-2xl md:text-3xl font-semibold mb-3">
+                  Koop de juiste matcha voor dit recept
+                </h2>
+                <p className="text-sm text-muted-foreground leading-relaxed">
+                  {recommendationReason(recipe)}
+                </p>
+              </div>
+              <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
+                {recommended.map((p) => (
+                  <Link
+                    key={p.id}
+                    to={`/product/${p.slug}`}
+                    className="group block bg-card rounded-2xl overflow-hidden border border-border/60 hover:border-primary/40 transition-all"
+                  >
+                    <div className="aspect-square bg-secondary overflow-hidden">
+                      <img
+                        src={p.images[0]}
+                        alt={p.name}
+                        loading="lazy"
+                        className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+                      />
+                    </div>
+                    <div className="p-5">
+                      <p className="text-[10px] tracking-widest uppercase text-muted-foreground mb-1.5">{p.categoryLabel}</p>
+                      <h3 className="font-heading text-base font-semibold leading-tight mb-2 group-hover:text-primary transition-colors">
+                        {p.name}
+                      </h3>
+                      <p className="text-xs text-muted-foreground leading-relaxed mb-3 line-clamp-2">{p.shortDescription}</p>
+                      <div className="flex items-center justify-between">
+                        <span className="text-sm font-semibold">{priceFormatter.format(p.price)}</span>
+                        <span className="inline-flex items-center gap-1 text-xs font-semibold text-primary group-hover:gap-2 transition-all">
+                          Bekijk <ArrowRight className="w-3 h-3" />
+                        </span>
+                      </div>
+                    </div>
+                  </Link>
+                ))}
+              </div>
+            </div>
+          )}
 
           {related.length > 0 && (
             <div className="mt-24 pt-16 border-t border-border">

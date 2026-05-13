@@ -35,6 +35,8 @@ import BundleBuilder from "@/pages/BundleBuilder";
 import Knowledge from "@/pages/Knowledge";
 import KnowledgeArticle from "@/pages/KnowledgeArticle";
 import Compare from "@/pages/Compare";
+import LandingPage from "@/pages/LandingPage";
+import Glossary from "@/pages/Glossary";
 import NotFound from "@/pages/NotFound";
 
 // BUQE Commerce admin
@@ -84,6 +86,16 @@ const AnimatedRoutes = () => {
         <Route path="/recepten" element={<PageTransition><Recipes /></PageTransition>} />
         <Route path="/recepten/:slug" element={<PageTransition><RecipeDetail /></PageTransition>} />
         <Route path="/duurzaamheid" element={<PageTransition><Sustainability /></PageTransition>} />
+        <Route path="/matcha-poeder" element={<PageTransition><LandingPage slug="matcha-poeder" /></PageTransition>} />
+        <Route path="/matcha-accessoires" element={<PageTransition><LandingPage slug="matcha-accessoires" /></PageTransition>} />
+        <Route path="/matcha-kits" element={<PageTransition><LandingPage slug="matcha-kits" /></PageTransition>} />
+        <Route path="/japanse-thee" element={<PageTransition><LandingPage slug="japanse-thee" /></PageTransition>} />
+        <Route path="/cadeau-gids" element={<PageTransition><LandingPage slug="cadeau-gids" /></PageTransition>} />
+        <Route path="/matcha-voor-beginners" element={<PageTransition><LandingPage slug="matcha-voor-beginners" /></PageTransition>} />
+        <Route path="/matcha-voor-sporters" element={<PageTransition><LandingPage slug="matcha-voor-sporters" /></PageTransition>} />
+        <Route path="/cafeinearme-thee" element={<PageTransition><LandingPage slug="cafeinearme-thee" /></PageTransition>} />
+        <Route path="/matcha-als-koffievervanger" element={<PageTransition><LandingPage slug="matcha-als-koffievervanger" /></PageTransition>} />
+        <Route path="/matcha-woordenboek" element={<PageTransition><Glossary /></PageTransition>} />
         <Route path="*" element={<PageTransition><NotFound /></PageTransition>} />
       </Routes>
     </AnimatePresence>

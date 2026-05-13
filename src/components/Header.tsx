@@ -30,10 +30,10 @@ const Header = () => {
   const featured = getFeaturedProducts().slice(0, 3);
 
   const shopCategories = [
-    { value: "matcha-powder", count: products.filter(p => p.category === "matcha-powder").length },
-    { value: "kits-sets", count: products.filter(p => p.category === "kits-sets").length },
-    { value: "accessories", count: products.filter(p => p.category === "accessories").length },
-    { value: "teas-drinks", count: products.filter(p => p.category === "teas-drinks").length },
+    { value: "matcha-powder", to: "/matcha-poeder", count: products.filter(p => p.category === "matcha-powder").length },
+    { value: "kits-sets", to: "/matcha-kits", count: products.filter(p => p.category === "kits-sets").length },
+    { value: "accessories", to: "/matcha-accessoires", count: products.filter(p => p.category === "accessories").length },
+    { value: "teas-drinks", to: "/japanse-thee", count: products.filter(p => p.category === "teas-drinks").length },
   ];
 
   const navItems = [
@@ -42,7 +42,6 @@ const Header = () => {
     { key: "accessories", to: "/shop?category=accessories", label: "Accessoires" },
     { key: "compare", to: "/matcha-vergelijken", label: "Vergelijk" },
     { key: "subscriptions", to: "/abonnementen", label: t("nav.subscriptions") },
-    { key: "knowledge", to: "/kennis", label: "Kennis" },
     { key: "about", to: "/over-ons", label: t("nav.about") },
   ];
 
@@ -150,7 +149,7 @@ const Header = () => {
                       {shopCategories.map(c => (
                         <li key={c.value}>
                           <Link
-                            to={`/shop?category=${c.value}`}
+                            to={c.to}
                             className="group flex items-center justify-between text-sm font-medium hover:text-primary transition-colors"
                           >
                             <span>{t(`categories.${c.value}`)}</span>
