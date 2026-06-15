@@ -1,3 +1,7 @@
+import { useMemo } from "react";
+import { useTranslation } from "react-i18next";
+import { type Lang, getCurrentLang } from "@/i18n";
+
 export interface LandingSection {
   heading: string;
   /** Markdown-light content: paragraphs, ## H2 (optional sub), ### H3, "- " bullets, [text](url) links, **bold**. */
@@ -25,7 +29,56 @@ export interface LandingPage {
   updated: string;
 }
 
-export const landingPages: LandingPage[] = [
+interface LandingTranslation {
+  metaTitle?: string;
+  metaDescription?: string;
+  eyebrow?: string;
+  title?: string;
+  hero?: string;
+  /** Full translated array in the same order as the base sections. */
+  sections?: LandingSection[];
+  productsTitle?: string;
+  productsSubtitle?: string;
+  /** Full translated array in the same order as the base faqs. */
+  faqs?: LandingFAQ[];
+  /** Translated labels only, same order as base relatedLinks. `to` is kept from base. */
+  relatedLinks?: { label: string }[];
+}
+
+interface RawLandingPage extends LandingPage {
+  i18n?: Partial<Record<Exclude<Lang, "nl">, LandingTranslation>>;
+}
+
+function localizeLanding(p: RawLandingPage, lang: Lang): LandingPage {
+  const { i18n: tr, ...base } = p;
+  if (lang === "nl" || !tr) return base;
+  const t = tr[lang];
+  if (!t) return base;
+  return {
+    ...base,
+    metaTitle: t.metaTitle ?? base.metaTitle,
+    metaDescription: t.metaDescription ?? base.metaDescription,
+    eyebrow: t.eyebrow ?? base.eyebrow,
+    title: t.title ?? base.title,
+    hero: t.hero ?? base.hero,
+    sections: base.sections.map((s, i) => ({
+      heading: t.sections?.[i]?.heading ?? s.heading,
+      body: t.sections?.[i]?.body ?? s.body,
+    })),
+    productsTitle: t.productsTitle ?? base.productsTitle,
+    productsSubtitle: t.productsSubtitle ?? base.productsSubtitle,
+    faqs: base.faqs.map((f, i) => ({
+      q: t.faqs?.[i]?.q ?? f.q,
+      a: t.faqs?.[i]?.a ?? f.a,
+    })),
+    relatedLinks: base.relatedLinks?.map((rl, i) => ({
+      label: t.relatedLinks?.[i]?.label ?? rl.label,
+      to: rl.to,
+    })),
+  };
+}
+
+const landingPagesRaw: RawLandingPage[] = [
   {
     slug: "matcha-poeder",
     metaTitle: "Matcha Poeder Kopen: Ceremonial & Culinary uit Uji (2026)",
@@ -103,6 +156,73 @@ Volledige uitleg in [matcha bewaren](/kennis/matcha-bewaren).`,
       { label: "Beste matcha kopen 2026", to: "/kennis/beste-matcha-kopen-2026" },
       { label: "Matcha accessoires", to: "/matcha-accessoires" },
     ],
+    i18n: {
+      no: {
+        metaTitle: "Kjøp matchapulver: Ceremonial og culinary fra Uji (2026)",
+        metaDescription: "Autentisk japansk matchapulver fra Uji. Ceremonial, culinary og smaksvarianter — håndplukket, steinmalt. Bestill direkte fra kilden.",
+        eyebrow: "Matchapulver",
+        title: "Kjøp matchapulver — autentisk japansk kvalitet",
+        hero:
+          "Matchapulverene våre kommer rett fra Uji, det historiske hjertet av japansk matcha. Håndplukket, steinmalt og uten mellomledd. Velg riktig grad for ditt bruk — fra ren ceremonial til robust culinary.",
+        sections: [
+          {
+            heading: "Hvilket matchapulver passer for deg?",
+            body: `Ikke all matcha er laget for det samme. Tre hovedtyper:
+
+- **Ceremonial grade** — Første høsting (ichibancha), ment å drikkes ren med vann. Søt, umami, kremet tekstur.
+- **Culinary grade** — Mer robust og kostnadseffektiv. Ideell for latter, smoothier og baking.
+- **Smaksvarianter** — Yuzu, mynte, kakao, bær — for deg som vil eksperimentere.
+
+Les guiden vår [ceremonial vs culinary matcha](/kennis/ceremonial-vs-culinary-matcha) for hele sammenligningen.`,
+          },
+          {
+            heading: "Hvorfor Uji?",
+            body: `Uji ligger sør for Kyoto og har produsert premium matcha i **800 år**. Tre grunner:
+
+- **Klima** — tåkete elvedaler bremser modningen og gir mer kompleks smak.
+- **Jordsmonn** — vulkansk og mineralrikt.
+- **Generasjoner av erfaring** — familiegården vår har jobbet på de samme markene siden 1872.
+
+Les mer om [Uji matcha](/kennis/uji-matcha-regio) og se kjeden på [opprinnelsessiden vår](/herkomst).`,
+          },
+          {
+            heading: "Hvordan oppbevarer du matchapulver?",
+            body: `Matcha er følsom for luft, lys, varme og fukt:
+
+- Oppbevar i **lufttett emballasje** (original pose eller boks).
+- **Mørkt og kjølig** (≤20 °C, ikke direkte sollys).
+- **Åpnet 4–6 uker** for optimal smak.
+
+Full forklaring i [oppbevaring av matcha](/kennis/matcha-bewaren).`,
+          },
+        ],
+        productsTitle: "Matchapulverene våre",
+        productsSubtitle: "Alle rett fra Uji — 100 % økologisk, første høsting (ichibancha).",
+        faqs: [
+          {
+            q: "Hvilket matchapulver er best for nybegynnere?",
+            a: "En ceremonial 30 g er ideell å starte med — liten porsjon, lav terskel. Drikker du mest latter? Begynn med 100 g culinary — mer robust og kostnadseffektiv per gram.",
+          },
+          {
+            q: "Hvor lenge holder matchapulver seg?",
+            a: "Uåpnet 12 måneder fra produksjonsdato. Åpnet 4 til 6 uker for optimal smak og farge — etter det fortsatt trygt, men mindre fyldig på smak.",
+          },
+          {
+            q: "Hva koster god matchapulver?",
+            a: "Autentisk japansk ceremonial matcha koster €0,50–€1 per gram. Culinary ligger rundt €0,30–€0,50/g. Under €0,15/g er nesten alltid gammelt eller blandet med billigere grønn te.",
+          },
+          {
+            q: "Er matchapulver det samme som grønn te?",
+            a: "Nei. Matcha er finmalt japansk grønn te der du drikker hele bladet — derfor opptil 137 ganger mer antioksidanter enn en vanlig kopp grønn te.",
+          },
+        ],
+        relatedLinks: [
+          { label: "Guide til tilberedning av matcha" },
+          { label: "Beste matcha å kjøpe 2026" },
+          { label: "Matcha-tilbehør" },
+        ],
+      },
+    },
     updated: "2026-05-13",
   },
   {
@@ -177,6 +297,71 @@ Bekijk ook onze [chasen onderhoud tips](/kennis/matcha-kloppen-zonder-klontjes).
       { label: "Matcha zonder chasen", to: "/kennis/matcha-zonder-chasen" },
       { label: "Matcha kits & sets", to: "/matcha-kits" },
     ],
+    i18n: {
+      no: {
+        metaTitle: "Matcha-tilbehør: Chasen, chawan, chashaku og mer",
+        metaDescription: "Autentisk japansk matcha-tilbehør: bambus chasen, keramisk chawan, chashaku og melkeskummere. For et ekte matcharitual hjemme.",
+        eyebrow: "Tilbehør",
+        title: "Matcha-tilbehør — alt til ritualet ditt",
+        hero:
+          "God matcha fortjener riktige redskaper. Tilbehøret vårt er håndlaget i Japan — fra bambus chasen skåret for hånd av én håndverker til keramiske chawan-skåler fra små verksteder.",
+        sections: [
+          {
+            heading: "De essensielle redskapene",
+            body: `For et ekte matcharitual trenger du fire ting:
+
+- **Chasen** (bambusvisp) — 70 til 120 fine tinder for mikroskum.
+- **Chawan** (matchaskål) — bred form gir vispen plass.
+- **Chashaku** (bambusskje) — to skjeer ≈ 2 g matcha.
+- **Sil** — uunnværlig mot klumper.
+
+En komplett [matcha startpakke](/kennis/matcha-starterspakket) inneholder alle disse redskapene.`,
+          },
+          {
+            heading: "Bambus chasen — hvordan velger du?",
+            body: `En god chasen er skåret for hånd av ett stykke bambus. Ingen plasthåndtak, ingen lim.
+
+- **70 tinder** — grunnleggende, for daglig bruk.
+- **80–100 tinder** — finere skum, for entusiaster.
+- **120 tinder** — competitive grade, for seremoniell usucha.
+
+For 90 % av matchadrikkere er en chasen med 80 tinder ideell.`,
+          },
+          {
+            heading: "Vedlikehold og holdbarhet",
+            body: `En bambus chasen varer **3 til 6 måneder** ved daglig bruk. Tips for lengre glede:
+
+- Bløtlegg i lunkent vann i 2 minutter før første gangs bruk.
+- Skyll med kaldt vann rett etter bruk — ingen såpe.
+- Oppbevar **stående på en kusari** (chasen-holder) — ikke liggende.
+- Bytt ut så snart flere tinder brekker.
+
+Se også våre [tips til chasen-vedlikehold](/kennis/matcha-kloppen-zonder-klontjes).`,
+          },
+        ],
+        productsTitle: "Matcharedskaper og tilbehør",
+        productsSubtitle: "Håndlaget i Japan, utvalgt for daglig bruk.",
+        faqs: [
+          {
+            q: "Trenger jeg virkelig en chasen til matcha?",
+            a: "Ikke strengt nødvendig. En elektrisk melkeskummer eller cocktailshaker fungerer også. En chasen gir imidlertid det fineste skummet og hører til det tradisjonelle ritualet.",
+          },
+          {
+            q: "Hvor lenge varer en bambus chasen?",
+            a: "Ved daglig bruk 3 til 6 måneder. Ved helgebruk opptil et år. Bytt den ut så snart flere tinder brekker — da gir ikke chasen lenger godt skum.",
+          },
+          {
+            q: "Hva er forskjellen mellom en chawan og en vanlig skål?",
+            a: "En chawan er bredere og har en grunn bunn slik at chasen har plass til å vispe. I et høyt, smalt krus treffer chasen veggene, og du får ikke skum.",
+          },
+        ],
+        relatedLinks: [
+          { label: "Guide til matcha startpakke" },
+          { label: "Matcha uten chasen" },
+          { label: "Matcha-kits og -sett" },
+        ],
+      },
+    },
     updated: "2026-05-13",
   },
   {
@@ -237,6 +422,65 @@ Twijfel je? Een [discovery tea box](/product/discovery-tea-box) bevat alleen poe
       { label: "Matcha starterspakket gids", to: "/kennis/matcha-starterspakket" },
       { label: "Cadeau gids", to: "/cadeau-gids" },
     ],
+    i18n: {
+      no: {
+        metaTitle: "Matcha-kits og -sett: Komplette pakker for hjemmet (2026)",
+        metaDescription: "Matcha startpakker og premium ritual-sett — komplett med matcha, chasen, skål og chashaku. Kom i gang med en gang, ingen ekstra anskaffelser nødvendig.",
+        eyebrow: "Kits og sett",
+        title: "Matcha-kits — alt i én pakke",
+        hero:
+          "En matcha-kit fjerner valgstresset. Vi har satt sammen sett for ethvert nivå — fra en første introduksjon til en komplett seremoniell oppsetning.",
+        sections: [
+          {
+            heading: "Hvilken kit passer for deg?",
+            body: `Tre pakker, tre anledninger:
+
+- **Startpakke** — Første møte. Culinary matcha + chasen + skål + sil.
+- **Premium ritual-sett** — For entusiasten. Ceremonial matcha + håndlagde redskaper.
+- **Gaveeske** — Ferdig gaveinnpakket, sterkt utvalg uten å velge selv.
+
+Les [kjøpsguiden vår](/kennis/beste-matcha-kopen-2026) for hele bildet.`,
+          },
+          {
+            heading: "Hvorfor en kit fremfor løse produkter?",
+            body: `Tre grunner:
+
+1. **Redskapene er tilpasset hverandre** — chasen passer i skålen, chashaku doserer akkurat for matchaen vår.
+2. **Ingen feil kombinasjoner** — f.eks. en stor chawan med for lite matcha gir frustrasjon.
+3. **Rimeligere** — et sett koster ~15 % mindre enn løse kjøp.
+
+I tillegg: en kit føles som en gave — også til deg selv.`,
+          },
+          {
+            heading: "Hva om du allerede har en chawan eller chasen?",
+            body: `Da er løse produkter mer fornuftig. Se [matchapulverene våre](/matcha-poeder) eller [tilbehør](/matcha-accessoires) enkeltvis.
+
+Er du i tvil? En [discovery tea box](/product/discovery-tea-box) inneholder kun pulver — ingen redskaper.`,
+          },
+        ],
+        productsTitle: "Matcha-kitene våre",
+        productsSubtitle: "Komplette, gjennomtenkt sammensatt, klare til bruk.",
+        faqs: [
+          {
+            q: "Hva inneholder en matcha startpakke?",
+            a: "Startpakken vår inneholder: matchapulver, bambus chasen, keramisk chawan og en sil. Nok til å tilberede autentisk matcha hjemme med en gang.",
+          },
+          {
+            q: "Er en matcha-kit en god gave?",
+            a: "Ja — spesielt for nybegynnere. Mottakeren kan komme i gang med en gang uten ekstra kjøp. For et premium uttrykk velger du gaveesken eller premium ritual-settet.",
+          },
+          {
+            q: "Hva er forskjellen mellom startpakken og premium ritual-settet?",
+            a: "Startpakke: culinary matcha + standardredskaper (~€60). Premium ritual-sett: ceremonial matcha + håndlaget chasen og chawan + bok (~€110). Premium-settet er ment for entusiaster og gaveanledninger.",
+          },
+        ],
+        relatedLinks: [
+          { label: "Matcha gaveideer" },
+          { label: "Guide til matcha startpakke" },
+          { label: "Matcha-kits og -sett" },
+        ],
+      },
+    },
     updated: "2026-05-13",
   },
   {
@@ -302,6 +546,70 @@ Hoger water = hogere kans op bitterheid. Hojicha is uitzondering doordat het al 
       { label: "Genmaicha gids", to: "/kennis/genmaicha-gids" },
       { label: "Cafeïnearme thee", to: "/cafeinearme-thee" },
     ],
+    i18n: {
+      no: {
+        metaTitle: "Kjøp japansk te: Hojicha, genmaicha, sencha og blandinger",
+        metaDescription: "Autentisk japansk te — hojicha, genmaicha, sencha og matchablandinger. Direkte fra Japan, for deg som vil videre enn bare matcha.",
+        eyebrow: "Japansk te",
+        title: "Japansk te — mer enn matcha",
+        hero:
+          "Matcha er bare én av de japanske teene. Hojicha (ristet, lite koffein), genmaicha (med ristet ris), sencha (frisk løsbladte) — hver har sin egen smaksprofil og sitt eget øyeblikk.",
+        sections: [
+          {
+            heading: "Den japanske te-familien",
+            body: `Tre hovedtyper pluss matcha:
+
+- **Matcha** — pulverisert grønn te, du drikker hele bladet.
+- **Sencha** — løse grønne teblader, friskt og gressaktig.
+- **Hojicha** — ristet grønn te, nøtteaktig, lite koffein.
+- **Genmaicha** — grønn te med ristet ris, fyldig.
+
+Les om [hojicha](/kennis/hojicha-uitleg) og [genmaicha](/kennis/genmaicha-gids) for hele forklaringen.`,
+          },
+          {
+            heading: "Hvilken til hvilket øyeblikk?",
+            body: `- **Morgen / fokus**: matcha eller sencha (koffein).
+- **Ettermiddag / etter lunsj**: matcha latte eller sencha.
+- **Kveld / etter middag**: hojicha eller genmaicha (lite koffein).
+- **Graviditet**: hojicha eller genmaicha — les [graviditetsguiden vår](/kennis/matcha-tijdens-zwangerschap).`,
+          },
+          {
+            heading: "Tilberedning per tesort",
+            body: `Hver te har sin egen vanntemperatur:
+
+| Te | Temperatur | Trekketid |
+|---|---|---|
+| Matcha | 75–80 °C | i.a. (pulverisert) |
+| Sencha | 70–75 °C | 60 sek |
+| Hojicha | 90–95 °C | 30 sek |
+| Genmaicha | 80–85 °C | 30–60 sek |
+
+Høyere vann = høyere risiko for bitterhet. Hojicha er unntaket fordi den allerede er ristet.`,
+          },
+        ],
+        productsTitle: "De japanske teene våre",
+        productsSubtitle: "Utvalgt for deg som vil videre enn matcha.",
+        faqs: [
+          {
+            q: "Hva er forskjellen mellom matcha og sencha?",
+            a: "Med sencha trekker du løse teblader i varmt vann og kaster dem etterpå. Med matcha er bladet finmalt og du drikker hele bladet — derfor mye mer antioksidanter per kopp.",
+          },
+          {
+            q: "Har hojicha koffein?",
+            a: "Veldig lite — omtrent 7 til 15 mg per kopp, fem til ti ganger mindre enn matcha. Derfor egner hojicha seg for kvelden og for koffeinfølsomme drikkere.",
+          },
+          {
+            q: "Kan jeg blande genmaicha med matcha?",
+            a: "Ja — dette kalles matcha-iri genmaicha og er en populær japansk variant. Genmaicha gir fyldige, popcornaktige toner til matchaen.",
+          },
+        ],
+        relatedLinks: [
+          { label: "Hojicha forklart" },
+          { label: "Genmaicha-guide" },
+          { label: "Koffeinfattig te" },
+        ],
+      },
+    },
     updated: "2026-05-13",
   },
   {
@@ -362,6 +670,65 @@ Volledige uitleg in [matcha cadeau ideeën](/kennis/matcha-cadeau-ideeen).`,
       { label: "Matcha starterspakket gids", to: "/kennis/matcha-starterspakket" },
       { label: "Matcha kits & sets", to: "/matcha-kits" },
     ],
+    i18n: {
+      no: {
+        metaTitle: "Matcha gaveguide: For ethvert budsjett og enhver mottaker (2026)",
+        metaDescription: "En matchagave som virkelig treffer. Fra startpakker til premium ritual-sett — guiden vår hjelper deg å velge for enhver mottaker og ethvert budsjett.",
+        eyebrow: "Gaveguide",
+        title: "Matcha som gave — original og personlig",
+        hero:
+          "En matchagave sier noe: jeg tenker på ditt velvære, dine ritualer, din smak. Gaveguiden vår hjelper deg å velge for enhver mottaker — fra den nysgjerrige nybegynneren til den seriøse entusiasten.",
+        sections: [
+          {
+            heading: "Velg etter budsjett",
+            body: `- **Opptil €25** — En [bambus chasen](/product/bamboe-chasen) eller [ceremonial 30g](/product/ceremonial-matcha-30g) — en liten oppmerksomhet med stor effekt.
+- **€25–€50** — En smaksvariant som [yuzu matcha](/product/matcha-yuzu-blend-40g) eller en [keramisk chawan](/product/keramische-matcha-kom).
+- **€50–€80** — [Startpakken vår](/product/starter-kit) — en komplett pakke der mottakeren kommer i gang med en gang.
+- **€80+** — [Premium ritual-settet](/product/premium-ritual-set) eller [gaveesken](/product/gift-box) — ferdig gaveinnpakket.
+
+Full forklaring i [matcha gaveideer](/kennis/matcha-cadeau-ideeen).`,
+          },
+          {
+            heading: "Velg etter mottaker",
+            body: `- **Nybegynner** — Startpakke. Ingen ekstra kjøp nødvendig.
+- **Kaffeavhopper** — Ceremonial 100g + chasen — gir stabilt fokus uten krasj.
+- **Treningsglad / yogi** — Pre-workout-pakke med ceremonial eller iced matcha-blanding.
+- **Matelsker** — Discovery tea box — smaker alt i små porsjoner.
+- **Mindfulness-fan** — Premium ritual-sett — ritualet er meditativt.
+- **Koffeinfølsom / gravid** — Hojicha-pulver + chawan.`,
+          },
+          {
+            heading: "Innpakning og frakt",
+            body: `Alle gaver leveres **luksuriøst innpakket**. Valgfrie ekstra:
+
+- Håndskrevet kort (gratis ved bestilling)
+- Send direkte til mottakeren (din adresse som avsender)
+- Bestilt før kl. 14:00 = levert i morgen innen NL og BE`,
+          },
+        ],
+        productsTitle: "Topp gavevalg",
+        productsSubtitle: "Våre mest elskede gaveprodukter — testet av hundrevis av kunder.",
+        faqs: [
+          {
+            q: "Hva er en god matchagave under €50?",
+            a: "En startpakke (€60 — så vidt over, ofte nedsatt under €50) eller en ceremonial 30g med bambus chasen separat. Begge er komplette gaver uten at mottakeren trenger noe mer.",
+          },
+          {
+            q: "Egner matcha seg for noen som ikke drikker te?",
+            a: "Overraskende ofte ja — spesielt for kaffeavhoppere. Matcha latte føles annerledes enn te og gir lengrevarende fokus. En startpakke med culinary matcha er en trygg inngang.",
+          },
+          {
+            q: "Kan dere sende gaven direkte til mottakeren?",
+            a: "Ja. Ved bestillingen oppgir du mottakerens adresse. Vi pakker ferdig som gave, med håndskrevet kort om du ønsker det, og ditt navn som avsender.",
+          },
+        ],
+        relatedLinks: [
+          { label: "Matcha gaveideer" },
+          { label: "Guide til matcha startpakke" },
+          { label: "Matcha-kits og -sett" },
+        ],
+      },
+    },
     updated: "2026-05-13",
   },
   {
@@ -438,6 +805,81 @@ Volledige uitleg in onze [matcha bereiden gids](/kennis/matcha-bereiden) en [mat
       { label: "Matcha bereiden", to: "/kennis/matcha-bereiden" },
       { label: "7 fouten van beginners", to: "/blog/7-matcha-fouten-beginners" },
     ],
+    i18n: {
+      no: {
+        metaTitle: "Matcha for nybegynnere: Hvor begynner du? (Komplett guide 2026)",
+        metaDescription: "Akkurat begynt med matcha? Nybegynnerguiden vår — hvilken matcha, hvilke redskaper, første tilberedning og de syv nybegynnerfeilene du bør unngå.",
+        eyebrow: "For nybegynnere",
+        title: "Matcha for nybegynnere — start her",
+        hero:
+          "Å begynne med matcha trenger ikke å være dyrt eller komplisert. Vi hjelper deg å velge det du faktisk trenger — og hva du trygt kan hoppe over.",
+        sections: [
+          {
+            heading: "Tre tips når du begynner nå",
+            body: `1. **Begynn smått** — en 30g pose er nok til å oppdage om du liker matcha før du investerer i 100g.
+2. **Hopp over cooking-grade** — bitter te i en fin pose. Velg culinary eller ceremonial med en gang.
+3. **Ikke vær redd for prisen** — 1 kopp god matcha koster €0,80, sammenlignbart med en bedre kaffe.`,
+          },
+          {
+            heading: "Hva trenger du egentlig?",
+            body: `Fire ting:
+
+- **Matchapulver** (~€20)
+- **Vann på 75–80 °C** (vannkoker med temperaturkontroll eller bare kokende + vent 60 sek)
+- **En sil** (~€5, eller en fra kjøkkenskuffen)
+- **En visp** — en liten melkeskummer (€10), chasen (€20) eller til og med en tett krukke
+
+Ikke nødvendig: matcha-blendere, "fancy" siler, kosttilskudd. Les [matcha uten chasen](/kennis/matcha-zonder-chasen) for alle alternativer.`,
+          },
+          {
+            heading: "Din første tilberedning",
+            body: `**Ren matcha (usucha) i 5 steg:**
+
+1. Sikt 2 g matcha i et krus eller en [chawan](/product/keramische-matcha-kom).
+2. Tilsett 60 ml vann på 75 °C.
+3. Visp raskt i M-form med skummer eller chasen — 15 sek.
+4. Drikk med en gang.
+
+**Første latte:** Sikt 2 g matcha, løs opp med 30 ml vann, hell på 200 ml varm havremelk. Ferdig.
+
+Full forklaring i [tilberedningsguiden vår](/kennis/matcha-bereiden) og [lag matcha latte](/kennis/matcha-latte-maken).`,
+          },
+          {
+            heading: "De syv nybegynnerfeilene",
+            body: `1. Kokende vann — brenner matchaen, gir bitterhet.
+2. Ikke sikte — klumper garantert.
+3. For mye pulver — 2 g er nok.
+4. Sukker direkte i matchaen — søt alltid melken separat.
+5. Drikke gammel matcha — taper smak etter 6 uker åpnet.
+6. Drikke culinary ren — velg ceremonial for ren matcha.
+7. Vispe i sirkler — det skal være horisontalt i M-form.
+
+[Hele artikkelen her](/blog/7-matcha-fouten-beginners).`,
+          },
+        ],
+        productsTitle: "Våre topp nybegynnervalg",
+        productsSubtitle: "Det vi anbefaler som startpunkt for deg som akkurat begynner.",
+        faqs: [
+          {
+            q: "Hva er det minste jeg trenger for å begynne med matcha?",
+            a: "Matchapulver (€20), vann på 75–80 °C, en kjøkkensil og noe å vispe med. Totalbudsjett: fra €30. Ingen chasen nødvendig.",
+          },
+          {
+            q: "Hvilken matcha er best for en nybegynner?",
+            a: "En ceremonial 30g å smake på, eller culinary 100g hvis du mest vil drikke latter. Begge er tilgivende startpunkter — verken for delikate eller for robuste.",
+          },
+          {
+            q: "Er matcha bitter?",
+            a: "God matcha er ikke bitter — den er søt, full av umami og lett gressaktig. Bitterhet skyldes som regel for varmt vann (>85 °C), for mye pulver eller matcha av dårlig kvalitet.",
+          },
+        ],
+        relatedLinks: [
+          { label: "Guide til matcha startpakke" },
+          { label: "Tilberedning av matcha" },
+          { label: "7 nybegynnerfeil" },
+        ],
+      },
+    },
     updated: "2026-05-13",
   },
   {
@@ -499,6 +941,66 @@ Lees onze volledige [matcha en sport](/kennis/matcha-en-sport) gids.`,
       { label: "Matcha en afvallen", to: "/kennis/matcha-en-afvallen" },
       { label: "Matcha vs koffie", to: "/kennis/matcha-vs-koffie" },
     ],
+    i18n: {
+      no: {
+        metaTitle: "Matcha for treningsglade: Pre-workout, fokus og fettforbrenning",
+        metaDescription: "Matcha som naturlig pre-workout: stabil energi, fettforbrenningsboost og ingen skjelvinger. Pluss riktige produkter og doseringer for treningsglade.",
+        eyebrow: "For treningsglade",
+        title: "Matcha for treningsglade — naturlig pre-workout",
+        hero:
+          "Matcha gir koffein pluss L-teanin — stabil energi uten skjelvinger, fettforbrenningsboost via EGCG og ingen mageplager. Her er hvordan du bruker den rundt trening.",
+        sections: [
+          {
+            heading: "Hvorfor matcha som pre-workout?",
+            body: `Tre ingredienser jobber sammen:
+
+- **Koffein** (~70 mg) øker utholdenheten med 2–5 %.
+- **L-teanin** forhindrer skjelvinger og gir rolig fokus.
+- **EGCG** øker fettforbrenningen under kondisjonstrening med 17 % (ifølge en studie fra 2018).
+
+Les hele [matcha og trening](/kennis/matcha-en-sport)-guiden vår.`,
+          },
+          {
+            heading: "Dosering og timing",
+            body: `- **20–30 min før kondisjon** — EGCG sirkulerer under bevegelse.
+- **Standarddosering** — 2 g matcha.
+- **Lang utholdenhetstrening** — 2,5–3 g (over 3 g kan gi mageirritasjon).
+- **Ikke senere enn kl. 14:00** — koffein kan påvirke søvnen.`,
+          },
+          {
+            heading: "Hvilken matcha til hvilken trening?",
+            body: `| Trening | Anbefaling |
+|---|---|
+| Kondisjon / gåturer | Ceremonial matcha (ren) |
+| Løping | Ceremonial eller culinary |
+| Yoga / pilates | Ceremonial (L-teanin-boost) |
+| Styrketrening | Culinary + spis litt på forhånd |
+| Iced treningsdrikk | Iced matcha-blanding |`,
+          },
+        ],
+        productsTitle: "Våre topp valg for treningsglade",
+        productsSubtitle: "Utvalgt på koffeininnhold, løselighet og smaksprofil.",
+        faqs: [
+          {
+            q: "Hvor mye matcha til pre-workout?",
+            a: "Standard 2 gram, 20–30 minutter før treningen. For lang utholdenhetstrening 2,5–3 g, for lett yoga 1–1,5 g.",
+          },
+          {
+            q: "Matcha eller kaffe som pre-workout?",
+            a: "For kondisjon, yoga og lang utholdenhetstrening: matcha. Stabil energi fra EGCG. For eksplosiv styrketrening tidlig om morgenen: kaffe kan gi raskere topp.",
+          },
+          {
+            q: "Kan jeg bruke matcha til å gå ned i vekt?",
+            a: "Ja, som støtte. Ved 2 kopper om dagen + kaloriunderskudd + bevegelse: realistisk 1–2 kg ekstra per 12 uker. Les hele forklaringen vår om [matcha og vektnedgang](/kennis/matcha-en-afvallen).",
+          },
+        ],
+        relatedLinks: [
+          { label: "Matcha og trening-guide" },
+          { label: "Matcha og vektnedgang" },
+          { label: "Matcha vs kaffe" },
+        ],
+      },
+    },
     updated: "2026-05-13",
   },
   {
@@ -563,6 +1065,69 @@ Veel matcha-fans gebruiken hojicha latte als avondvariant. Lees [hojicha uitleg]
       { label: "Genmaicha gids", to: "/kennis/genmaicha-gids" },
       { label: "Matcha tijdens zwangerschap", to: "/kennis/matcha-tijdens-zwangerschap" },
     ],
+    i18n: {
+      no: {
+        metaTitle: "Koffeinfattig japansk te: Hojicha, genmaicha og alternativer",
+        metaDescription: "På jakt etter japansk te med lite koffein? Hojicha og genmaicha inneholder 5 til 10 ganger mindre koffein enn matcha — perfekt for kvelden.",
+        eyebrow: "Koffeinfattig",
+        title: "Koffeinfattig japansk te",
+        hero:
+          "Elsker du det japanske te-ritualet, men vil ha mindre koffein? Hojicha (ristet, ~10 mg) og genmaicha (med ris, ~10 mg) gir deg smaksdybde uten søvnforstyrrelse eller koffeintopp.",
+        sections: [
+          {
+            heading: "Koffein per japansk te",
+            body: `| Te | Koffein per kopp |
+|---|---|
+| Matcha (2 g) | ~70 mg |
+| Sencha | ~30 mg |
+| Genmaicha | ~10 mg |
+| Hojicha | ~7–15 mg |
+| Karigane | ~15 mg |
+| Koffeinfri grønn te | ~5 mg |
+
+Les hele [matcha-koffeinsammenligningen vår](/kennis/matcha-cafeine).`,
+          },
+          {
+            heading: "Hojicha — ristet og beroligende",
+            body: `Hojicha (焙茶) er grønn te som er ristet på ~200 °C. To effekter:
+
+- **Koffein brytes ned** av den høye temperaturen.
+- **Smaken endres** — nøtteaktig, karamell, ingen bitterhet.
+
+Mange matcha-fans bruker hojicha latte som kveldsvariant. Les [hojicha forklart](/kennis/hojicha-uitleg).`,
+          },
+          {
+            heading: "Når velger du koffeinfattig?",
+            body: `- **Etter kl. 14:00–16:00** — for å beskytte søvnen
+- **Under graviditet** — les [matcha under graviditet](/kennis/matcha-tijdens-zwangerschap)
+- **Amming** — mindre koffein via morsmelk
+- **Følsom for koffein** — hjertebank, uro
+- **Barn** — hojicha er en populær barnete i Japan`,
+          },
+        ],
+        productsTitle: "Koffeinfattige valg",
+        productsSubtitle: "Våre japanske teer med lavt koffeininnhold.",
+        faqs: [
+          {
+            q: "Hvilken japansk te har minst koffein?",
+            a: "Hojicha — omtrent 7 til 15 mg per kopp, sammenlignbart med en bit mørk sjokolade. Fem til ti ganger mindre enn matcha.",
+          },
+          {
+            q: "Kan jeg drikke hojicha om kvelden?",
+            a: "Ja — på grunn av det svært lave koffeininnholdet påvirker hojicha søvnen til de fleste lite, selv 1–2 timer før leggetid.",
+          },
+          {
+            q: "Er genmaicha koffeinfri?",
+            a: "Ikke helt, men nesten — ~10 mg per kopp. På grunn av den høye risandelen (ofte 50/50) inneholder den naturlig mye mindre koffein enn ren grønn te.",
+          },
+        ],
+        relatedLinks: [
+          { label: "Hojicha forklart" },
+          { label: "Genmaicha-guide" },
+          { label: "Matcha under graviditet" },
+        ],
+      },
+    },
     updated: "2026-05-13",
   },
   {
@@ -626,8 +1191,86 @@ Geen specifieke koffievervangende variant nodig — gewone goede matcha werkt pr
       { label: "Matcha en focus", to: "/kennis/matcha-en-focus" },
       { label: "Matcha en slaap", to: "/kennis/matcha-en-slaap" },
     ],
+    i18n: {
+      no: {
+        metaTitle: "Matcha som kaffeerstatning: Hvordan bytter du? (Komplett guide)",
+        metaDescription: "Bytte fra kaffe til matcha? Hva du kan forvente, hvordan du gjør overgangen og hvilken matcha som best erstatter kaffe.",
+        eyebrow: "Kaffeerstatning",
+        title: "Matcha som kaffeerstatning",
+        hero:
+          "Mange bytter fra kaffe til matcha for mer stabil energi, færre mageplager og bedre søvn. Her er hvordan du gjør det uten koffeinkrasj.",
+        sections: [
+          {
+            heading: "Hvorfor bytte?",
+            body: `For deg som synes kaffe blir for skarp, gir matcha:
+
+- **Stabil energi** — 4–6 timer, ingen krasj.
+- **Ingen mageplager** — matcha er mildere for magen.
+- **Bedre søvn** — spesielt hvis du drikker matcha om ettermiddagen i stedet for en 3. kaffe.
+- **Ingen tannmisfarging** — i motsetning til kaffe.
+
+Full sammenligning i [matcha vs kaffe](/kennis/matcha-vs-koffie).`,
+          },
+          {
+            heading: "Overgangen på 3 uker",
+            body: `**Uke 1** — Bytt ut den andre kaffen (rundt kl. 10:00) med matcha. Behold morgenkaffen.
+
+**Uke 2** — Bytt også ut ettermiddagsdrikken (etter lunsj) med matcha. Mulig lett hodepine — det er koffein-detox.
+
+**Uke 3** — Bytt ut morgenkaffen med matcha latte. Nå merker du tydelig forskjell i fokus og søvn.
+
+Ikke alle trenger å bytte 100 %. Mange blir værende med **én morgenkaffe + resten matcha**.`,
+          },
+          {
+            heading: "Hvilken matcha erstatter kaffe best?",
+            body: `- **For en sterk wake-up:** ceremonial 100g, ren med vann eller som sterk latte.
+- **For "kaffesmak"-følelsen:** hojicha latte — ristede, kaffeaktige toner.
+- **For iskaffe-fans:** iced matcha-blanding med havremelk.
+
+Ingen spesifikk kaffeerstattende variant nødvendig — vanlig god matcha fungerer utmerket.`,
+          },
+        ],
+        productsTitle: "Vår kaffeerstatning-topp",
+        productsSubtitle: "Valgt på effekt, smak og brukervennlighet for tidligere kaffedrikkere.",
+        faqs: [
+          {
+            q: "Har matcha mer koffein enn kaffe?",
+            a: "Nei — en kopp matcha inneholder 60–70 mg koffein, en kopp filterkaffe 90–100 mg. Matcha føles sterkere fordi den virker lenger og mer stabilt på grunn av L-teanin.",
+          },
+          {
+            q: "Får jeg hodepine når jeg bytter fra kaffe til matcha?",
+            a: "Mulig i uke 1–2. Dette er koffein-detox ved lavere totalinntak. Drikk nok vann og trapp gradvis ned i stedet for å slutte brått.",
+          },
+          {
+            q: "Kan jeg drikke matcha og kaffe på samme dag?",
+            a: "Ja, og mange gjør det — morgenkaffe + matcha om ettermiddagen. Følg med på det totale koffeininntaket (maks 400 mg/dag for voksne).",
+          },
+        ],
+        relatedLinks: [
+          { label: "Matcha vs kaffe" },
+          { label: "Matcha og fokus" },
+          { label: "Matcha og søvn" },
+        ],
+      },
+    },
     updated: "2026-05-13",
   },
 ];
 
-export const getLandingPageBySlug = (slug: string) => landingPages.find(l => l.slug === slug);
+// ─── Public API ──────────────────────────────────────────────
+
+export const landingPages: LandingPage[] = landingPagesRaw.map(p => localizeLanding(p, getCurrentLang()));
+
+export const getLandingPageBySlug = (slug: string): LandingPage | undefined => {
+  const p = landingPagesRaw.find(l => l.slug === slug);
+  return p ? localizeLanding(p, getCurrentLang()) : undefined;
+};
+
+export function useLandingPage(slug: string | undefined): LandingPage | undefined {
+  const { i18n } = useTranslation();
+  return useMemo(() => {
+    if (!slug) return undefined;
+    const p = landingPagesRaw.find(l => l.slug === slug);
+    return p ? localizeLanding(p, getCurrentLang()) : undefined;
+  }, [slug, i18n.language]);
+}

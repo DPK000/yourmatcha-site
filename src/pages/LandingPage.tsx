@@ -1,12 +1,27 @@
 import { Link, Navigate } from "react-router-dom";
 import { ArrowRight, ChevronRight } from "lucide-react";
 import SEO from "@/components/SEO";
-import { getLandingPageBySlug, type LandingPage as LandingPageData } from "@/data/landings";
+import { useLandingPage, type LandingPage as LandingPageData } from "@/data/landings";
 import { getProductBySlug } from "@/data/products";
+import { useCurrency } from "@/context/CurrencyContext";
+import { useLang } from "@/i18n";
 
 interface Props {
   slug: string;
 }
+
+const COPY = {
+  nl: {
+    view: "Bekijk",
+    faqHeading: "Veelgestelde vragen",
+    relatedHeading: "Verder lezen",
+  },
+  no: {
+    view: "Se",
+    faqHeading: "Ofte stilte spørsmål",
+    relatedHeading: "Les videre",
+  },
+} as const;
 
 const renderBody = (body: string) => {
   const blocks: JSX.Element[] = [];
@@ -148,10 +163,12 @@ const buildSchemas = (page: LandingPageData) => {
   return faq ? [webPage, breadcrumb, faq] : [webPage, breadcrumb];
 };
 
-const priceFormatter = new Intl.NumberFormat("nl-NL", { style: "currency", currency: "EUR" });
-
 const LandingPage = ({ slug }: Props) => {
-  const page = getLandingPageBySlug(slug);
+  const page = useLandingPage(slug);
+  const lang = useLang();
+  const c = lang === "no" ? COPY.no : COPY.nl;
+  const { format: formatPrice } = useCurrency();
+
   if (!page) return <Navigate to="/" replace />;
 
   const products = page.productSlugs
@@ -225,9 +242,9 @@ const LandingPage = ({ slug }: Props) => {
                       {p.shortDescription}
                     </p>
                     <div className="flex items-center justify-between">
-                      <span className="text-sm font-semibold">{priceFormatter.format(p.price)}</span>
+                      <span className="text-sm font-semibold">{formatPrice(p.price)}</span>
                       <span className="inline-flex items-center gap-1 text-xs font-semibold text-primary group-hover:gap-2 transition-all">
-                        Bekijk <ArrowRight className="w-3 h-3" />
+                        {c.view} <ArrowRight className="w-3 h-3" />
                       </span>
                     </div>
                   </div>
@@ -241,7 +258,7 @@ const LandingPage = ({ slug }: Props) => {
       {page.faqs.length > 0 && (
         <section className="py-16">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-3xl">
-            <h2 className="font-heading text-2xl md:text-3xl font-semibold mb-6">Veelgestelde vragen</h2>
+            <h2 className="font-heading text-2xl md:text-3xl font-semibold mb-6">{c.faqHeading}</h2>
             <div className="space-y-4">
               {page.faqs.map((f, i) => (
                 <details key={i} className="group bg-secondary rounded-xl px-5 py-4 cursor-pointer">
@@ -260,7 +277,7 @@ const LandingPage = ({ slug }: Props) => {
       {page.relatedLinks && page.relatedLinks.length > 0 && (
         <section className="py-16 bg-secondary/30">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-3xl">
-            <h2 className="font-heading text-2xl font-semibold mb-6">Verder lezen</h2>
+            <h2 className="font-heading text-2xl font-semibold mb-6">{c.relatedHeading}</h2>
             <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
               {page.relatedLinks.map(rl => (
                 <Link

@@ -2,7 +2,8 @@ import { useMemo, useState } from "react";
 import { Link } from "react-router-dom";
 import { ChevronRight, Search } from "lucide-react";
 import SEO from "@/components/SEO";
-import { glossaryTerms, type GlossaryTerm } from "@/data/glossary";
+import { useGlossaryTerms, groupLabel, type GlossaryTerm } from "@/data/glossary";
+import { useLang } from "@/i18n";
 
 const groups: GlossaryTerm["group"][] = [
   "Types",
@@ -12,6 +13,47 @@ const groups: GlossaryTerm["group"][] = [
   "Gezondheid & Stoffen",
   "Cultuur",
 ];
+
+const COPY = {
+  nl: {
+    eyebrow: "Woordenboek",
+    title: "Matcha woordenboek",
+    intro: (n: number) =>
+      `Alle termen op één plek. Van chasen tot EGCG, van Uji tot wabi-sabi — ${n} definities, doorzoekbaar.`,
+    searchPlaceholder: "Zoek een term (bv. chasen, koicha, EGCG)...",
+    searchAria: "Zoek in woordenboek",
+    alsoPrefix: "ook:",
+    noResults: (q: string) => `Geen termen gevonden voor "${q}".`,
+    readMore: "Verder lezen",
+    seoTitle: "Matcha Woordenboek: Termen, Definities & Uitleg (A-Z)",
+    seoDescription:
+      "Het complete matcha lexicon. Van chasen tot EGCG, van Uji tot wabi-sabi — alle Japanse thee- en matcha-termen op één plek.",
+    links: {
+      whatIsMatcha: "Wat is matcha?",
+      ceremony: "Japanse theeceremonie",
+      bestMatcha: "Beste matcha kopen 2026",
+    },
+  },
+  no: {
+    eyebrow: "Ordbok",
+    title: "Matcha-ordbok",
+    intro: (n: number) =>
+      `Alle begreper på ett sted. Fra chasen til EGCG, fra Uji til wabi-sabi — ${n} definisjoner, søkbare.`,
+    searchPlaceholder: "Søk etter et begrep (f.eks. chasen, koicha, EGCG)...",
+    searchAria: "Søk i ordboken",
+    alsoPrefix: "også:",
+    noResults: (q: string) => `Ingen begreper funnet for «${q}».`,
+    readMore: "Les mer",
+    seoTitle: "Matcha-ordbok: Begreper, definisjoner og forklaringer (A-Å)",
+    seoDescription:
+      "Det komplette matcha-leksikonet. Fra chasen til EGCG, fra Uji til wabi-sabi — alle japanske te- og matcha-begreper på ett sted.",
+    links: {
+      whatIsMatcha: "Hva er matcha?",
+      ceremony: "Japansk teseremoni",
+      bestMatcha: "Beste matcha å kjøpe 2026",
+    },
+  },
+};
 
 const slugify = (s: string) =>
   s
@@ -23,6 +65,9 @@ const slugify = (s: string) =>
 
 const Glossary = () => {
   const [query, setQuery] = useState("");
+  const lang = useLang();
+  const c = lang === "no" ? COPY.no : COPY.nl;
+  const glossaryTerms = useGlossaryTerms();
 
   const filtered = useMemo(() => {
     const q = query.trim().toLowerCase();
@@ -31,7 +76,7 @@ const Glossary = () => {
       const haystack = [t.term, ...(t.alternativeNames || []), t.definition].join(" ").toLowerCase();
       return haystack.includes(q);
     });
-  }, [query]);
+  }, [query, glossaryTerms]);
 
   const grouped = useMemo(() => {
     const map = new Map<GlossaryTerm["group"], GlossaryTerm[]>();
@@ -48,9 +93,8 @@ const Glossary = () => {
   const definedTermSchema = {
     "@context": "https://schema.org",
     "@type": "DefinedTermSet",
-    name: "Matcha woordenboek",
-    description:
-      "Compleet matcha lexicon met termen, definities en uitleg — van chasen tot EGCG, van Uji tot wabi-sabi.",
+    name: c.title,
+    description: c.seoDescription,
     hasDefinedTerm: glossaryTerms.map(t => ({
       "@type": "DefinedTerm",
       name: t.term,
@@ -65,28 +109,27 @@ const Glossary = () => {
     "@type": "BreadcrumbList",
     itemListElement: [
       { "@type": "ListItem", position: 1, name: "Home", item: "https://yourmatcha.nl/" },
-      { "@type": "ListItem", position: 2, name: "Matcha woordenboek", item: "https://yourmatcha.nl/matcha-woordenboek" },
+      { "@type": "ListItem", position: 2, name: c.title, item: "https://yourmatcha.nl/matcha-woordenboek" },
     ],
   };
 
   return (
     <>
       <SEO
-        title="Matcha Woordenboek: Termen, Definities & Uitleg (A-Z)"
-        description="Het complete matcha lexicon. Van chasen tot EGCG, van Uji tot wabi-sabi — alle Japanse thee- en matcha-termen op één plek."
+        title={c.seoTitle}
+        description={c.seoDescription}
         canonical="/matcha-woordenboek"
         jsonLd={[definedTermSchema, breadcrumbSchema]}
       />
 
       <section className="py-16 md:py-20 bg-secondary/30">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-4xl text-center">
-          <p className="text-[10px] tracking-[0.3em] uppercase text-primary mb-4">Woordenboek</p>
+          <p className="text-[10px] tracking-[0.3em] uppercase text-primary mb-4">{c.eyebrow}</p>
           <h1 className="font-heading text-4xl md:text-5xl lg:text-6xl font-light leading-tight mb-6">
-            Matcha woordenboek
+            {c.title}
           </h1>
           <p className="text-base md:text-lg text-foreground/75 leading-relaxed max-w-2xl mx-auto mb-10">
-            Alle termen op één plek. Van chasen tot EGCG, van Uji tot wabi-sabi — {glossaryTerms.length} definities,
-            doorzoekbaar.
+            {c.intro(glossaryTerms.length)}
           </p>
           <div className="max-w-md mx-auto relative">
             <Search className="absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-muted-foreground" />
@@ -94,9 +137,9 @@ const Glossary = () => {
               type="text"
               value={query}
               onChange={e => setQuery(e.target.value)}
-              placeholder="Zoek een term (bv. chasen, koicha, EGCG)..."
+              placeholder={c.searchPlaceholder}
               className="w-full pl-11 pr-4 py-3 rounded-full bg-background border border-border focus:border-primary outline-none transition-colors text-sm"
-              aria-label="Zoek in woordenboek"
+              aria-label={c.searchAria}
             />
           </div>
         </div>
@@ -117,7 +160,7 @@ const Glossary = () => {
                       : "border-border hover:border-primary hover:text-primary"
                   }`}
                 >
-                  {g} {count > 0 && <span className="text-muted-foreground ml-1">{count}</span>}
+                  {groupLabel(g, lang)} {count > 0 && <span className="text-muted-foreground ml-1">{count}</span>}
                 </a>
               );
             })}
@@ -129,7 +172,7 @@ const Glossary = () => {
             return (
               <section key={g} id={slugify(g)} className="mb-16 last:mb-0 scroll-mt-24">
                 <h2 className="font-heading text-2xl md:text-3xl font-semibold mb-8 pb-3 border-b border-border">
-                  {g}
+                  {groupLabel(g, lang)}
                 </h2>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-x-10 gap-y-8">
                   {items.map(t => (
@@ -137,7 +180,7 @@ const Glossary = () => {
                       <h3 className="font-heading text-lg font-semibold mb-1.5">{t.term}</h3>
                       {t.alternativeNames && t.alternativeNames.length > 0 && (
                         <p className="text-xs text-muted-foreground italic mb-2">
-                          ook: {t.alternativeNames.join(", ")}
+                          {c.alsoPrefix} {t.alternativeNames.join(", ")}
                         </p>
                       )}
                       <p className="text-sm text-foreground/80 leading-relaxed">{t.definition}</p>
@@ -158,7 +201,7 @@ const Glossary = () => {
 
           {filtered.length === 0 && (
             <div className="text-center py-16">
-              <p className="text-muted-foreground">Geen termen gevonden voor "{query}".</p>
+              <p className="text-muted-foreground">{c.noResults(query)}</p>
             </div>
           )}
         </div>
@@ -166,14 +209,14 @@ const Glossary = () => {
 
       <section className="py-16 bg-secondary/30">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-3xl">
-          <h2 className="font-heading text-2xl font-semibold mb-6">Verder lezen</h2>
+          <h2 className="font-heading text-2xl font-semibold mb-6">{c.readMore}</h2>
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
             <Link
               to="/kennis/wat-is-matcha"
               className="group block bg-card rounded-xl p-5 border border-border/60 hover:border-primary/40 transition-all"
             >
               <span className="inline-flex items-center gap-1 text-sm font-semibold text-primary group-hover:gap-2 transition-all">
-                Wat is matcha? <ChevronRight className="w-4 h-4" />
+                {c.links.whatIsMatcha} <ChevronRight className="w-4 h-4" />
               </span>
             </Link>
             <Link
@@ -181,7 +224,7 @@ const Glossary = () => {
               className="group block bg-card rounded-xl p-5 border border-border/60 hover:border-primary/40 transition-all"
             >
               <span className="inline-flex items-center gap-1 text-sm font-semibold text-primary group-hover:gap-2 transition-all">
-                Japanse theeceremonie <ChevronRight className="w-4 h-4" />
+                {c.links.ceremony} <ChevronRight className="w-4 h-4" />
               </span>
             </Link>
             <Link
@@ -189,7 +232,7 @@ const Glossary = () => {
               className="group block bg-card rounded-xl p-5 border border-border/60 hover:border-primary/40 transition-all"
             >
               <span className="inline-flex items-center gap-1 text-sm font-semibold text-primary group-hover:gap-2 transition-all">
-                Beste matcha kopen 2026 <ChevronRight className="w-4 h-4" />
+                {c.links.bestMatcha} <ChevronRight className="w-4 h-4" />
               </span>
             </Link>
           </div>

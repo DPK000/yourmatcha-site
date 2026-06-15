@@ -2792,6 +2792,59 @@ Lees ook [matcha kloppen zonder klontjes](/kennis/matcha-kloppen-zonder-klontjes
       { q: "Kan ik matcha latte maken zonder chasen?", a: "Ja. Een kleine elektrische melkopschuimer of zelfs een afgesloten shaker met 30 ml water werkt prima. De textuur is iets minder fijn dan met chasen, maar het verschil is klein." },
       { q: "Waarom wordt mijn matcha latte bitter?", a: "Drie hoofdoorzaken: water te warm (>85 °C), te veel matcha, of culinary matcha van lage kwaliteit. Begin met 75 °C water en 2 g matcha." },
     ],
+    i18n: {
+      no: {
+        title: "Lage matcha latte — fløyelsmyk, uten klumper",
+        metaTitle: "Lage matcha latte: oppskrift, tips og vanlige feil (2026)",
+        metaDescription: "Lær å lage en perfekt matcha latte — varm eller iset. Trinn-for-trinn-oppskrift, beste melketype, dosering og feilene de fleste gjør.",
+        excerpt: "En god matcha latte er kremet, klart grønn og aldri bitter. Dette er den nøyaktige metoden vi bruker på vårt kjøkken.",
+        content: `## Hva er en matcha latte?
+En matcha latte er finmalt japansk grønn te (matcha) blandet med varm eller kald melk. I motsetning til en chai latte eller kaffe inneholder den **ingen sirup eller espresso** — bare matcha, vann og melk.
+
+## Hva trenger du?
+- **2 g matcha** — culinary grade eller premium ceremonial. For ren matcha velger du [ceremonial grade](/kennis/ceremonial-vs-culinary-matcha).
+- **30 ml vann på 75–80 °C** — aldri kokende.
+- **200 ml melk** — havremelk gir det kremeste resultatet.
+- **Chasen** eller melkeskummer.
+- **Sil** — uunnværlig mot klumper.
+
+## Trinn-for-trinn-oppskrift (varm latte)
+1. **Sikt** 2 g matcha i en [chawan](/product/keramische-matcha-kom) eller bred kopp.
+2. Tilsett **30 ml vann på 75 °C**.
+3. Visp med en [chasen](/product/bamboe-chasen) i en rask M-form til det dannes fint skum (~15 sekunder).
+4. Varm 200 ml melk til maks 65 °C og skum den opp.
+5. Hell melken **sakte over baksiden av en skje** for latte art.
+6. Valgfritt: en klype vanilje eller honning — alltid i melken, ikke i matchaen.
+
+## Beste melk for matcha latte
+| Melk | Skum | Smak | Anbefaling |
+|---|---|---|---|
+| Havremelk barista | Utmerket | Kremet, mildt søt | ★★★★★ |
+| Mandelmelk | God | Nøtteaktig | ★★★★ |
+| Helmelk (ku) | God | Kremet, klassisk | ★★★★ |
+| Soyamelk barista | Utmerket | Bønnete | ★★★ |
+| Kokosmelk | Middels | Sterk egensmak | ★★ |
+
+Havremelk vinner fordi den er naturlig kremet og ikke overdøver den delikate matcha-smaken.
+
+## Iset matcha latte
+Bruk de samme 2 g matcha, men løs den opp i **30 ml kaldt vann i en shaker** eller med en [elektrisk melkeskummer](/product/elektrische-melkopschuimer). Hell over is og kald melk. Vår [iset matcha-blanding](/product/iced-matcha-blend-60g) er spesielt malt for kald tilberedning — ingen klumper, selv uten sikting.
+
+## Vanlige feil
+- **Kokende vann** — brenner matchaen og gir bitter smak.
+- **Ikke sikte** — garanterte klumper.
+- **For mye matcha** — mer enn 2 g overdøver melken.
+- **Sukker i matchaen** — uoppløselig og kornete. Søt alltid melken.
+
+Les også [matcha visping uten klumper](/kennis/matcha-kloppen-zonder-klontjes) hvis du ikke får teksturen glatt.`,
+        faqs: [
+          { q: "Hvilken matcha er best til en latte?", a: "Til daglig bruk er culinary grade ideell — robust nok til å smakes gjennom melken og kostnadseffektiv. For en premium-opplevelse fungerer ceremonial grade også." },
+          { q: "Hvor mye matcha per latte?", a: "2 gram (omtrent 1 teskje) per kopp på 200–250 ml melk. Sterkere er greit, men da kan matchaen overdøve melken." },
+          { q: "Kan jeg lage matcha latte uten chasen?", a: "Ja. En liten elektrisk melkeskummer eller til og med en lukket shaker med 30 ml vann fungerer fint. Teksturen blir litt mindre fin enn med chasen, men forskjellen er liten." },
+          { q: "Hvorfor blir matcha-lattéen min bitter?", a: "Tre hovedårsaker: vannet for varmt (>85 °C), for mye matcha, eller culinary matcha av lav kvalitet. Start med 75 °C vann og 2 g matcha." },
+        ],
+      },
+    },
   },
   {
     slug: "matcha-kloppen-zonder-klontjes",
@@ -2840,6 +2893,52 @@ Oude matcha klontjes meer. Geopende matcha is **4–6 weken op zijn best**. Lees
       { q: "Werkt een gewone garde voor matcha?", a: "Niet goed. Een gewone garde heeft te weinig tanden — er ontstaat geen schuim. Gebruik een chasen, melkopschuimer of shaker." },
       { q: "Hoe lang moet ik kloppen?", a: "15–20 seconden snel kloppen in M-vorm is genoeg voor fijn schuim. Langer kloppen helpt niet en kan de matcha laten verschalen." },
     ],
+    i18n: {
+      no: {
+        title: "Vispe matcha uten klumper — 7 utprøvde tips",
+        metaTitle: "Vispe matcha uten klumper: 7 tips fra temestere",
+        metaDescription: "Klumper i matchaen din? Med disse 7 tipsene får du hver gang en glatt, kremet tekstur — uansett om du bruker chasen eller skummer.",
+        excerpt: "Klumper er det vanligste matcha-problemet. Gode nyheter: det skyldes sjelden teknikken din — som regel én av disse syv tingene.",
+        content: `## Hvorfor får matcha klumper?
+Matcha-pulver er hygroskopisk — det trekker til seg fukt. Så snart det kommer i kontakt med vann, danner de fine partiklene små baller med en tørr kjerne. Den kjernen er vanskelig å løse opp, særlig med for varmt vann.
+
+## Tips 1: sikt alltid
+Dette er det desidert viktigste trinnet. En fin sil over [chawanen](/product/keramische-matcha-kom) bryter opp klumper før vannet kommer i. Det tar 10 sekunder og løser 80 % av alle problemer.
+
+## Tips 2: vann på 70–80 °C
+Kokende vann (100 °C) brenner ikke bare smaken — det får også matcha-partiklene til å klumpe seg sammen. Ideell temperatur: **75 °C** for ceremonial, **80 °C** for culinary. Ingen termometer? Kok vann, vent 60 sekunder.
+
+## Tips 3: lite vann i starten
+Start med **30 ml vann** i stedet for 200 ml med en gang. Visp dette først til en glatt pasta, og tilsett deretter mer vann eller melk. Dette kalles "paste-metoden" og er slik japanske temestere har gjort det i århundrer.
+
+## Tips 4: chasen-teknikk (M eller W)
+Visp **horisontalt i en M- eller W-form**, ikke i sirkler. Sirkler flytter matchaen rundt i skålen, men blander ikke. M/W skaper turbulens og dermed skum. Bruk håndleddet, ikke hele armen.
+
+## Tips 5: bløtlegg chasen på forhånd
+Før første gangs bruk: legg [bambus-chasenen](/product/bamboe-chasen) i lunkent vann i 2 minutter. Dette gjør børstehårene fleksible og hindrer at de brekker. Gjør dette også i 30 sekunder før hver tilberedning.
+
+## Tips 6: ferskt pulver
+Gammel matcha klumper mer. Åpnet matcha er **på sitt beste i 4–6 uker**. Les [oppbevare matcha](/kennis/matcha-bewaren) for optimal holdbarhet.
+
+## Tips 7: alternativer uten chasen
+- **Elektrisk skummer**: en [liten stavskummer](/product/elektrische-melkopschuimer) fungerer utmerket.
+- **Shaker**: 30 ml vann + matcha + 10 sekunders hard risting = klumpefritt.
+- **Blender**: ideell for smoothies og isede latter.
+
+## Rask feilsøking
+| Problem | Sannsynlig årsak |
+|---|---|
+| Klumper vedvarer | Ikke siktet eller vann for varmt |
+| Ikke noe skum | For lite pulver eller sirkelbevegelse |
+| Bitter | Vann >85 °C eller pulver gammelt |
+| Flat smak | For gammel matcha — bytt ut |`,
+        faqs: [
+          { q: "Må jeg virkelig alltid sikte matcha?", a: "Ja, spesielt hvis du drikker den ren eller vil lage latte art. Sikting tar 10 sekunder og er forskjellen mellom amatør- og profesjonelt resultat." },
+          { q: "Fungerer en vanlig visp til matcha?", a: "Ikke godt. En vanlig visp har for få tinder — det dannes ikke skum. Bruk en chasen, melkeskummer eller shaker." },
+          { q: "Hvor lenge må jeg vispe?", a: "15–20 sekunders rask visping i M-form er nok til fint skum. Lengre visping hjelper ikke og kan gjøre matchaen flat." },
+        ],
+      },
+    },
   },
   {
     slug: "iced-matcha-bereiden",
@@ -2903,6 +3002,67 @@ Bekijk ook ons [iced matcha latte recept](/recepten/iced-matcha-latte) voor de c
       { q: "Waarom blijft mijn iced matcha grijs?", a: "Onvoldoende geschud of geblend. Bij de shakermethode: 15 seconden hard schudden met ijsblokjes. Bij koud bloomen: eerst paste maken met weinig water." },
       { q: "Kan ik iced matcha de avond van tevoren maken?", a: "Niet aanbevolen. Matcha oxideert snel zodra het in water zit — kleur en smaak verliezen binnen 2–3 uur. Maak vlak voor het drinken." },
     ],
+    i18n: {
+      no: {
+        title: "Lage iset matcha — tre metoder, ett perfekt resultat",
+        metaTitle: "Lage iset matcha: 3 metoder for kald matcha (trinn for trinn)",
+        metaDescription: "Iset matcha latte uten klumper og vanngrått pulver? Tre utprøvde metoder: shaker, blender og cold-bloom — med dosering og feilsøking.",
+        excerpt: "Kald matcha er vanskeligere enn varm — pulveret løser seg dårligere opp. Disse tre metodene gir hver gang en glatt, intens iset matcha.",
+        content: `## Hvorfor er iset matcha vanskeligere?
+Varmt vann (75–80 °C) hjelper matcha-partiklene å løse seg opp. Kaldt vann gjør det mye mindre, så du får klumper og en grå film på toppen. Trikset: mer mekanisk kraft (risting, blending) eller en på forhånd oppløst "bloom".
+
+## Metode 1: shaker (raskest)
+1. **Sikt** 2 g matcha i en cocktailshaker eller lufttett krukke.
+2. Tilsett **50 ml kaldt vann** og 5 isbiter.
+3. **Rist hardt i 15 sekunder** — isen gir ekstra friksjon.
+4. Hell over et glass med is og 200 ml kald melk.
+
+Vår [iset matcha-blanding](/product/iced-matcha-blend-60g) er spesielt ekstra fint malt for kald tilberedning — ofte fungerer den til og med uten sikting.
+
+## Metode 2: cold bloom (mest intens smak)
+1. Sikt 2 g matcha i en skål.
+2. Tilsett **bare 15 ml vann på romtemperatur**.
+3. Visp med en [chasen](/product/bamboe-chasen) til en glatt pasta (30 sekunder).
+4. Fyll på med 200 ml kald melk og is.
+
+Paste-metoden gir en dypere smaksprofil — bedre for premium ceremonial matcha.
+
+## Metode 3: blender (for smoothies og iset latte)
+1. 2 g matcha + 200 ml kald melk + 4 isbiter i blender.
+2. Blend **10 sekunder på høy**.
+3. Server med en gang.
+
+Ideelt hvis du ikke har chasen eller vil ha en iskald, skummende tekstur.
+
+## Vanntemperatur for iset matcha
+| Metode | Første vann | Resten |
+|---|---|---|
+| Shaker | Kaldt + is | Kald melk |
+| Cold bloom | Romtemperatur | Kald melk |
+| Blender | i.r. | Kald melk + is |
+| Hot bloom + kaldt | 75 °C, 30 ml | Kald melk + is |
+
+**Hot bloom + kaldt**: for den mest autentiske smaken. Lag først en sterk usucha med 30 ml varmt vann, og hell den deretter over kald melk og is. Resultat: en tolags latte med smaken av varmt tilberedt matcha.
+
+## Forhold (per glass på 300 ml)
+- **Mild**: 1,5 g matcha + 250 ml melk + is
+- **Standard**: 2 g matcha + 200 ml melk + is
+- **Intens**: 3 g matcha + 200 ml melk + is
+
+## Smaksvarianter
+- **Yuzu-twist**: tilsett ½ ts [yuzu matcha-blanding](/product/matcha-yuzu-blend-40g).
+- **Bær**: bruk [berry matcha](/product/berry-matcha-40g) eller tilsett ferske jordbær.
+- **Vanilje**: en dråpe vaniljeekstrakt i melken.
+- **Honning**: løs honning **først opp i 15 ml varmt vann**, tilsett deretter.
+
+Se også vår [oppskrift på iset matcha latte](/recepten/iced-matcha-latte) for den komplette tilberedningen med bilder.`,
+        faqs: [
+          { q: "Hvilken matcha er best til iset?", a: "En blanding som er spesielt malt for kald bruk, løser seg best opp. Premium ceremonial fungerer også fint med paste-metoden (bloom med 15 ml vann på romtemperatur)." },
+          { q: "Hvorfor forblir den isede matchaen min grå?", a: "Utilstrekkelig risting eller blending. Ved shakermetoden: rist hardt i 15 sekunder med isbiter. Ved cold bloom: lag først en pasta med lite vann." },
+          { q: "Kan jeg lage iset matcha kvelden før?", a: "Anbefales ikke. Matcha oksiderer raskt så snart den er i vann — farge og smak forsvinner innen 2–3 timer. Lag den rett før du drikker." },
+        ],
+      },
+    },
   },
   {
     slug: "beste-melk-voor-matcha-latte",
@@ -2964,6 +3124,65 @@ Combineer **hojicha** ([losse hojicha](/product/hojicha-poeder-50g)) met haverme
       { q: "Kan ik gewone havermelk gebruiken in plaats van barista?", a: "Het kan, maar je krijgt nauwelijks schuim. Voor latte art en romige textuur loont het om de extra €0,30 voor barista-havermelk uit te geven." },
       { q: "Is plantenmelk gezonder voor matcha latte?", a: "Plantenmelk heeft vaak minder calorieën en geen lactose, maar matcha zelf is even gezond met elke melk. Kies de melk die jij het lekkerst vindt." },
     ],
+    i18n: {
+      no: {
+        title: "Beste melk for matcha latte — 8 typer testet",
+        metaTitle: "Beste melk for matcha latte: sammenligning av 8 typer (2026)",
+        metaDescription: "Hvilken melk er best for matcha latte? Vi sammenligner havremelk, mandelmelk, soyamelk, kokosmelk og kumelk på smak, skum og helse.",
+        excerpt: "Ikke all melk passer til matcha. Vi testet åtte typer på smak, skum og hvor godt de respekterer den delikate matcha-smaken.",
+        content: `## Kort konklusjon
+**Havremelk barista** vinner for 90 % av matcha-drikkerne. Den er kremet, skummer godt og overdøver ikke matchaen. Til spesielle anledninger er helmelk en klassiker.
+
+## Den fullstendige rangeringen
+| # | Melk | Skum | Smak | Kalorier | Score |
+|---|---|---|---|---|---|
+| 1 | Havremelk barista | Utmerket | Kremet, mildt søt | 60/100 ml | 9,2 |
+| 2 | Helmelk (ku) | God | Kremet, klassisk | 64/100 ml | 8,5 |
+| 3 | Mandelmelk barista | God | Nøtteaktig, lett | 24/100 ml | 8,0 |
+| 4 | Soyamelk barista | Utmerket | Bønnete, fyldig | 54/100 ml | 7,8 |
+| 5 | Cashewmelk | Middels | Kremet, nøytral | 36/100 ml | 7,2 |
+| 6 | Lettmelk (ku) | Middels | Mer vannete | 47/100 ml | 6,8 |
+| 7 | Skummet kumelk | Dårlig | Flat | 34/100 ml | 5,5 |
+| 8 | Kokosmelk-drikk | Middels | Sterk egensmak | 30/100 ml | 5,0 |
+
+## 1. Havremelk barista — vår vinner
+**Hvorfor:** havremelk har en naturlig sødme og høy fettstruktur (i barista-versjonen) som blir liggende fint under matchaen. Den overdøver ikke.
+
+**Merk:** bare **barista-versjoner** skummer godt. Vanlig havremelk skummer dårlig på grunn av mindre protein.
+
+## 2. Helmelk — klassikeren
+Kremet og stabilt skum. Fettet bærer matcha-smaken godt. Ulempe: for mange mindre fordøyelig, og den animalske smaken passer ikke til hver matcha-type.
+
+## 3. Mandelmelk barista
+Lett og nøtteaktig. Fungerer fint med **subtil ceremonial matcha** eller en [yuzu-blanding](/product/matcha-yuzu-blend-40g). Velg alltid den usøtede barista-versjonen — søtet mandelmelk gjør lattéen klebrig.
+
+## 4. Soyamelk barista
+Skummer utmerket på grunn av høyt proteininnhold. Smaken er fyldigere, men bønnete — noen drikkere synes den overdøver matchaen. Et godt alternativ hvis du ikke tåler havremelk.
+
+## 5. Cashewmelk
+Kremet, nøytral og lite egensmak — lar matchaen komme godt frem. Skummer middels.
+
+## Hvilken melk bør du unngå?
+- **Skummet kumelk** — ikke noe fett = ingen kremethet.
+- **Kokosmelk-drikk** — overdøver matchaen helt.
+- **Rismelk** — for tynn, ikke noe skum.
+- **Søtet plantemelk** — skjuler subtile matcha-toner.
+
+## Skumtips per melk
+- **Havremelk**: varm til **maks 60 °C**. Over 70 °C faller skummet sammen.
+- **Soya**: opp til **65 °C**. Høyere og proteinene klumper.
+- **Mandel**: skum lavere, hell raskt over.
+- **Kumelk**: opp til 65 °C for mikroskum.
+
+## Hva med koffeinsensitive personer?
+Kombiner **hojicha** ([løs hojicha](/product/hojicha-poeder-50g)) med havremelk i stedet for matcha — mindre koffein, ristet-kremet smak. Les [matcha koffein](/kennis/matcha-cafeine) for den nøyaktige sammenligningen.`,
+        faqs: [
+          { q: "Hvilken melk skummer best med matcha?", a: "Havremelk barista og soyamelk barista skummer best på grunn av henholdsvis emulgatorer og proteiner. Vanlig havremelk skummer dårlig — velg alltid barista-versjoner." },
+          { q: "Kan jeg bruke vanlig havremelk i stedet for barista?", a: "Det går, men du får knapt skum. For latte art og kremet tekstur lønner det seg å bruke de ekstra 0,30 € på barista-havremelk." },
+          { q: "Er plantemelk sunnere for matcha latte?", a: "Plantemelk har ofte færre kalorier og ingen laktose, men matchaen i seg selv er like sunn med all melk. Velg den melken du synes smaker best." },
+        ],
+      },
+    },
   },
   {
     slug: "matcha-zonder-chasen",
@@ -3040,6 +3259,80 @@ Voor lattes, iced matcha en dagelijks gebruik is een opschuimer praktischer. Onz
       { q: "Is matcha zonder chasen minder lekker?", a: "Nee, smaak verandert niet. Alleen textuur — een chasen geeft fijner schuim. Smaak hangt af van de matcha-kwaliteit, watertemperatuur en dosering." },
       { q: "Kan ik een mini-staafmixer gebruiken?", a: "Ja, perfect. Een klein staafmixertje of melkopschuimer (€10–€20) is een van de beste alternatieven voor een chasen — vooral voor dagelijks gebruik." },
     ],
+    i18n: {
+      no: {
+        title: "Lage matcha uten chasen — 5 alternativer som fungerer",
+        metaTitle: "Lage matcha uten chasen: 5 alternativer (testet)",
+        metaDescription: "Ingen bambus-chasen? Ikke noe problem. Disse 5 alternativene gir en skummende, klumpefri matcha — fra melkeskummer til shaker.",
+        excerpt: "En chasen er vakker og autentisk, men ikke uunnværlig. Med disse fem alternativene lager du også en utmerket matcha hjemme.",
+        content: `## Trenger du virkelig en chasen?
+Kort svar: nei. En [bambus-chasen](/product/bamboe-chasen) gir den fineste teksturen og er tradisjonell, men til daglig bruk fungerer alternativene fint. De **virkelige** nøklene er **vann på 75 °C** og **siktet pulver** — ikke verktøyet.
+
+## 1. Elektrisk melkeskummer (beste alternativ)
+En liten stavskummer (10–20 €) er det desidert beste alternativet. Det roterende hodet skaper fint skum på 10 sekunder — nesten identisk med en chasen.
+
+**Slik:**
+1. Sikt 2 g matcha i en kopp.
+2. Tilsett 60 ml vann på 75 °C.
+3. Plasser skummeren i bunnen og slå den på.
+4. Beveg sakte opp og ned igjen, i 15 sekunder.
+
+Vi bruker selv også jevnlig vår [elektriske skummer](/product/elektrische-melkopschuimer) — ingen skam i det.
+
+## 2. Cocktailshaker (raskest for iset)
+For iset matcha er en shaker til og med **bedre enn en chasen**. Isbiter gir ekstra friksjon for oppløsning.
+
+**Slik:**
+1. Sikt 2 g matcha i shakeren.
+2. Tilsett 50 ml kaldt vann og 5 isbiter.
+3. Rist hardt i 15 sekunder.
+
+## 3. Blender (for latter og smoothies)
+Fungerer utmerket for matcha-latter, men overdrevent for ren matcha. **Smoothie-matcha** eller en matcha bowl? Blenderen vinner.
+
+**Slik:**
+1. 2 g matcha + 200 ml kald melk + 3 isbiter.
+2. Blend 10 sekunder på høy.
+
+## 4. Visp + paste-metode (low-tech)
+En vanlig visp gir mindre skum, men med paste-metoden går det fint.
+
+**Slik:**
+1. Sikt 2 g matcha i en skål.
+2. Tilsett bare 15 ml vann.
+3. Visp med vispen til en glatt pasta (1 minutt).
+4. Tilsett sakte mer vann mens du visper.
+
+## 5. Lufttett krukke + risting
+Fungerer i nødstilfeller. Ikke ideelt — men hvis du ikke har verktøy:
+
+**Slik:**
+1. Ha 2 g siktet matcha + 60 ml vann i en krukke med lokk.
+2. Rist hardt i 30 sekunder.
+
+## Sammenligning
+| Verktøy | Skum | Hastighet | Pris | Anbefalt for |
+|---|---|---|---|---|
+| Chasen | ★★★★★ | Rask | 15–25 € | Purister, ceremonial |
+| Skummer | ★★★★ | Veldig rask | 10–20 € | Daglig bruk |
+| Shaker | ★★★ | Rask | 5–15 € | Iset matcha |
+| Blender | ★★★★ | Rask | 30 €+ | Smoothies, latter |
+| Visp | ★★ | Langsom | 3 € | Nødløsning |
+| Krukke | ★ | Rask | Gratis | På farten |
+
+## Når er en chasen verdt det?
+- Du drikker ren **ceremonial matcha** (usucha/koicha).
+- Du verdsetter ritualet.
+- Du vil ha latte art med fint mikroskum.
+
+For latter, iset matcha og daglig bruk er en skummer mer praktisk. Vårt [startsett](/product/starter-kit) inneholder både en chasen og et alternativ for den som vil eksperimentere.`,
+        faqs: [
+          { q: "Fungerer en gaffel til å vispe matcha?", a: "Marginalt. En gaffel har for liten kontaktflate til skum, men i en nødssituasjon bryter den klumper. En skummer eller shaker er alltid bedre." },
+          { q: "Er matcha uten chasen mindre god?", a: "Nei, smaken endres ikke. Bare teksturen — en chasen gir finere skum. Smaken avhenger av matcha-kvaliteten, vanntemperaturen og doseringen." },
+          { q: "Kan jeg bruke en ministavmikser?", a: "Ja, perfekt. En liten stavmikser eller melkeskummer (10–20 €) er et av de beste alternativene til en chasen — særlig til daglig bruk." },
+        ],
+      },
+    },
   },
   {
     slug: "matcha-tijdens-zwangerschap",
@@ -3100,6 +3393,64 @@ Stop bij twijfel en overleg met je verloskundige.`,
       { q: "Is matcha veilig tijdens borstvoeding?", a: "Ja, 1–2 koppen per dag worden algemeen als veilig beschouwd. Let op signalen bij je baby (onrust, slecht slapen) en bouw af bij twijfel." },
       { q: "Kan matcha foliumzuur tegenwerken?", a: "Bij normale consumptie (1 kop/dag) is het effect verwaarloosbaar. Praktische tip: neem je foliumzuursupplement 's avonds in en drink matcha in de ochtend." },
     ],
+    i18n: {
+      no: {
+        title: "Matcha under graviditet — hva sier vitenskapen?",
+        metaTitle: "Matcha og graviditet: trygt eller ikke? (Faglig fundert 2026)",
+        metaDescription: "Kan du drikke matcha under graviditet? Vi setter opp koffeingrenser, interaksjon med folsyre og anbefalinger fra jordmødre.",
+        excerpt: "Matcha inneholder koffein og katekiner som kan påvirke opptaket av folsyre. Dette er hva jordmødre og forskning sier om det.",
+        content: `## Kort konklusjon
+**Matcha er tillatt i begrensede mengder** under graviditet: maksimalt **1 kopp per dag**, helst om morgenen. Viktig: det teller med i ditt totale koffeininntak (maks 200 mg/dag ifølge offisielle anbefalinger).
+
+> Viktig: denne artikkelen er ikke medisinsk rådgivning. Rådfør deg alltid med jordmor eller lege om din situasjon.
+
+## Hvor mye koffein i en kopp matcha?
+| Tilberedning | Koffein |
+|---|---|
+| Usucha (1 g matcha) | ~35 mg |
+| Standardkopp (2 g) | ~70 mg |
+| Matcha latte (2 g) | ~70 mg |
+| Koicha (4 g) | ~130 mg |
+
+Til sammenligning: en kopp filterkaffe ligger på ~95 mg, en espresso på 65 mg. Les [matcha koffein](/kennis/matcha-cafeine) for den fullstendige sammenligningen.
+
+## Anbefalt norm: 200 mg koffein per dag
+For gravide kvinner gjelder et **maksimum på 200 mg koffein per dag**. En matcha-kopp på 2 g fyller omtrent 35 % av den normen. Så 1 kopp matcha + 1 kopp te + en bit mørk sjokolade passer fortsatt innenfor retningslinjen.
+
+## Folsyre og katekiner
+Matcha inneholder **EGCG** — en katekin som teoretisk kan hemme opptaket av folsyre. Dyrestudier viser dette ved svært høye doser. Ved normalt forbruk (1 kopp/dag) ser effekten ut til å være ubetydelig, **forutsatt at du ikke tar folsyretilskuddet samtidig med matchaen**.
+
+**Praktisk råd**: ta folsyre om kvelden, drikk matcha om morgenen.
+
+## L-theanin — en fordel
+L-theanin i matcha virker beroligende og kan forbedre søvnen — en velkommen egenskap ved graviditetsstress. I motsetning til kaffe gir matcha **ingen skarp koffeintopp**, noe som er mer behagelig for et følsomt system.
+
+## Hva med andre og tredje trimester?
+Fra trimester 2 øker koffeinfølsomheten hos mange kvinner. Det ufødte barnets lever bearbeider koffein langsommere. Noen jordmødre anbefaler i trimester 3 å trappe videre ned til **maksimalt 100 mg/dag** — det er 1 liten kopp matcha.
+
+## Alternativer med lite eller ingen koffein
+- **Hojicha** — ristet grønn te, bare ~7 mg koffein per kopp. Les om [hojicha](/kennis/hojicha-uitleg).
+- **Rooibos** — koffeinfri, antioksidanter.
+- **Genmaicha** — japansk riste, ~10 mg koffein.
+
+Vårt [hojicha-pulver](/product/hojicha-poeder-50g) er et populært alternativ for gravide matcha-fans.
+
+## Under amming
+Koffein går over i morsmelk i lavere konsentrasjon enn i blodet (~1 %). De fleste eksperter mener at 1–2 kopper matcha per dag under amming er greit, så lenge barnet ikke viser uro.
+
+## Signaler å være oppmerksom på
+- Raskere hjerterytme hos deg
+- Rastløshet eller dårlig søvn hos babyen (amming)
+- Kvalme som midlertidig forverres
+Stopp ved tvil og rådfør deg med jordmor.`,
+        faqs: [
+          { q: "Kan jeg drikke matcha i første trimester?", a: "I begrenset mengde (1 kopp/dag, ~70 mg koffein) anses det generelt som trygt. Rådfør deg med jordmor, særlig hvis du er følsom for koffein eller kvalm." },
+          { q: "Hvor mye matcha kan jeg ha under graviditet?", a: "Maksimalt 1 kopp standard matcha (2 g) per dag, og pass på det totale koffeininntaket fra alle kilder (maks 200 mg/dag)." },
+          { q: "Er matcha trygt under amming?", a: "Ja, 1–2 kopper per dag anses generelt som trygt. Vær oppmerksom på signaler hos babyen (uro, dårlig søvn) og trapp ned ved tvil." },
+          { q: "Kan matcha motvirke folsyre?", a: "Ved normalt forbruk (1 kopp/dag) er effekten ubetydelig. Praktisk tips: ta folsyretilskuddet om kvelden og drikk matcha om morgenen." },
+        ],
+      },
+    },
   },
   {
     slug: "matcha-vs-koffie",
@@ -3186,6 +3537,90 @@ Begin met een [starter kit](/product/starter-kit) — die bevat een goed culinar
       { q: "Geeft matcha echt geen crash?", a: "Bij normale dosering (1–2 g) inderdaad niet. L-theanine vertraagt cafeïne-afgifte. Bij zware koicha-dosering (4+ g) kan wel een lichte dip ontstaan." },
       { q: "Kan ik beide drinken op één dag?", a: "Ja, maar let op je totale cafeïne (max 400 mg/dag voor volwassenen). Een ochtendkoffie + middagmatcha is een populaire combinatie." },
     ],
+    i18n: {
+      no: {
+        title: "Matcha vs. kaffe — hva er best for deg?",
+        metaTitle: "Matcha vs. kaffe: koffein, energi og helse sammenlignet",
+        metaDescription: "Matcha eller kaffe? Vi sammenligner koffein, energikurve, helsefordeler, smak og pris — pluss når du bør velge hva.",
+        excerpt: "Matcha og kaffe gir begge energi, men på helt forskjellige måter. Her er den ærlige sammenligningen.",
+        content: `## Kort konklusjon
+**Kaffe** = skarp fokus, kort virkning, mulig krasj. **Matcha** = stabil fokus, lang virkning, ingen krasj. Til produktive timer og fokusarbeid vinner matcha. Til ren oppvåkning vinner kaffe.
+
+## Koffeinsammenligning
+| Drikk | Koffein | Virkning | Varighet |
+|---|---|---|---|
+| Espresso (30 ml) | 65 mg | Rask, skarp | 1–2 timer |
+| Filterkaffe (200 ml) | 95 mg | Rask | 2–3 timer |
+| Matcha latte (2 g) | 70 mg | Gradvis | 4–6 timer |
+| Ren matcha (2 g) | 70 mg | Gradvis | 4–6 timer |
+| Grønn te (200 ml) | 30 mg | Mild | 2–3 timer |
+
+## Hvorfor matcha ikke gir krasj
+Matcha inneholder **L-theanin** — en aminosyre som bare finnes i grønn te. L-theanin bremser koffeinopptaket og øker alfa-hjernebølger. Resultat: du føler **rolig, skarp fokus** i stedet for en nervøs topp.
+
+I kaffe mangler L-theanin. Koffein treffer systemet ditt direkte, gir en rask adrenalineffekt og faller skarpt etter 2 timer — "krasjet".
+
+## Energikurve grafisk
+**Kaffe:** ▁▂▆█▇▅▃▁ — rask topp, raskt fall.
+**Matcha:** ▁▃▅▆▆▆▅▄▃ — gradvis oppbygging, stabilt platå.
+
+## Helsefordeler
+**Matcha** vinner på:
+- Antioksidanter (137x mer EGCG enn grønn te)
+- L-theanin for fokus
+- Ingen tannmisfarging
+- Mildere på magen
+- Mer stabilt blodsukker
+
+**Kaffe** vinner på:
+- Høyere koffeintopp (nyttig tidlig om morgenen)
+- Billigere per kopp
+- Bredere tilgjengelighet
+
+## Når matcha, når kaffe?
+| Tidspunkt | Bedre |
+|---|---|
+| 06:00 oppvåkning | Kaffe |
+| 09:00 fokusarbeid | Matcha |
+| Før trening | Begge — kaffe raskere, matcha lengre |
+| Etter lunsj | Matcha (ingen ettermiddagsdupp) |
+| Møte | Matcha (rolig-våken) |
+| Lesing | Matcha |
+| Sosial anledning | Begge |
+
+## Smak
+**Kaffe:** bitter, robust, ristet. Hundrevis av smaksprofiler avhengig av bønner, brenning og tilberedning.
+**Matcha:** søt, kremet, umami, gressaktig. Enklere profil, men dypere og delikat.
+
+## Pris per kopp
+- **Filterkaffe**: 0,15–0,30 €
+- **Espresso (hjemme)**: 0,25–0,40 €
+- **Matcha (ceremonial)**: 0,60–1,20 €
+- **Matcha (culinary)**: 0,30–0,50 €
+
+Matcha er dyrere, men én god kopp kan erstatte en kaffe + en ettermiddagsdupp-snack.
+
+## Kan du gå over fra kaffe til matcha?
+Ja, men forvent en tilvenningsperiode:
+- **Uke 1:** mulig lett hodepine (koffeinabstinens).
+- **Uke 2:** stabil fokus, bedre søvn.
+- **Uke 3+:** forskjellen tydelig merkbar.
+
+Tips: start med **matcha om morgenen, kaffe av og til** — ikke gå 100 % over med en gang.
+
+## Hybrid: kaffe + matcha
+Noen kombinerer: **matcha som morgendrikk, espresso senere** for variasjon. Eller en "dirty matcha" — matcha latte med en shot espresso.
+
+## Hvilken matcha hvis du nettopp har startet?
+Start med et [startsett](/product/starter-kit) — det inneholder en god culinary-blanding, chasen og skål. Eller prøv først vår [iset matcha-blanding](/product/iced-matcha-blend-60g) hvis du mest drikker latter.`,
+        faqs: [
+          { q: "Har matcha mer koffein enn kaffe?", a: "Nei. En kopp matcha inneholder 60–70 mg koffein, en kopp filterkaffe 90–100 mg. Matcha føles sterkere fordi den virker lenger og mer stabilt." },
+          { q: "Er matcha sunnere enn kaffe?", a: "For de fleste ja — matcha har flere antioksidanter, gir mindre mageplager og sørger for mer stabil energi. Men kaffe er også helt greit for friske mennesker." },
+          { q: "Gir matcha virkelig ingen krasj?", a: "Ved normal dosering (1–2 g) faktisk ikke. L-theanin bremser koffeinfrigjøringen. Ved tung koicha-dosering (4+ g) kan det oppstå en lett dupp." },
+          { q: "Kan jeg drikke begge på én dag?", a: "Ja, men pass på det totale koffeininntaket (maks 400 mg/dag for voksne). En morgenkaffe + ettermiddagsmatcha er en populær kombinasjon." },
+        ],
+      },
+    },
   },
   {
     slug: "matcha-en-afvallen",
@@ -3255,6 +3690,73 @@ Lees ook [matcha cafeïne](/kennis/matcha-cafeine) en [13 gezondheidsvoordelen](
       { q: "Wanneer is de beste tijd om matcha te drinken voor afvallen?", a: "20–30 minuten voor beweging. EGCG circuleert dan in je systeem tijdens vetverbranding. Drink niet na 16:00 om slaap te beschermen." },
       { q: "Moet ik matcha-supplementen nemen?", a: "Liever niet zonder reden. Hoog gedoseerde EGCG-supplementen kunnen leverbelasting geven. Drinken van matcha is veiliger en lekkerder." },
     ],
+    i18n: {
+      no: {
+        title: "Matcha og vektnedgang — hva sier forskningen egentlig?",
+        metaTitle: "Matcha og vektnedgang: virker det? (Vitenskapelig fundert)",
+        metaDescription: "Hjelper matcha med vektnedgang? Vi oppsummerer 12+ studier om EGCG, fettforbrenning og stoffskifte — pluss realistiske forventninger.",
+        excerpt: "Matcha selges ofte som et slankemiddel. Sannheten er mer nyansert — det hjelper, men bare under bestemte forutsetninger.",
+        content: `## Kort konklusjon
+Matcha kan øke fettforbrenningen med **3–4 % under aktivitet**, særlig på grunn av EGCG og koffein. I seg selv forårsaker det ikke betydelig vektnedgang — men det gjør det som støtte til kosthold og trening.
+
+## Hva sier forskningen?
+**EGCG (epigallokatekingallat)** er hovedspilleren. En metaanalyse fra 2009 (Hursel et al.) av 11 studier fant at grønn te-katekiner + koffein ga **i snitt 1,3 kg vektnedgang per 12 uker** sammenlignet med placebo — ved samme kosthold.
+
+En studie i *Journal of the International Society of Sports Nutrition* (2018) viste at matcha-ekstrakt økte fettforbrenningen under gange med **17 %** sammenlignet med placebo.
+
+Viktig nyanse: studiene bruker ofte **500–1000 mg EGCG per dag** — tilsvarende **3–5 kopper matcha**. Ved 1 kopp per dag er effektene mindre.
+
+## Hvordan matcha støtter fettforbrenning
+1. **EGCG hemmer enzymer** som fremmer fettlagring.
+2. **Koffein** øker hvilestoffskiftet med ~3–5 %.
+3. **Sammen** forsterker de hverandre (synergi).
+4. **L-theanin** reduserer stress, noe som senker kortisol — kortisol fremmer magefett.
+
+## Realistiske forventninger
+| Scenario | Forventet effekt |
+|---|---|
+| 1 kopp matcha/dag, ingen kostholdsendring | Ubetydelig |
+| 2 kopper + 30 min gange/dag | -1 til -2 kg på 3 måneder |
+| 2 kopper + kosthold + trening | Øker vekttapet med ~15 % |
+| Matcha erstatter sukkerlatte | -3 til -5 kg/år (sukkereliminering) |
+
+**Det viktigste slanketrikset:** matcha latte (usøtet) som erstatning for **søtede kaffer, frappuccinoer eller brus**. Det er der den store gevinsten ligger.
+
+## Beste tidspunkter for å drikke matcha for vektnedgang
+- **20–30 min før trening** — EGCG sirkulerer da under aktivitet.
+- **Mellom måltider** — demper appetitten mildt.
+- **Ikke** før leggetid — forstyrrer restitusjonen.
+
+## Hvorfor folk feiler med "matcha-dietter"
+1. **For søt matcha**: matcha latte med sirup = 200+ kcal, opphever effekten.
+2. **Urealistisk**: 1 kopp = magisk. Tull — det er en støtte.
+3. **Ingen kaloriunderskudd**: uten kostholdsjustering forbrenner du ikke mer enn du spiser.
+
+## Det beste protokollet for vektnedgang
+1. **2 kopper matcha per dag**: 1 om morgenen, 1 før ettermiddagsøkten.
+2. **Usøtet**: vann eller plantemelk, ingen sukker.
+3. **Bevegelse**: minimum 30 min/dag (gange teller).
+4. **Proteinrikt kosthold**: matcha erstatter ikke mat.
+
+For ren matcha er [ceremonial grade](/product/ceremonial-matcha-100g) ideelt. For latter [culinary matcha](/product/culinary-matcha-100g) — kostnadseffektiv og robust.
+
+## Hva med "matcha tea before bed for weight loss"?
+TikTok-trend. **Dårlig tips** — koffein forstyrrer søvnen, dårlig søvn øker kortisol, og kortisol fremmer nettopp magefett. Drikk matcha før kl. 16.
+
+## Bivirkninger å være oppmerksom på
+- **Høy dose EGCG** (>800 mg/dag, tilskudd) kan belaste leveren.
+- Ved 1–3 kopper matcha per dag er dette ingen risiko.
+- **Mageplager**: drikk ikke matcha på tom mage hvis du har følsom mage.
+
+Les også [matcha koffein](/kennis/matcha-cafeine) og [13 helsefordeler](/kennis/matcha-gezondheidsvoordelen) for den bredere konteksten.`,
+        faqs: [
+          { q: "Hvor mye kan du gå ned i vekt med matcha?", a: "Ved 2 kopper per dag i kombinasjon med et lett kaloriunderskudd og bevegelse: realistisk 1–2 kg ekstra per 12 uker, utover det du ville gått ned uten matcha." },
+          { q: "Virker matcha som appetittdemper?", a: "Mildt. EGCG og koffein gir en lett metthetsfølelse, men det er ingen erstatning for et godt strukturert kosthold." },
+          { q: "Når er det beste tidspunktet for å drikke matcha for vektnedgang?", a: "20–30 minutter før bevegelse. EGCG sirkulerer da i systemet under fettforbrenningen. Drikk ikke etter kl. 16 for å beskytte søvnen." },
+          { q: "Bør jeg ta matcha-tilskudd?", a: "Helst ikke uten grunn. Høydoserte EGCG-tilskudd kan belaste leveren. Å drikke matcha er tryggere og bedre på smak." },
+        ],
+      },
+    },
   },
   {
     slug: "matcha-en-slaap",
@@ -3327,6 +3829,76 @@ Voor de complete cafeïne-info zie [matcha cafeïne](/kennis/matcha-cafeine).`,
       { q: "Helpt L-theanine in matcha bij slapen?", a: "L-theanine kan ontspanning bevorderen, maar matcha bevat ook cafeïne — die werkt slaap juist tegen. Voor de slaapondersteuning zonder cafeïne: kies een L-theanine-supplement of hojicha." },
       { q: "Mag ik matcha drinken vlak voor sporten 's avonds?", a: "Beter niet. De cafeïne werkt nog 6+ uur door en kan slaap verstoren. Ben je 's avonds sportief, drink matcha dan voor de lunch en geen daarna." },
     ],
+    i18n: {
+      no: {
+        title: "Matcha og søvn — når er det på tide å slutte?",
+        metaTitle: "Matcha og søvn: hvor sent kan du drikke? (Koffeinkurve)",
+        metaDescription: "Holder matcha deg våken? Lær når du kan ta den siste koppen — pluss hvordan L-theanin faktisk kan støtte søvnen.",
+        excerpt: "Matcha inneholder koffein, men reglene for kveldskonsum er annerledes enn for kaffe. Dette er den komplette guiden.",
+        content: `## Kort konklusjon
+Drikk den siste matchaen **8–10 timer før leggetid** — konkret: **før kl. 14 hvis du legger deg kl. 22**. L-theanin kan til og med støtte søvnen, men bare hvis koffeinet er ute av kroppen innen den tid.
+
+## Koffeinets halveringstid forklart
+Koffein har en halveringstid på **5–6 timer**. Det betyr: 6 timer etter en kopp matcha (70 mg) er det fortsatt 35 mg i systemet ditt. Etter 12 timer fortsatt ~17 mg.
+
+**Koffeinkurve etter 1 kopp matcha (70 mg):**
+| Tid etter kopp | Koffein i kroppen |
+|---|---|
+| 30 min | ~50 mg (topp) |
+| 2 timer | ~60 mg |
+| 6 timer | ~35 mg |
+| 10 timer | ~17 mg |
+| 14 timer | ~9 mg |
+
+Ved 17 mg er det for de fleste ingen merkbar effekt — men **koffeinfølsomme søvnere** kjenner det noen ganger til 12 timer etter inntak.
+
+## Hvor sent er "for sent"?
+| Leggetid | Siste matcha |
+|---|---|
+| 22:00 | 14:00 |
+| 23:00 | 15:00 |
+| 00:00 | 16:00 |
+| Koffeinfølsom | 4 timer tidligere enn over |
+
+## Gir matcha færre søvnproblemer enn kaffe?
+Ja, i gjennomsnitt. To grunner:
+1. **L-theanin** i matcha fremmer avslapping og kan forbedre søvnkvaliteten.
+2. **Koffein frigjøres mer gradvis** — ingen skarp topp som etterklinger 6 timer senere.
+
+En studie fra 2017 (*Journal of Functional Foods*) viste at L-theanin + lav koffeindose (matcha-aktig) **ikke forstyrret REM-søvnen betydelig**, mens rent koffein (espresso) gjorde det.
+
+## Kveldsrutine med matcha-alternativer
+Lyst på noe varmt før leggetid uten koffein?
+- **Hojicha** — ristet grønn te, bare ~7 mg koffein per kopp. Les om [hojicha](/kennis/hojicha-uitleg).
+- **Genmaicha** — japansk riste, ~10 mg koffein, hjertelig og betryggende.
+- **Rent L-theanin-tilskudd** — noen tar 200 mg L-theanin før leggetid for avslapping uten koffein.
+
+Vårt [hojicha-pulver](/product/hojicha-poeder-50g) er for mange det ideelle kveldsalternativet.
+
+## Hva hvis du drikker matcha sent?
+- **Å sovne** tar i snitt 10–30 min lengre.
+- **Dyp søvn** reduseres med 5–10 %.
+- **REM-søvn** forskyves til senere på natten.
+- Resultat: du føler deg mindre uthvilt om morgenen, selv om du sov 8 timer.
+
+## Koffeinfølsomhet varierer
+Noen metaboliserer koffein raskt (CYP1A2-enzym): ikke noe problem med matcha kl. 17. Andre langsomt: selv matcha kl. 12 forstyrrer. I tvil? Logg forbruket og søvnkvaliteten i en uke for å se.
+
+## Tips for bedre kombinasjon av matcha og søvn
+1. **Drikk den siste matchaen før kl. 14**.
+2. **Drikk vann om kvelden** — koffein virker uttørkende.
+3. **Magnesiumrikt måltid** om kvelden — motvirker uro.
+4. **Bytt kveldsmatcha med hojicha** — samme ritual, ingen søvneffekt.
+5. **Ingen sukker i matcha latte** — topper i blodsukkeret forstyrrer søvnen.
+
+For den komplette koffein-infoen, se [matcha koffein](/kennis/matcha-cafeine).`,
+        faqs: [
+          { q: "Hvor sent kan du drikke matcha?", a: "Som tommelfingerregel: 8–10 timer før leggetid. Ved leggetid kl. 22 er kl. 14 den siste matchaen. Koffeinfølsomme søvnere bør ta den 2–4 timer tidligere." },
+          { q: "Hjelper L-theanin i matcha med søvnen?", a: "L-theanin kan fremme avslapping, men matcha inneholder også koffein — som motvirker søvn. For søvnstøtte uten koffein: velg et L-theanin-tilskudd eller hojicha." },
+          { q: "Kan jeg drikke matcha rett før kveldstrening?", a: "Helst ikke. Koffeinet virker fortsatt i 6+ timer og kan forstyrre søvnen. Hvis du trener om kvelden, drikk matcha før lunsj og ikke etterpå." },
+        ],
+      },
+    },
   },
   {
     slug: "matcha-en-sport",
@@ -3424,6 +3996,101 @@ Lees ook [matcha en afvallen](/kennis/matcha-en-afvallen) voor het bredere afsla
       { q: "Matcha of koffie als pre-workout?", a: "Voor cardio, yoga en lange duurtraining is matcha beter door stabiele energie en EGCG. Voor explosieve krachttraining werkt koffie sneller." },
       { q: "Geeft matcha een energieboost zoals een pre-workout supplement?", a: "Niet zo intens. Pre-workout supplementen bevatten vaak 250+ mg cafeïne plus stimulanten. Matcha geeft 70 mg met L-theanine — minder piek, meer stabiliteit." },
     ],
+    i18n: {
+      no: {
+        title: "Matcha og trening — den naturlige pre-workouten",
+        metaTitle: "Matcha som pre-workout: dosering, timing og effekter",
+        metaDescription: "Matcha som naturlig pre-workout: hvor mye, når og hvilke effekter på utholdenhet og fettforbrenning. Inkludert oppskrifter.",
+        excerpt: "Matcha gir stabil energi uten mageplager — perfekt som alternativ til pre-workout-tilskudd. Slik bruker du den.",
+        content: `## Kort konklusjon
+**2 g matcha, 20–30 minutter før trening** gir stabil energi, øker fettforbrenningen med 17 % (ifølge en studie fra 2018) og gir mental fokus uten pre-workout-jitters.
+
+## Hvorfor matcha fungerer som pre-workout
+Tre ingredienser i matcha forsterker treningsprestasjonen:
+
+1. **Koffein** (~70 mg per kopp) — øker utholdenheten 2–5 %, reduserer opplevd anstrengelse.
+2. **L-theanin** — beroliger nervesystemet; ingen "jittery" følelse.
+3. **EGCG** — øker fettforbrenningen under kondisjonstrening.
+
+I motsetning til syntetiske pre-workouts (250+ mg koffein) unngår matcha overstimulering.
+
+## Hvilke idretter passer matcha til?
+| Idrett | Effekt | Anbefaling |
+|---|---|---|
+| Gange / kondisjon | EGCG fettforbrenning | ★★★★★ |
+| Løping | Utholdenhet | ★★★★ |
+| Sykling | Fokus + energi | ★★★★ |
+| Yoga / pilates | L-theanin ro | ★★★★★ |
+| Styrketrening | Mild — mindre enn pre-workout | ★★★ |
+| Sprint / eksplosivt | Ikke ideelt — ingen power-boost | ★★ |
+
+## Timing
+- **20–30 min før lett/moderat kondisjon**: ideelt.
+- **45 min før intensiv trening**: koffeintoppen treffer da andre halvdel av økten.
+- **På tom mage**: maksimerer fettforbrenningen (bare ved god mage).
+
+## Dosering
+| Mål | Mengde |
+|---|---|
+| Yoga / lett kondisjon | 1–1,5 g |
+| Standard økt | 2 g |
+| Lang utholdenhetstrening (10+ km) | 2–3 g |
+| Konkurranse / løp >1t | Ikke matcha — velg sportsdrikk |
+
+Over 3 g matcha kan gi sure oppstøt ved følsom mage.
+
+## Pre-workout-oppskrifter
+
+**Klassisk (fettforbrenningsfokus):**
+- 2 g matcha
+- 30 ml vann (75 °C)
+- 200 ml vann eller cold brew
+- Ingen sukker
+
+**Energiboost (lang varighet):**
+- 2 g matcha
+- Banan (blandet)
+- 200 ml havremelk
+- 1 ts honning
+
+**Iset matcha pre-workout:**
+- 2 g [iset matcha-blanding](/product/iced-matcha-blend-60g)
+- 250 ml kaldt vann
+- 1 klype Himalaya-salt (elektrolytt)
+- Is
+
+## Etter trening
+Matcha er **ingen ideell post-workout-drikk** — ingen karbohydrater eller protein til restitusjon. Etter trening: proteinshake eller -måltid. En matcha latte 1–2 timer etter trening kan derimot fungere som en "andre fokustopp" for kvelden.
+
+## Matcha vs. kaffe som pre-workout
+| Aspekt | Matcha | Kaffe |
+|---|---|---|
+| Energikurve | Stabil | Topp + krasj |
+| Mageplager | Sjelden | Oftere |
+| Fettforbrenning | + EGCG | Bare koffein |
+| Fokus | Rolig-våken | Skarp |
+| Effektvarighet | 4–6 timer | 2–3 timer |
+
+For turer eller yoga **vinner matcha**. For tung styrketrening tidlig om morgenen **kan kaffe gjøre jobben raskere**.
+
+## Hva med matcha til konkurranser?
+- **Mosjonskonkurranser** (10K, halvmaraton): matcha 30 min før start fungerer fint.
+- **Konkurranse**: kombiner matcha med en sportsgel halvveis for en karbohydrattopp.
+- **Noe nytt på konkurransedagen?** Aldri — test alltid på forhånd.
+
+## Sikkerhet og bivirkninger
+- **Hjerterytmeforstyrrelser?** Rådfør deg med lege.
+- **Høyt blodtrykk?** Begrens til 1 kopp pre-workout.
+- **Graviditet + trening?** Les [matcha under graviditet](/kennis/matcha-tijdens-zwangerschap).
+
+Les også [matcha og vektnedgang](/kennis/matcha-en-afvallen) for det bredere slankeprotokollet.`,
+        faqs: [
+          { q: "Hvor mye matcha til pre-workout?", a: "Standard 2 gram (1 teskje), 20–30 minutter før økten. For lang utholdenhetstrening kan 2,5–3 g, for lett yoga 1–1,5 g." },
+          { q: "Matcha eller kaffe som pre-workout?", a: "For kondisjon, yoga og lang utholdenhetstrening er matcha bedre på grunn av stabil energi og EGCG. For eksplosiv styrketrening virker kaffe raskere." },
+          { q: "Gir matcha en energiboost som et pre-workout-tilskudd?", a: "Ikke like intens. Pre-workout-tilskudd inneholder ofte 250+ mg koffein pluss stimulanter. Matcha gir 70 mg med L-theanin — mindre topp, mer stabilitet." },
+        ],
+      },
+    },
   },
   {
     slug: "beste-matcha-kopen-2026",
@@ -3521,6 +4188,102 @@ Begin met een **kleinere 30 g verpakking** (€18–€25). Test puur en in latt
       { q: "Waar koop ik authentieke Japanse matcha in Nederland?", a: "Kies een specialist die regio, oogstdatum en grade transparant communiceert. YourMatcha betrekt direct uit Uji — lees onze herkomst-pagina voor de keten." },
       { q: "Kan ik matcha in de supermarkt kopen?", a: "Het bestaat, maar de kwaliteit is meestal cooking-grade en het poeder is vaak al oud. Voor pure matcha zoek je beter een specialist op." },
     ],
+    i18n: {
+      no: {
+        title: "Kjøpe den beste matchaen i 2026 — kjøpsguide",
+        metaTitle: "Kjøpe den beste matchaen 2026: uavhengig kjøpsguide",
+        metaDescription: "På jakt etter den beste matchaen? Vi hjelper deg å velge ut fra kvalitet, pris og bruk. Inkludert sjekkliste mot falske påstander og bærekraftig opprinnelse.",
+        excerpt: "Ikke all matcha er ekte matcha. Dette er hva du bør se etter for autentisk japansk matcha, og hvilke typer som passer til hvilken bruk.",
+        category: "Kjøpe",
+        content: `## I et øyekast
+- **Ekte matcha kommer fra Japan** (Uji, Nishio, Kagoshima). Kinesisk "matcha" er som regel malt sencha — et helt annet produkt.
+- **Farge er indikator nr. 1**: klar jadegrønn = fersk, matt oliven = gammel eller lav kvalitet.
+- **Ceremonial** for ren matcha, **culinary** for latter og baking.
+- Forvent **0,50–1 € per gram** for god ceremonial.
+
+## De 7 kjøpskriteriene
+### 1. Opprinnelse (Japan, med region)
+Autentisk matcha kommer fra én av disse japanske regionene:
+- **Uji** (Kyoto) — det historiske hjertet, premium-nivå
+- **Nishio** (Aichi) — størst produksjon, ofte litt rundere
+- **Kagoshima** (Sør-Japan) — mer moderne dyrking, lett umami
+- **Shizuoka** — hovedsakelig culinary
+
+Unngå matcha med uklar "Asian origin". Vår [matcha kommer direkte fra Uji](/herkomst).
+
+### 2. Farge
+Hold posen mot lyset (eller se på et bilde av selve pulveret, ikke et lifestyle-bilde):
+- **Klar, livlig jadegrønn** = fersk, høy kvalitet
+- **Gulgrønn** = lavere kvalitet eller senhøst
+- **Oliven / brungrønn** = gammel, oksidert
+
+### 3. Grade (velg etter bruk)
+| Bruk | Anbefalt grade |
+|---|---|
+| Ren matcha (chasen + vann) | Ceremonial |
+| Premium latte | Premium ceremonial |
+| Daglig latte | Culinary |
+| Baking og matlaging | Culinary |
+| Iset og smoothies | Iset/culinary-blanding |
+
+Full forklaring i [ceremonial vs. culinary matcha](/kennis/ceremonial-vs-culinary-matcha).
+
+### 4. Høst (ichibancha = best)
+**Ichibancha** er årets første høst (mai) — de yngste bladene, høyest L-theanin. En god selger oppgir dette. **Nibancha** (andre høst) er bra, men mindre forfinet.
+
+### 5. Emballasje
+- **Lystett**: aluminiumspose eller metallboks — ikke gjennomsiktig plast.
+- **Størrelse**: 30 g hvis du drikker <1 kopp/dag, 100 g hvis du drikker daglig.
+- **Produksjons- og holdbarhetsdato** synlig.
+
+### 6. Pris (retningslinje 2026)
+| Nivå | Pris/gram | For hvem |
+|---|---|---|
+| Budsjett culinary | 0,15–0,30 € | Baking, smoothies |
+| Premium culinary | 0,30–0,50 € | Daglig latte |
+| Standard ceremonial | 0,50–0,80 € | Ren matcha hjemme |
+| Premium ceremonial | 0,80–1,50 € | Spesielle anledninger |
+| Competitive grade | 2 €+ | Entusiaster, seremoni |
+
+Matcha under 0,15 €/g fra Japan er nesten helt sikkert gammel eller blandet.
+
+### 7. Anmeldelser og åpenhet
+En god selger viser:
+- Bilde av selve pulveret (ikke bare latte-bilder)
+- Spesifikk høstdato og region
+- Ærlige anmeldelser (ikke 100 % 5 stjerner — det er mistenkelig)
+
+## Hvilken matcha hvis du nettopp har startet?
+For den som nettopp begynner, er et **startsett** smartest — du får alt du trenger med en gang (matcha, chasen, skål).
+
+- **[Startsett](/product/starter-kit)** — for den som vil lære å lage matcha hjemme
+- **[Premium ritual set](/product/premium-ritual-set)** — som gave eller for entusiaster
+- **[Discovery tea box](/product/discovery-tea-box)** — for den som vil smake ulike matcha-typer
+
+## Har du en bestemt bruk?
+- **Latte-fan**: [culinary matcha 100g](/product/culinary-matcha-100g)
+- **Ren matcha**: [ceremonial 30g](/product/ceremonial-matcha-30g) (for å prøve) eller [100g](/product/ceremonial-matcha-100g)
+- **Iset-fan**: [iset matcha-blanding](/product/iced-matcha-blend-60g)
+- **Gave**: [gift box](/product/gift-box)
+
+## Røde flagg — unngå disse
+- "Matcha av asiatisk opprinnelse" uten region
+- Uforklarlig lav pris (<0,15 €/g)
+- Ingen høstdato
+- Gjennomsiktig emballasje
+- Knallgrønn farge som er for klar til å være sann (tilsatt fargestoff)
+- Smak som aldri er umami, bare bitter/gressaktig
+
+## Smak først, invester etterpå
+Start med en **mindre 30 g-pakke** (18–25 €). Test ren og i latte. Først når du vet hva din smak er, kjøper du en større pose. Matcha mister raskt kvalitet så snart posen er åpnet — les [oppbevare matcha](/kennis/matcha-bewaren).`,
+        faqs: [
+          { q: "Hva koster god matcha?", a: "For autentisk japansk ceremonial matcha betaler du 0,50–1 € per gram. Culinary grade ligger rundt 0,30–0,50 €/g. Under 0,15 €/g er nesten alltid gammel eller blandet." },
+          { q: "Er dyr matcha virkelig bedre?", a: "Opptil et visst punkt ja. Opptil ~1 €/g ser og smaker du tydelig forskjell. Over 1,50 €/g gir det avtakende avkastning — særlig relevant for entusiaster." },
+          { q: "Hvor kjøper jeg autentisk japansk matcha?", a: "Velg en spesialist som kommuniserer region, høstdato og grade åpent. YourMatcha henter direkte fra Uji — les opprinnelsessiden vår for kjeden." },
+          { q: "Kan jeg kjøpe matcha i butikken?", a: "Det finnes, men kvaliteten er som regel cooking-grade og pulveret er ofte allerede gammelt. For ren matcha bør du heller oppsøke en spesialist." },
+        ],
+      },
+    },
   },
   {
     slug: "matcha-prijs-uitleg",
@@ -3621,6 +4384,105 @@ Lees ook [beste matcha kopen](/kennis/beste-matcha-kopen-2026) voor de complete 
       { q: "Is dure matcha echt beter?", a: "Tot ongeveer €1 per gram zie en proef je het verschil duidelijk. Boven dat punt zijn de winsten subtiel — vooral voor liefhebbers en speciale momenten." },
       { q: "Kan goedkope matcha gevaarlijk zijn?", a: "Niet direct gevaarlijk, maar wel vaak oud (oxidatie, geen voedingsvoordelen meer) of vermengd met goedkopere groene thee. Voor gezondheidsvoordelen kies je een tier met aantoonbare herkomst." },
     ],
+    i18n: {
+      no: {
+        title: "Hvorfor er god matcha så dyr? — Prisen forklart",
+        metaTitle: "Matchaprisen forklart: hvorfor god matcha er dyr (2026)",
+        metaDescription: "0,15 til 2 € per gram — hvorfor er det så stor forskjell i matchapris? Vi forklarer produksjonskjeden, høsten og kvalitetsnivåene.",
+        excerpt: "Matcha kan koste 15 eller 150 € per 100 gram. Her er hva den prisforskjellen konkret betyr — fra den japanske åkeren til skålen din.",
+        category: "Kjøpe",
+        content: `## Hvorfor er matcha dyrere enn annen te?
+Tre grunner:
+
+1. **Arbeidsintensiv prosess** — 1 times steinmaling gir 30 gram pulver.
+2. **Premium-høst** — bare de tre yngste bladene (ichibancha) brukes til ceremonial.
+3. **Skyggelegging** — 20 dagers ekstra arbeid og risiko før høsten, for høyere klorofyll/L-theanin.
+
+Vanlig grønn te = plukke blad, tørke, pakke. Matcha = skyggelegge, plukke, dampe, tørke, fjerne stilker, male. Ti ganger mer arbeid.
+
+## Produksjonskjeden
+| Trinn | Tid | Hva |
+|---|---|---|
+| Skyggelegging | 20 dager | Duk over plantene — øker aminosyrer |
+| Håndplukking | 1 dag | Bare de tre yngste bladene |
+| Damping | 30 sek | Stopp oksidasjon innen 4 timer |
+| Tørking | Timer | Til tencha (grunnlaget for matcha) |
+| Stilkfjerning | Maskinelt | Fjerne stilker og nerver |
+| Steinmølle | 1 time per 30 g | Granitt ishi-usu, kald maling |
+
+## Prisnivå-oversikt (per 100 g, 2026)
+| Nivå | Pris | Forklaring |
+|---|---|---|
+| **Cooking grade** | 5–15 € | Senhøst, ofte kinesisk eller blandet |
+| **Culinary** | 15–35 € | Ekte japansk matcha, for latter |
+| **Standard ceremonial** | 35–80 € | Første høst, egnet ren |
+| **Premium ceremonial** | 80–150 € | Utvalgte åkre, mer kompleks smak |
+| **Competitive grade** | 150–400 €+ | Konkurransekvalitet, entusiaster |
+
+## Hvorfor er det så stor forskjell?
+**1. Høsttidspunkt**
+- **Ichibancha** (første, mai) — dyrest, yngste blader
+- **Nibancha** (juni) — mer robust, mindre L-theanin
+- **Sanbancha** (juli) — ofte bare til culinary
+
+**2. Skyggeleggingens varighet**
+- 0 dager = sencha (ikke matcha)
+- 14 dager = nedre grense for matcha
+- 20+ dager = ceremonial
+
+Lengre skyggelagt = dyrere (mer risiko for mugg og sykdommer).
+
+**3. Steinmølle vs. kulemølle**
+Ceremonial matcha males **tradisjonelt med granittstein** — kaldt (35 °C) og langsomt (1 time for 30 g). Billig matcha bruker **kulemøller** (maskin) som blir varmere og reduserer de fine aromaene.
+
+**4. Region**
+- **Uji** (Kyoto) — premium-prispunkt på grunn av århundrelang anseelse
+- **Nishio** (Aichi) — sammenlignbar kvalitet, ofte ~20 % lavere
+- **Kagoshima** — mer moderne dyrking, lavere prispunkter mulig
+
+## Hvordan gjenkjenner du matcha med god verdi for pengene?
+Ikke dyrere = alltid bedre. En god **standard ceremonial fra Nishio** kan være bedre enn en dyr premium fra en ukjent åker.
+
+**Tre tester:**
+1. **Bilde av selve pulveret**: klar jadegrønn?
+2. **Smak**: søt, umami, ingen bitterhet?
+3. **Tekstur**: ekstremt fin (talkum-aktig) eller kornete?
+
+## Når er dyrere verdt det?
+| Scenario | Lønner investeringen seg? |
+|---|---|
+| Daglig latte | Nei — velg culinary |
+| Ren matcha 1x i uken | Ja — velg ceremonial |
+| Daglig ren matcha | Ja — premium ceremonial |
+| Gave | Ja — premium ceremonial |
+| Baking | Nei — culinary er fint |
+| Iset matcha | Nei — spesiell [iset blanding](/product/iced-matcha-blend-60g) |
+
+## Billig vs. dyr — konkret smaksforskjell
+| Aspekt | Billig (15 €/100g) | Dyr (80 €/100g) |
+|---|---|---|
+| Farge | Gulgrønn, matt | Klar jade |
+| Tørr lukt | Gressaktig, papiraktig | Søt, marin, umami |
+| Smak ren | Bitter, flat | Kremet, søt, kompleks |
+| Bitterhet | Sterk | Knapt merkbar |
+| Tekstur | Kornete i munnen | Kremet, fløyelsmyk |
+
+## Hvor mye matcha kan du forvente per €?
+| Budsjett | Gir deg |
+|---|---|
+| 20 € | 30 g standard ceremonial (≈15 kopper) |
+| 40 € | 100 g culinary (≈50 kopper) eller 50 g ceremonial |
+| 80 € | 100 g standard ceremonial (≈50 kopper) |
+| 150 € | 100 g premium ceremonial eller et komplett [ritual set](/product/premium-ritual-set) |
+
+Les også [kjøpe den beste matchaen](/kennis/beste-matcha-kopen-2026) for den komplette kjøpsguiden.`,
+        faqs: [
+          { q: "Hvorfor er matcha dyrere enn vanlig te?", a: "Produksjonsprosessen er ti ganger mer arbeidsintensiv: skyggelegging, håndplukking, damping, tørking og timer med steinmaling. Per gram ligger det betydelig mer arbeid i den enn i løs bladte." },
+          { q: "Er dyr matcha virkelig bedre?", a: "Opptil omtrent 1 € per gram ser og smaker du forskjellen tydelig. Over det punktet er gevinstene subtile — særlig for entusiaster og spesielle anledninger." },
+          { q: "Kan billig matcha være farlig?", a: "Ikke direkte farlig, men ofte gammel (oksidasjon, ingen næringsfordeler igjen) eller blandet med billigere grønn te. For helsefordeler velger du et nivå med dokumentert opprinnelse." },
+        ],
+      },
+    },
   },
   {
     slug: "matcha-cadeau-ideeen",
@@ -3705,6 +4567,89 @@ Lees ook [beste matcha kopen 2026](/kennis/beste-matcha-kopen-2026) voor de comp
       { q: "Is matcha een geschikt cadeau voor iemand die geen thee drinkt?", a: "Verrassend vaak ja, vooral voor koffieverlaters. Een matcha latte voelt anders dan thee. Een starterskit met culinary matcha is een veilige instap." },
       { q: "Hoe lang is matcha houdbaar als cadeau?", a: "Ongeopend 12 maanden. Wel altijd in originele verpakking laten — geopende matcha verliest binnen 4–6 weken kwaliteit." },
     ],
+    i18n: {
+      no: {
+        title: "Matcha-gaveideer — originalt for ethvert budsjett (2026)",
+        metaTitle: "Matcha-gaveideer: 12 originale gaver (ethvert budsjett)",
+        metaDescription: "På jakt etter en unik matcha-gave? Fra en chasen til 15 € til et komplett ritual set til 120 € — vi hjelper deg å velge for entusiaster og nysgjerrige.",
+        excerpt: "Matcha er en personlig gave som sier: jeg tenker på ditt velvære. Her er tolv ideer, sortert etter budsjett og mottaker.",
+        category: "Kjøpe",
+        content: `## Hvem er matcha en god gave til?
+- **Nybegynner**: et komplett startsett så de kan komme i gang med en gang.
+- **Den som slutter med kaffe**: matcha som alternativ med L-theanin for stabil fokus.
+- **Helsebevisst**: antioksidanter + ritual.
+- **Løper/yogi**: pre-workout uten jitters.
+- **Matelsker**: baking og kulinarisk eksperimentering.
+- **Mindfulness-fan**: ritualet er meditativt.
+
+## Gave opptil 25 € (liten oppmerksomhet)
+**1. [Bambus-chasen](/product/bamboe-chasen) (~20 €)**
+Håndlaget av ett stykke bambus. Uunnværlig for den som ennå ikke har chasen. Føles håndverksmessig i hånden med en gang.
+
+**2. [Ceremonial matcha 30g](/product/ceremonial-matcha-30g) (~22 €)**
+Autentisk japansk matcha fra Uji i en liten porsjon. Ideelt for å smake uten stor forpliktelse.
+
+**3. [Bambus-chashaku](/product/bamboe-chashaku) (~10 €)**
+Tradisjonell bambus-teskje. Liten, men gjennomtenkt — skjønnhet i detaljen.
+
+## Gave 25–50 € (personlig)
+**4. [Iset matcha-blanding 60g](/product/iced-matcha-blend-60g) (~28 €)**
+For sommerfans eller den som heller drikker kaldt — spesielt malt for kald tilberedning.
+
+**5. [Matcha yuzu-blanding](/product/matcha-yuzu-blend-40g) (~32 €)**
+Japansk sitrus med matcha — en overraskende smak du ikke finner i butikken.
+
+**6. [Keramisk matcha-skål](/product/keramische-matcha-kom) (~38 €)**
+Håndlaget chawan. Et funksjonelt kunstobjekt på kjøkkenbenken.
+
+**7. [Mint matcha](/product/mint-matcha-40g) eller [berry matcha](/product/berry-matcha-40g) (~30 €)**
+For den som liker smaksvarianter — naturlige blandinger, ingen kunstige aromaer.
+
+## Gave 50–80 € (substansiell)
+**8. [Startsett](/product/starter-kit) (~60 €)**
+Komplett pakke: matcha + chasen + skål + sil. Man kan komme i gang med en gang — ingen ekstra anskaffelse nødvendig.
+
+**9. [Ceremonial matcha 100g](/product/ceremonial-matcha-100g) (~70 €)**
+For den som allerede drikker matcha og vil ha den ekte premium-opplevelsen. 100g = 2 måneders daglig bruk.
+
+**10. [Discovery tea box](/product/discovery-tea-box) (~55 €)**
+Ulike matcha- og tetyper i prøvepakninger. Perfekt for den som liker å eksperimentere.
+
+## Gave 80–150 € (premium)
+**11. [Premium ritual set](/product/premium-ritual-set) (~110 €)**
+Premium matcha + håndlaget chasen + keramisk chawan + chashaku + hefte. Pakket og klart som gave.
+
+**12. [Gift box](/product/gift-box) (~85 €)**
+Vakker gaveeske med et utvalg av våre mest elskede produkter. Et trygt valg hvis du ikke vet hva mottakeren allerede har.
+
+## Hva du IKKE bør gi som matcha-gave
+- **Cooking grade i en fancy eske** — ærlig talt ikke — mottakeren merker før eller siden at det er bitter te.
+- **En kinesisk "matcha" som ikke kommer fra Japan** — kvalitet og smak er fundamentalt annerledes.
+- **Ferdiglaget matcha-pulver med sukker** ("matcha latte mix") — dette er ingen matcha-opplevelse.
+
+## For ulike mottakere
+| Mottaker | Anbefaling |
+|---|---|
+| Beste venn(inne) | Startsett |
+| Partner | Premium ritual set |
+| Kollega/secret santa | Iset matcha-blanding eller mint matcha |
+| Svigermor | Gift box |
+| Løper | Ceremonial 30g + chasen |
+| Yogi | Ceremonial matcha + chawan |
+| Tenåring | Mint matcha + chasen |
+| Matelsker | Discovery tea box |
+
+## Pakker og levering
+Hos YourMatcha leverer vi **luksuriøst innpakket** og kan legge ved et håndskrevet kort. For gaver: bestill før kl. 14 = levert i morgen.
+
+Les også [kjøpe den beste matchaen 2026](/kennis/beste-matcha-kopen-2026) for den komplette kjøpsguiden.`,
+        faqs: [
+          { q: "Hva er en god matcha-gave til en nybegynner?", a: "Et startsett (50–60 €) er ideelt — det inneholder matcha, chasen, skål og sil. Mottakeren kan komme i gang med en gang uten ekstra kjøp." },
+          { q: "Er matcha en egnet gave til noen som ikke drikker te?", a: "Overraskende ofte ja, særlig for dem som slutter med kaffe. En matcha latte føles annerledes enn te. Et startsett med culinary matcha er en trygg start." },
+          { q: "Hvor lenge holder matcha seg som gave?", a: "Uåpnet 12 måneder. La den alltid være i originalemballasjen — åpnet matcha mister kvalitet innen 4–6 uker." },
+        ],
+      },
+    },
   },
   {
     slug: "matcha-starterspakket",
@@ -3816,6 +4761,116 @@ Lees ook [beste matcha kopen 2026](/kennis/beste-matcha-kopen-2026) voor diepere
       { q: "Heb ik een chasen echt nodig?", a: "Nee. Een klein elektrisch melkopschuimertje (€10) werkt voor de meeste mensen even goed. Een chasen is mooier en geeft fijner schuim, maar geen must." },
       { q: "Welke matcha is het beste om mee te beginnen?", a: "Ceremonial 30g is ideaal voor pure matcha (kleine portie, lage drempel). Drink je vooral lattes? Begin met 100g culinary — goedkoper per gram en zelf langer plezier." },
     ],
+    i18n: {
+      no: {
+        title: "Matcha-startpakke — hva trenger du egentlig?",
+        metaTitle: "Matcha-startpakke: hva trenger du egentlig? (Komplett liste)",
+        metaDescription: "Akkurat begynt med matcha? Dette er de 4 essensielle, 3 nice-to-haves og 5 ting du ikke trenger. Inkludert budsjett og alternativer.",
+        excerpt: "Et matcha-startoppsett trenger ikke å være dyrt eller komplekst. Dette er nøyaktig hva du trenger (og hva markedsføringen prøver å selge deg).",
+        category: "Kjøpe",
+        content: `## På 30 sekunder
+**Essensielt:** matcha-pulver, kontroll på vanntemperatur, en sil, en visp.
+**Valgfritt:** chasen (bambusvisp), chawan (skål).
+**Ikke nødvendig:** matcha-maskin, spesielle tilskudd, eksotiske verktøy.
+
+**Minimumsbudsjett**: 30 €. **Komplett**: 60–100 €.
+
+## De 4 essensielle
+### 1. Matcha-pulver (~20–30 €)
+Start med **culinary grade** hvis du mest drikker latter, eller **ceremonial 30g** for ren matcha.
+- Anbefaling for nybegynnere: [ceremonial matcha 30g](/product/ceremonial-matcha-30g) — liten nok til å bli ferdig innen 4–6 uker.
+
+### 2. Noe for å få vann på 75–80 °C (~0–30 €)
+- **Alternativ 1 (gratis)**: kok vann, vent 60 sekunder = ~80 °C.
+- **Alternativ 2 (20–30 €)**: vannkoker med temperaturinnstilling.
+
+Viktigere enn hvilket verktøy: **aldri kokende vann på matcha**.
+
+### 3. Sil (~3–10 €)
+En vanlig kjøkkensil holder. Å unngå klumper er 80 % av en god matcha. Ikke undervurder det.
+
+### 4. En visp (~0–25 €)
+Fire alternativer, stigende i autentisitet:
+- **Ingenting** — bruk en lukket krukke og rist.
+- **Liten melkeskummer** (~10 €) — vår anbefaling for nybegynnere. Les [matcha uten chasen](/kennis/matcha-zonder-chasen).
+- **[Bambus-chasen](/product/bamboe-chasen)** (~20 €) — tradisjonell, vakker, fineste skum.
+- **[Elektrisk skummer](/product/elektrische-melkopschuimer)** (~15 €) — best til daglig bruk.
+
+## De 3 nice-to-haves (for den som virkelig satser)
+### 5. Chawan (matcha-skål)
+En [keramisk chawan](/product/keramische-matcha-kom) (~38 €) gjør ritualet verdigere. Den brede formen gir chasenen rom til å vispe. En grunn skål fungerer også fint.
+
+### 6. Chashaku (bambusskje)
+En [bambus-chashaku](/product/bamboe-chashaku) (~10 €) doserer tradisjonelt — 2 skjeer ≈ 2 g matcha. Vakker, men ikke nødvendig; en vanlig teskje fungerer også.
+
+### 7. En oppbevaringsboks
+Hold matchaen mørk og lufttett. Originalemballasjen er som regel nok, men en fin boks på benken føles godt.
+
+## Hva du IKKE trenger
+**1. Matcha-blender-maskin (100 €+)**
+En vannkoker + chasen gjør alt en slik maskin gjør. Markedsføring.
+
+**2. Vibrasjonssikt eller "fancy siler"**
+En kjøkkensil til 5 € gjør samme jobb.
+
+**3. Spesielle matcha-tilskudd (kapsler, gummies)**
+Bare drikk matcha. Kapsler mister ritualet og er dyrere per porsjon.
+
+**4. Termometer for vanntemperatur**
+Kok vann, vent 60 sekunder. Ferdig.
+
+**5. Egen matcha-melkeskummer**
+En vanlig melkeskummer fungerer både til matcha og til cappuccino. Multifunksjonell.
+
+## Tre startbudsjetter
+
+### Minimal (30 €)
+- [Ceremonial matcha 30g](/product/ceremonial-matcha-30g) — 22 €
+- Kjøkkensil (har du sannsynligvis) — 0 €
+- Liten melkeskummer — 8 €
+
+Resultat: god matcha hjemme, ingen visuelt ritual.
+
+### Standard (60 €)
+- [Startsett](/product/starter-kit) — 60 € (matcha + chasen + skål + sil)
+
+Resultat: komplett pakke, autentisk ritual, ingenting mer nødvendig.
+
+### Premium (110 €)
+- [Premium ritual set](/product/premium-ritual-set) — 110 € (håndlagde verktøy, premium matcha)
+
+Resultat: gaveverdig oppsett, beste kvalitet, glede i årevis.
+
+## Sjekkliste for de første ukene
+**Uke 1:**
+- Følg [guiden for å lage matcha](/kennis/matcha-bereiden) trinn for trinn.
+- Drikk bare varm — ingen latte (slik smaker du den ren).
+- Noter hva du smaker.
+
+**Uke 2:**
+- Prøv en matcha latte med havremelk.
+- Eksperimenter med dosering (1, 1,5, 2 g).
+- Les [beste melk for matcha latte](/kennis/beste-melk-voor-matcha-latte).
+
+**Uke 3+:**
+- Eksperimenter med iset matcha.
+- Prøv oppskrifter ([iset matcha latte](/recepten/iced-matcha-latte), [varm latte](/recepten/hot-matcha-latte)).
+- Eventuelt utvide med smaksvarianter.
+
+## Vanlige nybegynnerfeil
+1. **For stort førstekjøp** — 100 g er mye når du ennå skal finne ut hva din smak er.
+2. **Kjøpe chasen + chawan med en gang** — test først om du i det hele tatt liker matcha.
+3. **For varmt vann** — kokende vann = bittert resultat.
+4. **Sukker rett i matchaen** — gi den 3 kopper uten søtning. Ofte begynner du å verdsette den.
+
+Les også [kjøpe den beste matchaen 2026](/kennis/beste-matcha-kopen-2026) for en dypere kjøpsguide.`,
+        faqs: [
+          { q: "Hva er det minste jeg trenger for å lage matcha?", a: "Matcha-pulver, vann på 75–80 °C, en sil og noe å vispe med (chasen, melkeskummer eller til og med en lukket krukke). Totalt fra 30 €." },
+          { q: "Trenger jeg virkelig en chasen?", a: "Nei. En liten elektrisk melkeskummer (10 €) fungerer like godt for de fleste. En chasen er penere og gir finere skum, men er ingen nødvendighet." },
+          { q: "Hvilken matcha er best å begynne med?", a: "Ceremonial 30g er ideelt for ren matcha (liten porsjon, lav terskel). Drikker du mest latter? Start med 100g culinary — billigere per gram og varer lengre." },
+        ],
+      },
+    },
   },
   {
     slug: "matcha-en-focus",
@@ -3900,6 +4955,88 @@ Lees ook [matcha vs koffie](/kennis/matcha-vs-koffie) voor de directe vergelijki
       { q: "Helpt matcha bij ADHD?", a: "Anekdotisch melden veel mensen met ADHD dat matcha rustiger focus geeft dan koffie. Wetenschappelijk onderzoek hier is beperkt — overleg altijd met je behandelaar als je medicatie gebruikt." },
       { q: "Hoe lang werkt matcha voor focus?", a: "Bij 2 g matcha: 4–6 uur stabiele focus. Bij een latte met melk: iets korter (3–5 uur) doordat de cafeïne-opname trager is." },
     ],
+    i18n: {
+      no: {
+        title: "Matcha for fokus — vitenskapen bak rolig konsentrasjon",
+        metaTitle: "Matcha for fokus og konsentrasjon: vitenskapen (2026)",
+        metaDescription: "Hvorfor gir matcha annen fokus enn kaffe? L-theanin, alfa-hjernebølger og den 'rolig-våkne' effekten, fundert på forskning.",
+        excerpt: "Folk som bytter fra kaffe til matcha, melder nesten alle det samme: roligere, lengre, skarpere. Dette er hva forskningen sier om det.",
+        content: `## Kort konklusjon
+Matcha gir "rolig årvåkenhet" gjennom den unike kombinasjonen av **koffein og L-theanin i 2:1-forhold**. L-theanin bremser koffeinet, øker alfa-hjernebølger og reduserer mental støy. Resultat: 4–6 timer stabil fokus.
+
+## De tre aktørene
+### 1. Koffein (~70 mg per kopp)
+Blokkerer adenosin — stoffet som gjør deg trøtt. Gir årvåkenhet.
+
+### 2. L-theanin (~25–30 mg per kopp)
+En aminosyre som **bare finnes i grønn te**. Øker alfa-hjernebølger (assosiert med "relaxed alertness" — tenkning uten stress). Reduserer kortisol.
+
+### 3. EGCG og klorofyll
+Antioksidanter støtter nevral helse på lengre sikt, men gir ingen direkte fokuseffekt.
+
+## 2:1-forholdet som endrer alt
+Forskning viser at et **koffein:L-theanin-forhold på 2:1** er optimalt for kognitiv yteevne. Matcha har naturlig dette forholdet (70 mg koffein : 30 mg L-theanin).
+
+I kaffe mangler L-theanin helt. I ceylon-te er forholdet ugunstig (for lite theanin).
+
+## Hva sier forskningen om fokus?
+**Studie 1 (Owen et al., 2008, Nutritional Neuroscience):** 50 mg koffein + 100 mg L-theanin forbedret **oppmerksomhetsforflytning** og **årvåkenhet** betydelig sammenlignet med placebo.
+
+**Studie 2 (Foxe et al., 2012):** Kombinasjonen forbedret **yteevnen på multitasking-oppgaver** sammenlignet med koffein alene.
+
+**Studie 3 (Hidese et al., 2019):** L-theanin alene forbedret **arbeidsminne og eksekutive funksjoner** hos friske voksne.
+
+## "Rolig-våken" — hva betyr det?
+Folk beskriver forskjellen slik:
+- **Kaffe**: "klar til å erobre verden, men også lett hjertebank"
+- **Matcha**: "rolig, klar, som om hjernen har fått briller på"
+
+Ved kaffe dominerer det sympatiske nervesystemet (fight-or-flight). Ved matcha er det en **parasympatisk balanse** — du er våken uten å være anspent.
+
+## Hvem passer matcha-fokus best for?
+| Profil | Fungerer matcha godt? |
+|---|---|
+| Kunnskapsarbeider | ★★★★★ |
+| Forfatter / programmerer | ★★★★★ |
+| Student under lesing | ★★★★ |
+| Kreativt arbeid | ★★★★ |
+| Møter | ★★★★ |
+| Sprinting / styrketrening | ★★★ |
+| Personer med ADHD | ★★★ (se under) |
+
+## Matcha ved ADHD
+Anekdotisk positivt, men **ingen erstatning for medisin**. Noen med ADHD melder at matcha gir roligere fokus enn kaffe. L-theanin kan redusere uro. Forskningen her er begrenset — rådfør deg med behandleren din ved medisinbruk.
+
+## Optimalt fokusprotokoll
+**For 4–6 timer dyp fokus:**
+1. **Drikk 2 g matcha** i usøtet form.
+2. **Spis ingenting med raske sukkerarter** (ingen kake til matchaen).
+3. **Minimer skjermtid** — matcha + Instagram = bortkastet fokus.
+4. **Jobb i 90-minutters bolker** med 10 min pause.
+
+## Oppskrift før arbeid
+- 2 g [ceremonial matcha](/product/ceremonial-matcha-100g)
+- 60 ml vann (75 °C)
+- Valgfritt: en liten skål granola eller yoghurt
+- Ingen sukker — L-theaninet virker ellers ikke optimalt
+
+## Matcha + L-theanin-tilskudd?
+Noen kombinerer matcha med **ekstra L-theanin-tilskudd** (200 mg) for dypere avslapping + fokus. Trygt og effektivt, men overdrevent for de fleste.
+
+## Når matcha IKKE hjelper for fokus
+- **Søvnmangel** — matcha maskerer ikke tretthet ordentlig.
+- **For mye koffein daglig** (>400 mg) — bygger toleranse.
+- **Forventer "en rask boost"** — der vinner kaffe.
+- **Sulten** — spis først noe (protein + langsomme karbohydrater).
+
+Les også [matcha vs. kaffe](/kennis/matcha-vs-koffie) for den direkte sammenligningen.`,
+        faqs: [
+          { q: "Gir matcha virkelig bedre fokus enn kaffe?", a: "For langvarig, jevn fokusjobbing: ja. L-theanin sørger for 'rolig årvåkenhet' uten koffeintoppen/krasjet fra kaffe. For rask oppvåkning vinner kaffe." },
+          { q: "Hjelper matcha ved ADHD?", a: "Anekdotisk melder mange med ADHD at matcha gir roligere fokus enn kaffe. Den vitenskapelige forskningen her er begrenset — rådfør deg alltid med behandleren din hvis du bruker medisin." },
+          { q: "Hvor lenge virker matcha for fokus?", a: "Ved 2 g matcha: 4–6 timer stabil fokus. Ved en latte med melk: litt kortere (3–5 timer) fordi koffeinopptaket er langsommere." },
+        ],
+      },
+    },
   },
   {
     slug: "hojicha-uitleg",
@@ -3986,6 +5123,91 @@ Lees over [genmaicha](/kennis/genmaicha-gids) voor een andere milde optie.`,
       { q: "Smaakt hojicha als koffie?", a: "Niet identiek, maar de geroosterde, nootachtige tonen herinneren wel aan koffie zonder de bitterheid. Veel mensen gebruiken hojicha latte als koffievervanger 's avonds." },
       { q: "Kan ik hojicha drinken in zwangerschap?", a: "Ja — vanwege de zeer lage cafeïne is hojicha een populair zwangerschapsalternatief voor matcha en koffie. Overleg bij twijfel met je verloskundige." },
     ],
+    i18n: {
+      no: {
+        title: "Hojicha — alt om den ristede japanske grønne teen",
+        metaTitle: "Hojicha: hva er det? Smak, koffein og tilberedning (komplett guide)",
+        metaDescription: "Hojicha er ristet grønn te med nøtteaktig smak og lite koffein. Oppdag hvordan den smaker, hvordan du lager den og når du bør velge den fremfor matcha.",
+        excerpt: "Hojicha er den milde, ristede motparten til matcha — perfekt for kvelden og for den som vil ha mindre koffein.",
+        category: "Varianter",
+        content: `## Hva er hojicha?
+Hojicha er **ristet japansk grønn te**. I motsetning til grønn te som er frisk og gressaktig, får hojicha gjennom ristingen (ho-ji = riste) en **nøtteaktig, karamellaktig smak** og en vakker brunrød farge.
+
+I Japan serveres hojicha ofte etter middagen — beroligende, lite koffein, ingen søvnforstyrrelse.
+
+## Hojicha vs. matcha — forskjellen
+| Aspekt | Matcha | Hojicha |
+|---|---|---|
+| Farge | Klar grønn | Brun / rav |
+| Smak | Umami, gressaktig, kremet | Ristet, nøtteaktig, karamell |
+| Koffein | ~70 mg | ~7–15 mg |
+| L-theanin | Mye | Moderat |
+| Tilberedning | Pulverisert | Løse blader eller pulver |
+| Vanntemperatur | 75 °C | 90–95 °C (kan være varmere) |
+| Beste tidspunkt | Morgen / fokus | Kveld / avslapping |
+
+## Hvorfor har hojicha så lite koffein?
+To grunner:
+1. **Senhøst** — hojicha kommer ofte fra den tredje høsten (sanbancha), med naturlig mindre koffein.
+2. **Risting bryter ned koffein** — den høytemperaturs risteprosessen (~200 °C, 10 min) reduserer koffeinet betydelig.
+
+Resultat: en kopp hojicha ligger på bare 7–15 mg koffein — sammenlignbart med kakao.
+
+## Hvordan smaker hojicha?
+- **Lukt**: ristede nøtter, popcorn, lett røyk.
+- **Smak**: varm, nøtteaktig, lett sødme, ingen bitterhet.
+- **Ettersmak**: myk, blir lenge værende.
+
+Mange som vanligvis ikke drikker te, synes hojicha er overraskende tilgjengelig — den minner om kaffe uten syrene.
+
+## Når drikker du hojicha?
+**Ideelt for:**
+- **Kveld** — ingen søvnforstyrrelse (les [matcha og søvn](/kennis/matcha-en-slaap))
+- **Graviditet** — lavt koffein ([se graviditetsguiden](/kennis/matcha-tijdens-zwangerschap))
+- **Koffeinfølsomme personer**
+- **Etter middagen** — japansk tradisjon
+- **Barn** (i begrensede mengder)
+
+## To typer hojicha
+### 1. Løsblad-hojicha
+Den klassiske formen. Hell 90 °C vann over bladene, la trekke i 30 sek.
+
+### 2. Hojicha-pulver
+Malt som matcha. Løses opp i melk eller vann — ideelt for latter.
+[Vårt hojicha-pulver 50g](/product/hojicha-poeder-50g) er laget av førstehøst Uji-blader (sjeldent) — fullt av smak.
+
+## Oppskrift på hojicha latte
+1. Sikt 2 g hojicha-pulver i en kopp.
+2. Tilsett 30 ml varmt vann (90 °C), visp til oppløst.
+3. Hell over 200 ml varm havremelk.
+4. Valgfritt: en klype kanel eller vanilje.
+
+Klar på 3 minutter. Mange synes dette er en flott **kaffeerstatning** for kvelden.
+
+## Hojicha i matlaging
+- **Iskrem**: hojicha-iskrem er en japansk klassiker.
+- **Baking**: erstatter kakao eller kaffe i tiramisu, brownies, panna cotta.
+- **Smoothies**: tilsett 1 ts pulver for varme toner.
+
+## Passer hojicha til blandinger?
+Ja. Med melk, kanel, kardemomme eller muskat oppstår te-blandinger som minner om chai eller spesialkaffe.
+
+## Hvordan oppbevarer du hojicha?
+Som matcha — mørkt, kjølig, lufttett. Hojicha-pulver holder seg litt lenger enn matcha fordi det er ristet (mer stabilt). Regn med 6–8 uker etter åpning for optimal smak.
+
+## Andre koffeinfattige alternativer
+- **Genmaicha** — japansk riste, ~10 mg koffein, hjertelig
+- **Rooibos** — koffeinfri, sørafrikansk, antioksidanter
+- **Urtete** — ikke te i streng forstand, ingen koffein
+
+Les om [genmaicha](/kennis/genmaicha-gids) for et annet mildt alternativ.`,
+        faqs: [
+          { q: "Hvor mye koffein er det i hojicha?", a: "Omtrent 7 til 15 mg per kopp — 5 til 10 ganger mindre enn matcha og sammenlignbart med en bit mørk sjokolade. Derfor egner hojicha seg for kvelden." },
+          { q: "Smaker hojicha som kaffe?", a: "Ikke identisk, men de ristede, nøtteaktige tonene minner om kaffe uten bitterheten. Mange bruker hojicha latte som kaffeerstatning om kvelden." },
+          { q: "Kan jeg drikke hojicha under graviditet?", a: "Ja — på grunn av det svært lave koffeininnholdet er hojicha et populært graviditetsalternativ til matcha og kaffe. Rådfør deg med jordmor ved tvil." },
+        ],
+      },
+    },
   },
   {
     slug: "genmaicha-gids",
@@ -4069,6 +5291,88 @@ Onze [genmaicha 50g](/product/genmaicha-loose-leaf-50g) is een klassieke Japanse
       { q: "Kan ik genmaicha hergebruiken voor een tweede kop?", a: "Ja, en het wordt vaak aanbevolen. De tweede infusie (90 °C, 45 sec) is vaak voller en hartiger dan de eerste. Tot drie infusies is mogelijk." },
       { q: "Is genmaicha gezond?", a: "Ja. Het bevat dezelfde antioxidanten als groene thee (catechines) plus lichte mineralen uit de rijst. Door de lage cafeïne is het gemakkelijk in grotere hoeveelheden te drinken." },
     ],
+    i18n: {
+      no: {
+        title: "Genmaicha — den japanske risteen forklart",
+        metaTitle: "Genmaicha: hva er det? Smak, tilberedning og historie",
+        metaDescription: "Genmaicha er grønn te med ristet ris. Oppdag den hjertelige smaken, det lave koffeininnholdet, og hvordan denne 'folketeen' fra Japan ble populær verden over.",
+        excerpt: "Genmaicha er kanskje den mest overraskende japanske teen — hjertelig, popcorn-aktig, varm i enhver betydning. Dette er hva det er.",
+        category: "Varianter",
+        content: `## Hva er genmaicha?
+Genmaicha (玄米茶) er en japansk grønn te blandet med **ristet brun ris**. Noen riskorn "popper" under ristingen som små popcorn. Resultat: en hjertelig, popcorn-aktig te med grønn-gressaktige undertoner.
+
+## Hvordan smaker den?
+- **Øvre lag**: grønn te — frisk, lett planteaktig.
+- **Nedre lag**: ristet ris — nøtteaktig, popcorn, hjertelig.
+- **Ettersmak**: myk, trøstende, minner om risvann eller en lett miso.
+
+Ukjent for den vestlige smaken, men svært tilgjengelig — ingen bitterhet, ingen skarpe tanniner.
+
+## Historie: "the people's tea"
+Genmaicha oppsto i Japan på 1400-tallet som en måte å **drøye dyr grønn te med billig ris**. Den ble "folketeen" (民衆のお茶) — det bøndene hadde råd til.
+
+Først på 1900-tallet ble genmaicha populær i alle lag av det japanske samfunnet på grunn av den unike smaken.
+
+## Koffein
+**~10 mg per kopp** — en tredjedel av grønn te. På grunn av den høye andelen ris (ofte 50/50) er koffeinet naturlig lavt.
+
+Egnet for:
+- Kveld (les [matcha og søvn](/kennis/matcha-en-slaap))
+- Graviditet (les [matcha under graviditet](/kennis/matcha-tijdens-zwangerschap))
+- Barn
+- Koffeinfølsomme personer
+
+## Tilberedning
+1. Varm vann til **80–85 °C** (kan være varmere enn matcha).
+2. Ha 2 g genmaicha (~1 teskje) i en tepotte eller kopp.
+3. Hell over 200 ml vann.
+4. La trekke i **30–60 sekunder**.
+5. Hell ut (la bladene ligge til 2. trekk).
+
+**2. trekk:** samme blader, 90 °C vann, 45 sekunder. Det andre trekket er ofte fyldigere enn det første.
+
+## Til hvilke måltider?
+Genmaicha passer utmerket til hjertelig mat:
+- **Ramen** (ristede nøtter harmonerer)
+- **Sushi** (matcher rissundertonene)
+- **Grillede grønnsaker**
+- **Sterke retter** (den hjertelige rundheten demper heten)
+
+Ikke ideelt til desserter — de hjertelige tonene kolliderer.
+
+## Genmaicha matcha (matcha-iri genmaicha)
+En populær variant: genmaicha blandet med **matcha-pulver**. Gir teen et grønnskjær og mer intens umami. I Japan ofte på restauranter.
+
+## Hvordan oppbevarer du genmaicha?
+- Lufttett i mørke.
+- Adskilt fra sterke lukter (risen er luktfølsom).
+- Holdbar: **6–12 måneder** etter produksjonsdato.
+
+## Genmaicha vs. hojicha
+| Aspekt | Genmaicha | Hojicha |
+|---|---|---|
+| Base | Grønn te + ris | Ristet grønn te |
+| Smak | Popcorn, hjertelig | Ristet, karamell |
+| Koffein | ~10 mg | ~10 mg |
+| Til mat | Hjertelig | Begge |
+| Til dessert | Ikke ideelt | Bra |
+
+Les også om [hojicha](/kennis/hojicha-uitleg) for den ristede motparten.
+
+## Kan du smake genmaicha?
+Vår [genmaicha 50g](/product/genmaicha-loose-leaf-50g) er en klassisk japansk blanding fra Shizuoka. Et fint inngangspunkt for å oppdage den japanske tekulturen bredere.
+
+## Tips: eksperimenter med genmaicha
+- **Cold brew**: 5 g på 500 ml kaldt vann, 6 timer i kjøleskap. Forfriskende sommerte.
+- **Risotto**: erstatt halvparten av buljongen med sterk genmaicha — overraskende godt.
+- **Med ingefær**: tilsett en tynn skive fersk ingefær i koppen din.`,
+        faqs: [
+          { q: "Inneholder genmaicha koffein?", a: "Ja, men lite — omtrent 10 mg per kopp, sammenlignbart med kakao. På grunn av den høye andelen ris er koffeinet naturlig mye lavere enn i vanlig grønn te." },
+          { q: "Kan jeg gjenbruke genmaicha til en andre kopp?", a: "Ja, og det anbefales ofte. Det andre trekket (90 °C, 45 sek) er ofte fyldigere og mer hjertelig enn det første. Opptil tre trekk er mulig." },
+          { q: "Er genmaicha sunt?", a: "Ja. Den inneholder de samme antioksidantene som grønn te (katekiner) pluss lette mineraler fra risen. På grunn av det lave koffeininnholdet er den lett å drikke i større mengder." },
+        ],
+      },
+    },
   },
   {
     slug: "yuzu-matcha-uitleg",
@@ -4167,6 +5471,103 @@ Lees ook [ceremonial vs culinary matcha](/kennis/ceremonial-vs-culinary-matcha) 
       { q: "Is yuzu matcha zoet?", a: "Onze yuzu matcha bevat geen toegevoegde suiker — alleen ceremonial matcha en gedroogde yuzu-schil. Het is fris met een natuurlijke citrusaroma, niet zoetig." },
       { q: "Hoeveel cafeïne in yuzu matcha?", a: "Ongeveer 60–70 mg per kop, hetzelfde als gewone matcha. De yuzu-toevoeging beïnvloedt cafeïne niet — het voegt alleen smaak en vitamine C toe." },
     ],
+    i18n: {
+      no: {
+        title: "Yuzu matcha — hva er det og når drikker du det?",
+        metaTitle: "Yuzu matcha: den japanske sitrus-matcha-blandingen forklart",
+        metaDescription: "Yuzu matcha kombinerer ceremonial matcha med japansk yuzu-sitrus for en frisk, kompleks smaksprofil. Hva det er, hvordan du lager det og når du velger det.",
+        excerpt: "Yuzu er den mest forfinede japanske sitrusen. Kombinert med matcha gir den en overraskende frisk smaksprofil — unik og ikke for søt.",
+        category: "Varianter",
+        content: `## Hva er yuzu?
+Yuzu (柚子) er en japansk sitrusfrukt — en krysning mellom mandarin og Ichang-papeda. Ikke så søt som appelsin, ikke så sur som sitron — med et unikt blomstrete aroma som minner om grapefrukt med et lett lime-preg.
+
+I det japanske kjøkkenet er yuzu en aromakraft: noen dråper saft eller litt skall løfter en rett.
+
+## Hva er yuzu matcha?
+Yuzu matcha er en **blanding av ceremonial matcha og tørket yuzu-skall**. Pulveret males fint slik at det løser seg helt opp.
+
+Resultat: matcha med en **frisk sitrustopp** som supplerer det gressaktige underlaget uten å overdøve det.
+
+## Smaksprofil
+- **Første slurk**: klar sitrusaroma — forfinet, ikke aggressiv.
+- **Midttoner**: klassisk matcha-umami og kremethet.
+- **Ettersmak**: lett bitter (yuzu-skall), frisk.
+
+I motsetning til mange "frukt-teer" føles yuzu matcha **voksen** — ikke søtlig, ikke kunstig.
+
+## Når drikker du yuzu matcha?
+**Ideelt for:**
+- **Sommer** — friskheten gjør den perfekt kald.
+- **Aperitiff** — før en middag som en smaksåpner.
+- **Gave** — eksotisk nok til å overraske noen.
+- **Den som synes matcha er "for gressaktig"** — yuzu bryter det.
+
+**Mindre for:**
+- **Rene tradisjonelle matcha-øyeblikk** (velg da ceremonial).
+- **Sammen med sterk kaffe eller kakao** (sitrus kolliderer).
+
+## Tilberedning
+### Varm
+1. Sikt 2 g yuzu matcha i en kopp.
+2. Tilsett 60 ml vann på 75 °C.
+3. Visp raskt med chasen eller skummer.
+4. Drikk ren eller tilsett lett havremelk.
+
+### Iset
+1. 2 g yuzu matcha + 30 ml kaldt vann i en shaker.
+2. Rist 15 sekunder med is.
+3. Hell over et glass med is og lett havremelk.
+
+### Mocktail
+- 2 g yuzu matcha + 30 ml varmt vann
+- 100 ml tonic water
+- Is + frisk mynte
+- Saft av en halv lime
+
+Friskere enn enhver ferdigdrikk.
+
+## Yuzu matcha til mat
+**Gode pairinger:**
+- Sushi og sashimi
+- Hvit fisk med squash
+- Lette salater med sesam
+- Sitronterte eller yuzu-ostekake
+
+**Mindre bra:**
+- Sjokolade (kollisjon)
+- Rødt kjøtt (for delikat smak)
+- Bitter espresso
+
+## Hvordan skiller yuzu matcha seg fra ren matcha?
+| Aspekt | Ren matcha | Yuzu matcha |
+|---|---|---|
+| Smak | Gressaktig, umami | Sitrus + matcha |
+| Styrke | Fyldig | Frisk, lettere |
+| Til frokost | ★★★★★ | ★★★★ |
+| Om sommeren | ★★★★ | ★★★★★ |
+| Gave | Klassisk | Overraskende |
+| Pris | Standard | Ofte litt dyrere |
+
+## Koffein og helse
+Yuzu matcha har **samme koffein som ren matcha** (~60–70 mg) — yuzuen påvirker ikke koffeinet. Pluss ekstra C-vitamin fra sitrusskallet. Ikke mye, men en hyggelig bonus.
+
+## Vår yuzu matcha
+Vi blander vår [yuzu matcha 40g](/product/matcha-yuzu-blend-40g) med **ekte japansk yuzu fra Shikoku** — ingen aroma, ingen sukker. 100 % naturlig. Yuzuen er tørket på lav temperatur for å bevare friskheten.
+
+## Alternativer og bredere blandinger
+Liker du smaksvarianter? Prøv også:
+- **[Mint matcha](/product/mint-matcha-40g)** — forfriskende, ideell for sommeren
+- **[Berry matcha](/product/berry-matcha-40g)** — røde bær, barnevennlig
+- **[Cacao matcha](/product/cacao-matcha-50g)** — sjokoladerik matcha
+
+Les også [ceremonial vs. culinary matcha](/kennis/ceremonial-vs-culinary-matcha) for grunnlaget for blandinger.`,
+        faqs: [
+          { q: "Hva smaker yuzu?", a: "Yuzu smaker som en blanding av grapefrukt, lime og mandarin — frisk, fruktig og lett bitter. Det er en unik japansk aroma som er sjelden i Vest-Europa." },
+          { q: "Er yuzu matcha søt?", a: "Vår yuzu matcha inneholder ikke tilsatt sukker — bare ceremonial matcha og tørket yuzu-skall. Den er frisk med en naturlig sitrusaroma, ikke søtlig." },
+          { q: "Hvor mye koffein i yuzu matcha?", a: "Omtrent 60–70 mg per kopp, det samme som vanlig matcha. Yuzu-tilsetningen påvirker ikke koffeinet — den tilfører bare smak og C-vitamin." },
+        ],
+      },
+    },
   },
   {
     slug: "japanse-theeceremonie-chanoyu",
@@ -4276,6 +5677,114 @@ Lees [matcha bereiden](/kennis/matcha-bereiden) voor de praktische stappen. En [
       { q: "Kun je een theeceremonie thuis doen?", a: "Een volledige ceremonie vereist jarenlange training, maar je kunt de geest thuis brengen: aandachtige bereiding, schone tools, geen afleiding. Dat verandert hoe je matcha ervaart." },
       { q: "Is matcha hetzelfde als de thee in de Japanse theeceremonie?", a: "Ja — chanoyu draait specifiek om matcha (gepoederde groene thee). De ceremonie ontstond rond matcha vanaf de 12e eeuw." },
     ],
+    i18n: {
+      no: {
+        title: "Japansk teseremoni (chanoyu) — historie og betydning",
+        metaTitle: "Japansk teseremoni (chanoyu): historie, ritualer og moderne",
+        metaDescription: "Hva er den japanske teseremonien? Oppdag historien (chanoyu), zen-påvirkningen, de grunnleggende ritualene og hvordan du kan nærme deg den hjemme.",
+        excerpt: "Den japanske teseremonien er mer enn å lage te — det er en 500 år gammel mindfulness-praksis. Dette er hva som ligger bak.",
+        category: "Kultur",
+        content: `## Hva er chanoyu?
+Chanoyu (茶の湯, "varmt vann til te") er den **japanske teseremonien** — en ritualisert måte å tilberede og servere matcha på. Ingen show, ingen effektivitet — en meditativ øvelse der hver bevegelse er bevisst.
+
+Andre navn du hører: **sadō** (茶道, "teens vei") og **chadō** (samme betydning, annen uttale).
+
+## Fire prinsipper — wa, kei, sei, jaku
+Temesteren Sen no Rikyū (1522–1591) destillerte seremonien til fire kjerneprinsipper:
+
+### 1. Wa (和) — harmoni
+Mellom vert, gjester, verktøy, rom og årstid. Ingenting kolliderer.
+
+### 2. Kei (敬) — respekt
+For verktøyene (århundregamle), gjestene og øyeblikket.
+
+### 3. Sei (清) — renhet
+Bokstavelig: rene verktøy, rent rom. Symbolsk: klart sinn.
+
+### 4. Jaku (寂) — ro
+Indre stillhet. Ikke stillhet som fravær av lyd, men som nærvær av bevissthet.
+
+## Kort historie
+- **800-tallet**: te kommer til Japan fra Kina via buddhistiske munker (Saichō).
+- **1100-tallet**: zen-presten Eisai tar med matcha-pulver fra Kina.
+- **1400-tallet**: temesteren Murata Jukō legger zen-fundamentet under seremonien (**wabi-te**: enkelhet, ufullkommenhet).
+- **1500-tallet**: Sen no Rikyū perfeksjonerer chanoyu. Under daimyo Hideyoshi blir det en kunstform.
+- **1900-tallet**: teskolene Urasenke, Omotesenke og Mushakōjisenke holder tradisjonen levende.
+
+## Rommet: chashitsu
+Et tradisjonelt terom (**chashitsu**) er bevisst lite (4,5 tatami-matter ≈ 7 m²) og enkelt:
+- Tatami-gulv
+- Tokonoma (alkove med hengerull og blomsteroppsats)
+- Ro (ildsted om vinteren) eller furo (bærbar brenner om sommeren)
+- Mizuya (forberedelsesrom)
+
+En lav inngang (**nijiriguchi**, 60 cm høy) tvinger gjestene til å bøye seg — et symbol på likhet (selv samurai la fra seg sverdet).
+
+## Verktøyene (chadōgu)
+| Verktøy | Funksjon |
+|---|---|
+| **Chawan** (skål) | For matchaen — formen varierer med årstiden |
+| **Chasen** (visp) | 70–120 bambustinder for skum |
+| **Chashaku** (skje) | Doserer matcha — ofte navngitt |
+| **Natsume** eller **chaire** | Tedåse (tre for usucha, keramikk for koicha) |
+| **Hishaku** (vannøse) | Øser vann fra kjelen |
+| **Fukusa** (silkeklut) | Brettes rituelt til renselse |
+
+Vårt [premium ritual set](/product/premium-ritual-set) inneholder det grunnleggende chadōgu for den som vil eksperimentere hjemme.
+
+## De to typene matcha-seremoni
+### Usucha (薄茶) — tynn te
+- 2 g matcha + 60 ml vann
+- Daglig variant
+- Ment til å drikkes raskt
+- Det de fleste kaller "matcha"
+
+### Koicha (濃茶) — tykk te
+- 4 g matcha + 30 ml vann — pasta-aktig konsistens
+- Mer høytidelig
+- Deles fra én skål (chakai)
+- Krever høyverdig ceremonial matcha
+
+## Seremonien (forenklet)
+**Forberedelsen** kan ta timer — valg av hengerull, blomst, skål — alt tilpasset årstid og gjester.
+
+**Mottakelse**: gjestene ankommer via hagesti (roji), vasker hender ved steinfontene (tsukubai).
+
+**Seremoni**:
+1. Verten renser verktøyene foran gjestenes øyne — en meditativ koreografi.
+2. Matcha skjes direkte i skålen (chashaku × 2 for usucha).
+3. Varmt vann (75–80 °C) helles over.
+4. Chasenen visper — M-form, raskt, med håndleddsbevegelser.
+5. Skålen presenteres for den første gjesten.
+6. Gjesten bøyer seg, dreier skålen 2x med klokken (unngår å drikke fra "fronten"), drikker i 3 slurker.
+7. Tørker kanten, dreier tilbake, takker.
+
+Total varighet: usucha ~45 min, koicha + måltid (chaji) **4 timer**.
+
+## Teseremoni hjemme — kan du nærme deg den?
+Ingen fullstendig seremoni, men du kan ta med **ånden** hjem:
+- Rydd arbeidsbenken før tilberedning.
+- Forbered alle verktøyene — ikke let etter dem underveis.
+- Ingen telefon.
+- Tilbered med oppmerksomhet, uten hastverk.
+- Drikk den første slurken i stillhet.
+
+Dette alene endrer hvordan matcha smaker.
+
+## Videre lesning
+Les [lage matcha](/kennis/matcha-bereiden) for de praktiske trinnene. Og [hva er matcha](/kennis/wat-is-matcha) for den grunnleggende forklaringen.
+
+## Bøker å begynne med
+- *The Book of Tea* — Okakura Kakuzō (1906) — en klassiker
+- *Wind in the Pines* — Dennis Hirota
+- *Chado: The Way of Tea* — Sasaki Sanmi`,
+        faqs: [
+          { q: "Hvor lenge varer en japansk teseremoni?", a: "En kort seremoni (chakai) med usucha varer 45–60 minutter. En fullstendig seremoni med måltid (chaji) og koicha kan vare 4 timer." },
+          { q: "Kan du holde en teseremoni hjemme?", a: "En fullstendig seremoni krever årevis med trening, men du kan ta med ånden hjem: oppmerksom tilberedning, rene verktøy, ingen distraksjon. Det endrer hvordan du opplever matcha." },
+          { q: "Er matcha det samme som teen i den japanske teseremonien?", a: "Ja — chanoyu dreier seg spesifikt om matcha (pulverisert grønn te). Seremonien oppsto rundt matcha fra 1100-tallet." },
+        ],
+      },
+    },
   },
   {
     slug: "uji-matcha-regio",
@@ -4368,6 +5877,97 @@ Lees ook [wat is matcha](/kennis/wat-is-matcha) voor de basis, en [beste matcha 
       { q: "Is Kyoto matcha hetzelfde als Uji matcha?", a: "Niet altijd. Uji ligt in Kyoto Prefectuur, dus 'Kyoto matcha' kan Uji matcha zijn — maar ook van andere velden in Kyoto. 'Uji matcha' is specifieker en doorgaans betrouwbaarder." },
       { q: "Welke matcha-regio is goed voor beginners?", a: "Nishio of zuidelijk Kagoshima — vergelijkbare kwaliteit als Uji maar ~20% lagere prijspunten. Voor pure matcha-momenten loont Uji wel — daar zit het wereldverschil in." },
     ],
+    i18n: {
+      no: {
+        title: "Uji matcha — hvorfor denne regionen leverer den beste matchaen",
+        metaTitle: "Uji matcha: hvorfor Uji-regionen produserer premium matcha",
+        metaDescription: "Uji ved Kyoto er Japans matcha-region fremfor noen. Oppdag klimaet, historien og hva som skiller Uji matcha fra andre regioner.",
+        excerpt: "Ikke all japansk matcha er lik. Uji — en liten region ved Kyoto — har vært episenteret for premium matcha i 800 år. Dette er hvorfor.",
+        category: "Kultur",
+        content: `## Hvorfor Uji?
+Uji er en liten region sør for Kyoto. Tre grunner til at matcha herfra har vært enestående siden 1100-tallet:
+
+1. **Klima** — tåkete elvedaler, milde temperaturer, fuktig luft.
+2. **Jordsmonn** — vulkansk, mineralrik jord.
+3. **Århundrer med erfaring** — generasjoner av tebønder har forfinet teknikkene.
+
+## Historie
+- **1191**: zen-presten Eisai introduserer te i Japan, planter frø ved Kozanji-tempelet — noen kilometer fra Uji.
+- **1200-tallet**: munker tester ulike åkre; Uji viser seg overlegen.
+- **1400-tallet**: shogun Ashikaga Yoshimitsu oppretter "Seven Great Tea Plantations of Uji" — vernede åkre for shogunen.
+- **1500-tallet**: Sen no Rikyūs teseremoni populariserer Uji som premium-kilde.
+- **2026**: fortsatt referansen for premium matcha.
+
+## Hva gjør Uji-klimaet spesielt?
+- **Morgentåke** demper direkte sol — naturlig skyggelegging selv før duk-skyggelegging.
+- **Høy luftfuktighet** støtter langsom bladvekst = flere aminosyrer.
+- **Kjølige netter** bremser modningen = mer kompleks smak.
+- **Geografi**: elven Uji-gawa sørger for jevn vann- og mineraltilførsel.
+
+## Hva smaker Uji matcha annerledes?
+Sammenlignet med andre japanske regioner:
+| Aspekt | Uji | Nishio | Kagoshima |
+|---|---|---|---|
+| Umami | Svært dyp | Fyldig | Mild |
+| Sødme | Subtil | Rundere | Mildt søt |
+| Bitterhet | Svært lav | Lav | Litt mer |
+| Farge | Klar jade | Klar grønn | Litt lysere |
+| Pris | Premium | Premium-minus | Mer tilgjengelig |
+
+Uji matcha er kjent for sin **dype umami og lange komplekse ettersmak** — de "tre smakslagene" som tesommelierer beskriver.
+
+## De syv historiske teplantasjene
+Shogunen vernet syv bestemte åkre i 1392:
+1. Mori — kjent for koicha
+2. Iwai
+3. Sata
+4. Aza
+5. Kawashita
+6. Oku-no-yama
+7. Atsumi
+
+Noen finnes fortsatt i dag — teen deres er nesten ubetalelig (10 €+/gram) og går til konkurranseteseremonier.
+
+## Hvordan gjenkjenner du ekte Uji matcha?
+**Spør selgeren:**
+- "Hvilken bestemt region i Uji?"
+- "Hvilken høst (ichi/ni/sanbancha)?"
+- "Hvilken grade (ceremonial/competitive)?"
+- "Hvilken mølle — stein eller maskin?"
+
+En spesialist svarer på dette direkte. En dropshipper gjør det ikke.
+
+## Vår Uji-matcha
+YourMatcha henter direkte fra Uji — ingen mellomledd. Vår [ceremonial matcha](/product/ceremonial-matcha-100g) er **ichibancha (første høst) fra et familiebruk** i søndre Uji. Steinmalt. Besøk [opprinnelsessiden vår](/herkomst) for hele kjeden.
+
+## Andre matcha-regioner — når velger du dem?
+**Nishio (Aichi)** — størst produksjon, ofte ~20 % billigere. Til daglig bruk helt fint.
+
+**Kagoshima** — moderne dyrking, lette smaksprofiler. Egnet for den som nettopp begynner.
+
+**Shizuoka** — hovedsakelig culinary grade og sencha. Baking, smoothies.
+
+For ren matcha hjemme er **Uji ceremonial** nesten alltid det riktige valget hvis budsjettet tillater det.
+
+## Hva med "Kyoto matcha"?
+"Kyoto matcha" og "Uji matcha" brukes ofte om hverandre — Uji ligger i Kyoto-prefekturet. Strengt tatt er Uji **mer spesifikt** (og mer pålitelig); "Kyoto matcha" kan også komme fra steder i Kyoto utenfor Uji.
+
+## Verdt en Uji-pilegrimsferd?
+For matcha-fans absolutt. I Uji by:
+- **Byōdō-in-tempelet** — UNESCO-verdensarv (og på 10-yen-mynten)
+- **Tehus** der du kan overvære en seremoni live
+- **Familietebruk** — ofte med omvisning (book på forhånd)
+
+Starten av Uji-elven er 25 min med tog fra Kyoto.
+
+Les også [hva er matcha](/kennis/wat-is-matcha) for grunnlaget, og [kjøpe den beste matchaen 2026](/kennis/beste-matcha-kopen-2026) for den komplette kjøpsguiden.`,
+        faqs: [
+          { q: "Hvorfor er Uji matcha dyrere?", a: "Uji har århundrer med erfaring, et unikt klima og strengere kvalitetskontroller. Pluss at selve navnet tilfører premium-verdi. Forvent 20–40 % høyere priser enn sammenlignbare grader fra andre regioner." },
+          { q: "Er Kyoto matcha det samme som Uji matcha?", a: "Ikke alltid. Uji ligger i Kyoto-prefekturet, så 'Kyoto matcha' kan være Uji matcha — men også fra andre åkre i Kyoto. 'Uji matcha' er mer spesifikt og som regel mer pålitelig." },
+          { q: "Hvilken matcha-region er god for nybegynnere?", a: "Nishio eller søndre Kagoshima — sammenlignbar kvalitet med Uji, men ~20 % lavere prispunkter. For rene matcha-øyeblikk lønner Uji seg — der ligger verdensforskjellen." },
+        ],
+      },
+    },
   },
   {
     slug: "koicha-vs-usucha",
@@ -4454,6 +6054,90 @@ Lees ook [matcha bereiden](/kennis/matcha-bereiden) voor de basis.`,
         a: "Voor matcha-fans absoluut — diep umami, vol, romig. Voor matcha-beginners kan koicha 'te intens' aanvoelen. Begin met usucha en bouw op.",
       },
     ],
+    i18n: {
+      no: {
+        title: "Koicha vs. usucha — forskjellen mellom tykk og tynn matcha",
+        metaTitle: "Koicha vs. usucha: forskjellen mellom tykk og tynn matcha",
+        metaDescription: "Koicha (tykk matcha) og usucha (tynn matcha) er to fundamentalt forskjellige tilberedninger. Hva de er, hvordan du lager dem, når du velger hva.",
+        excerpt: "To tilberedninger, én matcha. Koicha er pasta-aktig og høytidelig, usucha er det de fleste kaller 'matcha'. Her er forskjellen.",
+        content: `## Kort konklusjon
+- **Usucha** (薄茶, "tynn te") — 2 g matcha + 60 ml vann. Raskt vispet, daglig tilberedning.
+- **Koicha** (濃茶, "tykk te") — 4 g matcha + 30 ml vann. Pasta-aktig, høytidelig, delt fra én skål.
+
+## Usucha — det de fleste drikker
+Usucha er **standard matcha-tilberedning**. 1–2 g matcha med 60–70 ml vann på 75–80 °C, raskt vispet i M-form med en [chasen](/product/bamboe-chasen) til det dannes et lag fint skum.
+
+**Smak:** balanse mellom umami og lett bitterhet, kremet tekstur fra skummet.
+**Ment for:** daglig bruk, eget ritual, rask drikking.
+**Koffein:** ~70 mg per kopp.
+
+## Koicha — høytidelig og sjelden
+Koicha er **den høytidelige varianten**. Fire ganger så mye matcha i halvparten så mye vann. Resultatet er en **tykk, pasta-aktig drikk** med konsistens som honning.
+
+**Smak:** intenst fyldig, ekstremt umami, nesten ingen bitterhet. Bitter matcha gir uspiselig koicha — bare premium ceremonial matcha er egnet.
+**Ment for:** chakai (formelle teseremonier), delt fra én skål av alle gjestene.
+**Koffein:** opptil 130 mg per porsjon.
+
+## Tilberedning sammenlignet
+| Aspekt | Usucha | Koicha |
+|---|---|---|
+| Matcha | 1–2 g | 3,5–4 g |
+| Vann | 60–70 ml | 25–30 ml |
+| Vanntemperatur | 75–80 °C | 70–75 °C |
+| Teknikk | Rask visping i M-form | Langsom omrøring i løkke |
+| Sluttresultat | Lett væske med skum | Pasta-aktig, blank |
+| Tid | 15–20 sek | 30–45 sek |
+| Skum? | Ja, fint | Nei — bare blank overflate |
+
+## Hvilken matcha til koicha?
+Koicha krever matcha som er **naturlig søt**. En culinary-blanding blir udrikkelig ved høy dosering — bitterheten forsterkes 4x.
+
+For koicha:
+- **Premium ceremonial** fra [Uji](/kennis/uji-matcha-regio).
+- **Ichibancha** (første høst).
+- **Fersk matcha** — åpnet <2 uker.
+
+Vår [ceremonial 100g](/product/ceremonial-matcha-100g) er egnet for koicha ved spesielle anledninger.
+
+## Hvordan drikker du koicha?
+Ved en formell seremoni deler verten én skål koicha mellom gjestene:
+
+1. Den første gjesten tar skålen, bøyer seg, dreier 2x med klokken.
+2. Tar 3 slurker.
+3. Tørker kanten med fukusa (silkeklut).
+4. Gir videre til neste gjest.
+
+Ved hjemmebruk drikker du bare fra én skål — symbolikken i å dele består.
+
+## Når bør du prøve koicha?
+- Du drikker allerede usucha jevnlig.
+- Du har premium ceremonial matcha hjemme.
+- Du vil bli kjent med den bredere tekulturen.
+- En spesiell anledning (gjest, festlig kveld, [chakai hjemme](/kennis/japanse-theeceremonie-chanoyu)).
+
+## Vanlige feil med koicha
+- **Bruke culinary matcha** — blir bittert.
+- **For mye vann** — mister koicha-karakteren.
+- **Klumper** — ikke sikte = katastrofe ved koicha. Sikt alltid dobbelt.
+- **For varmt vann** — koicha-temperaturen er litt lavere (70–75 °C).
+
+Les også [lage matcha](/kennis/matcha-bereiden) for grunnlaget.`,
+        faqs: [
+          {
+            q: "Kan jeg lage koicha med culinary matcha?",
+            a: "Helst ikke. Den høye doseringen (4 g) forsterker enhver bitterhet. Koicha krever premium ceremonial matcha som er naturlig søt og fyldig på umami.",
+          },
+          {
+            q: "Hvor mye koffein er det i koicha?",
+            a: "Opptil ~130 mg per porsjon (mot 70 mg for usucha). På grunn av det mindre volumet føles det enda mer intenst. Drikk koicha helst om morgenen eller før middagstid.",
+          },
+          {
+            q: "Smaker koicha godt?",
+            a: "For matcha-fans absolutt — dyp umami, fyldig, kremet. For matcha-nybegynnere kan koicha føles 'for intens'. Start med usucha og bygg deg opp.",
+          },
+        ],
+      },
+    },
   },
   {
     slug: "matcha-en-huid",
@@ -4541,6 +6225,91 @@ Lees ook [13 gezondheidsvoordelen van matcha](/kennis/matcha-gezondheidsvoordele
         a: "1 tot 2 koppen per dag, gedurende 8+ weken voor merkbaar effect. Antioxidanten werken cumulatief, dus consistentie is belangrijker dan grote eenmalige doseringen.",
       },
     ],
+    i18n: {
+      no: {
+        title: "Matcha og hud — hva gjør antioksidanter egentlig?",
+        metaTitle: "Matcha og hud: anti-aging-effekter vitenskapelig fundert",
+        metaDescription: "Hjelper matcha mot hudaldring? Hva 30+ studier sier om EGCG, kollagen, UV-beskyttelse og når matcha virkelig gjør en forskjell for huden.",
+        excerpt: "Matcha selges stadig oftere som 'beauty drink'. På tide å se gjennom påstandene — hva gjør antioksidantene egentlig for huden din?",
+        content: `## Kort konklusjon
+Matcha **støtter hudhelsen lett** gjennom antioksidanter (særlig EGCG). Effekten er beskjeden og inntreffer ved langvarig regelmessig bruk (1–2 kopper/dag, uker/måneder). Ikke et mirakelmiddel, men et rimelig tillegg til en god hudrutine.
+
+## De tre mekanismene
+**1. Antioksidant-beskyttelse mot UV-skade**
+EGCG og andre katekiner fanger opp frie radikaler som dannes av sollys. Studier (Janjua et al., 2009) viser at **regelmessig inntak av grønn te reduserer UV-forårsaket hudskade** — men erstatter ikke solkrem.
+
+**2. Betennelsesdempende effekt**
+Katekiner hemmer betennelsesveier (NF-κB-pathway). Ved akne og rosacea ser noen studier en lett forbedring av rødhet og hevelse.
+
+**3. Kollagen-støtte**
+EGCG hemmer MMP-enzymer som bryter ned kollagen. Teoretisk altså hudfasthet-støttende — men dokumentert effekt er beskjeden ved kosthold alene.
+
+## Hva sier oversikter over studier?
+**Metaoversikt 2017 (*Nutrients*):** inntak av grønn te viser en betydelig, men beskjeden forbedring av:
+- Hudfuktighet
+- Hudruhet
+- UV-skade ved langvarig bruk
+
+Effektene er sammenlignbare med eller litt mindre enn topisk C-vitamin — verdifulle som tillegg, ikke som erstatning.
+
+## Drikke vs. smøre på huden
+**Drikke:** systemisk virkning via blodbanen. Langsom oppbygging, bred effekt.
+**Topisk (matcha-maske):** lokal virkning — direkte kontakt. Raskere synlig, mer overfladisk.
+
+DIY matcha-maske:
+- 1 ts matcha
+- 1 ss honning
+- 1 ss yoghurt
+Bland til en pasta, 10 min på renset hud, skyll av.
+
+Virker mildt på trøtt hud. Ingen erstatning for dermatologisk behandling.
+
+## Hvor mye matcha for synlig effekt?
+| Effekt | Nødvendig dosering | Tidsramme |
+|---|---|---|
+| Generell antioksidant-beskyttelse | 1 kopp/dag | Kontinuerlig |
+| UV-skade-reduksjon | 2 kopper/dag | 8+ uker |
+| Forbedret elastisitet | 2+ kopper/dag | 12+ uker |
+| Akne-rødhet | Uklart — kombinasjon nødvendig |
+
+## Hvem virker matcha best for?
+Personer med:
+- Mye fritids-UV-eksponering (soltilbedere, løpere)
+- Lett kronisk betennelse (mild akne, rosacea)
+- Koffeintoleranse (tåler doseringen)
+- En eksisterende god hudrutine som matcha er et tillegg til
+
+## Der matcha ikke gjør mye
+- **Dype rynker** — der trengs topisk retinoid eller en derma-prosedyre.
+- **Hormonell akne** — krever en hormonell eller dermatologisk tilnærming.
+- **Genetiske pigmentflekker** — antioksidanter hemmer utviklingen, men reparerer ikke.
+
+## Praktisk protokoll
+1. **Morgenkopp**: matcha latte med havremelk — antioksidanttopp for dagen.
+2. **Valgfri maske**: 1x i uken DIY-maske.
+3. **Kombiner med SPF daglig** — matcha er ingen solkremerstatning.
+4. **Hydrering**: drikk 1,5–2 L vann i tillegg til matcha — antioksidanter virker bedre ved god hydrering.
+
+## Bivirkninger
+Ved normalt forbruk (1–3 kopper/dag) ingen kjente hudbivirkninger. Ved **høy dose EGCG-tilskudd** er leverbelastning notert — ikke ved vanlig matcha-forbruk.
+
+Les også [13 helsefordeler ved matcha](/kennis/matcha-gezondheidsvoordelen) for den bredere konteksten.`,
+        faqs: [
+          {
+            q: "Hjelper matcha mot rynker?",
+            a: "Ved langvarig forbruk kan matcha bremse hudaldring litt gjennom antioksidanter. Eksisterende dype rynker reparerer den ikke — der trengs topisk retinoid eller derma-behandling.",
+          },
+          {
+            q: "Kan jeg bruke matcha som ansiktsmaske?",
+            a: "Ja. Bland 1 ts matcha med 1 ss honning og 1 ss yoghurt, 10 min på huden, skyll av. Gir en mild beroligende og antioksidant-effekt — ikke et mirakelmiddel.",
+          },
+          {
+            q: "Hvor mye matcha per dag for hudfordeler?",
+            a: "1 til 2 kopper per dag, i 8+ uker for merkbar effekt. Antioksidanter virker kumulativt, så jevnhet er viktigere enn store engangsdoser.",
+          },
+        ],
+      },
+    },
   },
   {
     slug: "matcha-en-intermittent-fasting",
@@ -4630,6 +6399,93 @@ Lees ook [matcha en afvallen](/kennis/matcha-en-afvallen) en [matcha cafeïne](/
         a: "Bij minimale dosering (1 g/kop) en pure bereiding is het effect minimaal. Voor strikte autofagie-protocollen vermijd je beter alle voedingsstoffen, ook matcha.",
       },
     ],
+    i18n: {
+      no: {
+        title: "Matcha under periodisk faste — kan du drikke det?",
+        metaTitle: "Matcha og periodisk faste: kan du drikke det under fasten?",
+        metaDescription: "Bryter matcha fasten din? Hva gjør matcha med insulin, autofagi og ketose? Og når du heller bør eller ikke bør drikke det.",
+        excerpt: "Matcha under periodisk faste er nesten alltid greit — men det finnes nyanser rundt melk, sukker og autofagi du bør ta hensyn til.",
+        content: `## Kort konklusjon
+**Ren matcha (matcha + vann) bryter ikke fasten.** Den inneholder <5 kcal og har ingen betydelig effekt på insulin eller ketose. Matcha latte med melk eller søtning bryter fasten teknisk sett.
+
+## Hvorfor matcha er praktisk talt kalorifri
+Per 2 g matcha:
+- **Kalorier**: ~5 kcal
+- **Karbohydrater**: ~1 g (hovedsakelig fiber)
+- **Protein**: ~0,5 g
+- **Fett**: ubetydelig
+
+Så lite at de fleste fasteprotokoller tolererer det.
+
+## De tre typene "faste"
+**1. Streng autofagi-faste**
+Mål: cellulær opprydding. Alt over 0 kcal kan begrense effekten. **Unngå matcha** eller hold det svært svakt (<1 g per kopp).
+
+**2. Vekttapfaste (16:8, 18:6)**
+Mål: kaloriunderskudd og metabolsk effekt. **Ren matcha er greit** — 5 kcal per kopp gjør ingen forskjell. Pluss at EGCG og koffein kan øke fettforbrenningen litt.
+
+**3. Insulinfølsomhetsfaste**
+Mål: unngå insulintopper. **Ren matcha er trygt** — minimal innvirkning på blodsukkeret. Unngå melk og søtning til du er i spisevinduet.
+
+## Hva bryter fasten DIN?
+- **Melk i matcha latte** — protein + karbohydrater utløser insulin.
+- **Plantemelk** — særlig havremelk (raskt karbohydrat).
+- **Honning/sukker** — direkte glukosetopp.
+- **Selv "frie" søtningsmidler** (stevia, erytritol) — noen forskere peker på en insulinrespons, andre ikke.
+
+## Fordeler ved matcha under faste
+1. **Demper appetitten mildt** — gjennom L-theanin og koffein.
+2. **Fettforbrenningsboost** — EGCG øker fettforbrenningen 17 % under aktivitet (studie fra 2018).
+3. **Stabil energi** — gjennom L-theanin, ingen krasj som ved kaffe.
+4. **Mildere på magen enn kaffe** — mindre magesyre på tom mage.
+
+## Anbefalt matcha-fasteprotokoll
+**16:8-skjema (faste 16t, spise 8t):**
+
+| Tidspunkt | Handling |
+|---|---|
+| 06:00 (oppvåkning) | Glass vann, valgfritt 1 g matcha ren |
+| 10:00 | 1–2 g matcha ren (energitopp) |
+| 12:00 | Spisevinduet åpner — matcha latte med melk greit |
+| 14:00 | Matcha latte (dagens siste koffein) |
+| 20:00 | Spisevinduet lukker |
+
+## Matcha på tom mage — vær oppmerksom
+Noen får **mageplager** av matcha på tom mage:
+- Kvalme
+- Lett sure oppstøt
+- Hodepine
+
+Løsning:
+- Start med 1 g i stedet for 2 g.
+- Drikk 250 ml vann på forhånd.
+- Bygg opp toleranse (første uke 1 kopp, deretter utvide).
+
+## Iset matcha under faste
+[Iset matcha](/recepten/iced-matcha-latte) ren (uten melk) er ideelt for faste om sommeren. Bruk vår [iset matcha-blanding](/product/iced-matcha-blend-60g) med bare kaldt vann.
+
+## Hva med matcha under faste på 24+ timer?
+Ved lengre faste (24–72 timer) er **sikkerhet** viktigere enn optimalisering. Matcha gir kalium og magnesium som hjelper mot hodepine og tretthet. Men: ikke mer enn 2 kopper, og kompenser for dehydrering med ekstra vann.
+
+Ved faste på 5+ dager: rådfør deg først med lege. Koffein kan da ha en sterkere effekt.
+
+Les også [matcha og vektnedgang](/kennis/matcha-en-afvallen) og [matcha koffein](/kennis/matcha-cafeine).`,
+        faqs: [
+          {
+            q: "Bryter matcha den periodiske fasten min?",
+            a: "Ren matcha (matcha + vann) ikke — bare ~5 kcal per kopp. Matcha latte med melk gjør det, på grunn av protein og karbohydrater som utløser insulin. Drikk ren under fastevinduet.",
+          },
+          {
+            q: "Kan jeg drikke matcha på tom mage?",
+            a: "Som regel ja, men noen får lette mageplager. Start med 1 g (i stedet for 2 g) og drikk 250 ml vann på forhånd. Bygg opp toleransen gradvis.",
+          },
+          {
+            q: "Forstyrrer matcha autofagi?",
+            a: "Ved minimal dosering (1 g/kopp) og ren tilberedning er effekten minimal. For strenge autofagi-protokoller bør du unngå alle næringsstoffer, også matcha.",
+          },
+        ],
+      },
+    },
   },
   {
     slug: "matcha-en-menstruatie",
@@ -4717,6 +6573,91 @@ Lees ook [matcha tijdens zwangerschap](/kennis/matcha-tijdens-zwangerschap) en [
         a: "Anekdotisch ja — L-theanine verhoogt GABA en serotonine, beide betrokken bij stemmingsregulatie. Wetenschappelijk onderzoek hierop is beperkt, maar het mechanisme is plausibel.",
       },
     ],
+    i18n: {
+      no: {
+        title: "Matcha under menstruasjonen — hva sier forskningen?",
+        metaTitle: "Matcha og menstruasjon: kramper, energi og hva som hjelper",
+        metaDescription: "Matcha under menstruasjonen — hjelper det eller gjør det kramper verre? Hva forskningen sier om koffein, jern og sykliske plager.",
+        excerpt: "Matcha og syklusen din — et ofte stilt spørsmål. Her er hva vi vet om koffein, jernopptak og når matcha faktisk er fornuftig eller ikke.",
+        content: `## Kort konklusjon
+- **Matcha er tillatt under menstruasjonen**, men med måte — 1–2 kopper.
+- **Høyt koffein kan forverre kramper** hos følsomme kvinner.
+- **Drikk ikke under eller rett etter jernrike måltider** — katekiner reduserer jernopptaket.
+- **L-theanin kan lindre humørsvingninger.**
+
+## Koffein og kramper
+Høyere koffeininntak er i studier assosiert med **noe kraftigere menstruasjonssmerter** hos enkelte kvinner. Mekanisme: koffein kan trekke sammen blodårer, noe som forsterker kramper.
+
+Praktisk:
+- **På kraftige dager**: maks 1 kopp matcha/dag.
+- **Lette dager**: 2 kopper er greit.
+- **Føler du ekstra smerte etter matcha?** Bytt midlertidig til [hojicha](/kennis/hojicha-uitleg) — bare 10 mg koffein.
+
+## Katekiner og jernopptak
+Viktig poeng: **katekiner (som EGCG) reduserer opptaket av ikke-hem-jern** med 60–80 % ved samtidig inntak. Ikke-hem-jern er jern fra planter (spinat, belgfrukter).
+
+Under menstruasjonen mister du jern — ekstra jernopptak er da nyttig.
+
+**Regel:** drikk matcha **minst 1 time før eller etter** jernrike måltider eller et jerntilskudd.
+
+Konkret:
+- Frokost med havregrøt + bær → matcha 1 time senere.
+- Salat med spinat → matcha 1 time etter.
+- Jerntilskudd → matcha minst 2 timer etterpå.
+
+## L-theanin og PMS
+L-theanin øker GABA og serotonin — begge spiller en rolle i humørregulering. Anekdotisk melder mange kvinner at **regelmessig matcha demper PMS-humørsvingninger**. Den vitenskapelige forskningen på dette er begrenset, men plausibel.
+
+## Energibalanse gjennom syklusen
+En typisk syklus har faser med ulike energinivåer:
+
+| Fase | Dager | Energi | Anbefaling |
+|---|---|---|---|
+| Menstruasjon | 1–5 | Lav | 1 kopp matcha + jernrik mat |
+| Follikulær | 6–14 | Stigende | 2 kopper matcha — fokustopper |
+| Eggløsning | ~14 | Topp | Normalt — matcha for produktive dager |
+| Luteal | 15–28 | Synkende | 1–2 kopper, unngå etter kl. 14 (søvn) |
+
+## Hva med endometriose eller PCOS?
+**Endometriose:** noe dokumentasjon på at antioksidanter demper betennelse — matcha kan være lett støttende. Rådfør deg med legen din.
+**PCOS:** matcha hjelper insulinfølsomhet og vektkontroll litt. EGCG er undersøkt i PCOS-studier — de første resultatene er positive.
+
+## Praktisk protokoll
+**Dag 1–3 (kraftig):**
+- 1 kopp matcha om morgenen
+- Hojicha om ettermiddagen
+- Ekstra vann + magnesiumrik mat
+
+**Dag 4–7:**
+- Normale 2 kopper matcha
+- 1 time mellom matcha og jernkilder
+
+**Før menstruasjonen (PMS):**
+- 2 kopper matcha + L-theanin-effekt for humøret
+- Unngå alkohol (forverrer PMS)
+
+## Når bør du heller ikke drikke matcha?
+- Ekstremt kraftig smerte der du uansett tåler koffein dårlig
+- Kjent jernmangel + under behandling
+- Kombinasjon med SSRI-er (begrens inntaket)
+
+Les også [matcha under graviditet](/kennis/matcha-tijdens-zwangerschap) og [matcha og fokus](/kennis/matcha-en-focus).`,
+        faqs: [
+          {
+            q: "Gjør matcha menstruasjonskramper verre?",
+            a: "Hos noen kvinner, ja. Koffein kan trekke sammen blodårer og forsterke kramper. Ved kraftig smerte: maksimalt 1 kopp matcha per dag eller bytt til hojicha (svært lavt koffein).",
+          },
+          {
+            q: "Reduserer matcha jernopptaket?",
+            a: "Ja — katekiner (som EGCG) reduserer opptaket av ikke-hem-jern med 60–80 % ved samtidig inntak. Drikk matcha minst 1 time før eller etter jernrike måltider eller tilskudd.",
+          },
+          {
+            q: "Hjelper matcha ved PMS-humør?",
+            a: "Anekdotisk ja — L-theanin øker GABA og serotonin, begge involvert i humørregulering. Den vitenskapelige forskningen på dette er begrenset, men mekanismen er plausibel.",
+          },
+        ],
+      },
+    },
   },
   {
     slug: "matcha-en-cholesterol",
@@ -4815,6 +6756,102 @@ Lees ook [13 gezondheidsvoordelen](/kennis/matcha-gezondheidsvoordelen) voor de 
         a: "Studies tonen geen significant effect op HDL. Voor HDL-verhoging is regelmatige aerobic beweging het meest effectief, gevolgd door omega-3 vetten.",
       },
     ],
+    i18n: {
+      no: {
+        title: "Matcha og kolesterol — hva sier 12+ studier?",
+        metaTitle: "Matcha og kolesterol: hva forskning sier om LDL og HDL",
+        metaDescription: "Senker matcha kolesterol? Metaanalyser av 12+ studier viser en betydelig nedgang i LDL. Hvor mye matcha og hva kan du realistisk forvente?",
+        excerpt: "Kolesterolsenking er en av de best dokumenterte helseeffektene av grønn te. Her er hva det konkret betyr for matcha-drikkere.",
+        content: `## Kort konklusjon
+En metaanalyse fra 2020 (Xu et al., *Nutrition Journal*) av 31 studier fant at inntak av grønn te senker LDL-kolesterol med i snitt **0,2 mmol/L (4,5 mg/dL)** — beskjedent, men betydelig. Effekten inntreffer ved **≥600 mg katekiner per dag** (≈3–4 kopper matcha).
+
+## Hva gjør matcha med kolesterol?
+**EGCG (hovedkatekinen) virker på tre måter:**
+
+1. **Hemmer kolesterolopptak i tarmen** — mindre av det du spiser kommer ut i blodet.
+2. **Øker LDL-reseptorer i leveren** — eksisterende LDL ryddes raskere bort.
+3. **Reduserer LDL-oksidasjon** — oksidert LDL er hovedårsaken til åreforkalkning.
+
+## Hva tallene viser
+Metaanalyser viser konsekvent:
+
+| Effekt | Gjennomsnittlig reduksjon |
+|---|---|
+| LDL-kolesterol | -0,2 mmol/L (-4,5 mg/dL) |
+| Totalkolesterol | -0,15 mmol/L |
+| Triglyserider | -0,1 mmol/L |
+| HDL-kolesterol | Ingen betydelig effekt |
+
+Effektene virker små, men **hos en person med grenseverdi-LDL (>3,0 mmol/L) kan dette bety forskjellen mellom statinanbefaling eller ikke**.
+
+## Sammenlign med andre tiltak
+| Tiltak | LDL-reduksjon |
+|---|---|
+| 3 kopper matcha/dag | ~5 % |
+| Middelhavskosthold | 5–10 % |
+| Plantesteroler | 7–10 % |
+| Fiberrikt kosthold | 5–10 % |
+| Statin (lav dose) | 30–50 % |
+| Statin (høy dose) | 50–60 % |
+
+Matcha alene er **ingen erstatning for medisin** ved høyt kolesterol — men et verdifullt bidrag til en helhetlig tilnærming.
+
+## Hvor mye matcha for effekt?
+| Mål | Dosering |
+|---|---|
+| Forebyggende (sunt LDL) | 1 kopp/dag |
+| Støtte ved grenseverdi-LDL | 2–3 kopper/dag |
+| Maksimalt undersøkt dosering | 4 kopper/dag (~600 mg EGCG) |
+
+Over 4 kopper forbedres effektene ikke nevneverdig — og koffein blir et problem.
+
+## Hvor lenge før effekt?
+Studier finner en målbar forskjell etter **8–12 uker** med daglig bruk. Det er ingen quick fix. Jevnhet > intensitet.
+
+## Hva matcha IKKE gjør
+- Øke HDL-kolesterol (der virker trening bedre).
+- Stabilisere akutte topper — kosthold og bevegelse er fortsatt hovedrolleinnehaverne.
+- Senke genetisk høyt kolesterol (familiær hyperkolesterolemi) betydelig.
+
+## Hvilken matcha for kolesterol?
+Høyere EGCG = bedre effekt. Rekkefølge etter EGCG-innhold:
+1. **Ceremonial matcha** (første høst) — høyest katekiner
+2. **Premium culinary** — sammenlignbar
+3. **Standard culinary** — litt lavere
+4. **Cooking grade** — lavest, unngå
+
+Vår [ceremonial 100g](/product/ceremonial-matcha-100g) er et godt daglig valg.
+
+## Bivirkninger å være oppmerksom på
+- **Statin + matcha**: matcha kan forsterke statineffekten litt. Ved høyt inntak, rådfør deg med lege.
+- **Blodfortynnende (warfarin)**: K-vitamin i matcha kan gi interaksjon.
+- **Leversårbar**: svært høye EGCG-doser (fra tilskudd, ikke matcha) kan belaste leveren.
+
+## Praktisk protokoll
+**For den som vil gjøre noe med kolesterolet:**
+1. **2–3 kopper matcha/dag**, usøtet.
+2. **Kombiner med havre** (havregrøt, havremelk) — betaglukaner forsterker effekten.
+3. **Reduser mettet fett** — matcha virker ikke i fettrike måltider.
+4. **Beveg deg 30 min/dag** — øker HDL der matcha ikke gjør det.
+5. **Test på nytt etter 12 uker** — hos lege.
+
+Les også [13 helsefordeler](/kennis/matcha-gezondheidsvoordelen) for den bredere konteksten.`,
+        faqs: [
+          {
+            q: "Hvor mye matcha per dag for kolesteroleffekt?",
+            a: "2–3 kopper (600+ mg katekiner) ser ut til å være effektivt ifølge metaanalyser. Under 1 kopp/dag er effekten minimal. Gi det 8–12 uker for en målbar forskjell.",
+          },
+          {
+            q: "Kan matcha erstatte statiner?",
+            a: "Nei. Matcha senker LDL med ~5 %, statiner 30–60 %. Ved høyt kolesterol er medisin fortsatt nødvendig — matcha er et verdifullt tillegg, ingen erstatning.",
+          },
+          {
+            q: "Øker matcha HDL (godt kolesterol)?",
+            a: "Studier viser ingen betydelig effekt på HDL. For å øke HDL er regelmessig kondisjonstrening mest effektivt, etterfulgt av omega-3-fett.",
+          },
+        ],
+      },
+    },
   },
   {
     slug: "matcha-bewaren-seizoen",
@@ -4911,6 +6948,100 @@ Lees ook [matcha bewaren — basis](/kennis/matcha-bewaren) voor algemene tips.`
         a: "Geopend 4–6 weken voor optimale smaak. Winterklimaat in NL/BE (rond 19 °C, droge lucht door verwarming) is meestal prima voor kortere opslag.",
       },
     ],
+    i18n: {
+      no: {
+        title: "Oppbevare matcha sommer og vinter — sesongtips",
+        metaTitle: "Oppbevare matcha sommer og vinter: optimal holdbarhet per sesong",
+        metaDescription: "Høy luftfuktighet om sommeren og kald vinter — begge skader matcha. Praktiske tips per sesong for maksimal ferskhet og farge.",
+        excerpt: "Å oppbevare matcha i nordisk klima krever ekstra oppmerksomhet om sommeren og vinteren. Her er hva du bør gjøre annerledes per sesong.",
+        content: `## Kort konklusjon
+- **Sommer (>22 °C, høy luftfuktighet)**: kjøleskap, hermetisk lufttett.
+- **Vinter (<18 °C, tørt inne)**: skap på romtemperatur — unngå oppvarming.
+- **Åpnet pose**: 4–6 uker i enhver sesong.
+
+## Matchaens fire fiender
+1. **Luft** — oksidasjon, fargetap.
+2. **Lys** — klorofyllnedbrytning.
+3. **Varme** — fremskynder aromatap.
+4. **Fukt** — klumper og forderv.
+
+Om sommeren er varme og fukt din største risiko. Om vinteren er oppvarming + tørr luft utfordringen.
+
+## Sommer (juni–august)
+**Risikoer:**
+- Varmt kjøkken (>22 °C)
+- Høy luftfuktighet (70 %+)
+- Direkte sollys gjennom vinduer
+
+**Oppbevaring:**
+1. **Kjøleskap er standarden** — øverste hylle, langt bak (jevnere kaldt).
+2. **Hermetisk lufttett** — originalpose + ekstra Ziploc, eller vakuumforsegling.
+3. **La den alltid komme til romtemperatur** før du åpner — ellers dannes kondens inni.
+
+**Pro-tips:** del en stor pose i **mindre porsjoner** (30g) — åpne bare det du bruker denne uken. Resten holdes hermetisk lukket i fryseren.
+
+## Vinter (desember–februar)
+**Risikoer:**
+- Sentralvarme → tørr luft (30 % RH)
+- Temperatursvingninger mellom rom og kjøleskap
+- Lang lagring — helligdager med store lagre
+
+**Oppbevaring:**
+1. **Romtemperatur** er som regel fint — men **ikke over eller i nærheten av oppvarming**.
+2. **Mørkt skap** ≤20 °C.
+3. **Unngå kjøleskap** hvis kjøkkenet er ≤18 °C — unødvendig.
+
+**Pro-tips:** **ingen kondensfare** om vinteren, men derimot **statisk elektrisitet** — matcha kan forbli klumpete i den tørre luften. Sikting er fortsatt avgjørende.
+
+## Vår og høst
+Mellomsesongene er enklest. Skap på romtemperatur, lufttett. Ingenting spesielt nødvendig.
+
+## Hvor mye kjøpe?
+Ta hensyn til forbruket ditt:
+
+| Forbruk | Optimal pakning |
+|---|---|
+| 1 kopp/dag | 30g (brukes opp på 2 uker) |
+| 1 kopp/dag, erfaren | 100g (på 6 uker) |
+| Latte 2x/uke | 30–50g |
+| Gave / av og til | 30g (fersk smak garantert) |
+
+## Holdbarhet i tall
+| Tilstand | Optimal | Akseptabel |
+|---|---|---|
+| Uåpnet, kjølig mørkt | 12 måneder | 18 måneder |
+| Uåpnet, fryser | 18 måneder | 24 måneder |
+| Åpnet, kjølig mørkt | 4–6 uker | 3 måneder |
+| Åpnet, kjøleskap lufttett | 6–8 uker | 12 uker |
+| Åpnet, romvarme | 3–4 uker | 6 uker |
+
+## Hvordan gjenkjenner du at matchaen er "død"?
+- **Farge**: klar jadegrønn → matt olivengrønn.
+- **Lukt**: frisk og søt → muggen eller "papir".
+- **Smak**: søt og umami → flat eller bitter.
+
+Bedervet matcha er **ikke skadelig** — bare mindre god og med færre antioksidanter.
+
+## Pro-tips — "testkoppen"
+Er du i tvil om frisk matcha? Visp en testkopp ren med vann (ingen melk). En god matcha er **klart grønt skum med søt aroma**. Bittert eller matt-brunt resultat = bytt ut.
+
+Les også [oppbevare matcha — grunnleggende](/kennis/matcha-bewaren) for generelle tips.`,
+        faqs: [
+          {
+            q: "Må jeg alltid oppbevare matcha i kjøleskap om sommeren?",
+            a: "Hvis kjøkkenet ditt jevnlig kommer over 22 °C: ja. Men bruk lufttett emballasje og la den alltid komme til romtemperatur før du åpner — ellers dannes kondens.",
+          },
+          {
+            q: "Hva er best — kjøleskap eller fryser for matcha?",
+            a: "Fryser for uåpnet langtidslagring (6+ måneder). Kjøleskap for åpnet pakning om sommeren. Åpnet matcha hører ikke hjemme i fryseren — ved hver åpning dannes kondens.",
+          },
+          {
+            q: "Hvor lenge holder matcha seg om vinteren på romtemperatur?",
+            a: "Åpnet 4–6 uker for optimal smak. Vinterklima i Norden (rundt 19 °C, tørr luft fra oppvarming) er som regel fint for kortere lagring.",
+          },
+        ],
+      },
+    },
   },
   {
     slug: "ichibancha-vs-nibancha",
@@ -5010,6 +7141,103 @@ Lees ook [Uji matcha regio](/kennis/uji-matcha-regio) en [matcha prijs uitleg](/
         a: "Een blend of pure nibancha is prima — robuust genoeg voor melk, kosteneffectief. Spaar ichibancha voor pure usucha-momenten.",
       },
     ],
+    i18n: {
+      no: {
+        title: "Ichibancha vs. nibancha — første vs. andre høst",
+        metaTitle: "Ichibancha vs. nibancha: forskjell på første og andre matcha-høst",
+        metaDescription: "Hva er ichibancha og nibancha? Hvordan skiller matcha fra første høst seg fra andre høst, og hva betyr det for smak og pris?",
+        excerpt: "En god matcha-selger oppgir høsten. Her er hva ichibancha og nibancha betyr — og hvorfor forskjellen betyr noe for smak og pris.",
+        content: `## Kort konklusjon
+- **Ichibancha** (一番茶) = første høst (mai), de yngste bladene, høyest L-theanin og klorofyll. For ceremonial matcha.
+- **Nibancha** (二番茶) = andre høst (juni/juli), mer robust og billigere. For culinary og blandinger.
+- **Sanbancha** (三番茶) = tredje høst (august), for hojicha og cooking-grade.
+
+## Den japanske høstkalenderen
+| Høst | Periode | Kjennetegn |
+|---|---|---|
+| Ichibancha | Slutten av april – mai | Yngste blad, premium |
+| Nibancha | Juni – juli | Mer moden, mer robust |
+| Sanbancha | August | Sensommer, for risting |
+| Yonbancha | September (sjelden) | Spesielt lite L-theanin |
+
+I Uji plukkes nesten bare ichibancha og nibancha til matcha. Sanbancha går til hojicha-produksjon.
+
+## Hvorfor er ichibancha så viktig?
+**Planten har hvilt hele vinteren** — alle næringsstoffer, aminosyrer og mineraler spares opp. Ved den første høsten sitter alt i de tre yngste bladene.
+
+Konkret betyr det:
+- **30–50 % mer L-theanin** enn nibancha
+- **Høyere klorofyll** = klarere farge
+- **Flere søte aminosyrer** (særlig glutaminsyre)
+- **Færre katekiner** = mindre bitterhet
+
+## Hva er i vår ceremonial matcha?
+Vår [ceremonial 100g](/product/ceremonial-matcha-100g) er **100 % ichibancha** fra Uji. Vår [culinary matcha](/product/culinary-matcha-100g) er en blanding av sen ichibancha og nibancha — robust nok til latter, kostnadseffektiv.
+
+## Smak sammenlignet
+**Ichibancha (i ren usucha):**
+- Søt, fyldig umami, kremet tekstur
+- Klar jadegrønn
+- Lang kompleks ettersmak
+
+**Nibancha (i ren usucha):**
+- Mer robust, litt jordaktig
+- Mørkegrønn, noen ganger litt gulgrønn
+- Kortere ettersmak
+- Lett bitterhet kan forekomme
+
+## Hva står på en japansk matcha-pose?
+En god selger oppgir:
+- **Produksjonsdato** (høstmåned)
+- **Høst-nivå** (ichibancha / blanding)
+- **Region** (Uji, Nishio, osv.)
+- **Grade** (ceremonial / culinary)
+
+Oppgir de ikke høsten? **Det er som regel nibancha eller en blanding** — ikke noe galt med det for latter, men ikke for ren bruk.
+
+## Prispunkter
+| Kategori | Pris/100g (2026) |
+|---|---|
+| Ichibancha ceremonial | 50–150 € |
+| Sen ichibancha / blanding | 30–60 € |
+| Ren nibancha culinary | 20–40 € |
+| Sanbancha (bare for hojicha) | i.r. |
+
+## Når betyr det noe?
+**Betyr mye:**
+- Ren matcha (usucha/koicha) — ichibancha er nødvendig
+- Den første matcha-opplevelsen — velg ichibancha for et godt førsteinntrykk
+- Premium-gave
+
+**Betyr lite:**
+- Matcha latte — melken overdøver de subtile ichibancha-tonene
+- Baking — varmen ødelegger L-theanin uansett
+- Smoothies — smaken endres av andre ingredienser
+
+## Hvorfor ikke all ceremonial matcha er lik
+To "ceremonial grade"-matchaer fra ulike selgere kan smake helt forskjellig:
+- Den ene er **100 % ichibancha** fra prime åkre
+- Den andre er en blanding av **sen ichibancha + nibancha**
+
+Begge kan kalles "ceremonial" i markedsføringen. Spør alltid ved premium-kjøp.
+
+Les også [Uji matcha-regionen](/kennis/uji-matcha-regio) og [matchaprisen forklart](/kennis/matcha-prijs-uitleg).`,
+        faqs: [
+          {
+            q: "Hva er den viktigste forskjellen mellom ichibancha og nibancha?",
+            a: "Ichibancha (første høst, mai) har 30–50 % mer L-theanin, dypere umami og klar jadegrønn farge. Nibancha er mer robust og billigere — perfekt for latter og baking.",
+          },
+          {
+            q: "Kan en 'ceremonial grade'-matcha inneholde nibancha?",
+            a: "Dessverre ja — det finnes ingen lovregulert bruk av merkelappen. Vår ceremonial 100g er 100 % ichibancha; spør eksplisitt om høsten ved ethvert premium-kjøp.",
+          },
+          {
+            q: "Hvilken høst til min daglige latte?",
+            a: "En blanding eller ren nibancha er fint — robust nok til melk, kostnadseffektiv. Spar ichibancha til rene usucha-øyeblikk.",
+          },
+        ],
+      },
+    },
   },
   {
     slug: "matcha-en-darmgezondheid",
@@ -5107,6 +7335,101 @@ Lees ook [matcha gezondheidsvoordelen](/kennis/matcha-gezondheidsvoordelen) en [
         a: "Bij sommige mensen aanvankelijk. Catechines veranderen darmflora — herbalancering kan 1–2 weken duren. Bouw geleidelijk op (start met 1 g) en eet er iets bij.",
       },
     ],
+    i18n: {
+      no: {
+        title: "Matcha og tarmhelse — hva sier forskningen om mikrobiomet?",
+        metaTitle: "Matcha og tarmhelse: effekt på mikrobiomet (forskning 2026)",
+        metaDescription: "Hva gjør matcha med tarmene dine? Studier viser at grønn te stimulerer gunstige bakterier og hemmer patogener. Hva det konkret betyr.",
+        excerpt: "Tarmmikrobiomet styrer mye — fra immunitet til humør. Her er hva matcha kan tilføre, og hvor det stopper.",
+        content: `## Kort konklusjon
+Matcha ser ut til å støtte tarmhelsen lett gjennom:
+- **Polyfenoler** som mater gunstige bakterier (Bifidobacterium).
+- **Katekiner** som hemmer patogener.
+- **Lett betennelsesdemping** i tarmveggen.
+
+Effekten er beskjeden og inntreffer ved regelmessig bruk. Ingen erstatning for probiotika, men et nyttig tillegg.
+
+## Hva er tarmmikrobiomet?
+I tykktarmen din lever **100 billioner bakterier** — flere celler enn i hele kroppen din. Disse påvirker:
+- Immunsystemet (70 % av forsvaret ditt sitter i tarmen)
+- Hormonproduksjon (serotonin, GABA)
+- Fettomsetning
+- Mental helse (via gut-brain-aksen)
+
+## Hva gjør matcha-polyfenoler?
+**EGCG og andre katekiner** er vanskelige å absorbere — så 70–95 % når tykktarmen ufordøyd. Der:
+
+1. **Fermenteres de av gunstige bakterier** — som blomstrer.
+2. **Hemmer patogener** (E. coli, Salmonella) gjennom antibakteriell effekt.
+3. **Stimulerer produksjonen av kortkjedede fettsyrer** (butyrat) — næring for tarmcellene.
+
+## Hva sier forskningen?
+**Studie 1 (Tzounis et al., 2011):** ekstrakt av grønn te økte Bifidobacterium-populasjonen med 30 % hos friske voksne etter 4 uker.
+
+**Studie 2 (Bond & Derbyshire, 2019, *Nutrients*):** en oversikt konkluderer med at grønn te har en positiv effekt på mikrobiom-mangfold og gunstige stammer.
+
+**Studie 3 (2022, *Gut Microbes*):** matcha-inntak forbedret tarmpermeabilitet ("leaky gut") hos mus betydelig — humane studier er under utvikling.
+
+## Effekter du kan forvente
+| Effekt | Tidsramme |
+|---|---|
+| Bedre regelmessig avføring | 1–2 uker |
+| Mindre oppblåsthet etter måltid | 2–4 uker |
+| Forbedret immunitet (færre forkjølelser) | 8+ uker |
+| Humørstabilitet (gut-brain) | 4+ uker |
+
+Ingen mirakelkur — særlig som tillegg til et fiberrikt kosthold.
+
+## Hva hjelper matcha ikke mot?
+- **IBS-D / kronisk diaré** — koffein kan forverre symptomene.
+- **Restitusjon etter antibiotika** — probiotika + prebiotika er da mer effektive.
+- **Alvorlig dysbiose** — krever mer enn kostholdsintervensjon.
+
+## Mulige negative effekter
+- **Koffein kan irritere tarmene** hos følsomme personer — velg da hojicha.
+- **Katekiner hemmer jernopptaket** — ikke innen 1 time av et jernrikt måltid.
+- **Matcha på tom mage** — noen får kvalme; bygg opp gradvis.
+
+## Optimalt protokoll for tarmhelse
+1. **1–2 kopper matcha per dag**, ikke på tom mage (spis noe først).
+2. **Kombiner med fiberrikt kosthold** — havregrøt, grønnsaker, belgfrukter.
+3. **Legg til fermentert mat** (kefir, kimchi, kombucha) — virker synergistisk.
+4. **Drikk 1,5–2 L vann** — fiber og katekiner virker bedre med god hydrering.
+5. **8 uker jevnt** for merkbar effekt.
+
+## Matcha og SCFA-er (kortkjedede fettsyrer)
+Katekiner omdannes av tarmbakterier til **butyrat, propionat og acetat** — kraftige antiinflammatoriske molekyler. Disse:
+- Mater tarmcellene
+- Senker betennelse
+- Forbedrer insulinfølsomheten
+
+Dette er en av de mindre kjente, men store effektene av matcha.
+
+## Hvilken matcha for tarmhelse?
+**Høyere katekiner** = flere polyfenoler for mikrobiomet. Rekkefølge:
+1. Ceremonial ichibancha — høyest katekiner
+2. Premium culinary
+3. Standard culinary
+
+Vår [ceremonial 100g](/product/ceremonial-matcha-100g) eller [culinary 100g](/product/culinary-matcha-100g) er begge egnet.
+
+Les også [matcha helsefordeler](/kennis/matcha-gezondheidsvoordelen) og [matcha og periodisk faste](/kennis/matcha-en-intermittent-fasting).`,
+        faqs: [
+          {
+            q: "Hjelper matcha ved tarmproblemer?",
+            a: "For generell tarmhelse: ja, en beskjeden positiv effekt gjennom polyfenoler. Ved IBS, kronisk diaré eller etter antibiotika er et mer spesifikt protokoll (probiotika + kostholdsråd) mer effektivt.",
+          },
+          {
+            q: "Kan jeg drikke matcha med probiotikatilskudd?",
+            a: "Ja. Katekiner og probiotika virker synergistisk — polyfenoler mater gunstige bakterier. Hold likevel en time mellom matcha og probiotikum for optimalt opptak.",
+          },
+          {
+            q: "Gir matcha en oppblåst følelse?",
+            a: "Hos noen i begynnelsen. Katekiner endrer tarmfloraen — rebalansering kan ta 1–2 uker. Bygg opp gradvis (start med 1 g) og spis noe til.",
+          },
+        ],
+      },
+    },
   },
   {
     slug: "matcha-allergie-bijwerkingen",
@@ -5217,6 +7540,114 @@ Lees ook [matcha en hartslag/bloeddruk](/kennis/matcha-en-bloeddruk) voor specif
         a: "Voor gezonde volwassenen ja — blijft onder de EFSA-grens van 400 mg cafeïne/dag. Bij zwangerschap, hartproblemen of medicatie: maximaal 1–2 koppen.",
       },
     ],
+    i18n: {
+      no: {
+        title: "Matcha-allergi og bivirkninger — når er matcha IKKE egnet?",
+        metaTitle: "Matcha-allergi og bivirkninger: når du heller IKKE bør drikke",
+        metaDescription: "Matcha er generelt trygt, men det finnes situasjoner der du heller ikke bør drikke matcha. Allergier, medisininteraksjoner og signaler å være oppmerksom på.",
+        excerpt: "Matcha er sunt for de fleste — men ikke for alle. Her er de reelle risikoene og hvordan du vet om matcha fungerer for deg.",
+        content: `## Kort konklusjon
+Matcha er **trygt for de fleste friske voksne** (1–3 kopper/dag). Vær forsiktig ved:
+- Jernmangel / blodmangel
+- Visse medisiner (blodfortynnende, statiner, SSRI-er)
+- Koffeinfølsomhet
+- Leversykdommer (svært høy dosering)
+- Graviditet (med måte, les vår [graviditetsguide](/kennis/matcha-tijdens-zwangerschap))
+
+## Ekte matcha-allergi — finnes det?
+Svært sjelden, men mulig. Tre typer:
+1. **Allergi mot Camellia sinensis** — kryssreaksjon med andre botaniske allergier.
+2. **Allergi mot fargestoff** — bare ved blandet matcha (ekte matcha inneholder ingen tilsatte fargestoffer).
+3. **Reaksjon på pesticidrester** — ved ikke-økologisk matcha.
+
+Symptomer: kløe, hudutslett, hovne lepper, noen ganger pustebesvær.
+
+**Løsning**: vår matcha er 100 % økologisk, ingen tilsetninger. Får noen en allergisk reaksjon? Stopp med en gang, oppsøk lege.
+
+## Vanlige bivirkninger
+**1. Mageplager**
+På tom mage eller ved høy dosering kan matcha:
+- Gi kvalme
+- Forårsake lette sure oppstøt
+- Kramper etter 30 min
+
+**Løsning**: drikk etter et lett måltid. Start med 1 g i stedet for 2 g.
+
+**2. Hodepine**
+To mulige årsaker:
+- **Koffeinoverdosering** (>4 kopper/dag) eller -abstinens
+- **Tanniner** (katekiner) hos følsomme personer
+
+**Løsning**: reduser til 1–2 kopper, drikk nok vann.
+
+**3. Søvnløshet**
+Koffein for sent på dagen — særlig hos langsomme metaboliserere.
+
+**Løsning**: drikk den siste matchaen før kl. 14. Les [matcha og søvn](/kennis/matcha-en-slaap).
+
+**4. Hjertebank / nervøsitet**
+Ved koffeinfølsomhet eller overdosering. Ufarlig i seg selv, men ubehagelig.
+
+**Løsning**: bytt til [hojicha](/kennis/hojicha-uitleg) — bare 10 mg koffein.
+
+## Medisininteraksjoner — vær oppmerksom
+**Blodfortynnende (warfarin, Marevan):**
+K-vitamin i matcha kan svekke effekten. Ved bruk av warfarin: maksimalt 1 kopp/dag og jevnt (ingen svingninger).
+
+**Statiner:**
+EGCG kan forsterke statineffekten litt — som regel gunstig, men rådfør deg ved høyt inntak.
+
+**SSRI-er (Prozac, Zoloft, osv.):**
+Teoretisk interaksjon via serotoninbalansen. Begrens inntaket til 1–2 kopper.
+
+**Blodtrykksmedisin:**
+Koffein kan øke blodtrykket kortvarig. For de fleste ikke klinisk relevant.
+
+**Jerntilskudd:**
+Katekiner reduserer jernopptaket med 60–80 %. **Minst 2 timer mellom matcha og jerntilskudd**.
+
+## Når bør du IKKE drikke matcha
+| Situasjon | Grunn |
+|---|---|
+| Ubehandlede hjerterytmeforstyrrelser | Koffein kan forsterke symptomer |
+| Akutt blodmangel | Blokkering av jernabsorpsjon |
+| Allergi mot camellia sinensis | Allergisk reaksjon |
+| Aktivt magesår | Koffein irriterer mageveggen |
+| Glaukom (noen typer) | Koffein kan øke øyetrykket litt |
+| Hypertyreose | Koffein kan forsterke symptomer |
+
+Ved tvil: **rådfør deg med lege**, særlig ved en eksisterende lidelse.
+
+## Trygg øvre grense
+**EFSA (Den europeiske myndigheten for næringsmiddeltrygghet)** setter 400 mg koffein per dag som trygt for friske voksne. Det er **~5 kopper matcha**.
+
+Høyt EGCG via tilskudd (>800 mg/dag) kan belaste leveren — ved **å drikke** matcha er dette ingen risiko, selv ved 5+ kopper.
+
+## Signaler på at du drikker for mye matcha
+- Dårlig søvn til tross for å stoppe tidlig
+- Hjertebank etter hver kopp
+- Kvalme ved den første koppen om morgenen
+- Hodepine hvis du hopper over en dag (= koffeinavhengig)
+
+**Løsning**: trapp ned gradvis. Erstatt 1 kopp/dag med [hojicha](/product/hojicha-poeder-50g). Etter 2 uker har du funnet en ny balanse.
+
+Les også [matcha og puls/blodtrykk](/kennis/matcha-en-bloeddruk) for spesifikk hjerteinfo.`,
+        faqs: [
+          {
+            q: "Kan jeg være allergisk mot matcha?",
+            a: "Svært sjelden, men mulig — særlig kryssreaksjoner med andre botaniske allergier. Ved kløe, utslett eller hevelse etter matcha: stopp og oppsøk lege.",
+          },
+          {
+            q: "Kan matcha interagere med medisin?",
+            a: "Ja, med blodfortynnende (warfarin — K-vitamin), statiner, SSRI-er og jerntilskudd. Ved kronisk medisinbruk: rådfør deg med legen din om jevnt, moderat inntak.",
+          },
+          {
+            q: "Er 4 kopper matcha daglig trygt?",
+            a: "For friske voksne ja — det holder seg under EFSA-grensen på 400 mg koffein/dag. Ved graviditet, hjerteproblemer eller medisin: maksimalt 1–2 kopper.",
+          },
+        ],
+      },
+    },
   },
   {
     slug: "matcha-en-bloeddruk",
@@ -5329,6 +7760,116 @@ Lees ook [matcha cafeïne](/kennis/matcha-cafeine) en [13 gezondheidsvoordelen](
         a: "Minder dan koffie door L-theanine. Bij cafeïnegevoelige mensen kan een lichte hartslagverhoging optreden in het eerste uur. Verdwijnt bij regelmatig gebruik door tolerantie-ontwikkeling.",
       },
     ],
+    i18n: {
+      no: {
+        title: "Matcha og blodtrykk — øker eller senker det?",
+        metaTitle: "Matcha og blodtrykk: forskning om puls og kardiovaskulær effekt",
+        metaDescription: "Øker matcha blodtrykket på grunn av koffein? Eller senker det det gjennom antioksidanter? Hva forskning konkret sier om effekter på kort og lang sikt.",
+        excerpt: "Koffein øker blodtrykket akutt, antioksidanter senker det på lang sikt. Hvordan matcha samlet sett påvirker hjertet og blodårene dine — og når du må være forsiktig.",
+        content: `## Kort konklusjon
+- **Kort sikt**: matcha øker blodtrykket litt gjennom koffein (+5–10 mmHg systolisk, 1–3 timer).
+- **Lang sikt**: regelmessig inntak senker blodtrykket i gjennomsnitt (-2 mmHg) gjennom antioksidanter og EGCG.
+- **Hjerteeffekt**: beskjedent gunstig hos friske mennesker. Ved hjerterytmeforstyrrelser eller hypertensjon, rådfør deg alltid med lege.
+
+## Koffeineffekten (kort sikt)
+**Umiddelbart etter inntak:**
+- Blodtrykket stiger 5–10 mmHg systolisk
+- Pulsen stiger 3–7 slag/min
+- Effekten varer 1–3 timer
+
+Hos regelmessige drikkere (>2 uker daglig): **det utvikles toleranse**, og effekten blir liten.
+
+Sammenligning:
+| Drikk | Blodtrykkstopp (15–60 min) |
+|---|---|
+| Espresso (65 mg koffein) | +8 mmHg |
+| Matcha (70 mg koffein) | +5–7 mmHg |
+| Filterkaffe (95 mg koffein) | +10 mmHg |
+| Hojicha (10 mg koffein) | <2 mmHg |
+
+Matcha øker mindre enn kaffe til tross for tilsvarende koffein — på grunn av L-theaninets karutvidende effekt.
+
+## Langtidseffekten (positiv)
+**Forskning (Yang et al., 2014, *Hypertension*):** en metaanalyse av 25 studier fant:
+- **-2 mmHg systolisk** hos drikkere av grønn te
+- **-1 mmHg diastolisk**
+
+Mekanisme: EGCG forbedrer endotelfunksjonen (innerveggen i blodårene), slik at blodårene slapper bedre av.
+
+## Hvem er matcha kardiovaskulært gunstig for?
+**Bra:**
+- Friske voksne
+- Personer med grensehypertensjon (140/85)
+- Kolesterolgrense (les [matcha og kolesterol](/kennis/matcha-en-cholesterol))
+- Forebyggende hjertehelse
+
+**Vær oppmerksom:**
+- Eksisterende hypertensjon (>160/100) — rådfør deg med lege
+- Hjerterytmeforstyrrelser (atrieflimmer, osv.)
+- Langt QT-syndrom
+
+## Puls — hva kan du forvente?
+Regelmessig matcha (1–2 kopper/dag):
+- Ingen betydelig kronisk pulsøkning
+- Akutt økning på 3–7 slag/min i den første timen
+- Hos følsomme personer: en lett "bankende" følelse mulig
+
+Sammenlign med kaffe: matcha gir **mindre hjertebank** på grunn av L-theaninet som demper koffeinet.
+
+## L-theanin — den kardiovaskulære balansereren
+L-theanin senker:
+- Stresshormoner (kortisol, adrenalin)
+- Blodtrykk i stressituasjoner
+- Karsammentrekning fra psykologisk stress
+
+Dette forklarer hvorfor folk føler seg **roligere etter matcha enn etter kaffe** til tross for tilsvarende koffein.
+
+## Når bør du unngå matcha?
+| Situasjon | Grunn |
+|---|---|
+| Ubehandlet hypertensjon (>180/110) | Akutt økning kan forverre plager |
+| Aktive hjerterytmeforstyrrelser | Koffein kan utløse triggere |
+| Langt QT-syndrom | Øker arytmirisiko |
+| Nylig hjerteinfarkt | Rådfør deg med lege først |
+| Alvorlig aortastenose | Koffein uønsket |
+
+Ved tvil **rådfør deg alltid med kardiolog** — gjennomsnitt sier ingenting om din individuelle situasjon.
+
+## Optimalt protokoll for hjertehelse
+1. **2 kopper matcha/dag** — nok til positiv effekt, ikke for mye koffein.
+2. **Ikke på tom mage** — gir en skarpere koffeintopp.
+3. **Spre utover dagen** — 1 om morgenen, 1 før lunsj.
+4. **Kombiner med kondisjonstrening** — virker synergistisk på endotelfunksjonen.
+5. **Begrens til kl. 14** — for å beskytte søvnen.
+
+## Hvilken matcha?
+Ingen spesiell preferanse for hjertet — vanlig god matcha fungerer. **Vår [ceremonial 100g](/product/ceremonial-matcha-100g)** er et utmerket daglig valg med høy EGCG-konsentrasjon.
+
+Ved hypertensjon eller koffeinfølsomhet: velg [hojicha-pulver](/product/hojicha-poeder-50g) — bare 10 mg koffein, sammenlignbare antioksidanter.
+
+## Måle blodtrykk rundt matcha
+Hvis du følger med på blodtrykket ditt:
+- **Mål 2 timer etter siste matcha** for "baseline"-tall
+- **Mål 30 min etter matcha** hvis du vil se den akutte effekten
+- **Trend over 8+ uker** er viktigere enn enkeltmålinger
+
+Les også [matcha koffein](/kennis/matcha-cafeine) og [13 helsefordeler](/kennis/matcha-gezondheidsvoordelen).`,
+        faqs: [
+          {
+            q: "Øker matcha blodtrykket mitt?",
+            a: "Akutt litt (5–10 mmHg, 1–3 timer). På lang sikt heller senkende (-2 mmHg i snitt) gjennom antioksidanter og L-theanin. Ved regelmessig bruk utvikles koffeintoleranse og den kortvarige effekten blir liten.",
+          },
+          {
+            q: "Kan jeg drikke matcha med høyt blodtrykk?",
+            a: "Ved grensehypertensjon som regel ja — matcha er muligens lett positivt. Ved alvorlig hypertensjon (>160/100) eller ved medisin: rådfør deg med legen din.",
+          },
+          {
+            q: "Forårsaker matcha hjertebank?",
+            a: "Mindre enn kaffe på grunn av L-theanin. Hos koffeinfølsomme personer kan en lett pulsøkning oppstå i den første timen. Forsvinner ved regelmessig bruk gjennom toleranseutvikling.",
+          },
+        ],
+      },
+    },
   },
 ];
 
