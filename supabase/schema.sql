@@ -46,6 +46,7 @@ create table if not exists public.orders (
   paypal_capture_id  text,
   subtotal           numeric(10,2) not null default 0,
   shipping           numeric(10,2) not null default 0,
+  currency           text not null default 'EUR',
   discount_amount    numeric(10,2) default 0,
   discount_code      text,
   total              numeric(10,2) not null default 0,

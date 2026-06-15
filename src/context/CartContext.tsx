@@ -1,6 +1,7 @@
 import React, { createContext, useContext, useState, useCallback, useEffect } from "react";
 import { Product } from "@/data/products";
 import { toast } from "sonner";
+import i18n from "@/i18n";
 
 export interface CartItem {
   product: Product;
@@ -43,7 +44,7 @@ export const CartProvider: React.FC<{ children: React.ReactNode }> = ({ children
       return [...prev, { product, quantity }];
     });
     setIsOpen(true);
-    toast.success(`${product.name} toegevoegd aan winkelwagen ✓`);
+    toast.success(`${product.name} ${i18n.t("cart.addedSuffix")}`);
   }, []);
 
   const removeItem = useCallback((productId: string) => {

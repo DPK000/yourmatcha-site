@@ -5,6 +5,7 @@ import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { AnimatePresence } from "framer-motion";
 import { CartProvider } from "@/context/CartContext";
+import { CurrencyProvider } from "@/context/CurrencyContext";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import CartDrawer from "@/components/CartDrawer";
@@ -120,6 +121,7 @@ const App = () => (
       <TooltipProvider>
         <Sonner />
         <BrowserRouter>
+          <CurrencyProvider>
           <CartProvider>
             <Routes>
               {/* BUQE Commerce Admin — geen header/footer */}
@@ -141,6 +143,7 @@ const App = () => (
               <Route path="/*" element={<PublicShell />} />
             </Routes>
           </CartProvider>
+          </CurrencyProvider>
         </BrowserRouter>
       </TooltipProvider>
     </QueryClientProvider>

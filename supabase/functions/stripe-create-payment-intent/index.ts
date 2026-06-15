@@ -55,6 +55,12 @@ serve(async (req) => {
     const body = (await req.json()) as RequestBody;
     const orderNumber = generateOrderNumber(body.shopSlug || "shop");
 
+    // Alleen expliciet ondersteunde valuta accepteren; alles anders valt terug op EUR
+    const SUPPORTED_CURRENCIES = ["eur", "nok"];
+    const currency = SUPPORTED_CURRENCIES.includes((body.currency || "").toLowerCase())
+      ? body.currency.toLowerCase()
+      : "eur";
+
     // 1) Draft order in DB
     const { data: order, error: orderErr } = await supabase
       .from("orders")
@@ -72,6 +78,7 @@ serve(async (req) => {
         subtotal: body.subtotal,
         shipping: body.shipping,
         total: body.total,
+        currency: currency.toUpperCase(),
       })
       .select()
       .single();
@@ -94,7 +101,7 @@ serve(async (req) => {
     //    afhankelijk van wat in Stripe Dashboard staat geactiveerd)
     const paymentIntent = await stripe.paymentIntents.create({
       amount: Math.round(body.total * 100),
-      currency: body.currency,
+      currency,
       automatic_payment_methods: { enabled: true },
       receipt_email: body.email,
       metadata: {

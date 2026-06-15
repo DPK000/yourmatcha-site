@@ -5,8 +5,32 @@ import { ChevronLeft, ChevronRight, Clock, ChefHat, ArrowUpRight } from "lucide-
 import { motion } from "framer-motion";
 
 import { recipes } from "@/data/recipes";
+import { useLang } from "@/i18n";
+
+const COPY = {
+  nl: {
+    eyebrow: "Receptenbibliotheek",
+    title: "Swipe door 14 matcha-creaties",
+    subtitle: "Van romige latte tot fudgy brownies — ontdek hoe veelzijdig matcha echt is.",
+    prevAria: "Vorige recept",
+    nextAria: "Volgende recept",
+    viewAria: "Bekijk recept:",
+    swipeHint: "← swipe voor meer recepten →",
+  },
+  no: {
+    eyebrow: "Oppskriftsbibliotek",
+    title: "Sveip gjennom 14 matcha-kreasjoner",
+    subtitle: "Fra kremet latte til fudgy brownies — oppdag hvor allsidig matcha egentlig er.",
+    prevAria: "Forrige oppskrift",
+    nextAria: "Neste oppskrift",
+    viewAria: "Se oppskrift:",
+    swipeHint: "← sveip for flere oppskrifter →",
+  },
+} as const;
 
 const RecipeSwiper = () => {
+  const lang = useLang();
+  const c = lang === "no" ? COPY.no : COPY.nl;
   const [emblaRef, emblaApi] = useEmblaCarousel({
     align: "start",
     loop: true,
@@ -33,19 +57,19 @@ const RecipeSwiper = () => {
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-end justify-between mb-10 gap-4">
           <div>
-            <p className="text-[10px] tracking-[0.3em] uppercase text-primary mb-3">Receptenbibliotheek</p>
+            <p className="text-[10px] tracking-[0.3em] uppercase text-primary mb-3">{c.eyebrow}</p>
             <h2 className="font-heading text-3xl md:text-5xl font-semibold leading-tight max-w-2xl">
-              Swipe door 14 matcha-creaties
+              {c.title}
             </h2>
             <p className="text-muted-foreground mt-3 max-w-xl">
-              Van romige latte tot fudgy brownies — ontdek hoe veelzijdig matcha echt is.
+              {c.subtitle}
             </p>
           </div>
           <div className="hidden md:flex gap-2">
             <button
               onClick={() => emblaApi?.scrollPrev()}
               disabled={!canPrev}
-              aria-label="Vorige recept"
+              aria-label={c.prevAria}
               className="w-12 h-12 rounded-full border border-border bg-background hover:bg-primary hover:text-primary-foreground transition-all disabled:opacity-30 flex items-center justify-center"
             >
               <ChevronLeft className="w-5 h-5" />
@@ -53,7 +77,7 @@ const RecipeSwiper = () => {
             <button
               onClick={() => emblaApi?.scrollNext()}
               disabled={!canNext}
-              aria-label="Volgende recept"
+              aria-label={c.nextAria}
               className="w-12 h-12 rounded-full border border-border bg-background hover:bg-primary hover:text-primary-foreground transition-all disabled:opacity-30 flex items-center justify-center"
             >
               <ChevronRight className="w-5 h-5" />
@@ -74,7 +98,7 @@ const RecipeSwiper = () => {
               >
                 <Link
                   to={`/recepten/${r.slug}`}
-                  aria-label={`Bekijk recept: ${r.title}`}
+                  aria-label={`${c.viewAria} ${r.title}`}
                   className="block relative aspect-[4/5] rounded-3xl overflow-hidden bg-muted shadow-sm group-hover:shadow-2xl transition-all duration-500 focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2"
                 >
                   <img
@@ -108,7 +132,7 @@ const RecipeSwiper = () => {
           </div>
         </div>
 
-        <p className="text-center text-xs text-muted-foreground mt-6 md:hidden">← swipe voor meer recepten →</p>
+        <p className="text-center text-xs text-muted-foreground mt-6 md:hidden">{c.swipeHint}</p>
       </div>
     </section>
   );

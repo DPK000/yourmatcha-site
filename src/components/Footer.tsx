@@ -41,15 +41,15 @@ const Footer = () => {
             <h4 className="font-heading text-lg font-semibold mb-4">{t("footer.info")}</h4>
             <ul className="space-y-2.5 text-sm text-primary-foreground/70">
               <li><Link to="/over-ons" className="hover:text-primary-foreground transition-colors">{t("nav.about")}</Link></li>
-              <li><Link to="/herkomst" className="hover:text-primary-foreground transition-colors">Herkomst</Link></li>
-              <li><Link to="/kennis" className="hover:text-primary-foreground transition-colors">Matcha kennis</Link></li>
-              <li><Link to="/matcha-woordenboek" className="hover:text-primary-foreground transition-colors">Matcha woordenboek</Link></li>
-              <li><Link to="/matcha-voor-beginners" className="hover:text-primary-foreground transition-colors">Voor beginners</Link></li>
-              <li><Link to="/duurzaamheid" className="hover:text-primary-foreground transition-colors">Duurzaamheid</Link></li>
-              <li><Link to="/recepten" className="hover:text-primary-foreground transition-colors">Recepten</Link></li>
+              <li><Link to="/herkomst" className="hover:text-primary-foreground transition-colors">{t("footer.origin")}</Link></li>
+              <li><Link to="/kennis" className="hover:text-primary-foreground transition-colors">{t("nav.knowledge")}</Link></li>
+              <li><Link to="/matcha-woordenboek" className="hover:text-primary-foreground transition-colors">{t("footer.glossary")}</Link></li>
+              <li><Link to="/matcha-voor-beginners" className="hover:text-primary-foreground transition-colors">{t("footer.beginners")}</Link></li>
+              <li><Link to="/duurzaamheid" className="hover:text-primary-foreground transition-colors">{t("footer.sustainability")}</Link></li>
+              <li><Link to="/recepten" className="hover:text-primary-foreground transition-colors">{t("footer.recipes")}</Link></li>
               <li><Link to="/blog" className="hover:text-primary-foreground transition-colors">{t("nav.blog")}</Link></li>
-              <li><Link to="/bundel" className="hover:text-primary-foreground transition-colors">Bundle builder</Link></li>
-              <li><Link to="/matcha-vergelijken" className="hover:text-primary-foreground transition-colors">Matcha vergelijken</Link></li>
+              <li><Link to="/bundel" className="hover:text-primary-foreground transition-colors">{t("nav.bundles")}</Link></li>
+              <li><Link to="/matcha-vergelijken" className="hover:text-primary-foreground transition-colors">{t("nav.compare")}</Link></li>
               <li><Link to="/faq" className="hover:text-primary-foreground transition-colors">FAQ</Link></li>
             </ul>
           </div>

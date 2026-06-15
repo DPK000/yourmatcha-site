@@ -1,33 +1,57 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
-import { blogPosts, blogCategories } from "@/data/blog";
+import { blogPosts, blogCategories, useBlogCategories } from "@/data/blog";
 import { motion } from "framer-motion";
 import SEO from "@/components/SEO";
+import { useLang } from "@/i18n";
+
+const COPY = {
+  nl: {
+    seoTitle: "Matcha Blog — Tips, rituelen en recepten voor matcha liefhebbers",
+    seoDescription: "Alles over matcha: bereiding, gezondheidsvoordelen, ceremoniële rituelen, recepten en het verhaal achter Japanse thee. Gratis tips van YourMatcha.",
+    seoKeywords: "matcha blog, matcha bereiding tips, matcha gezondheid, Japanse theeceremonie, matcha recepten",
+    title: "Blog & Recepten",
+    subtitle: "Tips, recepten en alles over matcha",
+    readTime: "leestijd",
+  },
+  no: {
+    seoTitle: "Matcha-blogg — tips, ritualer og oppskrifter for matcha-elskere",
+    seoDescription: "Alt om matcha: tilberedning, helsefordeler, seremonielle ritualer, oppskrifter og historien bak japansk te. Gratis tips fra YourMatcha.",
+    seoKeywords: "matcha blogg, matcha tilberedning tips, matcha helse, japansk teseremoni, matcha oppskrifter",
+    title: "Blogg & Oppskrifter",
+    subtitle: "Tips, oppskrifter og alt om matcha",
+    readTime: "lesetid",
+  },
+} as const;
 
 const Blog = () => {
-  const [activeCategory, setActiveCategory] = useState("Alle");
+  const lang = useLang();
+  const c = lang === "no" ? COPY.no : COPY.nl;
+  const localizedCategories = useBlogCategories();
+  const categories = lang === "no" ? localizedCategories : blogCategories;
+  const [activeCategory, setActiveCategory] = useState(categories[0]);
 
-  const filtered = activeCategory === "Alle"
+  const filtered = activeCategory === categories[0]
     ? blogPosts
     : blogPosts.filter(p => p.category === activeCategory);
 
   return (
     <div className="py-12">
       <SEO
-        title="Matcha Blog — Tips, rituelen en recepten voor matcha liefhebbers"
-        description="Alles over matcha: bereiding, gezondheidsvoordelen, ceremoniële rituelen, recepten en het verhaal achter Japanse thee. Gratis tips van YourMatcha."
+        title={c.seoTitle}
+        description={c.seoDescription}
         canonical="/blog"
-        keywords="matcha blog, matcha bereiding tips, matcha gezondheid, Japanse theeceremonie, matcha recepten"
+        keywords={c.seoKeywords}
       />
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="mb-10">
-          <h1 className="font-heading text-4xl md:text-5xl font-semibold">Blog & Recepten</h1>
-          <p className="text-muted-foreground mt-2">Tips, recepten en alles over matcha</p>
+          <h1 className="font-heading text-4xl md:text-5xl font-semibold">{c.title}</h1>
+          <p className="text-muted-foreground mt-2">{c.subtitle}</p>
         </div>
 
         {/* Categories */}
         <div className="flex flex-wrap gap-2 mb-10">
-          {blogCategories.map(cat => (
+          {categories.map(cat => (
             <button
               key={cat}
               onClick={() => setActiveCategory(cat)}
@@ -58,7 +82,7 @@ const Blog = () => {
                 </div>
                 <div className="flex items-center gap-3 mb-2">
                   <span className="text-xs text-accent font-medium tracking-wide uppercase">{post.category}</span>
-                  <span className="text-xs text-muted-foreground">{post.readTime} leestijd</span>
+                  <span className="text-xs text-muted-foreground">{post.readTime} {c.readTime}</span>
                 </div>
                 <h2 className="font-heading text-xl font-semibold group-hover:text-primary transition-colors leading-tight">
                   {post.title}

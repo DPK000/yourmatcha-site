@@ -2,9 +2,11 @@ import { useMemo, useState } from "react";
 import { Link } from "react-router-dom";
 import { Clock, ChefHat, ArrowRight, Search, X } from "lucide-react";
 import PageHero from "@/components/PageHero";
+import SEO from "@/components/SEO";
 import ScrollReveal from "@/components/ScrollReveal";
 import RecipeSwiper from "@/components/RecipeSwiper";
 import { recipes } from "@/data/recipes";
+import { useLang } from "@/i18n";
 
 const parseMinutes = (time: string) => {
   const m = time.match(/(\d+)/);
@@ -12,13 +14,62 @@ const parseMinutes = (time: string) => {
 };
 
 const timeBuckets = [
-  { key: "all", label: "Alle tijden", match: () => true },
-  { key: "fast", label: "Onder 10 min", match: (t: string) => parseMinutes(t) < 10 },
-  { key: "mid", label: "10–30 min", match: (t: string) => parseMinutes(t) >= 10 && parseMinutes(t) <= 30 },
-  { key: "long", label: "30+ min", match: (t: string) => parseMinutes(t) > 30 },
-];
+  { key: "all", match: () => true },
+  { key: "fast", match: (t: string) => parseMinutes(t) < 10 },
+  { key: "mid", match: (t: string) => parseMinutes(t) >= 10 && parseMinutes(t) <= 30 },
+  { key: "long", match: (t: string) => parseMinutes(t) > 30 },
+] as const;
+
+const COPY = {
+  nl: {
+    seoTitle: "Matcha Recepten — 20+ matcha latte, smoothie en bak ideeën met Japanse matcha",
+    seoDescription: "Ontdek heerlijke matcha recepten: ijskoffie matcha latte, matcha smoothie bowl, matcha cookies, hojicha latte en meer. Gemakkelijk te maken met ceremoniële Japanse matcha.",
+    seoKeywords: "matcha recepten, matcha latte recept, matcha smoothie, matcha cookies, hojicha latte, matcha bakken, matcha gerechten",
+    heroEyebrow: "Recepten",
+    heroTitle: "Maak het zelf",
+    heroSubtitle: "Onze favoriete recepten — van klassieke bereidingen tot moderne creaties met matcha en hojicha.",
+    searchPlaceholder: "Zoek op naam of ingrediënt…",
+    searchAria: "Zoek recepten",
+    filterCategory: "Categorie",
+    filterTime: "Tijd",
+    filterLevel: "Level",
+    allCategories: "Alle categorieën",
+    allLevels: "Alle levels",
+    timeLabels: { all: "Alle tijden", fast: "Onder 10 min", mid: "10–30 min", long: "30+ min" },
+    foundOne: "recept",
+    foundMany: "recepten",
+    found: "gevonden",
+    resetFilters: "Reset filters",
+    emptyState: "Geen recepten gevonden voor deze filters.",
+    moreRecipes: "Wil je nog meer recepten? Ontdek ons receptenboek.",
+  },
+  no: {
+    seoTitle: "Matcha-oppskrifter — 20+ ideer til matcha latte, smoothie og baking med japansk matcha",
+    seoDescription: "Oppdag deilige matcha-oppskrifter: iskald matcha latte, matcha smoothie bowl, matcha cookies, hojicha latte og mer. Enkle å lage med seremoniell japansk matcha.",
+    seoKeywords: "matcha oppskrifter, matcha latte oppskrift, matcha smoothie, matcha cookies, hojicha latte, matcha baking, matcha retter",
+    heroEyebrow: "Oppskrifter",
+    heroTitle: "Lag det selv",
+    heroSubtitle: "Våre favorittoppskrifter — fra klassiske tilberedninger til moderne kreasjoner med matcha og hojicha.",
+    searchPlaceholder: "Søk på navn eller ingrediens…",
+    searchAria: "Søk i oppskrifter",
+    filterCategory: "Kategori",
+    filterTime: "Tid",
+    filterLevel: "Nivå",
+    allCategories: "Alle kategorier",
+    allLevels: "Alle nivåer",
+    timeLabels: { all: "Alle tider", fast: "Under 10 min", mid: "10–30 min", long: "30+ min" },
+    foundOne: "oppskrift",
+    foundMany: "oppskrifter",
+    found: "funnet",
+    resetFilters: "Nullstill filtre",
+    emptyState: "Ingen oppskrifter funnet med disse filtrene.",
+    moreRecipes: "Vil du ha enda flere oppskrifter? Utforsk oppskriftsboken vår.",
+  },
+} as const;
 
 const Recipes = () => {
+  const lang = useLang();
+  const c = lang === "no" ? COPY.no : COPY.nl;
   const [query, setQuery] = useState("");
   const [category, setCategory] = useState<string>("all");
   const [level, setLevel] = useState<string>("all");
@@ -48,15 +99,15 @@ const Recipes = () => {
   return (
     <>
       <SEO
-        title="Matcha Recepten — 20+ matcha latte, smoothie en bak ideeën met Japanse matcha"
-        description="Ontdek heerlijke matcha recepten: ijskoffie matcha latte, matcha smoothie bowl, matcha cookies, hojicha latte en meer. Gemakkelijk te maken met ceremoniële Japanse matcha."
+        title={c.seoTitle}
+        description={c.seoDescription}
         canonical="/recepten"
-        keywords="matcha recepten, matcha latte recept, matcha smoothie, matcha cookies, hojicha latte, matcha bakken, matcha gerechten"
+        keywords={c.seoKeywords}
       />
       <PageHero
-        eyebrow="Recepten"
-        title="Maak het zelf"
-        subtitle="Onze favoriete recepten — van klassieke bereidingen tot moderne creaties met matcha en hojicha."
+        eyebrow={c.heroEyebrow}
+        title={c.heroTitle}
+        subtitle={c.heroSubtitle}
       />
       <RecipeSwiper />
 
@@ -71,29 +122,29 @@ const Recipes = () => {
                     type="search"
                     value={query}
                     onChange={(e) => setQuery(e.target.value)}
-                    placeholder="Zoek op naam of ingrediënt…"
-                    aria-label="Zoek recepten"
+                    placeholder={c.searchPlaceholder}
+                    aria-label={c.searchAria}
                     className="w-full pl-11 pr-4 py-3 rounded-full bg-background border border-border focus:outline-none focus:ring-2 focus:ring-primary/40 text-sm"
                   />
                 </div>
 
                 <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 lg:w-auto">
-                  <FilterSelect label="Categorie" value={category} onChange={setCategory}
-                    options={categories.map((c) => ({ value: c, label: c === "all" ? "Alle categorieën" : c }))} />
-                  <FilterSelect label="Tijd" value={timeKey} onChange={setTimeKey}
-                    options={timeBuckets.map((b) => ({ value: b.key, label: b.label }))} />
-                  <FilterSelect label="Level" value={level} onChange={setLevel}
-                    options={levels.map((l) => ({ value: l, label: l === "all" ? "Alle levels" : l }))} />
+                  <FilterSelect label={c.filterCategory} value={category} onChange={setCategory}
+                    options={categories.map((cat) => ({ value: cat, label: cat === "all" ? c.allCategories : cat }))} />
+                  <FilterSelect label={c.filterTime} value={timeKey} onChange={setTimeKey}
+                    options={timeBuckets.map((b) => ({ value: b.key, label: c.timeLabels[b.key] }))} />
+                  <FilterSelect label={c.filterLevel} value={level} onChange={setLevel}
+                    options={levels.map((l) => ({ value: l, label: l === "all" ? c.allLevels : l }))} />
                 </div>
               </div>
 
               <div className="flex items-center justify-between mt-4 pt-4 border-t border-border/60">
                 <p className="text-xs text-muted-foreground">
-                  {filtered.length} {filtered.length === 1 ? "recept" : "recepten"} gevonden
+                  {filtered.length} {filtered.length === 1 ? c.foundOne : c.foundMany} {c.found}
                 </p>
                 {hasActiveFilters && (
                   <button onClick={reset} className="inline-flex items-center gap-1.5 text-xs font-semibold text-primary hover:underline">
-                    <X className="w-3.5 h-3.5" /> Reset filters
+                    <X className="w-3.5 h-3.5" /> {c.resetFilters}
                   </button>
                 )}
               </div>
@@ -102,8 +153,8 @@ const Recipes = () => {
 
           {filtered.length === 0 ? (
             <div className="text-center py-20">
-              <p className="text-muted-foreground mb-4">Geen recepten gevonden voor deze filters.</p>
-              <button onClick={reset} className="text-sm font-semibold text-primary hover:underline">Reset filters</button>
+              <p className="text-muted-foreground mb-4">{c.emptyState}</p>
+              <button onClick={reset} className="text-sm font-semibold text-primary hover:underline">{c.resetFilters}</button>
             </div>
           ) : (
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -134,7 +185,7 @@ const Recipes = () => {
           )}
 
           <div className="text-center pt-16 mt-16 border-t border-border">
-            <p className="text-muted-foreground mb-5">Wil je nog meer recepten? Ontdek ons receptenboek.</p>
+            <p className="text-muted-foreground mb-5">{c.moreRecipes}</p>
             <Link to="/product/the-matcha-ritual-book" className="inline-flex items-center gap-2 bg-primary text-primary-foreground px-7 py-3.5 rounded-full text-sm font-bold tracking-wide uppercase hover:scale-105 transition-transform">
               The Matcha Ritual <ArrowRight className="w-4 h-4" />
             </Link>

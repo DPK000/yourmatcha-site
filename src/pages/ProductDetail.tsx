@@ -1,5 +1,5 @@
 import { useParams, Link, Navigate } from "react-router-dom";
-import { getProductBySlug, getRelatedProducts } from "@/data/products";
+import { useProduct, useRelatedProducts } from "@/data/products";
 import { useCart } from "@/context/CartContext";
 import { useEffect, useMemo, useState } from "react";
 import { Minus, Plus, ShoppingBag, ChevronLeft, Star, Truck, Leaf, ShieldCheck, Heart, Zap, Brain, Droplets, Sparkles } from "lucide-react";
@@ -9,10 +9,9 @@ import SEO from "@/components/SEO";
 import { motion } from "framer-motion";
 import { toast } from "sonner";
 import { useTranslation } from "react-i18next";
+import { getCurrentLang } from "@/i18n";
+import { useCurrency } from "@/context/CurrencyContext";
 import { reviewTranslations } from "@/data/reviewTranslations";
-
-const formatPrice = (price: number) =>
-  new Intl.NumberFormat("nl-NL", { style: "currency", currency: "EUR" }).format(price);
 
 interface UserReview { name: string; rating: number; text: string; date: string }
 
@@ -31,14 +30,15 @@ const useUserReviews = (productId: string) => {
 };
 
 const ProductDetail = () => {
-  const { i18n } = useTranslation();
-  const lang = (i18n.language || "nl").slice(0, 2) as "nl" | "en" | "de" | "fr";
+  const { t, i18n } = useTranslation();
+  const { format: formatPrice } = useCurrency();
+  const lang = getCurrentLang();
   const tReview = (text: string) => {
     if (lang === "nl") return text;
     return reviewTranslations[text]?.[lang] || text;
   };
   const { slug } = useParams<{ slug: string }>();
-  const product = getProductBySlug(slug || "");
+  const product = useProduct(slug);
   const { addItem } = useCart();
   const [quantity, setQuantity] = useState(1);
   const [activeImg, setActiveImg] = useState(0);
@@ -46,16 +46,16 @@ const ProductDetail = () => {
   const [showReviewForm, setShowReviewForm] = useState(false);
   const [draft, setDraft] = useState({ name: "", rating: 5, text: "" });
   const { list: userReviews, add: addReview } = useUserReviews(product?.id || "");
+  const related = useRelatedProducts(product);
 
   if (!product) return <Navigate to="/shop" replace />;
 
   const allReviews = [...userReviews, ...product.reviews];
-  const related = getRelatedProducts(product);
   const accordionItems = [
-    product.ingredients && { id: "ingredients", title: "Ingrediënten", content: product.ingredients },
-    product.origin && { id: "origin", title: "Herkomst", content: product.origin },
-    product.preparation && { id: "preparation", title: "Bereiding", content: product.preparation },
-    { id: "shipping", title: "Verzending & retour", content: "Gratis verzending in NL & BE vanaf €50. Geleverd binnen 1–2 werkdagen. 30 dagen retour, geen vragen." },
+    product.ingredients && { id: "ingredients", title: t("product.ingredients"), content: product.ingredients },
+    product.origin && { id: "origin", title: t("product.origin"), content: product.origin },
+    product.preparation && { id: "preparation", title: t("product.preparation"), content: product.preparation },
+    { id: "shipping", title: t("product.shippingTitle"), content: t("product.shippingContent") },
   ].filter(Boolean) as { id: string; title: string; content: string }[];
 
   const avgRating = allReviews.length
@@ -115,25 +115,25 @@ const ProductDetail = () => {
     addReview({ ...draft, date: new Date().toISOString().slice(0, 10) });
     setDraft({ name: "", rating: 5, text: "" });
     setShowReviewForm(false);
-    toast.success("Bedankt voor je review! 🍵");
+    toast.success(t("product.reviewToast"));
   };
 
   return (
     <>
       <SEO
         title={`${product.name} — ${formatPrice(product.price)}`}
-        description={product.shortDescription + " Premium Japanse matcha, gratis verzending vanaf €50."}
+        description={product.shortDescription + " " + t("product.seoSuffix")}
         canonical={`/product/${product.slug}`}
         type="product"
         image={product.images[0]}
         jsonLd={[productJsonLd, breadcrumbJsonLd]}
-        keywords={`${product.name}, ${product.categoryLabel}, Japanse matcha, ceremoniële matcha, matcha kopen, ${product.weight || ""}`}
+        keywords={`${product.name}, ${product.categoryLabel}, ${t("product.seoKeywords")}, ${product.weight || ""}`}
       />
 
       <div className="py-10 pb-28 md:pb-10">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <Link to="/shop" className="inline-flex items-center gap-1 text-sm text-muted-foreground hover:text-foreground transition-colors mb-8">
-            <ChevronLeft className="w-4 h-4" /> Terug naar shop
+            <ChevronLeft className="w-4 h-4" /> {t("product.backToShop")}
           </Link>
 
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16">
@@ -180,7 +180,7 @@ const ProductDetail = () => {
                     ))}
                   </div>
                   <a href="#reviews" className="text-sm text-muted-foreground hover:text-foreground underline-offset-2 hover:underline">
-                    ({allReviews.length} {allReviews.length === 1 ? "beoordeling" : "beoordelingen"})
+                    ({allReviews.length} {allReviews.length === 1 ? t("product.reviewSingular") : t("product.reviewPlural")})
                   </a>
                 </div>
               )}
@@ -191,10 +191,10 @@ const ProductDetail = () => {
               {(product.category === "matcha-powder" || product.category === "teas-drinks") && (
                 <div className="grid grid-cols-4 gap-2 mb-6 bg-secondary/60 rounded-2xl p-4">
                   {[
-                    { icon: Zap, label: "Energie zonder dip" },
-                    { icon: Brain, label: "Focus & helderheid" },
-                    { icon: Sparkles, label: "Antioxidanten" },
-                    { icon: Droplets, label: "L-Theanine" },
+                    { icon: Zap, label: t("product.benefitEnergy") },
+                    { icon: Brain, label: t("product.benefitFocus") },
+                    { icon: Sparkles, label: t("product.benefitAntiox") },
+                    { icon: Droplets, label: t("product.benefitTheanine") },
                   ].map(b => (
                     <div key={b.label} className="text-center">
                       <b.icon className="w-5 h-5 mx-auto text-primary mb-1.5" strokeWidth={1.5} />
@@ -205,7 +205,7 @@ const ProductDetail = () => {
               )}
 
               {product.weight && (
-                <p className="text-xs uppercase tracking-widest text-muted-foreground mb-2">Inhoud: <strong className="text-foreground">{product.weight}</strong></p>
+                <p className="text-xs uppercase tracking-widest text-muted-foreground mb-2">{t("product.contentLabel")}: <strong className="text-foreground">{product.weight}</strong></p>
               )}
 
               <div className="flex items-baseline gap-3 mb-1">
@@ -214,7 +214,7 @@ const ProductDetail = () => {
                   <p className="text-base text-muted-foreground line-through">{formatPrice(product.price * 1.2)}</p>
                 )}
               </div>
-              <p className="text-xs text-muted-foreground mb-6">Incl. btw · Gratis verzending vanaf €35</p>
+              <p className="text-xs text-muted-foreground mb-6">{t("product.priceInfo")}</p>
 
               {/* Subscription inline upsell */}
               <Link
@@ -222,8 +222,8 @@ const ProductDetail = () => {
                 className="flex items-center justify-between gap-3 px-5 py-4 mb-6 border-2 border-primary/20 rounded-2xl hover:border-primary hover:bg-primary/5 transition-colors group"
               >
                 <div>
-                  <p className="text-sm font-semibold text-foreground">Maandelijks ontvangen</p>
-                  <p className="text-xs text-muted-foreground mt-0.5">Bespaar 15% · pauzeer of stop wanneer je wilt</p>
+                  <p className="text-sm font-semibold text-foreground">{t("product.subscribeTitle")}</p>
+                  <p className="text-xs text-muted-foreground mt-0.5">{t("product.subscribeSub")}</p>
                 </div>
                 <span className="text-xs font-bold text-primary tracking-widest uppercase shrink-0 group-hover:translate-x-1 transition-transform">−15% →</span>
               </Link>
@@ -242,10 +242,10 @@ const ProductDetail = () => {
                   onClick={() => { addItem(product, quantity); setQuantity(1); }}
                   className="flex-1 inline-flex items-center justify-center gap-2 px-6 h-12 bg-primary text-primary-foreground font-bold text-xs tracking-widest uppercase rounded-full hover:opacity-90 transition-opacity"
                 >
-                  <ShoppingBag className="w-4 h-4" /> In winkelwagen
+                  <ShoppingBag className="w-4 h-4" /> {t("product.addToCart")}
                 </button>
                 <button
-                  aria-label="Wensenlijst"
+                  aria-label={t("product.wishlist")}
                   className="w-12 h-12 flex items-center justify-center border border-border rounded-full hover:bg-secondary transition-colors"
                 >
                   <Heart className="w-4 h-4" />
@@ -255,18 +255,18 @@ const ProductDetail = () => {
               {/* Money-back callout */}
               <div className="relative bg-primary/5 border border-primary/15 rounded-2xl px-5 py-4 mb-6 text-center">
                 <Heart className="w-5 h-5 text-primary fill-primary/30 mx-auto -mt-7 mb-1 bg-background rounded-full p-0.5" />
-                <p className="text-sm font-bold text-foreground">Probeer het. Niet goed? Geld terug.</p>
+                <p className="text-sm font-bold text-foreground">{t("product.guaranteeTitle")}</p>
                 <p className="text-xs text-muted-foreground mt-1 leading-relaxed">
-                  98% van onze klanten beoordeelt deze matcha met 5 sterren. Mocht je niet tevreden zijn, krijg je je geld terug binnen 30 dagen.
+                  {t("product.guaranteeText")}
                 </p>
               </div>
 
               {/* Trust badges */}
               <div className="grid grid-cols-3 gap-3 mb-8 text-center">
                 {[
-                  { icon: Truck, label: "Gratis vanaf €35" },
-                  { icon: Leaf, label: "100% biologisch" },
-                  { icon: ShieldCheck, label: "30 dagen retour" },
+                  { icon: Truck, label: t("product.trustShipping") },
+                  { icon: Leaf, label: t("product.trustOrganic") },
+                  { icon: ShieldCheck, label: t("product.trustReturn") },
                 ].map(b => (
                   <div key={b.label} className="bg-secondary rounded-xl p-3">
                     <b.icon className="w-4 h-4 mx-auto text-primary mb-1" />
@@ -299,14 +299,14 @@ const ProductDetail = () => {
           <section id="reviews" className="mt-20">
             <div className="flex items-end justify-between mb-8 flex-wrap gap-4">
               <div>
-                <p className="text-[10px] tracking-[0.3em] uppercase text-muted-foreground mb-2">Reviews</p>
-                <h2 className="font-heading text-3xl md:text-4xl font-light">Wat klanten zeggen</h2>
+                <p className="text-[10px] tracking-[0.3em] uppercase text-muted-foreground mb-2">{t("product.reviewsEyebrow")}</p>
+                <h2 className="font-heading text-3xl md:text-4xl font-light">{t("product.reviewsTitle")}</h2>
               </div>
               <button
                 onClick={() => setShowReviewForm(s => !s)}
                 className="px-5 py-2.5 bg-primary text-primary-foreground text-xs font-bold tracking-widest uppercase rounded-full hover:opacity-90 transition-opacity"
               >
-                {showReviewForm ? "Annuleren" : "Schrijf een review"}
+                {showReviewForm ? t("product.cancel") : t("product.writeReview")}
               </button>
             </div>
 
@@ -320,7 +320,7 @@ const ProductDetail = () => {
                       <Star key={s} className={`w-4 h-4 ${s <= Math.round(avgRating) ? "text-accent fill-accent" : "text-border"}`} />
                     ))}
                   </div>
-                  <p className="text-xs text-muted-foreground">Op basis van {allReviews.length} {allReviews.length === 1 ? "beoordeling" : "beoordelingen"}</p>
+                  <p className="text-xs text-muted-foreground">{t("product.basedOn")} {allReviews.length} {allReviews.length === 1 ? t("product.reviewSingular") : t("product.reviewPlural")}</p>
                 </div>
                 <div className="space-y-1.5">
                   {[5,4,3,2,1].map(stars => {
@@ -357,11 +357,11 @@ const ProductDetail = () => {
                   required
                   value={draft.name}
                   onChange={e => setDraft({ ...draft, name: e.target.value })}
-                  placeholder="Je naam"
+                  placeholder={t("product.yourName")}
                   className="px-4 py-3 rounded-full border border-border bg-background text-sm focus:outline-none focus:ring-2 focus:ring-primary/30"
                 />
                 <div className="flex items-center gap-2 px-4 py-3 rounded-full border border-border bg-background">
-                  <span className="text-xs text-muted-foreground">Beoordeling:</span>
+                  <span className="text-xs text-muted-foreground">{t("product.rating")}:</span>
                   {[1, 2, 3, 4, 5].map(n => (
                     <button type="button" key={n} onClick={() => setDraft({ ...draft, rating: n })}>
                       <Star className={`w-4 h-4 ${n <= draft.rating ? "text-accent fill-accent" : "text-border"}`} />
@@ -372,7 +372,7 @@ const ProductDetail = () => {
                   required
                   value={draft.text}
                   onChange={e => setDraft({ ...draft, text: e.target.value })}
-                  placeholder="Hoe was je ervaring?"
+                  placeholder={t("product.experience")}
                   rows={4}
                   className="md:col-span-2 px-4 py-3 rounded-2xl border border-border bg-background text-sm focus:outline-none focus:ring-2 focus:ring-primary/30 resize-none"
                 />
@@ -380,13 +380,13 @@ const ProductDetail = () => {
                   type="submit"
                   className="md:col-span-2 px-6 py-3 bg-primary text-primary-foreground text-xs font-bold tracking-widest uppercase rounded-full hover:opacity-90 transition-opacity"
                 >
-                  Plaats review
+                  {t("product.submitReview")}
                 </button>
               </motion.form>
             )}
 
             {allReviews.length === 0 ? (
-              <p className="text-muted-foreground text-sm">Nog geen reviews. Wees de eerste!</p>
+              <p className="text-muted-foreground text-sm">{t("product.noReviews")}</p>
             ) : (
               <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
                 {allReviews.map((review, i) => (
@@ -398,12 +398,12 @@ const ProductDetail = () => {
                         ))}
                       </div>
                       <span className="inline-flex items-center gap-1 text-[10px] text-primary font-medium tracking-wider uppercase">
-                        <ShieldCheck className="w-3 h-3" /> Geverifieerd
+                        <ShieldCheck className="w-3 h-3" /> {t("product.verified")}
                       </span>
                     </div>
                     <p className="text-sm text-foreground/85 leading-relaxed mb-4">"{tReview(review.text)}"</p>
                     <p className="text-xs font-semibold">— {review.name}</p>
-                    <p className="text-[10px] text-muted-foreground mt-0.5">{new Date(review.date).toLocaleDateString("nl-NL")}</p>
+                    <p className="text-[10px] text-muted-foreground mt-0.5">{new Date(review.date).toLocaleDateString(i18n.language || "nl-NL")}</p>
                   </div>
                 ))}
               </div>
@@ -412,7 +412,7 @@ const ProductDetail = () => {
 
           {related.length > 0 && (
             <section className="mt-20">
-              <h2 className="font-heading text-2xl md:text-3xl font-light mb-8">Past goed bij</h2>
+              <h2 className="font-heading text-2xl md:text-3xl font-light mb-8">{t("product.pairsWith")}</h2>
               <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
                 {related.slice(0, 4).map(p => (
                   <ProductCard key={p.id} product={p} />
@@ -435,7 +435,7 @@ const ProductDetail = () => {
             onClick={() => addItem(product, quantity)}
             className="shrink-0 inline-flex items-center justify-center gap-1.5 px-5 h-11 bg-primary text-primary-foreground font-bold text-[11px] tracking-widest uppercase rounded-full"
           >
-            <ShoppingBag className="w-4 h-4" /> In mand
+            <ShoppingBag className="w-4 h-4" /> {t("product.addShort")}
           </button>
         </div>
       </div>

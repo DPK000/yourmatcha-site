@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import { Product } from "@/data/products";
 import { useCart } from "@/context/CartContext";
+import { useCurrency } from "@/context/CurrencyContext";
 import { Plus, Eye } from "lucide-react";
 import { motion } from "framer-motion";
 import { useTranslation } from "react-i18next";
@@ -9,12 +10,10 @@ import QuickViewModal from "./QuickViewModal";
 import { toast } from "sonner";
 
 const ProductCard = ({ product }: { product: Product }) => {
-  const { t, i18n } = useTranslation();
+  const { t } = useTranslation();
   const { addItem } = useCart();
+  const { format: formatPrice } = useCurrency();
   const [quickView, setQuickView] = useState<Product | null>(null);
-
-  const formatPrice = (n: number) =>
-    new Intl.NumberFormat(i18n.language || "nl-NL", { style: "currency", currency: "EUR" }).format(n);
 
   const handleAdd = (e: React.MouseEvent) => {
     e.preventDefault();

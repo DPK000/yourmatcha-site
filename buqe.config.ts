@@ -42,7 +42,7 @@ export const buqeConfig: BuqeConfig = {
 
   currency: {
     default: "EUR",
-    supported: ["EUR"],
+    supported: ["EUR", "NOK"],
   },
 
   shipping: {

@@ -3,16 +3,36 @@ import { getBlogBySlug, blogPosts } from "@/data/blog";
 import { ChevronLeft, Clock } from "lucide-react";
 import { motion } from "framer-motion";
 import SEO from "@/components/SEO";
+import { useLang } from "@/i18n";
+
+const COPY = {
+  nl: {
+    notFound: "Artikel niet gevonden.",
+    backToBlog: "Terug naar blog",
+    seoDescriptionSuffix: "— Lees alles over matcha op de YourMatcha blog.",
+    readTime: "leestijd",
+    moreArticles: "Meer Artikelen",
+  },
+  no: {
+    notFound: "Fant ikke artikkelen.",
+    backToBlog: "Tilbake til bloggen",
+    seoDescriptionSuffix: "— Les alt om matcha på YourMatcha-bloggen.",
+    readTime: "lesetid",
+    moreArticles: "Flere artikler",
+  },
+} as const;
 
 const BlogPost = () => {
   const { slug } = useParams<{ slug: string }>();
   const post = getBlogBySlug(slug || "");
+  const lang = useLang();
+  const c = lang === "no" ? COPY.no : COPY.nl;
 
   if (!post) {
     return (
       <div className="py-20 text-center">
-        <p className="text-muted-foreground">Artikel niet gevonden.</p>
-        <Link to="/blog" className="text-primary hover:underline mt-4 inline-block">Terug naar blog</Link>
+        <p className="text-muted-foreground">{c.notFound}</p>
+        <Link to="/blog" className="text-primary hover:underline mt-4 inline-block">{c.backToBlog}</Link>
       </div>
     );
   }
@@ -54,7 +74,7 @@ const BlogPost = () => {
     <div className="py-12">
       <SEO
         title={post.title}
-        description={post.excerpt || `${post.title} — Lees alles over matcha op de YourMatcha blog.`}
+        description={post.excerpt || `${post.title} ${c.seoDescriptionSuffix}`}
         canonical={`/blog/${post.slug}`}
         type="article"
         image={post.image}
@@ -64,14 +84,14 @@ const BlogPost = () => {
       />
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-3xl">
         <Link to="/blog" className="inline-flex items-center gap-1 text-sm text-muted-foreground hover:text-foreground transition-colors mb-8">
-          <ChevronLeft className="w-4 h-4" /> Terug naar blog
+          <ChevronLeft className="w-4 h-4" /> {c.backToBlog}
         </Link>
 
         <motion.article initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }}>
           <div className="flex items-center gap-3 mb-4">
             <span className="text-xs text-accent font-medium tracking-wide uppercase">{post.category}</span>
             <span className="flex items-center gap-1 text-xs text-muted-foreground">
-              <Clock className="w-3 h-3" /> {post.readTime} leestijd
+              <Clock className="w-3 h-3" /> {post.readTime} {c.readTime}
             </span>
           </div>
           <h1 className="font-heading text-3xl md:text-4xl font-semibold mb-8 leading-tight">{post.title}</h1>
@@ -88,7 +108,7 @@ const BlogPost = () => {
         {/* Related */}
         {related.length > 0 && (
           <section className="mt-16 pt-12 border-t border-border">
-            <h2 className="font-heading text-2xl font-semibold mb-6">Meer Artikelen</h2>
+            <h2 className="font-heading text-2xl font-semibold mb-6">{c.moreArticles}</h2>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               {related.map(p => (
                 <Link key={p.id} to={`/blog/${p.slug}`} className="group block p-6 bg-secondary rounded">

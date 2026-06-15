@@ -5,6 +5,8 @@ import SEO from "@/components/SEO";
 import ScrollReveal from "@/components/ScrollReveal";
 import { getRecipeBySlug, recipes, type Recipe } from "@/data/recipes";
 import { getProductBySlug } from "@/data/products";
+import { useCurrency } from "@/context/CurrencyContext";
+import { useLang } from "@/i18n";
 
 const recommendedProductSlugs = (recipe: Recipe): string[] => {
   const slug = recipe.slug.toLowerCase();
@@ -31,11 +33,9 @@ const recommendedProductSlugs = (recipe: Recipe): string[] => {
   return ["culinary-matcha-100g", "ceremonial-matcha-30g", "starter-kit"];
 };
 
-const recommendationReason = (recipe: Recipe): string => {
+const reasonKey = (recipe: Recipe): "hojicha" | "iced" | "drinks" | "default" => {
   const slug = recipe.slug.toLowerCase();
-  if (slug.includes("hojicha")) {
-    return "Hojicha poeder is essentieel voor dit recept. Onze ceremonial matcha is een mooie tegenhanger voor andere bereidingen.";
-  }
+  if (slug.includes("hojicha")) return "hojicha";
   if (
     slug.includes("iced") ||
     slug.includes("lemonade") ||
@@ -43,17 +43,57 @@ const recommendationReason = (recipe: Recipe): string => {
     slug.includes("bubble") ||
     slug.includes("strawberry-latte")
   ) {
-    return "Voor koude bereidingen is een speciaal gemalen iced blend ideaal — lost direct op, geen klontjes.";
+    return "iced";
   }
-  if (recipe.category === "Drinks") {
-    return "Voor een fluweelzachte latte: ceremonial voor de pure smaak, culinary voor dagelijks gebruik.";
-  }
-  return "Voor bakken en koken kies je culinary grade — robuust, hittebestendig en kosteneffectief.";
+  if (recipe.category === "Drinks") return "drinks";
+  return "default";
 };
+
+const COPY = {
+  nl: {
+    seoTitleSuffix: "— YourMatcha Recept",
+    cuisine: "Japans",
+    allRecipes: "Alle recepten",
+    ingredients: "Ingrediënten",
+    steps: "Bereiding",
+    share: "Deel dit recept",
+    more: "Meer",
+    pairEyebrow: "Bij dit recept",
+    pairTitle: "Koop de juiste matcha voor dit recept",
+    view: "Bekijk",
+    reasons: {
+      hojicha: "Hojicha poeder is essentieel voor dit recept. Onze ceremonial matcha is een mooie tegenhanger voor andere bereidingen.",
+      iced: "Voor koude bereidingen is een speciaal gemalen iced blend ideaal — lost direct op, geen klontjes.",
+      drinks: "Voor een fluweelzachte latte: ceremonial voor de pure smaak, culinary voor dagelijks gebruik.",
+      default: "Voor bakken en koken kies je culinary grade — robuust, hittebestendig en kosteneffectief.",
+    },
+  },
+  no: {
+    seoTitleSuffix: "— YourMatcha-oppskrift",
+    cuisine: "Japansk",
+    allRecipes: "Alle oppskrifter",
+    ingredients: "Ingredienser",
+    steps: "Fremgangsmåte",
+    share: "Del denne oppskriften",
+    more: "Flere",
+    pairEyebrow: "Til denne oppskriften",
+    pairTitle: "Kjøp riktig matcha til denne oppskriften",
+    view: "Se",
+    reasons: {
+      hojicha: "Hojicha-pulver er essensielt for denne oppskriften. Vår ceremonial matcha er et fint alternativ til andre tilberedninger.",
+      iced: "For kalde tilberedninger er en spesialmalt iced-blanding ideell — løser seg opp umiddelbart, ingen klumper.",
+      drinks: "For en fløyelsmyk latte: ceremonial for den rene smaken, culinary for daglig bruk.",
+      default: "Til baking og matlaging velger du culinary grade — robust, varmebestandig og kostnadseffektiv.",
+    },
+  },
+} as const;
 
 const RecipeDetail = () => {
   const { slug } = useParams<{ slug: string }>();
   const recipe = slug ? getRecipeBySlug(slug) : undefined;
+  const lang = useLang();
+  const c = lang === "no" ? COPY.no : COPY.nl;
+  const { format: formatPrice } = useCurrency();
 
   if (!recipe) return <Navigate to="/recepten" replace />;
 
@@ -64,7 +104,6 @@ const RecipeDetail = () => {
   const recommended = recommendedProductSlugs(recipe)
     .map((s) => getProductBySlug(s))
     .filter((p): p is NonNullable<typeof p> => Boolean(p));
-  const priceFormatter = new Intl.NumberFormat("nl-NL", { style: "currency", currency: "EUR" });
 
   const recipeJsonLd = {
     "@context": "https://schema.org",
@@ -73,7 +112,7 @@ const RecipeDetail = () => {
     image: [recipe.image],
     description: recipe.description,
     recipeCategory: recipe.category,
-    recipeCuisine: "Japans",
+    recipeCuisine: c.cuisine,
     totalTime: recipe.time,
     recipeIngredient: recipe.ingredients,
     recipeInstructions: recipe.steps.map((s) => ({ "@type": "HowToStep", text: s })),
@@ -82,7 +121,7 @@ const RecipeDetail = () => {
   return (
     <>
       <SEO
-        title={`${recipe.title} — YourMatcha Recept`}
+        title={`${recipe.title} ${c.seoTitleSuffix}`}
         description={recipe.description}
         image={recipe.image}
       />
@@ -96,7 +135,7 @@ const RecipeDetail = () => {
             to="/recepten"
             className="inline-flex items-center gap-2 text-sm text-muted-foreground hover:text-primary mb-10 transition-colors"
           >
-            <ArrowLeft className="w-4 h-4" /> Alle recepten
+            <ArrowLeft className="w-4 h-4" /> {c.allRecipes}
           </Link>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-start">
@@ -117,12 +156,12 @@ const RecipeDetail = () => {
                   <p className="text-muted-foreground leading-relaxed mb-8">{recipe.intro}</p>
                 )}
 
-                <h2 className="text-sm font-semibold uppercase tracking-wider mb-3">Ingrediënten</h2>
+                <h2 className="text-sm font-semibold uppercase tracking-wider mb-3">{c.ingredients}</h2>
                 <ul className="text-sm text-muted-foreground space-y-1.5 mb-10 list-disc pl-5">
                   {recipe.ingredients.map((i) => <li key={i}>{i}</li>)}
                 </ul>
 
-                <h2 className="text-sm font-semibold uppercase tracking-wider mb-3">Bereiding</h2>
+                <h2 className="text-sm font-semibold uppercase tracking-wider mb-3">{c.steps}</h2>
                 <ol className="text-sm text-muted-foreground space-y-3 list-decimal pl-5">
                   {recipe.steps.map((s) => <li key={s} className="leading-relaxed">{s}</li>)}
                 </ol>
@@ -137,7 +176,7 @@ const RecipeDetail = () => {
                   }}
                   className="mt-10 inline-flex items-center gap-2 text-sm font-semibold uppercase tracking-wider text-primary hover:underline"
                 >
-                  <Share2 className="w-4 h-4" /> Deel dit recept
+                  <Share2 className="w-4 h-4" /> {c.share}
                 </button>
               </div>
             </ScrollReveal>
@@ -146,12 +185,12 @@ const RecipeDetail = () => {
           {recommended.length > 0 && (
             <div className="mt-24 pt-16 border-t border-border">
               <div className="mb-8 max-w-2xl">
-                <p className="text-[10px] tracking-[0.3em] uppercase text-primary mb-3">Bij dit recept</p>
+                <p className="text-[10px] tracking-[0.3em] uppercase text-primary mb-3">{c.pairEyebrow}</p>
                 <h2 className="font-heading text-2xl md:text-3xl font-semibold mb-3">
-                  Koop de juiste matcha voor dit recept
+                  {c.pairTitle}
                 </h2>
                 <p className="text-sm text-muted-foreground leading-relaxed">
-                  {recommendationReason(recipe)}
+                  {c.reasons[reasonKey(recipe)]}
                 </p>
               </div>
               <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
@@ -176,9 +215,9 @@ const RecipeDetail = () => {
                       </h3>
                       <p className="text-xs text-muted-foreground leading-relaxed mb-3 line-clamp-2">{p.shortDescription}</p>
                       <div className="flex items-center justify-between">
-                        <span className="text-sm font-semibold">{priceFormatter.format(p.price)}</span>
+                        <span className="text-sm font-semibold">{formatPrice(p.price)}</span>
                         <span className="inline-flex items-center gap-1 text-xs font-semibold text-primary group-hover:gap-2 transition-all">
-                          Bekijk <ArrowRight className="w-3 h-3" />
+                          {c.view} <ArrowRight className="w-3 h-3" />
                         </span>
                       </div>
                     </div>
@@ -190,7 +229,7 @@ const RecipeDetail = () => {
 
           {related.length > 0 && (
             <div className="mt-24 pt-16 border-t border-border">
-              <h2 className="font-heading text-2xl md:text-3xl font-semibold mb-8">Meer {recipe.category.toLowerCase()}</h2>
+              <h2 className="font-heading text-2xl md:text-3xl font-semibold mb-8">{c.more} {recipe.category.toLowerCase()}</h2>
               <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
                 {related.map((r) => (
                   <Link

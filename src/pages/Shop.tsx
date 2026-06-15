@@ -1,5 +1,5 @@
 import { useState, useMemo, useEffect } from "react";
-import { products, categories } from "@/data/products";
+import { useProducts, categories } from "@/data/products";
 import ProductCard from "@/components/ProductCard";
 import { useSearchParams } from "react-router-dom";
 import { useTranslation } from "react-i18next";
@@ -13,6 +13,7 @@ const Shop = () => {
   const categoryParam = searchParams.get("category") || "all";
   const [category, setCategory] = useState(categoryParam);
   const [sort, setSort] = useState<SortOption>("bestseller");
+  const products = useProducts();
 
   useEffect(() => { setCategory(categoryParam); }, [categoryParam]);
 
@@ -32,7 +33,7 @@ const Shop = () => {
       default: break;
     }
     return result;
-  }, [category, sort]);
+  }, [category, sort, products]);
 
   const handleCategory = (val: string) => {
     setCategory(val);
@@ -43,8 +44,8 @@ const Shop = () => {
   return (
     <div className="py-12">
       <SEO
-        title="Shop — Premium matcha, thee & accessoires"
-        description="Shop ceremoniële Japanse matcha, latte blends, theeaccessoires en cadeausets. Single-origin uit Uji, gratis verzending in NL & BE vanaf €50."
+        title={t("shop.seoTitle")}
+        description={t("shop.seoDesc")}
         canonical="/shop"
       />
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">

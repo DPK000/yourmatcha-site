@@ -5,6 +5,16 @@ import { TrendingUp, ShoppingBag, Euro, Clock, ArrowRight, Package } from "lucid
 import { AreaChart, Area, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer } from "recharts";
 import { format, subDays, startOfDay } from "date-fns";
 
+const moneyFmt = (amount: number, currency?: string) =>
+  currency === "NOK" ? `kr ${amount.toFixed(2)}` : `€${amount.toFixed(2)}`;
+
+// Vaste indicatieve koers, gelijk aan EUR_TO_NOK in src/context/CurrencyContext.tsx
+const NOK_PER_EUR = 11.5;
+
+// Omzetstatistieken aggregeren over EUR- en NOK-orders: NOK omrekenen naar EUR-equivalent
+const orderTotalInEur = (o: DbOrder) =>
+  o.currency === "NOK" ? o.total / NOK_PER_EUR : o.total;
+
 interface Stats {
   totalRevenue: number;
   totalOrders: number;
@@ -55,7 +65,7 @@ const AdminDashboard = () => {
       const allOrders = orders as DbOrder[];
       const paidOrders = allOrders.filter(o => o.status !== "cancelled" && o.status !== "refunded");
 
-      const totalRevenue = paidOrders.reduce((sum, o) => sum + o.total, 0);
+      const totalRevenue = paidOrders.reduce((sum, o) => sum + orderTotalInEur(o), 0);
       const pendingOrders = allOrders.filter(o => o.status === "pending" || o.status === "paid").length;
       const avgOrderValue = paidOrders.length > 0 ? totalRevenue / paidOrders.length : 0;
 
@@ -75,7 +85,7 @@ const AdminDashboard = () => {
         const dayOrders = paidOrders.filter(o => o.created_at.startsWith(dateStr));
         return {
           date: format(date, "dd MMM"),
-          revenue: dayOrders.reduce((sum, o) => sum + o.total, 0),
+          revenue: dayOrders.reduce((sum, o) => sum + orderTotalInEur(o), 0),
           orders: dayOrders.length,
         };
       });
@@ -180,7 +190,7 @@ const AdminDashboard = () => {
                   <span className={`text-xs font-body font-medium px-2 py-0.5 rounded-full ${statusColors[order.status] ?? "bg-gray-100 text-gray-700"}`}>
                     {statusLabels[order.status] ?? order.status}
                   </span>
-                  <span className="text-sm font-body font-semibold">€{order.total.toFixed(2)}</span>
+                  <span className="text-sm font-body font-semibold">{moneyFmt(order.total, order.currency)}</span>
                 </div>
               </Link>
             ))}

@@ -44,6 +44,8 @@ export interface DbOrder {
   discount_amount?: number;
   discount_code?: string;
   total: number;
+  /** Valuta van de order ('EUR' of 'NOK'); oude orders kunnen undefined zijn (= EUR) */
+  currency?: string;
   notes?: string;
   tracking_code?: string;
   tracking_number?: string;

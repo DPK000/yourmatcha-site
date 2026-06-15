@@ -2,6 +2,28 @@ import { Link, useParams, Navigate } from "react-router-dom";
 import { ChevronLeft, Clock, Calendar, ArrowRight } from "lucide-react";
 import SEO from "@/components/SEO";
 import { getKnowledgeBySlug, knowledgeArticles } from "@/data/knowledge";
+import { useLang } from "@/i18n";
+
+const COPY = {
+  nl: {
+    back: "Terug naar kennis",
+    breadcrumbKnowledge: "Kennis",
+    lastUpdated: "Laatst bijgewerkt",
+    dateLocale: "nl-NL",
+    faq: "Veelgestelde vragen",
+    moreReading: "Meer lezen",
+    readMore: "Lees verder",
+  },
+  no: {
+    back: "Tilbake til kunnskapssenteret",
+    breadcrumbKnowledge: "Kunnskap",
+    lastUpdated: "Sist oppdatert",
+    dateLocale: "nb-NO",
+    faq: "Ofte stilte spørsmål",
+    moreReading: "Mer å lese",
+    readMore: "Les mer",
+  },
+} as const;
 
 /** Lightweight markdown renderer for our controlled content set. */
 const renderContent = (content: string) => {
@@ -73,6 +95,8 @@ const inline = (s: string) =>
 const KnowledgeArticle = () => {
   const { slug } = useParams<{ slug: string }>();
   const article = getKnowledgeBySlug(slug || "");
+  const lang = useLang();
+  const c = lang === "no" ? COPY.no : COPY.nl;
   if (!article) return <Navigate to="/kennis" replace />;
 
   const related = knowledgeArticles.filter(a => a.slug !== article.slug).slice(0, 3);
@@ -106,7 +130,7 @@ const KnowledgeArticle = () => {
     "@type": "BreadcrumbList",
     itemListElement: [
       { "@type": "ListItem", position: 1, name: "Home", item: "https://yourmatcha.nl/" },
-      { "@type": "ListItem", position: 2, name: "Kennis", item: "https://yourmatcha.nl/kennis" },
+      { "@type": "ListItem", position: 2, name: c.breadcrumbKnowledge, item: "https://yourmatcha.nl/kennis" },
       { "@type": "ListItem", position: 3, name: article.title, item: `https://yourmatcha.nl/kennis/${article.slug}` },
     ],
   };
@@ -124,21 +148,21 @@ const KnowledgeArticle = () => {
       <article className="py-12">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-3xl">
           <Link to="/kennis" className="inline-flex items-center gap-1 text-sm text-muted-foreground hover:text-foreground transition-colors mb-8">
-            <ChevronLeft className="w-4 h-4" /> Terug naar kennis
+            <ChevronLeft className="w-4 h-4" /> {c.back}
           </Link>
 
           <p className="text-[10px] tracking-[0.3em] uppercase text-primary mb-4">{article.category}</p>
           <h1 className="font-heading text-4xl md:text-5xl font-light leading-tight mb-6">{article.title}</h1>
           <div className="flex items-center gap-5 text-xs text-muted-foreground mb-12 pb-8 border-b border-border">
             <span className="inline-flex items-center gap-1.5"><Clock className="w-3 h-3" /> {article.readTime}</span>
-            <span className="inline-flex items-center gap-1.5"><Calendar className="w-3 h-3" /> Laatst bijgewerkt {new Date(article.updated).toLocaleDateString("nl-NL")}</span>
+            <span className="inline-flex items-center gap-1.5"><Calendar className="w-3 h-3" /> {c.lastUpdated} {new Date(article.updated).toLocaleDateString(c.dateLocale)}</span>
           </div>
 
           <div className="prose-content">{renderContent(article.content)}</div>
 
           {article.faqs && article.faqs.length > 0 && (
             <section className="mt-16 pt-12 border-t border-border">
-              <h2 className="font-heading text-2xl md:text-3xl font-semibold mb-6">Veelgestelde vragen</h2>
+              <h2 className="font-heading text-2xl md:text-3xl font-semibold mb-6">{c.faq}</h2>
               <div className="space-y-4">
                 {article.faqs.map((f, i) => (
                   <details key={i} className="group bg-secondary rounded-xl px-5 py-4 cursor-pointer">
@@ -154,7 +178,7 @@ const KnowledgeArticle = () => {
           )}
 
           <section className="mt-16 pt-12 border-t border-border">
-            <h2 className="font-heading text-2xl font-semibold mb-6">Meer lezen</h2>
+            <h2 className="font-heading text-2xl font-semibold mb-6">{c.moreReading}</h2>
             <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
               {related.map(r => (
                 <Link
@@ -165,7 +189,7 @@ const KnowledgeArticle = () => {
                   <p className="text-[10px] tracking-widest uppercase text-primary mb-2">{r.category}</p>
                   <h3 className="font-heading text-base font-semibold leading-tight mb-3 group-hover:text-primary transition-colors">{r.title}</h3>
                   <span className="inline-flex items-center gap-1 text-xs text-primary font-semibold group-hover:gap-2 transition-all">
-                    Lees verder <ArrowRight className="w-3 h-3" />
+                    {c.readMore} <ArrowRight className="w-3 h-3" />
                   </span>
                 </Link>
               ))}

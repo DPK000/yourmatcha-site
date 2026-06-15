@@ -3,23 +3,92 @@ import { Minus, Plus, X, ShoppingBag, Truck, ArrowRight, Tag } from "lucide-reac
 import { motion } from "framer-motion";
 import { useState, useMemo } from "react";
 import { useCart } from "@/context/CartContext";
-import { products } from "@/data/products";
+import { useProducts } from "@/data/products";
 import SEO from "@/components/SEO";
 import { toast } from "sonner";
+import { useCurrency } from "@/context/CurrencyContext";
+import { useLang } from "@/i18n";
 
 const FREE_SHIPPING = 50;
-const formatPrice = (n: number) =>
-  new Intl.NumberFormat("nl-NL", { style: "currency", currency: "EUR" }).format(n);
+
+const COPY = {
+  nl: {
+    seoTitle: "Winkelwagen",
+    seoDescription: "Bekijk je winkelwagen en reken veilig af. Gratis verzending in Nederland en België vanaf €50.",
+    toastCodeApplied: "Code toegepast — 10% korting 🍵",
+    toastAmountApplied: (amount: string) => `${amount} korting toegepast`,
+    toastInvalidCode: "Ongeldige kortingscode",
+    emptyTitle: "Je winkelwagen is leeg",
+    emptySubtitle: "Ontdek onze ceremoniële matcha, thee en rituelen.",
+    toShop: "Naar de shop",
+    title: "Je winkelwagen",
+    itemSingular: "artikel",
+    itemPlural: "artikelen",
+    remainingPrefix: "Nog ",
+    remainingSuffix: " tot gratis verzending",
+    freeShippingReached: "🎉 Je krijgt gratis verzending!",
+    continueShopping: "← Verder winkelen",
+    clearCart: "Winkelwagen legen",
+    crossSellTitle: "Mensen kochten er ook bij",
+    add: "Toevoegen",
+    summary: "Overzicht",
+    discountCode: "Kortingscode",
+    codePlaceholder: "bv. MATCHA10",
+    apply: "Toepassen",
+    subtotal: "Subtotaal",
+    discount: "Korting",
+    shipping: "Verzending",
+    free: "Gratis",
+    total: "Totaal",
+    checkout: "Veilig afrekenen",
+    paymentNote: "🔒 Veilig betalen · iDEAL · Bancontact · Creditcard · PayPal",
+  },
+  no: {
+    seoTitle: "Handlekurv",
+    seoDescription: "Se handlekurven din og betal trygt. Gratis frakt til Nederland og Belgia fra 575 kr.",
+    toastCodeApplied: "Kode aktivert — 10 % rabatt 🍵",
+    toastAmountApplied: (amount: string) => `${amount} rabatt aktivert`,
+    toastInvalidCode: "Ugyldig rabattkode",
+    emptyTitle: "Handlekurven din er tom",
+    emptySubtitle: "Utforsk vår seremonielle matcha, te og ritualer.",
+    toShop: "Til butikken",
+    title: "Handlekurven din",
+    itemSingular: "vare",
+    itemPlural: "varer",
+    remainingPrefix: "Kun ",
+    remainingSuffix: " igjen til gratis frakt",
+    freeShippingReached: "🎉 Du får gratis frakt!",
+    continueShopping: "← Fortsett å handle",
+    clearCart: "Tøm handlekurven",
+    crossSellTitle: "Andre kjøpte også",
+    add: "Legg til",
+    summary: "Oppsummering",
+    discountCode: "Rabattkode",
+    codePlaceholder: "f.eks. MATCHA10",
+    apply: "Bruk",
+    subtotal: "Delsum",
+    discount: "Rabatt",
+    shipping: "Frakt",
+    free: "Gratis",
+    total: "Totalt",
+    checkout: "Betal trygt",
+    paymentNote: "🔒 Trygg betaling · iDEAL · Bancontact · Kort · PayPal",
+  },
+} as const;
 
 const Cart = () => {
+  const { format: formatPrice } = useCurrency();
+  const lang = useLang();
+  const t = COPY[lang === "no" ? "no" : "nl"];
   const { items, removeItem, updateQuantity, subtotal, addItem, clearCart } = useCart();
   const [code, setCode] = useState("");
   const [discount, setDiscount] = useState(0);
+  const products = useProducts();
 
   const recommendations = useMemo(() => {
     const inCart = new Set(items.map(i => i.product.id));
-    return products.filter(p => !inCart.has(p.id) && (p.bestseller || p.badge === "Nieuw")).slice(0, 4);
-  }, [items]);
+    return products.filter(p => !inCart.has(p.id) && (p.bestseller || p.badge)).slice(0, 4);
+  }, [items, products]);
 
   const remaining = Math.max(0, FREE_SHIPPING - subtotal);
   const progress = Math.min(100, (subtotal / FREE_SHIPPING) * 100);
@@ -30,12 +99,12 @@ const Cart = () => {
     const c = code.trim().toUpperCase();
     if (c === "MATCHA10") {
       setDiscount(subtotal * 0.1);
-      toast.success("Code toegepast — 10% korting 🍵");
+      toast.success(t.toastCodeApplied);
     } else if (c === "WELKOM5") {
       setDiscount(5);
-      toast.success("€5 korting toegepast");
+      toast.success(t.toastAmountApplied(formatPrice(5)));
     } else {
-      toast.error("Ongeldige kortingscode");
+      toast.error(t.toastInvalidCode);
     }
   };
 
@@ -43,8 +112,8 @@ const Cart = () => {
     return (
       <>
         <SEO
-          title="Winkelwagen"
-          description="Bekijk je winkelwagen en reken veilig af. Gratis verzending in Nederland en België vanaf €50."
+          title={t.seoTitle}
+          description={t.seoDescription}
           canonical="/winkelwagen"
           noindex
         />
@@ -52,13 +121,13 @@ const Cart = () => {
           <div className="inline-flex items-center justify-center w-20 h-20 rounded-full bg-secondary mb-6">
             <ShoppingBag className="w-9 h-9 text-muted-foreground/60" />
           </div>
-          <h1 className="font-heading text-3xl md:text-4xl font-light mb-3">Je winkelwagen is leeg</h1>
-          <p className="text-muted-foreground mb-8">Ontdek onze ceremoniële matcha, thee en rituelen.</p>
+          <h1 className="font-heading text-3xl md:text-4xl font-light mb-3">{t.emptyTitle}</h1>
+          <p className="text-muted-foreground mb-8">{t.emptySubtitle}</p>
           <Link
             to="/shop"
             className="inline-flex items-center gap-2 px-8 py-3 bg-primary text-primary-foreground text-sm font-bold tracking-widest uppercase rounded-full hover:opacity-90 transition-opacity"
           >
-            Naar de shop <ArrowRight className="w-4 h-4" />
+            {t.toShop} <ArrowRight className="w-4 h-4" />
           </Link>
         </div>
       </>
@@ -68,23 +137,23 @@ const Cart = () => {
   return (
     <>
       <SEO
-        title="Winkelwagen"
-        description="Bekijk je winkelwagen en reken veilig af. Gratis verzending in Nederland en België vanaf €50."
+        title={t.seoTitle}
+        description={t.seoDescription}
         canonical="/winkelwagen"
         noindex
       />
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-12">
-        <h1 className="font-heading text-3xl md:text-5xl font-light mb-3">Je winkelwagen</h1>
-        <p className="text-muted-foreground mb-10">{items.length} artikel{items.length === 1 ? "" : "en"}</p>
+        <h1 className="font-heading text-3xl md:text-5xl font-light mb-3">{t.title}</h1>
+        <p className="text-muted-foreground mb-10">{items.length} {items.length === 1 ? t.itemSingular : t.itemPlural}</p>
 
         {/* Free shipping bar */}
         <div className="bg-secondary rounded-2xl p-5 mb-10">
           <div className="flex items-center gap-3 mb-3 text-sm">
             <Truck className="w-4 h-4 text-primary" />
             {remaining > 0 ? (
-              <span>Nog <strong>{formatPrice(remaining)}</strong> tot gratis verzending</span>
+              <span>{t.remainingPrefix}<strong>{formatPrice(remaining)}</strong>{t.remainingSuffix}</span>
             ) : (
-              <span className="font-semibold text-primary">🎉 Je krijgt gratis verzending!</span>
+              <span className="font-semibold text-primary">{t.freeShippingReached}</span>
             )}
           </div>
           <div className="h-1.5 bg-background rounded-full overflow-hidden">
@@ -142,17 +211,17 @@ const Cart = () => {
 
             <div className="flex items-center justify-between pt-2">
               <Link to="/shop" className="text-sm text-muted-foreground hover:text-foreground transition-colors">
-                ← Verder winkelen
+                {t.continueShopping}
               </Link>
               <button onClick={clearCart} className="text-sm text-muted-foreground hover:text-destructive transition-colors">
-                Winkelwagen legen
+                {t.clearCart}
               </button>
             </div>
 
             {/* Cross-sell */}
             {recommendations.length > 0 && (
               <section className="mt-12">
-                <h2 className="font-heading text-xl font-semibold mb-5">Mensen kochten er ook bij</h2>
+                <h2 className="font-heading text-xl font-semibold mb-5">{t.crossSellTitle}</h2>
                 <div className="grid grid-cols-2 gap-4">
                   {recommendations.map(p => (
                     <div key={p.id} className="flex gap-3 p-3 rounded-xl bg-secondary/60 hover:bg-secondary transition-colors">
@@ -168,7 +237,7 @@ const Cart = () => {
                           onClick={() => { addItem(p); }}
                           className="mt-1.5 inline-flex items-center gap-1 text-[11px] font-bold tracking-wide uppercase text-primary hover:underline"
                         >
-                          <Plus className="w-3 h-3" /> Toevoegen
+                          <Plus className="w-3 h-3" /> {t.add}
                         </button>
                       </div>
                     </div>
@@ -181,42 +250,42 @@ const Cart = () => {
           {/* Summary */}
           <aside className="lg:col-span-1">
             <div className="sticky top-28 bg-secondary rounded-2xl p-6 space-y-5">
-              <h2 className="font-heading text-xl font-semibold">Overzicht</h2>
+              <h2 className="font-heading text-xl font-semibold">{t.summary}</h2>
 
               <form onSubmit={applyCode} className="space-y-2">
                 <label className="text-xs tracking-widest uppercase text-muted-foreground flex items-center gap-1.5">
-                  <Tag className="w-3 h-3" /> Kortingscode
+                  <Tag className="w-3 h-3" /> {t.discountCode}
                 </label>
                 <div className="flex gap-2">
                   <input
                     value={code}
                     onChange={e => setCode(e.target.value)}
-                    placeholder="bv. MATCHA10"
+                    placeholder={t.codePlaceholder}
                     className="flex-1 px-3 py-2 rounded-full border border-border bg-background text-sm focus:outline-none focus:ring-2 focus:ring-primary/30"
                   />
                   <button type="submit" className="px-4 py-2 rounded-full bg-foreground text-background text-xs font-bold tracking-wide uppercase hover:opacity-90 transition-opacity">
-                    Toepassen
+                    {t.apply}
                   </button>
                 </div>
               </form>
 
               <div className="border-t border-border pt-4 space-y-2 text-sm">
                 <div className="flex justify-between">
-                  <span className="text-muted-foreground">Subtotaal</span>
+                  <span className="text-muted-foreground">{t.subtotal}</span>
                   <span>{formatPrice(subtotal)}</span>
                 </div>
                 {discount > 0 && (
                   <div className="flex justify-between text-primary">
-                    <span>Korting</span>
+                    <span>{t.discount}</span>
                     <span>−{formatPrice(discount)}</span>
                   </div>
                 )}
                 <div className="flex justify-between">
-                  <span className="text-muted-foreground">Verzending</span>
-                  <span>{remaining > 0 ? formatPrice(4.95) : "Gratis"}</span>
+                  <span className="text-muted-foreground">{t.shipping}</span>
+                  <span>{remaining > 0 ? formatPrice(4.95) : t.free}</span>
                 </div>
                 <div className="flex justify-between text-base font-semibold pt-3 border-t border-border">
-                  <span>Totaal</span>
+                  <span>{t.total}</span>
                   <span>{formatPrice(total + (remaining > 0 ? 4.95 : 0))}</span>
                 </div>
               </div>
@@ -225,10 +294,10 @@ const Cart = () => {
                 to="/checkout"
                 className="block w-full py-3.5 bg-primary text-primary-foreground text-center text-sm font-bold tracking-widest uppercase rounded-full hover:opacity-90 transition-opacity"
               >
-                Veilig afrekenen
+                {t.checkout}
               </Link>
               <p className="text-[11px] text-center text-muted-foreground">
-                🔒 Veilig betalen · iDEAL · Bancontact · Creditcard · PayPal
+                {t.paymentNote}
               </p>
             </div>
           </aside>

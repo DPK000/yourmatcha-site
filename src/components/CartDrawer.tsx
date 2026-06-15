@@ -3,11 +3,11 @@ import { useCart } from "@/context/CartContext";
 import { Link } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
 import { useTranslation } from "react-i18next";
+import { useCurrency } from "@/context/CurrencyContext";
 
 const CartDrawer = () => {
-  const { t, i18n } = useTranslation();
-  const formatPrice = (price: number) =>
-    new Intl.NumberFormat(i18n.language || "nl-NL", { style: "currency", currency: "EUR" }).format(price);
+  const { t } = useTranslation();
+  const { format: formatPrice } = useCurrency();
   const { items, isOpen, setIsOpen, removeItem, updateQuantity, subtotal, totalItems } = useCart();
 
   return (
@@ -105,14 +105,14 @@ const CartDrawer = () => {
                   onClick={() => setIsOpen(false)}
                   className="block w-full py-3 px-6 bg-primary text-primary-foreground text-center font-bold text-xs tracking-widest rounded-full hover:opacity-90 transition-opacity uppercase"
                 >
-                  Bekijk winkelwagen
+                  {t("cart.viewCart")}
                 </Link>
                 <Link
                   to="/checkout"
                   onClick={() => setIsOpen(false)}
                   className="block w-full text-center text-sm text-primary font-semibold hover:underline"
                 >
-                  Direct afrekenen →
+                  {t("cart.checkoutNow")} →
                 </Link>
               </div>
             )}

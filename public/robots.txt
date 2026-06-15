@@ -3,5 +3,8 @@ Allow: /
 
 Disallow: /checkout
 Disallow: /winkelwagen
+Disallow: /warenkorb
 
 Sitemap: https://yourmatcha.nl/sitemap.xml
+Sitemap: https://yourmatcha.de/sitemap-de.xml
+Sitemap: https://yourmatcha.no/sitemap-no.xml

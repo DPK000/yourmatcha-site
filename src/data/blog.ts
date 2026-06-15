@@ -1,3 +1,6 @@
+import { useMemo } from "react";
+import { useTranslation } from "react-i18next";
+import { type Lang, getCurrentLang } from "@/i18n";
 import blogMatchaLatte from "@/assets/blog-matcha-latte.jpg";
 import blogCeremonialVsCulinary from "@/assets/blog-ceremonial-vs-culinary.jpg";
 import blogSeasonalRecipes from "@/assets/blog-seasonal-recipes.jpg";
@@ -14,9 +17,41 @@ export interface BlogPost {
   image: string;
 }
 
+interface BlogTranslation {
+  title?: string;
+  excerpt?: string;
+  content?: string;
+  category?: string;
+}
+
+interface RawBlogPost extends BlogPost {
+  i18n?: Partial<Record<Exclude<Lang, "nl">, BlogTranslation>>;
+}
+
+const CATEGORY_TRANSLATIONS: Record<string, Record<Exclude<Lang, "nl">, string>> = {
+  Recepten: { de: "Rezepte", en: "Recipes", fr: "Recettes", no: "Oppskrifter" },
+  Wellness: { de: "Wellness", en: "Wellness", fr: "Bien-être", no: "Velvære" },
+  "Matcha 101": { de: "Matcha 101", en: "Matcha 101", fr: "Matcha 101", no: "Matcha 101" },
+  "Behind the Brand": { de: "Hinter den Kulissen", en: "Behind the Brand", fr: "Coulisses", no: "Bak merket" },
+  Alle: { de: "Alle", en: "All", fr: "Tous", no: "Alle" },
+};
+
+function localizeBlog(p: RawBlogPost, lang: Lang): BlogPost {
+  const { i18n: tr, ...base } = p;
+  if (lang === "nl" || !tr) return base;
+  const t = tr[lang];
+  return {
+    ...base,
+    title: t?.title ?? base.title,
+    excerpt: t?.excerpt ?? base.excerpt,
+    content: t?.content ?? base.content,
+    category: t?.category ?? CATEGORY_TRANSLATIONS[base.category]?.[lang] ?? base.category,
+  };
+}
+
 export const blogCategories = ["Alle", "Recepten", "Wellness", "Matcha 101", "Behind the Brand"];
 
-export const blogPosts: BlogPost[] = [
+const blogPostsRaw: RawBlogPost[] = [
   {
     id: "1",
     slug: "perfecte-matcha-latte",
@@ -47,6 +82,58 @@ Een matcha latte is meer dan alleen matcha en melk. Het is een ritueel, een mome
     readTime: "4 min",
     date: "2024-03-15",
     image: blogMatchaLatte,
+    i18n: {
+      de: {
+        title: "Wie macht man die perfekte Matcha Latte",
+        excerpt: "Entdecke das Geheimnis hinter einer samtigen Matcha Latte mit der perfekten Balance zwischen Süße und Umami.",
+        content: `## Die Perfekte Matcha Latte
+
+Eine Matcha Latte ist mehr als nur Matcha und Milch. Es ist ein Ritual, ein Moment der Ruhe in deinem hektischen Tag. Hier teilen wir unser Rezept für die ultimative Matcha Latte.
+
+### Was du brauchst
+- 2 g ceremonial oder culinary grade Matcha
+- 30 ml warmes Wasser (80°C)
+- 200 ml Hafermilch (oder deine Lieblingsmilch)
+- Optional: eine Prise Vanille oder Honig
+
+### Schritte
+1. **Sieb deinen Matcha** — Das verhindert Klümpchen und sorgt für eine glatte Textur.
+2. **Warmes Wasser hinzufügen** — Verwende Wasser bei 80°C, nicht kochend.
+3. **Schaumig schlagen** — Verwende einen Chasen oder Milchaufschäumer.
+4. **Milch aufschäumen** — Erhitze und schäume deine Milch separat auf.
+5. **Kombinieren** — Gieße die aufgeschäumte Milch über den Matcha.
+
+### Tipps
+- Verwende immer gesiebten Matcha für die besten Ergebnisse
+- Hafermilch schäumt am besten für eine cremige Latte
+- Süßungsmittel zur Milch hinzufügen, nicht zum Matcha`,
+      },
+      no: {
+        title: "Slik lager du den perfekte matcha latten",
+        excerpt: "Oppdag hemmeligheten bak en fløyelsmyk matcha latte med den perfekte balansen mellom sødme og umami.",
+        content: `## Den perfekte matcha latten
+
+En matcha latte er mer enn bare matcha og melk. Det er et ritual, et øyeblikk av ro i en travel hverdag. Her deler vi oppskriften vår på den ultimate matcha latten.
+
+### Hva trenger du?
+- 2 gram ceremonial eller culinary grade matcha
+- 30 ml varmt vann (80 °C)
+- 200 ml havremelk (eller din favorittmelk)
+- Valgfritt: en klype vanilje eller honning
+
+### Steg
+1. **Sikt matchaen** — Dette forhindrer klumper og gir en glatt tekstur.
+2. **Tilsett varmt vann** — Bruk vann på 80 °C, ikke kokende.
+3. **Visp til det skummer** — Bruk en chasen eller melkeskummer.
+4. **Skum melken** — Varm og skum melken separat.
+5. **Kombiner** — Hell den skummede melken over matchaen.
+
+### Tips
+- Bruk alltid siktet matcha for best resultat
+- Havremelk skummer best for en kremet latte
+- Tilsett søtning i melken, ikke i matchaen`,
+      },
+    },
   },
   {
     id: "2",
@@ -77,6 +164,56 @@ Drink je matcha puur met alleen water? Kies ceremonial grade. Meng je het met me
     readTime: "3 min",
     date: "2024-03-01",
     image: blogCeremonialVsCulinary,
+    i18n: {
+      de: {
+        title: "Ceremonial vs Culinary Grade: Was ist der Unterschied?",
+        excerpt: "Lerne den Unterschied zwischen Ceremonial und Culinary Grade Matcha — und wann du welchen verwendest.",
+        content: `## Ceremonial vs Culinary Grade Matcha
+
+Nicht jeder Matcha ist gleich. Der wichtigste Unterschied ist der zwischen Ceremonial und Culinary Grade. Aber was bedeutet das genau?
+
+### Ceremonial Grade
+- **Geschmack**: Süß, umami, kaum bitter
+- **Farbe**: Lebhaft, leuchtend grün
+- **Textur**: Extrem fein gemahlen
+- **Verwendung**: Purer Matcha, traditionelle Teezeremonie
+- **Preis**: Höher, wegen der Auswahl der jüngsten Blätter
+
+### Culinary Grade
+- **Geschmack**: Robuster, etwas bitterer
+- **Farbe**: Dunkleres Grün
+- **Textur**: Fein, aber etwas grober
+- **Verwendung**: Lattes, Smoothies, Backen, Kochen
+- **Preis**: Erschwinglicher
+
+### Wann verwendest du welchen?
+Trinkst du Matcha pur mit Wasser? Wähle Ceremonial Grade. Mischst du ihn mit Milch oder verwendest du ihn in Rezepten? Dann ist Culinary Grade perfekt.`,
+      },
+      no: {
+        title: "Ceremonial vs Culinary Grade: Hva er forskjellen?",
+        excerpt: "Lær forskjellen mellom ceremonial og culinary grade matcha — og når du bruker hvilken.",
+        content: `## Ceremonial vs Culinary Grade matcha
+
+Ikke all matcha er skapt lik. Det viktigste skillet går mellom ceremonial og culinary grade. Men hva betyr det egentlig?
+
+### Ceremonial Grade
+- **Smak**: Søt, umami, knapt bitter
+- **Farge**: Levende, klar grønn
+- **Tekstur**: Ekstremt finmalt
+- **Bruk**: Ren matcha, tradisjonell teseremoni
+- **Pris**: Høyere, på grunn av utvalget av de yngste bladene
+
+### Culinary Grade
+- **Smak**: Mer robust, litt mer bitter
+- **Farge**: Mørkere grønn
+- **Tekstur**: Fin, men litt grovere
+- **Bruk**: Latter, smoothier, baking, matlaging
+- **Pris**: Rimeligere
+
+### Når bruker du hva?
+Drikker du matcha ren med bare vann? Velg ceremonial grade. Blander du den med melk eller bruker den i oppskrifter? Da er culinary grade perfekt.`,
+      },
+    },
   },
   {
     id: "3",
@@ -105,10 +242,53 @@ De tijdloze favoriet die altijd werkt.`,
     readTime: "5 min",
     date: "2024-02-20",
     image: blogSeasonalRecipes,
-  },
-];
+    i18n: {
+      de: {
+        title: "5 Matcha-Rezepte für jede Jahreszeit",
+        excerpt: "Von eiskalter Matcha-Limonade im Sommer bis zur warmen Matcha-Chai im Winter.",
+        content: `## 5 Matcha-Rezepte für jede Jahreszeit
 
-blogPosts.push(
+Matcha ist unglaublich vielseitig. Hier sind fünf Rezepte, die du das ganze Jahr über genießen kannst.
+
+### 1. Frühling: Matcha-Erdbeer-Smoothie
+1 TL Matcha mit gefrorenen Erdbeeren, Banane und Hafermilch mixen.
+
+### 2. Sommer: Iced Matcha Yuzu Limonade
+Matcha in kaltem Wasser auflösen, Yuzu-Saft hinzufügen und über Eis servieren.
+
+### 3. Herbst: Matcha Kürbis Latte
+Matcha mit Kürbisgewürz und aufgeschäumter Milch kombinieren.
+
+### 4. Winter: Matcha Chai
+Matcha mit Chai-Gewürzen und warmer Milch mischen.
+
+### 5. Immer: Classic Matcha Latte
+Der zeitlose Favorit, der immer funktioniert.`,
+      },
+      no: {
+        title: "5 matchaoppskrifter for enhver årstid",
+        excerpt: "Fra iskald matchalimonade om sommeren til varm matcha chai om vinteren.",
+        content: `## 5 matchaoppskrifter for enhver årstid
+
+Matcha er utrolig allsidig. Her er fem oppskrifter du kan nyte hele året.
+
+### 1. Vår: Matcha-jordbærsmoothie
+Blend 1 ts matcha med frosne jordbær, banan og havremelk.
+
+### 2. Sommer: Iced matcha yuzu-limonade
+Løs opp matcha i kaldt vann, tilsett yuzujuice og server over is.
+
+### 3. Høst: Matcha gresskar-latte
+Kombiner matcha med gresskarkrydder og skummet melk.
+
+### 4. Vinter: Matcha chai
+Bland matcha med chaikrydder og varm melk.
+
+### 5. Alltid: Klassisk matcha latte
+Den tidløse favoritten som alltid fungerer.`,
+      },
+    },
+  },
   {
     id: "4",
     slug: "7-matcha-fouten-beginners",
@@ -403,6 +583,36 @@ Voor de complete vergelijking lees [matcha vs koffie](/kennis/matcha-vs-koffie) 
     date: "2026-03-20",
     image: blogCeremonialVsCulinary,
   },
-);
+];
 
-export const getBlogBySlug = (slug: string) => blogPosts.find(p => p.slug === slug);
+// ─── Public API ──────────────────────────────────────────────
+
+export const blogPosts: BlogPost[] = blogPostsRaw.map(p => localizeBlog(p, getCurrentLang()));
+
+export const getBlogBySlug = (slug: string): BlogPost | undefined => {
+  const p = blogPostsRaw.find(x => x.slug === slug);
+  return p ? localizeBlog(p, getCurrentLang()) : undefined;
+};
+
+export function useBlogPosts(): BlogPost[] {
+  const { i18n } = useTranslation();
+  return useMemo(() => blogPostsRaw.map(p => localizeBlog(p, getCurrentLang())), [i18n.language]);
+}
+
+export function useBlogPost(slug: string | undefined): BlogPost | undefined {
+  const { i18n } = useTranslation();
+  return useMemo(() => {
+    if (!slug) return undefined;
+    const p = blogPostsRaw.find(x => x.slug === slug);
+    return p ? localizeBlog(p, getCurrentLang()) : undefined;
+  }, [slug, i18n.language]);
+}
+
+export function useBlogCategories(): string[] {
+  const { i18n } = useTranslation();
+  const lang = getCurrentLang();
+  return useMemo(() => {
+    if (lang === "nl") return blogCategories;
+    return blogCategories.map(c => CATEGORY_TRANSLATIONS[c]?.[lang] ?? c);
+  }, [i18n.language]);
+}

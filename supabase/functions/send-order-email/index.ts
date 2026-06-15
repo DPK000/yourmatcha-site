@@ -17,22 +17,27 @@ const SHOP_URL = Deno.env.get("SHOP_URL") || "https://example.com";
 const PRIMARY_COLOR = Deno.env.get("SHOP_PRIMARY_COLOR") || "${PRIMARY_COLOR}";
 const SHOP_TAGLINE = Deno.env.get("SHOP_TAGLINE") || "OFFICIAL";
 
-type Lang = "nl" | "en" | "de";
+type Lang = "nl" | "en" | "de" | "no";
 
 const COUNTRY_TO_LANG: Record<string, Lang> = {
   NL: "nl", BE: "nl", LU: "nl",
   DE: "de", AT: "de", CH: "de",
+  NO: "no",
   AU: "en", US: "en", GB: "en", CA: "en", IE: "en", NZ: "en",
 };
 
 function getLang(language?: string, country?: string): Lang {
-  if (language && (language === "nl" || language === "en" || language === "de")) return language;
+  if (language && (language === "nl" || language === "en" || language === "de" || language === "no")) return language;
   if (country) return COUNTRY_TO_LANG[country.toUpperCase()] || "en";
   return "en";
 }
 
-function cur(country?: string): string {
-  const c = (country || "").toUpperCase();
+// Valutasymbool: order.currency is leidend (bedragen staan in die valuta); land is fallback
+function cur(order: { currency?: string; country?: string }): string {
+  const code = (order.currency || "").toUpperCase();
+  if (code === "NOK") return "kr ";
+  if (code && code !== "EUR") return `${code} `;
+  const c = (order.country || "").toUpperCase();
   if (c === "AU" || c === "NZ") return "AUD ";
   if (c === "US" || c === "CA") return "$";
   if (c === "GB") return "£";
@@ -97,12 +102,30 @@ const T: Record<Lang, Record<string, string>> = {
     footer: "Fragen? Schreib uns an", seeLink: "Siehe Tracking-Link",
     defaultName: "dort",
   },
+  no: {
+    confirmSubject: "Bestilling #{order} behandles — ${SHOP_NAME}",
+    confirmTitle: "Bestillingen din behandles! 📦",
+    confirmBody: "Hei {name}, takk for bestillingen din! Vi har mottatt bestilling <strong>#{order}</strong> og behandler den nå. Du får en e-post med sporingsinformasjon så snart pakken din er sendt.",
+    shippedSubject: "Bestillingen din #{order} er på vei! 📦",
+    shippedTitle: "Bestillingen din er på vei! 🚀",
+    shippedBody: "Hei {name}, gode nyheter! Bestillingen din <strong>#{order}</strong> er sendt og på vei til deg.",
+    trackingNumber: "Sporingsnummer", carrier: "Transportør",
+    trackBtn: "📦 Spor bestillingen din",
+    trackNote: "Det kan ta opptil 24 timer før sporingsinformasjonen er tilgjengelig.",
+    orderHeader: "Bestilling", product: "Produkt", quantity: "Antall", price: "Pris",
+    subtotal: "Delsum", discount: "Rabatt", shipping: "Frakt",
+    freeShipping: "Gratis frakt", total: "Totalt",
+    shippingAddress: "Leveringsadresse", shopBtn: "Fortsett å handle",
+    footer: "Spørsmål? Send oss en e-post på", seeLink: "Se sporingslenke",
+    defaultName: "der",
+  },
 };
 
 const CN: Record<Lang, Record<string, string>> = {
-  nl: { NL: "Nederland", BE: "België", DE: "Duitsland", GB: "Verenigd Koninkrijk", US: "Verenigde Staten", CA: "Canada", AU: "Australië", NZ: "Nieuw-Zeeland", AT: "Oostenrijk", CH: "Zwitserland", FR: "Frankrijk", IE: "Ierland" },
-  en: { NL: "Netherlands", BE: "Belgium", DE: "Germany", GB: "United Kingdom", US: "United States", CA: "Canada", AU: "Australia", NZ: "New Zealand", AT: "Austria", CH: "Switzerland", FR: "France", IE: "Ireland" },
-  de: { NL: "Niederlande", BE: "Belgien", DE: "Deutschland", GB: "Vereinigtes Königreich", US: "Vereinigte Staaten", CA: "Kanada", AU: "Australien", NZ: "Neuseeland", AT: "Österreich", CH: "Schweiz", FR: "Frankreich", IE: "Irland" },
+  nl: { NL: "Nederland", BE: "België", DE: "Duitsland", GB: "Verenigd Koninkrijk", US: "Verenigde Staten", CA: "Canada", AU: "Australië", NZ: "Nieuw-Zeeland", AT: "Oostenrijk", CH: "Zwitserland", FR: "Frankrijk", IE: "Ierland", NO: "Noorwegen" },
+  en: { NL: "Netherlands", BE: "Belgium", DE: "Germany", GB: "United Kingdom", US: "United States", CA: "Canada", AU: "Australia", NZ: "New Zealand", AT: "Austria", CH: "Switzerland", FR: "France", IE: "Ireland", NO: "Norway" },
+  de: { NL: "Niederlande", BE: "Belgien", DE: "Deutschland", GB: "Vereinigtes Königreich", US: "Vereinigte Staaten", CA: "Kanada", AU: "Australien", NZ: "Neuseeland", AT: "Österreich", CH: "Schweiz", FR: "Frankreich", IE: "Irland", NO: "Norwegen" },
+  no: { NL: "Nederland", BE: "Belgia", DE: "Tyskland", GB: "Storbritannia", US: "USA", CA: "Canada", AU: "Australia", NZ: "New Zealand", AT: "Østerrike", CH: "Sveits", FR: "Frankrike", IE: "Irland", NO: "Norge" },
 };
 
 // ── Shared HTML blocks ───────────────────────────────────────
@@ -114,8 +137,8 @@ function footer(t: Record<string, string>) {
 }
 
 function details(order: any, items: any[], t: Record<string, string>, lang: Lang) {
-  const c = cur(order.country);
-  const locale = lang === "nl" ? "nl-NL" : lang === "de" ? "de-DE" : "en-AU";
+  const c = cur(order);
+  const locale = lang === "nl" ? "nl-NL" : lang === "de" ? "de-DE" : lang === "no" ? "nb-NO" : "en-AU";
   const dateStr = new Date(order.created_at || Date.now()).toLocaleDateString(locale, { year: "numeric", month: "long", day: "numeric" });
   const country = CN[lang]?.[order.country] || order.country || "";
   const rows = (items || []).map((i: any) => `<tr><td style="padding:12px 8px;border-bottom:1px solid #eee;font-family:sans-serif;font-size:13px;color:#333;"><strong>${escapeHtml(i.product_name)}</strong></td><td style="padding:12px 8px;border-bottom:1px solid #eee;font-family:sans-serif;font-size:13px;color:#666;text-align:center;">${i.quantity}</td><td style="padding:12px 8px;border-bottom:1px solid #eee;font-family:sans-serif;font-size:13px;color:#333;text-align:right;">${c}${(Number(i.price)*i.quantity).toFixed(2)}</td></tr>`).join("");

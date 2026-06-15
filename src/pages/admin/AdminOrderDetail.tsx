@@ -95,6 +95,14 @@ const actionColors: Record<string, string> = {
 const inputClass = "w-full rounded-lg border border-border bg-background px-3 py-2.5 text-sm font-body outline-none focus:ring-2 focus:ring-primary/40";
 const labelClass = "block text-xs font-body font-medium text-muted-foreground mb-1";
 
+const moneyFmt = (amount: number, currency?: string) =>
+  currency === "NOK" ? `kr ${amount.toFixed(2)}` : `€${amount.toFixed(2)}`;
+
+const eurFmt = (amount: number) => `€${amount.toFixed(2)}`;
+
+// Vaste indicatieve koers, gelijk aan EUR_TO_NOK in src/context/CurrencyContext.tsx
+const NOK_PER_EUR = 11.5;
+
 // ── Component ─────────────────────────────────────────────────────────────────
 
 const AdminOrderDetail = () => {
@@ -166,12 +174,17 @@ const AdminOrderDetail = () => {
   async function loadCustomerStats(email: string) {
     const { data } = await supabase
       .from("orders")
-      .select("id, total, created_at")
+      .select("id, total, currency, created_at")
       .eq("email", email)
       .not("status", "in", '("cancelled","refunded")')
       .order("created_at", { ascending: true });
     if (!data || data.length === 0) return;
-    const totalSpend = data.reduce((s: number, o: { total: number }) => s + o.total, 0);
+    // Aggregatie over orders in mogelijk verschillende valuta: NOK omrekenen naar EUR-equivalent
+    const totalSpend = data.reduce(
+      (s: number, o: { total: number; currency?: string }) =>
+        s + (o.currency === "NOK" ? o.total / NOK_PER_EUR : o.total),
+      0
+    );
     setCustomerStats({
       orderCount: data.length,
       totalSpend,
@@ -435,7 +448,7 @@ const AdminOrderDetail = () => {
       }
     }
     if (editShipping !== order.shipping) {
-      changes.push(`Verzendkosten: €${order.shipping.toFixed(2)} → €${editShipping.toFixed(2)}`);
+      changes.push(`Verzendkosten: ${moneyFmt(order.shipping, order.currency)} → ${moneyFmt(editShipping, order.currency)}`);
     }
 
     // Handle order items
@@ -618,7 +631,7 @@ const AdminOrderDetail = () => {
               {order.discount_code && (
                 <p className="text-xs flex items-center gap-1 text-green-700">
                   <Tag className="h-3 w-3" /> {order.discount_code}
-                  {order.discount_amount ? ` (−€${Number(order.discount_amount).toFixed(2)})` : ""}
+                  {order.discount_amount ? ` (−${moneyFmt(Number(order.discount_amount), order.currency)})` : ""}
                 </p>
               )}
             </div>
@@ -639,11 +652,11 @@ const AdminOrderDetail = () => {
               <p className="text-xs text-muted-foreground font-body mt-0.5">Bestellingen</p>
             </div>
             <div className="text-center p-3 rounded-lg bg-secondary/40">
-              <p className="text-2xl font-display font-bold">€{customerStats.avgOrderValue.toFixed(2)}</p>
+              <p className="text-2xl font-display font-bold">{eurFmt(customerStats.avgOrderValue)}</p>
               <p className="text-xs text-muted-foreground font-body mt-0.5">Gem. orderwaarde</p>
             </div>
             <div className="text-center p-3 rounded-lg bg-secondary/40">
-              <p className="text-2xl font-display font-bold">€{customerStats.totalSpend.toFixed(2)}</p>
+              <p className="text-2xl font-display font-bold">{eurFmt(customerStats.totalSpend)}</p>
               <p className="text-xs text-muted-foreground font-body mt-0.5">Totaal besteed</p>
             </div>
           </div>
@@ -675,28 +688,28 @@ const AdminOrderDetail = () => {
                   <p className="font-body font-medium text-sm truncate">{item.product_name}</p>
                   <p className="text-xs text-muted-foreground font-body">Aantal: {item.quantity}</p>
                 </div>
-                <p className="font-body font-semibold text-sm">€{(item.price * item.quantity).toFixed(2)}</p>
+                <p className="font-body font-semibold text-sm">{moneyFmt(item.price * item.quantity, order.currency)}</p>
               </div>
             ))}
           </div>
           <div className="px-5 py-4 border-t border-border space-y-2 text-sm font-body">
             <div className="flex justify-between text-muted-foreground">
               <span>Subtotaal</span>
-              <span>€{order.subtotal.toFixed(2)}</span>
+              <span>{moneyFmt(order.subtotal, order.currency)}</span>
             </div>
             {order.discount_amount && order.discount_amount > 0 ? (
               <div className="flex justify-between text-green-700">
                 <span>Korting {order.discount_code ? `(${order.discount_code})` : ""}</span>
-                <span>−€{Number(order.discount_amount).toFixed(2)}</span>
+                <span>−{moneyFmt(Number(order.discount_amount), order.currency)}</span>
               </div>
             ) : null}
             <div className="flex justify-between text-muted-foreground">
               <span>Verzending</span>
-              <span>{order.shipping === 0 ? "Gratis" : `€${order.shipping.toFixed(2)}`}</span>
+              <span>{order.shipping === 0 ? "Gratis" : moneyFmt(order.shipping, order.currency)}</span>
             </div>
             <div className="flex justify-between font-bold text-base border-t border-border pt-2">
               <span>Totaal</span>
-              <span>€{order.total.toFixed(2)}</span>
+              <span>{moneyFmt(order.total, order.currency)}</span>
             </div>
           </div>
         </div>
@@ -807,7 +820,7 @@ const AdminOrderDetail = () => {
                   />
                   <div className="flex-1 min-w-0">
                     <p className="text-sm font-body font-medium truncate">{item.product_name}</p>
-                    <p className="text-xs text-muted-foreground font-body">€{item.price.toFixed(2)} / stuk</p>
+                    <p className="text-xs text-muted-foreground font-body">{moneyFmt(item.price, order.currency)} / stuk</p>
                   </div>
                   <div className="flex items-center gap-1.5 shrink-0">
                     <button
@@ -831,7 +844,7 @@ const AdminOrderDetail = () => {
                     </button>
                   </div>
                   <p className="text-sm font-body font-semibold w-16 text-right shrink-0">
-                    €{(item.price * item.quantity).toFixed(2)}
+                    {moneyFmt(item.price * item.quantity, order.currency)}
                   </p>
                   <button
                     type="button"
@@ -891,7 +904,7 @@ const AdminOrderDetail = () => {
               <Truck className="h-4 w-4 text-primary" /> Verzendkosten
             </h3>
             <div className="flex items-center gap-2 max-w-xs">
-              <span className="text-sm font-body text-muted-foreground">€</span>
+              <span className="text-sm font-body text-muted-foreground">{order.currency === "NOK" ? "kr" : "€"}</span>
               <input
                 type="number"
                 min="0"
@@ -909,21 +922,21 @@ const AdminOrderDetail = () => {
             <div className="space-y-2 text-sm font-body max-w-xs">
               <div className="flex justify-between text-muted-foreground">
                 <span>Subtotaal</span>
-                <span>€{editSubtotal.toFixed(2)}</span>
+                <span>{moneyFmt(editSubtotal, order.currency)}</span>
               </div>
               {order.discount_amount && order.discount_amount > 0 ? (
                 <div className="flex justify-between text-green-700">
                   <span>Korting {order.discount_code ? `(${order.discount_code})` : ""}</span>
-                  <span>−€{Number(order.discount_amount).toFixed(2)}</span>
+                  <span>−{moneyFmt(Number(order.discount_amount), order.currency)}</span>
                 </div>
               ) : null}
               <div className="flex justify-between text-muted-foreground">
                 <span>Verzending</span>
-                <span>{editShipping === 0 ? "Gratis" : `€${editShipping.toFixed(2)}`}</span>
+                <span>{editShipping === 0 ? "Gratis" : moneyFmt(editShipping, order.currency)}</span>
               </div>
               <div className="flex justify-between font-bold text-base border-t border-border pt-2">
                 <span>Totaal</span>
-                <span>€{Math.max(0, editTotal).toFixed(2)}</span>
+                <span>{moneyFmt(Math.max(0, editTotal), order.currency)}</span>
               </div>
             </div>
           </div>

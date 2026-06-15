@@ -1,4 +1,5 @@
 import { Helmet } from "react-helmet-async";
+import { useTranslation } from "react-i18next";
 
 interface SEOProps {
   title: string;
@@ -15,9 +16,32 @@ interface SEOProps {
   author?: string;
 }
 
-const SITE_URL = "https://yourmatcha.nl";
+// Multi-domain: each language has its own primary domain
+const DOMAINS: Record<string, string> = {
+  nl: "https://yourmatcha.nl",
+  de: "https://yourmatcha.de",
+  en: "https://yourmatcha.com",
+  fr: "https://yourmatcha.fr",
+  no: "https://yourmatcha.no",
+};
 const DEFAULT_IMAGE = "/og-default.jpg";
-const SUPPORTED_LOCALES = ["nl-NL", "nl-BE", "en-GB", "de-DE", "fr-FR"];
+const SUPPORTED_LOCALES = ["nl-NL", "nl-BE", "en-GB", "de-DE", "fr-FR", "nb-NO"];
+
+const OG_LOCALES: Record<string, string> = {
+  nl: "nl_NL",
+  de: "de_DE",
+  en: "en_GB",
+  fr: "fr_FR",
+  no: "nb_NO",
+};
+
+const HREFLANG_MAP: Record<string, string> = {
+  nl: "nl-NL",
+  de: "de-DE",
+  en: "en-GB",
+  fr: "fr-FR",
+  no: "nb-NO",
+};
 
 const SEO = ({
   title,
@@ -28,23 +52,29 @@ const SEO = ({
   jsonLd,
   noindex,
   keywords,
-  locale = "nl_NL",
+  locale,
   publishedTime,
   modifiedTime,
   author = "YourMatcha",
 }: SEOProps) => {
+  const { i18n } = useTranslation();
+  const lang = (i18n.language || "nl").slice(0, 2);
+  const siteUrl = DOMAINS[lang] || DOMAINS.nl;
+  const ogLocale = locale || OG_LOCALES[lang] || "nl_NL";
+
   const path = canonical || "/";
-  const url = path.startsWith("http") ? path : `${SITE_URL}${path}`;
+  const url = path.startsWith("http") ? path : `${siteUrl}${path}`;
   const fullTitle = title.includes("YourMatcha") ? title : `${title} | YourMatcha`;
   const ogImage = image
     ? image.startsWith("http")
       ? image
-      : `${SITE_URL}${image.startsWith("/") ? image : `/${image}`}`
-    : `${SITE_URL}${DEFAULT_IMAGE}`;
+      : `${siteUrl}${image.startsWith("/") ? image : `/${image}`}`
+    : `${siteUrl}${DEFAULT_IMAGE}`;
   const jsonLdArr = Array.isArray(jsonLd) ? jsonLd : jsonLd ? [jsonLd] : [];
 
   return (
     <Helmet>
+      <html lang={lang} />
       <title>{fullTitle}</title>
       <meta name="description" content={description} />
       {keywords && <meta name="keywords" content={keywords} />}
@@ -58,10 +88,12 @@ const SEO = ({
         <meta name="robots" content="index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1" />
       )}
 
-      {/* Hreflang alternates */}
-      <link rel="alternate" hrefLang="nl-NL" href={url} />
-      <link rel="alternate" hrefLang="nl-BE" href={url} />
-      <link rel="alternate" hrefLang="x-default" href={url} />
+      {/* Hreflang alternates — point each language to its primary domain */}
+      {Object.entries(HREFLANG_MAP).map(([code, hreflang]) => (
+        <link key={hreflang} rel="alternate" hrefLang={hreflang} href={`${DOMAINS[code]}${path}`} />
+      ))}
+      <link rel="alternate" hrefLang="nl-BE" href={`${DOMAINS.nl}${path}`} />
+      <link rel="alternate" hrefLang="x-default" href={`${DOMAINS.nl}${path}`} />
 
       {/* Open Graph */}
       <meta property="og:title" content={fullTitle} />
@@ -73,8 +105,8 @@ const SEO = ({
       <meta property="og:image:height" content="630" />
       <meta property="og:image:alt" content={title} />
       <meta property="og:site_name" content="YourMatcha" />
-      <meta property="og:locale" content={locale} />
-      {SUPPORTED_LOCALES.filter(l => l.replace("-", "_") !== locale).map(l => (
+      <meta property="og:locale" content={ogLocale} />
+      {SUPPORTED_LOCALES.filter(l => l.replace("-", "_") !== ogLocale).map(l => (
         <meta key={l} property="og:locale:alternate" content={l.replace("-", "_")} />
       ))}
 

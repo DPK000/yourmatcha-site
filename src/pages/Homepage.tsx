@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import { motion, useScroll, useTransform } from "framer-motion";
 import { ArrowRight, Send, Star } from "lucide-react";
-import { getFeaturedProducts } from "@/data/products";
+import { useFeaturedProducts } from "@/data/products";
 import { blogPosts } from "@/data/blog";
 import ProductCard from "@/components/ProductCard";
 import TrustBadges from "@/components/TrustBadges";
@@ -29,7 +29,7 @@ const fadeUp = {
 
 const Homepage = () => {
   const { t } = useTranslation();
-  const featured = getFeaturedProducts().slice(0, 4);
+  const featured = useFeaturedProducts().slice(0, 4);
   const [email, setEmail] = useState("");
   const heroRef = useRef(null);
   const { scrollYProgress } = useScroll({ target: heroRef, offset: ["start start", "end start"] });
@@ -66,8 +66,8 @@ const Homepage = () => {
   return (
     <div className="overflow-hidden">
       <SEO
-        title="YourMatcha — Premium Japanse matcha uit Uji, Kyoto"
-        description="Single-origin ceremoniële matcha, thee en rituelen rechtstreeks uit Uji. Gratis verzending in NL & BE vanaf €50. Ontdek de YourMatcha collectie."
+        title={t("home.seoTitle")}
+        description={t("home.seoDesc")}
         canonical="/"
         jsonLd={[
           { "@context": "https://schema.org", "@type": "Organization", name: "YourMatcha", url: "https://yourmatcha.nl/", sameAs: ["https://www.instagram.com/yourmatcha"] },

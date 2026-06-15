@@ -29,7 +29,23 @@ const extractSlugs = (relativePath) => {
   return [...new Set(matches.map((m) => m[1]))];
 };
 
-const productSlugs = extractSlugs("src/data/products.ts");
+// Products flagged `hidden: true` are temporarily offline — keep them out of
+// the sitemap (they 404 on the site too). Each product's `hidden` flag sits in
+// the block between its own `slug:` and the next product's `slug:`.
+const extractVisibleProductSlugs = () => {
+  const content = readFileSync(join(ROOT, "src/data/products.ts"), "utf8");
+  const matches = [...content.matchAll(/slug:\s*"([^"]+)"/g)];
+  const visible = [];
+  for (let i = 0; i < matches.length; i++) {
+    const start = matches[i].index;
+    const end = i + 1 < matches.length ? matches[i + 1].index : content.length;
+    if (/hidden:\s*true/.test(content.slice(start, end))) continue;
+    visible.push(matches[i][1]);
+  }
+  return [...new Set(visible)];
+};
+
+const productSlugs = extractVisibleProductSlugs();
 const recipeSlugs = extractSlugs("src/data/recipes.ts");
 const knowledgeSlugs = extractSlugs("src/data/knowledge.ts");
 const blogSlugs = extractSlugs("src/data/blog.ts");

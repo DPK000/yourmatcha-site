@@ -1,23 +1,75 @@
 import { useState, useMemo } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Check, Plus, ArrowRight, Sparkles } from "lucide-react";
-import { products, Product } from "@/data/products";
+import { useProducts, Product } from "@/data/products";
 import { useCart } from "@/context/CartContext";
 import SEO from "@/components/SEO";
 import PageHero from "@/components/PageHero";
 import { Link } from "react-router-dom";
+import { useCurrency } from "@/context/CurrencyContext";
+import { useLang } from "@/i18n";
 
 const TARGET = 3;
 const DISCOUNT_PCT = 0.15;
 
-const formatPrice = (n: number) =>
-  new Intl.NumberFormat("nl-NL", { style: "currency", currency: "EUR" }).format(n);
+const COPY = {
+  nl: {
+    seoTitle: "Bouw je eigen Matcha Bundel — 15% korting",
+    seoDescription: "Stel je eigen pakket samen van 3 matcha en thee specialiteiten en bespaar automatisch 15%. Gratis verzending in NL & BE vanaf €50.",
+    jsonLdName: "YourMatcha Bundel — 3 voor 15% korting",
+    jsonLdDescription: "Stel zelf een bundel samen van 3 matcha of thee producten en bespaar 15%.",
+    heroEyebrow: "Bundle Builder",
+    heroTitle: "Bouw je eigen ritueel",
+    heroSubtitle: "Kies 3 favorieten uit onze matcha & thee collectie en bespaar automatisch 15%.",
+    selectPrefix: "Selecteer ",
+    selectMiddle: " producten — ",
+    selectChosen: "gekozen",
+    reset: "Reset",
+    yourBundle: "Jouw bundel",
+    bundleTitlePrefix: "3 voor ",
+    bundleTitleItalic: "15% korting",
+    slot: "Slot",
+    subtotal: "Subtotaal",
+    bundleDiscount: "Bundelkorting (15%)",
+    total: "Totaal",
+    addBundle: "Voeg bundel toe",
+    chooseMore: (n: number) => `Kies nog ${n}`,
+    viewShop: "Of bekijk de hele shop →",
+  },
+  no: {
+    seoTitle: "Sett sammen din egen matcha-pakke — 15 % rabatt",
+    seoDescription: "Sett sammen din egen pakke med 3 matcha- og te-spesialiteter og spar automatisk 15 %. Gratis frakt fra 575 kr.",
+    jsonLdName: "YourMatcha-pakke — 3 for 15 % rabatt",
+    jsonLdDescription: "Sett sammen en pakke med 3 matcha- eller te-produkter og spar 15 %.",
+    heroEyebrow: "Bundle Builder",
+    heroTitle: "Bygg ditt eget ritual",
+    heroSubtitle: "Velg 3 favoritter fra vår matcha- og tekolleksjon og spar automatisk 15 %.",
+    selectPrefix: "Velg ",
+    selectMiddle: " produkter — ",
+    selectChosen: "valgt",
+    reset: "Nullstill",
+    yourBundle: "Din pakke",
+    bundleTitlePrefix: "3 for ",
+    bundleTitleItalic: "15 % rabatt",
+    slot: "Plass",
+    subtotal: "Delsum",
+    bundleDiscount: "Pakkerabatt (15 %)",
+    total: "Totalt",
+    addBundle: "Legg til pakken",
+    chooseMore: (n: number) => `Velg ${n} til`,
+    viewShop: "Eller se hele butikken →",
+  },
+} as const;
 
 const BundleBuilder = () => {
+  const { format: formatPrice } = useCurrency();
+  const lang = useLang();
+  const t = COPY[lang === "no" ? "no" : "nl"];
   const { addItem } = useCart();
+  const products = useProducts();
   const eligible = useMemo(
     () => products.filter(p => p.category === "matcha-powder" || p.category === "teas-drinks"),
-    []
+    [products]
   );
   const [selected, setSelected] = useState<Product[]>([]);
 
@@ -43,22 +95,22 @@ const BundleBuilder = () => {
   return (
     <>
       <SEO
-        title="Bouw je eigen Matcha Bundel — 15% korting"
-        description="Stel je eigen pakket samen van 3 matcha en thee specialiteiten en bespaar automatisch 15%. Gratis verzending in NL & BE vanaf €50."
+        title={t.seoTitle}
+        description={t.seoDescription}
         canonical="/bundel"
         jsonLd={{
           "@context": "https://schema.org",
           "@type": "Product",
-          name: "YourMatcha Bundel — 3 voor 15% korting",
-          description: "Stel zelf een bundel samen van 3 matcha of thee producten en bespaar 15%.",
+          name: t.jsonLdName,
+          description: t.jsonLdDescription,
           brand: { "@type": "Brand", name: "YourMatcha" },
           offers: { "@type": "AggregateOffer", priceCurrency: "EUR", lowPrice: 35, highPrice: 90 },
         }}
       />
       <PageHero
-        eyebrow="Bundle Builder"
-        title="Bouw je eigen ritueel"
-        subtitle="Kies 3 favorieten uit onze matcha & thee collectie en bespaar automatisch 15%."
+        eyebrow={t.heroEyebrow}
+        title={t.heroTitle}
+        subtitle={t.heroSubtitle}
       />
 
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-12">
@@ -67,11 +119,11 @@ const BundleBuilder = () => {
           <div className="lg:col-span-2">
             <div className="flex items-center justify-between mb-6">
               <p className="text-sm text-muted-foreground">
-                Selecteer <strong>{TARGET}</strong> producten — {selected.length} / {TARGET} gekozen
+                {t.selectPrefix}<strong>{TARGET}</strong>{t.selectMiddle}{selected.length} / {TARGET} {t.selectChosen}
               </p>
               {selected.length > 0 && (
                 <button onClick={() => setSelected([])} className="text-xs text-muted-foreground hover:text-destructive transition-colors">
-                  Reset
+                  {t.reset}
                 </button>
               )}
             </div>
@@ -111,9 +163,9 @@ const BundleBuilder = () => {
             <div className="sticky top-28 bg-secondary rounded-2xl p-6">
               <div className="flex items-center gap-2 mb-4">
                 <Sparkles className="w-4 h-4 text-accent" />
-                <p className="text-[10px] tracking-[0.3em] uppercase text-muted-foreground">Jouw bundel</p>
+                <p className="text-[10px] tracking-[0.3em] uppercase text-muted-foreground">{t.yourBundle}</p>
               </div>
-              <h2 className="font-heading text-2xl font-light mb-5">3 voor <span className="italic">15% korting</span></h2>
+              <h2 className="font-heading text-2xl font-light mb-5">{t.bundleTitlePrefix}<span className="italic">{t.bundleTitleItalic}</span></h2>
 
               <div className="space-y-2 mb-5 min-h-[150px]">
                 {Array.from({ length: TARGET }).map((_, i) => {
@@ -134,7 +186,7 @@ const BundleBuilder = () => {
                           <div className="w-12 h-12 rounded-lg bg-background/60 flex items-center justify-center">
                             <Plus className="w-4 h-4" />
                           </div>
-                          <span>Slot {i + 1}</span>
+                          <span>{t.slot} {i + 1}</span>
                         </div>
                       )}
                     </div>
@@ -144,7 +196,7 @@ const BundleBuilder = () => {
 
               <div className="space-y-1.5 text-sm border-t border-border pt-4">
                 <div className="flex justify-between">
-                  <span className="text-muted-foreground">Subtotaal</span>
+                  <span className="text-muted-foreground">{t.subtotal}</span>
                   <span>{formatPrice(subtotal)}</span>
                 </div>
                 <AnimatePresence>
@@ -155,13 +207,13 @@ const BundleBuilder = () => {
                       exit={{ opacity: 0 }}
                       className="flex justify-between text-primary font-semibold"
                     >
-                      <span>Bundelkorting (15%)</span>
+                      <span>{t.bundleDiscount}</span>
                       <span>−{formatPrice(discount)}</span>
                     </motion.div>
                   )}
                 </AnimatePresence>
                 <div className="flex justify-between text-base font-semibold pt-2 border-t border-border">
-                  <span>Totaal</span>
+                  <span>{t.total}</span>
                   <span>{formatPrice(total)}</span>
                 </div>
               </div>
@@ -175,10 +227,10 @@ const BundleBuilder = () => {
                     : "bg-muted text-muted-foreground cursor-not-allowed"
                 }`}
               >
-                {ready ? "Voeg bundel toe" : `Kies nog ${TARGET - selected.length}`}
+                {ready ? t.addBundle : t.chooseMore(TARGET - selected.length)}
               </button>
               <Link to="/shop" className="mt-3 block text-center text-xs text-muted-foreground hover:text-foreground transition-colors">
-                Of bekijk de hele shop →
+                {t.viewShop}
               </Link>
             </div>
           </aside>

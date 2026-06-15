@@ -5,6 +5,9 @@ import { Search, Filter, ChevronRight, Package, Loader2 } from "lucide-react";
 import { format } from "date-fns";
 import { nl } from "date-fns/locale";
 
+const moneyFmt = (amount: number, currency?: string) =>
+  currency === "NOK" ? `kr ${amount.toFixed(2)}` : `€${amount.toFixed(2)}`;
+
 const statusColors: Record<string, string> = {
   pending: "bg-yellow-100 text-yellow-800",
   paid: "bg-blue-100 text-blue-800",
@@ -131,7 +134,7 @@ const AdminOrders = () => {
                   <span className={`inline-flex w-fit text-xs font-body font-medium px-2 py-0.5 rounded-full ${statusColors[order.status] ?? "bg-gray-100 text-gray-700"}`}>
                     {statusLabels[order.status] ?? order.status}
                   </span>
-                  <span className="font-body font-semibold text-sm">€{order.total.toFixed(2)}</span>
+                  <span className="font-body font-semibold text-sm">{moneyFmt(order.total, order.currency)}</span>
                   <ChevronRight className="h-4 w-4 text-muted-foreground hidden md:block" />
                 </Link>
               ))}

@@ -2,12 +2,13 @@ import { useState, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { ShoppingBag, Menu, X, Search, ChevronRight } from "lucide-react";
 import { useCart } from "@/context/CartContext";
+import { useCurrency } from "@/context/CurrencyContext";
 import { motion, AnimatePresence } from "framer-motion";
 import Logo from "@/components/Logo";
 import { useTranslation } from "react-i18next";
 import AnnouncementBar from "./AnnouncementBar";
 import LanguageSwitcher from "./LanguageSwitcher";
-import { products, getFeaturedProducts } from "@/data/products";
+import { useProducts, useFeaturedProducts } from "@/data/products";
 
 const Header = () => {
   const { t, i18n } = useTranslation();
@@ -24,10 +25,10 @@ const Header = () => {
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
-  const formatPrice = (n: number) =>
-    new Intl.NumberFormat(i18n.language || "nl-NL", { style: "currency", currency: "EUR" }).format(n);
+  const { format: formatPrice } = useCurrency();
 
-  const featured = getFeaturedProducts().slice(0, 3);
+  const products = useProducts();
+  const featured = useFeaturedProducts().slice(0, 3);
 
   const shopCategories = [
     { value: "matcha-powder", to: "/matcha-poeder", count: products.filter(p => p.category === "matcha-powder").length },
@@ -37,11 +38,12 @@ const Header = () => {
   ];
 
   const navItems = [
-    { key: "shop", to: "/shop", label: "Matcha", hasMega: true },
-    { key: "bundles", to: "/bundel", label: "Bundels & Deals" },
-    { key: "accessories", to: "/shop?category=accessories", label: "Accessoires" },
-    { key: "compare", to: "/matcha-vergelijken", label: "Vergelijk" },
+    { key: "shop", to: "/shop", label: t("nav.shopLabel"), hasMega: true },
+    { key: "bundles", to: "/bundel", label: t("nav.bundles") },
+    { key: "accessories", to: "/shop?category=accessories", label: t("categories.accessories") },
+    { key: "compare", to: "/matcha-vergelijken", label: t("nav.compare") },
     { key: "subscriptions", to: "/abonnementen", label: t("nav.subscriptions") },
+    { key: "knowledge", to: "/kennis", label: t("nav.knowledge") },
     { key: "about", to: "/over-ons", label: t("nav.about") },
   ];
 
@@ -220,7 +222,7 @@ const Header = () => {
                   </Link>
                 ))}
                 <div className="pt-4 flex items-center justify-between">
-                  <span className="text-xs tracking-widest uppercase text-muted-foreground">Language</span>
+                  <span className="text-xs tracking-widest uppercase text-muted-foreground">{t("nav.language")}</span>
                   <LanguageSwitcher />
                 </div>
               </nav>

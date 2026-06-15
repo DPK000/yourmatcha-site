@@ -1,19 +1,18 @@
 import { Link } from "react-router-dom";
 import { Check, Star } from "lucide-react";
-import { getProductBySlug } from "@/data/products";
+import { useProduct } from "@/data/products";
 import SEO from "@/components/SEO";
 import { motion } from "framer-motion";
-
-const formatPrice = (n: number) =>
-  new Intl.NumberFormat("nl-NL", { style: "currency", currency: "EUR" }).format(n);
+import { useTranslation } from "react-i18next";
+import { useCurrency } from "@/context/CurrencyContext";
 
 interface Row {
   slug: string;
   weight: number; // grams
-  ideal: string;
-  flavor: string;
+  idealKey: string;
+  flavorKey: string;
   color: string;
-  use: string[];
+  useKeys: string[];
   highlight?: boolean;
 }
 
@@ -21,51 +20,60 @@ const rows: Row[] = [
   {
     slug: "ceremonial-matcha-30g",
     weight: 30,
-    ideal: "Beginners & dagelijks ritueel",
-    flavor: "Zacht zoet, romig, lichte umami",
+    idealKey: "compare.ideal.beginner",
+    flavorKey: "compare.flavor.soft",
     color: "bg-[hsl(85,55%,55%)]",
-    use: ["Puur (usucha)", "Latte"],
+    useKeys: ["compare.use.pure", "compare.use.latte"],
   },
   {
     slug: "ceremonial-matcha-100g",
     weight: 100,
-    ideal: "Frequente drinkers",
-    flavor: "Zacht zoet, romig, lichte umami",
+    idealKey: "compare.ideal.frequent",
+    flavorKey: "compare.flavor.soft",
     color: "bg-[hsl(85,55%,55%)]",
-    use: ["Puur (usucha)", "Latte"],
+    useKeys: ["compare.use.pure", "compare.use.latte"],
     highlight: true,
   },
   {
     slug: "ceremonial-reserve-tin",
     weight: 100,
-    ideal: "Liefhebbers & connaisseurs",
-    flavor: "Diepe umami, fluweelzacht, lange afdronk",
+    idealKey: "compare.ideal.connaisseur",
+    flavorKey: "compare.flavor.deep",
     color: "bg-[hsl(95,60%,40%)]",
-    use: ["Puur (koicha)", "Ceremonie"],
+    useKeys: ["compare.use.koicha", "compare.use.ceremony"],
   },
   {
     slug: "culinary-matcha-100g",
     weight: 100,
-    ideal: "Lattes, smoothies, koken",
-    flavor: "Robuust, grasachtig, ietsje bitter",
+    idealKey: "compare.ideal.cooking",
+    flavorKey: "compare.flavor.robust",
     color: "bg-[hsl(75,45%,50%)]",
-    use: ["Latte", "Bakken", "Smoothie"],
+    useKeys: ["compare.use.latte", "compare.use.baking", "compare.use.smoothie"],
   },
 ];
 
 const Compare = () => {
-  const products = rows.map(r => ({ row: r, product: getProductBySlug(r.slug)! })).filter(x => x.product);
+  const { t } = useTranslation();
+  const { format: formatPrice } = useCurrency();
+
+  const p1 = useProduct(rows[0].slug);
+  const p2 = useProduct(rows[1].slug);
+  const p3 = useProduct(rows[2].slug);
+  const p4 = useProduct(rows[3].slug);
+  const productEntries = [p1, p2, p3, p4]
+    .map((product, i) => (product ? { row: rows[i], product } : null))
+    .filter((x): x is { row: Row; product: NonNullable<typeof p1> } => x !== null);
 
   return (
     <>
       <SEO
-        title="Matcha vergelijken — Welke matcha past bij jou?"
-        description="Vergelijk onze ceremonial, reserve en culinary matcha op smaak, kleur, gebruik en prijs per gram. Vind in 30 seconden de juiste matcha voor jouw ritueel."
+        title={t("compare.seoTitle")}
+        description={t("compare.seoDesc")}
         canonical="/matcha-vergelijken"
         jsonLd={{
           "@context": "https://schema.org",
           "@type": "ItemList",
-          itemListElement: products.map((p, i) => ({
+          itemListElement: productEntries.map((p, i) => ({
             "@type": "ListItem",
             position: i + 1,
             url: `https://yourmatcha.nl/product/${p.product.slug}`,
@@ -78,12 +86,12 @@ const Compare = () => {
       <section className="relative py-16 md:py-24 bg-secondary">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 text-center max-w-2xl">
           <motion.div initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }}>
-            <p className="text-[10px] tracking-[0.35em] uppercase text-muted-foreground mb-3">De Matcha Familie</p>
+            <p className="text-[10px] tracking-[0.35em] uppercase text-muted-foreground mb-3">{t("compare.eyebrow")}</p>
             <h1 className="font-heading text-4xl md:text-6xl font-light leading-tight mb-5">
-              Welke matcha<br /><span className="italic">past bij jou?</span>
+              {t("compare.title1")}<br /><span className="italic">{t("compare.title2")}</span>
             </h1>
             <p className="text-muted-foreground leading-relaxed">
-              Vergelijk smaak, kleur en gebruik van onze vier matcha's. Zo vind je in een halve minuut de perfecte match voor jouw ritueel.
+              {t("compare.subtitle")}
             </p>
           </motion.div>
         </div>
@@ -94,24 +102,24 @@ const Compare = () => {
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           {/* Mobile cards */}
           <div className="grid grid-cols-1 md:hidden gap-5">
-            {products.map(({ row, product }) => (
+            {productEntries.map(({ row, product }) => (
               <div key={product.id} className={`rounded-2xl border ${row.highlight ? "border-primary shadow-card" : "border-border"} bg-card overflow-hidden`}>
-                {row.highlight && <div className="bg-primary text-primary-foreground text-[10px] tracking-[0.25em] uppercase text-center py-1.5">Meest gekozen</div>}
+                {row.highlight && <div className="bg-primary text-primary-foreground text-[10px] tracking-[0.25em] uppercase text-center py-1.5">{t("compare.mostChosen")}</div>}
                 <div className="p-6">
                   <div className="aspect-square rounded-xl overflow-hidden bg-secondary mb-4">
                     <img src={product.images[0]} alt={product.name} className="w-full h-full object-cover" />
                   </div>
                   <h3 className="font-heading text-xl font-semibold mb-1">{product.name}</h3>
-                  <p className="text-2xl font-semibold mb-4">{formatPrice(product.price)} <span className="text-xs text-muted-foreground font-normal">· €{(product.price/row.weight).toFixed(2)}/g</span></p>
-                  <CompareRow label="Ideaal voor" value={row.ideal} />
-                  <CompareRow label="Smaak" value={row.flavor} />
-                  <CompareRow label="Gebruik" value={row.use.join(" · ")} />
+                  <p className="text-2xl font-semibold mb-4">{formatPrice(product.price)} <span className="text-xs text-muted-foreground font-normal">· {formatPrice(product.price/row.weight)}/g</span></p>
+                  <CompareRow label={t("compare.idealFor")} value={t(row.idealKey)} />
+                  <CompareRow label={t("compare.flavor")} value={t(row.flavorKey)} />
+                  <CompareRow label={t("compare.useFor")} value={row.useKeys.map(k => t(k)).join(" · ")} />
                   <div className="flex items-center justify-between py-3 border-b border-border last:border-0">
-                    <span className="text-xs uppercase tracking-wider text-muted-foreground">Kleur</span>
+                    <span className="text-xs uppercase tracking-wider text-muted-foreground">{t("compare.color")}</span>
                     <span className={`w-8 h-8 rounded-full ${row.color} ring-2 ring-background shadow-soft`} />
                   </div>
                   <Link to={`/product/${product.slug}`} className="block w-full text-center mt-5 px-5 py-3 bg-primary text-primary-foreground text-xs font-bold tracking-widest uppercase rounded-full hover:opacity-90 transition-opacity">
-                    Bekijk product
+                    {t("compare.viewProduct")}
                   </Link>
                 </div>
               </div>
@@ -123,13 +131,13 @@ const Compare = () => {
             <div className="grid grid-cols-5">
               {/* Header column */}
               <div className="bg-secondary p-6 flex flex-col justify-end">
-                <p className="text-[10px] tracking-[0.3em] uppercase text-muted-foreground">Vergelijking</p>
+                <p className="text-[10px] tracking-[0.3em] uppercase text-muted-foreground">{t("compare.comparison")}</p>
               </div>
-              {products.map(({ row, product }) => (
+              {productEntries.map(({ row, product }) => (
                 <div key={product.id} className={`relative p-6 border-l border-border ${row.highlight ? "bg-primary/5" : "bg-card"}`}>
                   {row.highlight && (
                     <span className="absolute -top-px left-1/2 -translate-x-1/2 bg-primary text-primary-foreground text-[9px] tracking-[0.25em] uppercase px-3 py-1 rounded-b-md">
-                      Meest gekozen
+                      {t("compare.mostChosen")}
                     </span>
                   )}
                   <div className="aspect-square rounded-xl overflow-hidden bg-secondary mb-4">
@@ -137,18 +145,18 @@ const Compare = () => {
                   </div>
                   <h3 className="font-heading text-lg font-semibold leading-tight mb-1">{product.name}</h3>
                   <p className="text-xl font-semibold">{formatPrice(product.price)}</p>
-                  <p className="text-xs text-muted-foreground">€{(product.price/row.weight).toFixed(2)} per gram</p>
+                  <p className="text-xs text-muted-foreground">€{(product.price/row.weight).toFixed(2)} {t("compare.perGram")}</p>
                 </div>
               ))}
             </div>
 
-            <TableRow label="Ideaal voor" cells={products.map(p => p.row.ideal)} highlight={products.map(p => !!p.row.highlight)} />
-            <TableRow label="Smaakprofiel" cells={products.map(p => p.row.flavor)} highlight={products.map(p => !!p.row.highlight)} />
-            <TableRow label="Gebruik" cells={products.map(p => p.row.use.join(" · "))} highlight={products.map(p => !!p.row.highlight)} />
+            <TableRow label={t("compare.idealFor")} cells={productEntries.map(p => t(p.row.idealKey))} highlight={productEntries.map(p => !!p.row.highlight)} />
+            <TableRow label={t("compare.flavorProfile")} cells={productEntries.map(p => t(p.row.flavorKey))} highlight={productEntries.map(p => !!p.row.highlight)} />
+            <TableRow label={t("compare.useFor")} cells={productEntries.map(p => p.row.useKeys.map(k => t(k)).join(" · "))} highlight={productEntries.map(p => !!p.row.highlight)} />
 
             <div className="grid grid-cols-5 border-t border-border">
-              <div className="p-5 bg-secondary text-xs tracking-wider uppercase text-muted-foreground font-medium">Kleur</div>
-              {products.map(({ row, product }) => (
+              <div className="p-5 bg-secondary text-xs tracking-wider uppercase text-muted-foreground font-medium">{t("compare.color")}</div>
+              {productEntries.map(({ row, product }) => (
                 <div key={product.id} className={`p-5 border-l border-border flex items-center justify-center ${row.highlight ? "bg-primary/5" : ""}`}>
                   <span className={`w-10 h-10 rounded-full ${row.color} ring-2 ring-background shadow-soft`} />
                 </div>
@@ -156,8 +164,8 @@ const Compare = () => {
             </div>
 
             <div className="grid grid-cols-5 border-t border-border">
-              <div className="p-5 bg-secondary text-xs tracking-wider uppercase text-muted-foreground font-medium">Biologisch</div>
-              {products.map(({ row, product }) => (
+              <div className="p-5 bg-secondary text-xs tracking-wider uppercase text-muted-foreground font-medium">{t("compare.organic")}</div>
+              {productEntries.map(({ row, product }) => (
                 <div key={product.id} className={`p-5 border-l border-border flex items-center justify-center ${row.highlight ? "bg-primary/5" : ""}`}>
                   <Check className="w-5 h-5 text-primary" />
                 </div>
@@ -166,10 +174,10 @@ const Compare = () => {
 
             <div className="grid grid-cols-5 border-t border-border">
               <div className="p-5 bg-secondary" />
-              {products.map(({ row, product }) => (
+              {productEntries.map(({ row, product }) => (
                 <div key={product.id} className={`p-5 border-l border-border ${row.highlight ? "bg-primary/5" : ""}`}>
                   <Link to={`/product/${product.slug}`} className="block w-full text-center px-4 py-3 bg-primary text-primary-foreground text-[11px] font-bold tracking-widest uppercase rounded-full hover:opacity-90 transition-opacity">
-                    Kies deze
+                    {t("compare.chooseThis")}
                   </Link>
                 </div>
               ))}
@@ -179,9 +187,9 @@ const Compare = () => {
           {/* Help section */}
           <div className="mt-16 grid grid-cols-1 md:grid-cols-3 gap-5">
             {[
-              { title: "Twijfel je nog?", text: "Onze Discovery Tea Box bevat 4 mini-pouches om alles te proeven.", cta: "Bekijk Discovery Box", to: "/product/discovery-tea-box" },
-              { title: "Eerste keer matcha?", text: "Begin met onze Starter Kit — matcha, klopper en kom inbegrepen.", cta: "Bekijk Starter Kit", to: "/product/starter-kit" },
-              { title: "Lees de gids", text: "Ceremonial vs Culinary uitgelegd — lees onze kennisartikelen.", cta: "Naar Kennisbank", to: "/kennis" },
+              { title: t("compare.help1Title"), text: t("compare.help1Text"), cta: t("compare.help1Cta"), to: "/product/discovery-tea-box" },
+              { title: t("compare.help2Title"), text: t("compare.help2Text"), cta: t("compare.help2Cta"), to: "/product/starter-kit" },
+              { title: t("compare.help3Title"), text: t("compare.help3Text"), cta: t("compare.help3Cta"), to: "/kennis" },
             ].map(c => (
               <div key={c.title} className="bg-secondary rounded-2xl p-7">
                 <div className="flex items-center gap-1 mb-2">

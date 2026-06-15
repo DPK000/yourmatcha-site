@@ -1,14 +1,28 @@
 import { motion } from "framer-motion";
 import { Truck, Leaf, Heart, Sparkles } from "lucide-react";
+import { useLang } from "@/i18n";
 
-const items = [
-  { icon: Truck, text: "Gratis verzending vanaf €35" },
-  { icon: Sparkles, text: "Levering binnen 48 uur in NL & BE" },
-  { icon: Leaf, text: "100% biologisch uit Uji, Japan" },
-  { icon: Heart, text: "30 dagen niet goed, geld terug" },
-];
+const COPY = {
+  nl: [
+    "Gratis verzending vanaf €35",
+    "Levering binnen 48 uur in NL & BE",
+    "100% biologisch uit Uji, Japan",
+    "30 dagen niet goed, geld terug",
+  ],
+  no: [
+    "Gratis frakt over 400 kr",
+    "Rask levering",
+    "100 % økologisk fra Uji, Japan",
+    "30 dagers åpent kjøp",
+  ],
+} as const;
+
+const icons = [Truck, Sparkles, Leaf, Heart];
 
 const AnnouncementBar = () => {
+  const lang = useLang();
+  const texts = lang === "no" ? COPY.no : COPY.nl;
+  const items = texts.map((text, i) => ({ icon: icons[i], text }));
   const doubled = [...items, ...items, ...items];
 
   return (
