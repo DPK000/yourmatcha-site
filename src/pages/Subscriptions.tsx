@@ -80,7 +80,7 @@ const COPY = {
     title: "Start Je Matcha Ritueel",
     intro: "Ontvang elke maand de verste matcha aan huis. Bespaar 15%, geniet van gratis verzending en zeg op wanneer je wilt.",
     mostPopular: "Meest Gekozen",
-    toastSelected: (name: string) => `${name} abonnement geselecteerd! 🍵`,
+    toastSelected: (name: string) => `${name} abonnement geselecteerd!`,
     startRitual: "Start Je Ritueel",
     whyTitle: "Waarom een Abonnement?",
     benefits: [
@@ -96,7 +96,7 @@ const COPY = {
     title: "Start matcharitualet ditt",
     intro: "Få den ferskeste matchaen levert hjem hver måned. Spar 15 %, nyt gratis frakt og si opp når du vil.",
     mostPopular: "Mest populær",
-    toastSelected: (name: string) => `${name}-abonnement valgt! 🍵`,
+    toastSelected: (name: string) => `${name}-abonnement valgt!`,
     startRitual: "Start ritualet ditt",
     whyTitle: "Hvorfor abonnement?",
     benefits: [

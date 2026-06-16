@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import { motion, useScroll, useTransform } from "framer-motion";
-import { ArrowRight, Send, Star } from "lucide-react";
+import { ArrowRight, Send, Star, Leaf, Sprout, Sparkles, Zap, Brain, ShieldCheck, Sun } from "lucide-react";
 import { useFeaturedProducts } from "@/data/products";
 import { blogPosts } from "@/data/blog";
 import ProductCard from "@/components/ProductCard";
@@ -37,16 +37,16 @@ const Homepage = () => {
   const heroOpacity = useTransform(scrollYProgress, [0, 0.8], [1, 0]);
 
   const pillarsList = [
-    { emoji: "🍃", titleKey: "p1Title", descKey: "p1Desc" },
-    { emoji: "🌏", titleKey: "p2Title", descKey: "p2Desc" },
-    { emoji: "✨", titleKey: "p3Title", descKey: "p3Desc" },
+    { Icon: Leaf, titleKey: "p1Title", descKey: "p1Desc" },
+    { Icon: Sprout, titleKey: "p2Title", descKey: "p2Desc" },
+    { Icon: Sparkles, titleKey: "p3Title", descKey: "p3Desc" },
   ];
 
   const benefitsList = [
-    { emoji: "⚡", titleKey: "b1Title", descKey: "b1Desc" },
-    { emoji: "🧘", titleKey: "b2Title", descKey: "b2Desc" },
-    { emoji: "💚", titleKey: "b3Title", descKey: "b3Desc" },
-    { emoji: "✨", titleKey: "b4Title", descKey: "b4Desc" },
+    { Icon: Zap, titleKey: "b1Title", descKey: "b1Desc" },
+    { Icon: Brain, titleKey: "b2Title", descKey: "b2Desc" },
+    { Icon: ShieldCheck, titleKey: "b3Title", descKey: "b3Desc" },
+    { Icon: Sun, titleKey: "b4Title", descKey: "b4Desc" },
   ];
 
   const testimonials = [
@@ -100,7 +100,7 @@ const Homepage = () => {
               transition={{ delay: 0.3, duration: 0.6 }}
               className="inline-flex items-center gap-2 bg-accent/90 text-accent-foreground text-sm tracking-wide px-4 py-1.5 rounded-full mb-6 font-medium"
             >
-              🍵 {t("home.badge")}
+              <Leaf className="w-3.5 h-3.5" strokeWidth={1.5} /> {t("home.badge")}
             </motion.span>
             <h1 className="font-heading text-5xl md:text-7xl lg:text-8xl font-light text-cream leading-[1.05] mb-6">
               {t("home.heroTitle1")}<br />
@@ -163,7 +163,7 @@ const Homepage = () => {
                 variants={fadeUp}
                 className="text-center bg-background rounded-2xl p-8 shadow-soft hover:shadow-card transition-shadow duration-300"
               >
-                <div className="text-4xl mb-4">{pillar.emoji}</div>
+                <pillar.Icon className="w-7 h-7 mx-auto mb-4 text-primary" strokeWidth={1.5} />
                 <h3 className="font-heading text-xl font-semibold mb-2">
                   {t(`home.${pillar.titleKey}`)}
                 </h3>
@@ -181,7 +181,7 @@ const Homepage = () => {
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <ScrollReveal className="text-center mb-14">
             <p className="text-xs tracking-[0.3em] uppercase text-muted-foreground mb-2">{t("home.benefitsEyebrow")}</p>
-            <h2 className="font-heading text-3xl md:text-5xl font-semibold">{t("home.benefitsTitle")} 🍃</h2>
+            <h2 className="font-heading text-3xl md:text-5xl font-semibold">{t("home.benefitsTitle")}</h2>
             <p className="text-muted-foreground mt-3 max-w-lg mx-auto">{t("home.benefitsSub")}</p>
           </ScrollReveal>
           <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6">
@@ -195,7 +195,7 @@ const Homepage = () => {
                 variants={fadeUp}
                 className="bg-secondary rounded-2xl p-6 text-center hover:bg-primary/5 transition-colors duration-300 cursor-default"
               >
-                <div className="text-3xl mb-3">{b.emoji}</div>
+                <b.Icon className="w-6 h-6 mx-auto mb-3 text-primary" strokeWidth={1.5} />
                 <h3 className="font-heading text-base font-semibold mb-1">{t(`home.${b.titleKey}`)}</h3>
                 <p className="text-muted-foreground text-xs leading-relaxed">{t(`home.${b.descKey}`)}</p>
               </motion.div>
@@ -213,7 +213,7 @@ const Homepage = () => {
           <div className="flex items-end justify-between mb-12">
             <ScrollReveal>
               <p className="text-xs tracking-[0.3em] uppercase text-muted-foreground mb-2">{t("home.bestsellersEyebrow")}</p>
-              <h2 className="font-heading text-3xl md:text-5xl font-semibold">{t("home.bestsellersTitle")} ✨</h2>
+              <h2 className="font-heading text-3xl md:text-5xl font-semibold">{t("home.bestsellersTitle")}</h2>
             </ScrollReveal>
             <Link to="/shop" className="hidden sm:inline-flex items-center gap-1.5 text-sm text-primary hover:underline font-semibold bg-primary/10 px-4 py-2 rounded-full hover:bg-primary/15 transition-colors">
               {t("home.allProducts")} <ArrowRight className="w-4 h-4" />
@@ -246,7 +246,7 @@ const Homepage = () => {
           </motion.div>
           <div className="flex items-center bg-primary text-primary-foreground">
             <ScrollReveal className="p-10 md:p-16 lg:p-20 max-w-lg">
-              <span className="inline-flex items-center gap-2 text-xs tracking-wide bg-primary-foreground/10 px-3 py-1.5 rounded-full text-primary-foreground/70 mb-6">🌿 {t("home.differenceEyebrow")}</span>
+              <span className="inline-flex items-center gap-2 text-xs tracking-wide bg-primary-foreground/10 px-3 py-1.5 rounded-full text-primary-foreground/70 mb-6">{t("home.differenceEyebrow")}</span>
               <h2 className="font-heading text-3xl md:text-4xl font-light leading-tight mb-6">
                 {t("home.differenceTitle1")}<br />
                 <span className="italic">{t("home.differenceTitle2")}</span>
@@ -270,7 +270,7 @@ const Homepage = () => {
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <ScrollReveal className="text-center mb-14">
             <p className="text-xs tracking-[0.3em] uppercase text-muted-foreground mb-2">{t("home.testimonialsEyebrow")}</p>
-            <h2 className="font-heading text-3xl md:text-4xl font-semibold">{t("home.testimonialsTitle")} 💬</h2>
+            <h2 className="font-heading text-3xl md:text-4xl font-semibold">{t("home.testimonialsTitle")}</h2>
           </ScrollReveal>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             {testimonials.map((tm, i) => (
@@ -334,7 +334,7 @@ const Homepage = () => {
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <ScrollReveal className="text-center mb-12">
             <p className="text-xs tracking-[0.3em] uppercase text-muted-foreground mb-2">{t("home.socialEyebrow")}</p>
-            <h2 className="font-heading text-3xl md:text-4xl font-semibold">{t("home.socialTitle")} 📸</h2>
+            <h2 className="font-heading text-3xl md:text-4xl font-semibold">{t("home.socialTitle")}</h2>
           </ScrollReveal>
           <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
             {[lifestyle1, lifestyle2, lifestyle3, lifestyle4].map((img, i) => (
@@ -492,7 +492,7 @@ const Homepage = () => {
       <section className="py-20 bg-primary text-primary-foreground">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <ScrollReveal>
-            <div className="text-4xl mb-4">🍵</div>
+            <Leaf className="w-8 h-8 mx-auto mb-4 text-primary-foreground/70" strokeWidth={1.5} />
             <h2 className="font-heading text-3xl md:text-4xl font-light mb-4">{t("home.newsletterTitle")}</h2>
             <p className="text-primary-foreground/60 mb-10 max-w-md mx-auto">{t("home.newsletterSub")}</p>
             <form onSubmit={handleNewsletter} className="flex flex-col sm:flex-row gap-3 max-w-md mx-auto">

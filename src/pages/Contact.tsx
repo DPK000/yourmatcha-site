@@ -8,7 +8,7 @@ import { useLang } from "@/i18n";
 
 const COPY = {
   nl: {
-    toast: "Bedankt! We reageren binnen 1 werkdag 🍵",
+    toast: "Bedankt! We reageren binnen 1 werkdag",
     seoTitle: "Contact — Vragen over matcha of je bestelling? We helpen je",
     seoDescription:
       "Neem contact op met YourMatcha — bereikbaar via e-mail, telefoon en Instagram. We reageren binnen 1 werkdag op vragen over matcha, bestellingen of samenwerkingen.",
@@ -27,7 +27,7 @@ const COPY = {
     submit: "Verstuur bericht",
   },
   no: {
-    toast: "Tusen takk! Vi svarer deg innen 1 virkedag 🍵",
+    toast: "Tusen takk! Vi svarer deg innen 1 virkedag",
     seoTitle: "Kontakt — Spørsmål om matcha eller bestillingen din? Vi hjelper deg",
     seoDescription:
       "Ta kontakt med YourMatcha — vi er tilgjengelige på e-post, telefon og Instagram. Vi svarer innen 1 virkedag på spørsmål om matcha, bestillinger eller samarbeid.",

@@ -8,7 +8,7 @@ const STORAGE_KEY = "yourmatcha-newsletter-popup";
 
 const COPY = {
   nl: {
-    toastSuccess: "Welkom bij YourMatcha — check je inbox voor je code 🍵",
+    toastSuccess: "Welkom bij YourMatcha — check je inbox voor je code",
     closeAria: "Sluiten",
     eyebrow: "Welkomstcadeau",
     headingTop: "10% korting",
@@ -19,7 +19,7 @@ const COPY = {
     decline: "Nee bedankt",
   },
   no: {
-    toastSuccess: "Velkommen til YourMatcha — sjekk innboksen for koden din 🍵",
+    toastSuccess: "Velkommen til YourMatcha — sjekk innboksen for koden din",
     closeAria: "Lukk",
     eyebrow: "Velkomstgave",
     headingTop: "10 % rabatt",

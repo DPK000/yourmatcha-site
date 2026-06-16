@@ -50,7 +50,7 @@ const Shop = () => {
       />
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="mb-10">
-          <h1 className="font-heading text-4xl md:text-5xl font-semibold">{t("shop.title")} 🍵</h1>
+          <h1 className="font-heading text-4xl md:text-5xl font-semibold">{t("shop.title")}</h1>
           <p className="text-muted-foreground mt-2">{t("shop.subtitle")}</p>
         </div>
 
