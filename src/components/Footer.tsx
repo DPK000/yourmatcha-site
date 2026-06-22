@@ -42,8 +42,8 @@ const Footer = () => {
               <li><Link to="/matcha-poeder" className="hover:text-primary-foreground transition-colors">{t("categories.matcha-powder")}</Link></li>
               <li><Link to="/matcha-kits" className="hover:text-primary-foreground transition-colors">{t("categories.kits-sets")}</Link></li>
               <li><Link to="/matcha-accessoires" className="hover:text-primary-foreground transition-colors">{t("categories.accessories")}</Link></li>
-              <li><Link to="/japanse-thee" className="hover:text-primary-foreground transition-colors">Japanse thee</Link></li>
-              <li><Link to="/cadeau-gids" className="hover:text-primary-foreground transition-colors">Cadeau gids</Link></li>
+              <li><Link to="/japanse-thee" className="hover:text-primary-foreground transition-colors">{t("footer.japaneseTea")}</Link></li>
+              <li><Link to="/cadeau-gids" className="hover:text-primary-foreground transition-colors">{t("footer.giftGuide")}</Link></li>
               <li><Link to="/abonnementen" className="hover:text-primary-foreground transition-colors">{t("nav.subscriptions")}</Link></li>
             </ul>
           </div>
@@ -68,7 +68,7 @@ const Footer = () => {
           <div>
             <h4 className="font-heading text-lg font-semibold mb-4">{t("footer.contact")}</h4>
             <ul className="space-y-2.5 text-sm text-primary-foreground/70">
-              <li><Link to="/contact" className="hover:text-primary-foreground transition-colors">Contact</Link></li>
+              <li><Link to="/contact" className="hover:text-primary-foreground transition-colors">{t("footer.contact")}</Link></li>
               <li><Link to="/verzending" className="hover:text-primary-foreground transition-colors">{t("footer.shipping")}</Link></li>
               <li><Link to="/privacy" className="hover:text-primary-foreground transition-colors">{t("footer.privacy")}</Link></li>
               <li><Link to="/voorwaarden" className="hover:text-primary-foreground transition-colors">{t("footer.terms")}</Link></li>

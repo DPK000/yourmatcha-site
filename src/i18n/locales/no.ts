@@ -228,5 +228,7 @@ export default {
     recipes: "Oppskrifter",
     glossary: "Matcha-ordbok",
     beginners: "For nybegynnere",
+    japaneseTea: "Japansk te",
+    giftGuide: "Gaveguide",
   },
 };
