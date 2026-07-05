@@ -1,6 +1,6 @@
 import { useCart } from "@/context/CartContext";
 import { Link } from "react-router-dom";
-import { useMemo, useState } from "react";
+import { useMemo, useState, useEffect, useRef } from "react";
 import { toast } from "sonner";
 import { ChevronLeft, Loader2 } from "lucide-react";
 import {
@@ -33,7 +33,7 @@ const COPY = {
     subtotal: "Subtotaal",
     shipping: "Verzending",
     free: "Gratis",
-    freeShippingFrom: "Gratis verzending vanaf €50",
+    freeShippingFrom: "Gratis verzending vanaf €35",
     total: "Totaal",
     paymentFailed: "Betaling mislukt",
     unknownError: "Onbekende fout",
@@ -65,7 +65,7 @@ const COPY = {
     subtotal: "Delsum",
     shipping: "Frakt",
     free: "Gratis",
-    freeShippingFrom: "Gratis frakt fra 575 kr",
+    freeShippingFrom: "Gratis frakt fra 862 kr",
     total: "Totalt",
     paymentFailed: "Betalingen mislyktes",
     unknownError: "Ukjent feil",
@@ -91,9 +91,26 @@ const Checkout = () => {
   const t = COPY[lang === "no" ? "no" : "nl"];
 
   const [email, setEmail] = useState("");
+  // Debounced email: wacht 600ms na laatste toetsaanslag zodat we niet bij elke
+  // letter een nieuwe PaymentIntent + draft-order aanmaken.
+  const [debouncedEmail, setDebouncedEmail] = useState("");
+  const debounceRef = useRef<ReturnType<typeof setTimeout> | null>(null);
+  useEffect(() => {
+    debounceRef.current && clearTimeout(debounceRef.current);
+    debounceRef.current = setTimeout(() => {
+      if (/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) setDebouncedEmail(email);
+      else setDebouncedEmail("");
+    }, 600);
+    return () => { debounceRef.current && clearTimeout(debounceRef.current); };
+  }, [email]);
 
-  // Verzenddrempel en business-logica blijven in EUR (basisvaluta van de catalogus)
-  const shipping = subtotal >= 50 ? 0 : 4.95;
+  // Noorwegen: gratis verzending vanaf €75 (≈ 862 kr), rest Europa.
+  // Nederland/België: gratis vanaf €35 — matcht de announcement bar.
+  const FREE_NL = 35;
+  const FREE_NO = 75;
+  const freeThreshold = lang === "no" ? FREE_NO : FREE_NL;
+  const shippingRate = lang === "no" ? 6.95 : 3.95;
+  const shipping = subtotal >= freeThreshold ? 0 : shippingRate;
   const total = subtotal + shipping;
 
   // Betaald wordt in de actieve weergavevaluta: bedragen omgerekend meesturen
@@ -111,7 +128,7 @@ const Checkout = () => {
 
   const { clientSecret, orderId, loading: piLoading, error: piError } = useBuqePaymentIntent({
     items: buqeItems,
-    email,
+    email: debouncedEmail,
     subtotal: convert(subtotal),
     shipping: convert(shipping),
     total: convert(total),
@@ -153,13 +170,13 @@ const Checkout = () => {
             </div>
 
             {/* Stripe sectie — pas zichtbaar als email + clientSecret klaar staan */}
-            {!email && (
+            {!debouncedEmail && (
               <div className="text-sm text-muted-foreground italic">
                 {t.emailFirst}
               </div>
             )}
 
-            {email && piLoading && (
+            {debouncedEmail && piLoading && (
               <div className="flex items-center gap-2 text-sm text-muted-foreground">
                 <Loader2 className="w-4 h-4 animate-spin" /> {t.loadingPayment}
               </div>
@@ -229,6 +246,20 @@ const CheckoutInner = ({ orderId, email, total }: { orderId: string; email: stri
   const t = COPY[lang === "no" ? "no" : "nl"];
   const [submitting, setSubmitting] = useState(false);
 
+  // Apple Pay / Google Pay: submit het formulier via Stripe Express Checkout.
+  const handleExpressConfirm = async () => {
+    if (!stripe || !elements) return;
+    setSubmitting(true);
+    const { error } = await stripe.confirmPayment({
+      elements,
+      confirmParams: { return_url: `${window.location.origin}/bedankt` },
+    });
+    if (error) {
+      toast.error(error.message || t.paymentFailed);
+      setSubmitting(false);
+    }
+  };
+
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     if (!stripe || !elements) return;
@@ -282,10 +313,10 @@ const CheckoutInner = ({ orderId, email, total }: { orderId: string; email: stri
 
   return (
     <form onSubmit={handleSubmit} className="space-y-8">
-      {/* Express checkout — Apple Pay / Google Pay / Link / etc */}
+      {/* Express checkout — Apple Pay / Google Pay / Link */}
       <div className="-mx-1">
         <ExpressCheckoutElement
-          onConfirm={() => {/* express knop confirmed payment direct via Stripe */}}
+          onConfirm={handleExpressConfirm}
           options={{ buttonHeight: 48 }}
         />
       </div>

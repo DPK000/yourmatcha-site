@@ -36,6 +36,15 @@ serve(async (req) => {
 
     const newStatus = isPaid ? "paid" : isProcessing ? "processing" : "pending";
 
+    // Fetch huidige order-status — als al "paid" sla email over (idempotent bij refresh).
+    const { data: existing } = await supabase
+      .from("orders")
+      .select("status, email, first_name, order_number")
+      .eq("id", orderId)
+      .single();
+
+    const alreadyPaid = existing?.status === "paid";
+
     const { data: order, error: updateErr } = await supabase
       .from("orders")
       .update({
@@ -54,7 +63,7 @@ serve(async (req) => {
       description: `Stripe PaymentIntent ${pi.id} → ${pi.status}`,
     });
 
-    if (isPaid && order) {
+    if (isPaid && order && !alreadyPaid) {
       try {
         await supabase.functions.invoke("send-order-email", {
           body: {

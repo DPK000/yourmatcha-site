@@ -14,7 +14,7 @@ const RESEND_API_KEY = Deno.env.get("RESEND_API_KEY") || "";
 const SHOP_NAME = Deno.env.get("SHOP_NAME") || "My Shop";
 const FROM_EMAIL = Deno.env.get("FROM_EMAIL") || `${SHOP_NAME} <orders@example.com>`;
 const SHOP_URL = Deno.env.get("SHOP_URL") || "https://example.com";
-const PRIMARY_COLOR = Deno.env.get("SHOP_PRIMARY_COLOR") || "${PRIMARY_COLOR}";
+const PRIMARY_COLOR = Deno.env.get("SHOP_PRIMARY_COLOR") || "#3D6B53";
 const SHOP_TAGLINE = Deno.env.get("SHOP_TAGLINE") || "OFFICIAL";
 
 type Lang = "nl" | "en" | "de" | "no";
