@@ -2,7 +2,7 @@ import { useCart } from "@/context/CartContext";
 import { Link } from "react-router-dom";
 import { useMemo, useState, useEffect, useRef } from "react";
 import { toast } from "sonner";
-import { ChevronLeft, Loader2 } from "lucide-react";
+import { ChevronLeft, Loader2, Lock } from "lucide-react";
 import {
   BuqeStripeElements,
   useBuqePaymentIntent,
@@ -19,70 +19,83 @@ import { useLang } from "@/i18n";
 
 const COPY = {
   nl: {
-    emptyCart: "Je winkelwagen is leeg.",
-    toShop: "Naar de shop",
+    emptyCart:        "Je winkelwagen is leeg.",
+    toShop:           "Naar de shop",
     continueShopping: "Verder winkelen",
-    title: "Afrekenen",
-    contact: "Contact",
+    title:            "Afrekenen",
+    contact:          "Contact",
     emailPlaceholder: "E-mailadres",
-    emailFirst: "Vul je e-mailadres in om verder te gaan met betaling.",
-    loadingPayment: "Betaalopties laden…",
-    errorPrefix: "Er ging iets mis: ",
-    errorSuffix: ". Vernieuw de pagina en probeer opnieuw.",
-    summary: "Overzicht",
-    subtotal: "Subtotaal",
-    shipping: "Verzending",
-    free: "Gratis",
+    loadingPayment:   "Betaalopties laden…",
+    errorPrefix:      "Er ging iets mis: ",
+    errorSuffix:      ". Vernieuw de pagina en probeer opnieuw.",
+    summary:          "Overzicht",
+    subtotal:         "Subtotaal",
+    shipping:         "Verzending",
+    free:             "Gratis",
     freeShippingFrom: "Gratis verzending vanaf €35",
-    total: "Totaal",
-    paymentFailed: "Betaling mislukt",
-    unknownError: "Onbekende fout",
-    orPayWith: "Of betaal met",
-    shippingAddress: "Verzendadres",
-    firstName: "Voornaam",
-    lastName: "Achternaam",
-    phone: "Telefoonnummer",
-    address: "Straat + huisnummer",
-    postalCode: "Postcode",
-    city: "Stad",
-    countries: { NL: "Nederland", BE: "België", DE: "Duitsland", FR: "Frankrijk", NO: "Noorwegen" },
-    paymentMethod: "Betaalmethode",
-    submitting: "Bezig…",
-    placeOrder: (total: string) => `Bestelling Plaatsen — ${total}`,
+    total:            "Totaal",
+    paymentFailed:    "Betaling mislukt",
+    unknownError:     "Onbekende fout",
+    orPayWith:        "Of betaal met",
+    shippingAddress:  "Verzendadres",
+    firstName:        "Voornaam",
+    lastName:         "Achternaam",
+    phone:            "Telefoonnummer",
+    address:          "Straat + huisnummer",
+    postalCode:       "Postcode",
+    city:             "Stad",
+    countries:        { NL: "Nederland", BE: "België", DE: "Duitsland", FR: "Frankrijk", NO: "Noorwegen" },
+    paymentMethod:    "Betaalmethode",
+    submitting:       "Bezig…",
+    placeOrder:       (total: string) => `Bestelling Plaatsen — ${total}`,
+    paymentWaiting:   "Vul je e-mailadres in om de betaalopties te laden.",
   },
   no: {
-    emptyCart: "Handlekurven din er tom.",
-    toShop: "Til butikken",
+    emptyCart:        "Handlekurven din er tom.",
+    toShop:           "Til butikken",
     continueShopping: "Fortsett å handle",
-    title: "Kasse",
-    contact: "Kontakt",
+    title:            "Kasse",
+    contact:          "Kontakt",
     emailPlaceholder: "E-postadresse",
-    emailFirst: "Fyll inn e-postadressen din for å gå videre til betaling.",
-    loadingPayment: "Laster betalingsalternativer…",
-    errorPrefix: "Noe gikk galt: ",
-    errorSuffix: ". Last inn siden på nytt og prøv igjen.",
-    summary: "Oppsummering",
-    subtotal: "Delsum",
-    shipping: "Frakt",
-    free: "Gratis",
+    loadingPayment:   "Laster betalingsalternativer…",
+    errorPrefix:      "Noe gikk galt: ",
+    errorSuffix:      ". Last inn siden på nytt og prøv igjen.",
+    summary:          "Oppsummering",
+    subtotal:         "Delsum",
+    shipping:         "Frakt",
+    free:             "Gratis",
     freeShippingFrom: "Gratis frakt fra 862 kr",
-    total: "Totalt",
-    paymentFailed: "Betalingen mislyktes",
-    unknownError: "Ukjent feil",
-    orPayWith: "Eller betal med",
-    shippingAddress: "Leveringsadresse",
-    firstName: "Fornavn",
-    lastName: "Etternavn",
-    phone: "Telefonnummer",
-    address: "Gate + husnummer",
-    postalCode: "Postnummer",
-    city: "By",
-    countries: { NL: "Nederland", BE: "Belgia", DE: "Tyskland", FR: "Frankrike", NO: "Norge" },
-    paymentMethod: "Betalingsmåte",
-    submitting: "Behandler…",
-    placeOrder: (total: string) => `Legg inn bestilling — ${total}`,
+    total:            "Totalt",
+    paymentFailed:    "Betalingen mislyktes",
+    unknownError:     "Ukjent feil",
+    orPayWith:        "Eller betal med",
+    shippingAddress:  "Leveringsadresse",
+    firstName:        "Fornavn",
+    lastName:         "Etternavn",
+    phone:            "Telefonnummer",
+    address:          "Gate + husnummer",
+    postalCode:       "Postnummer",
+    city:             "By",
+    countries:        { NL: "Nederland", BE: "Belgia", DE: "Tyskland", FR: "Frankrike", NO: "Norge" },
+    paymentMethod:    "Betalingsmåte",
+    submitting:       "Behandler…",
+    placeOrder:       (total: string) => `Legg inn bestilling — ${total}`,
+    paymentWaiting:   "Fyll inn e-postadressen din for å laste betalingsalternativer.",
   },
 } as const;
+
+// Address fields managed in the outer component so they're always visible
+interface AddressData {
+  firstName: string;
+  lastName: string;
+  phone: string;
+  address: string;
+  postalCode: string;
+  city: string;
+  country: string;
+}
+
+const inputCls = "w-full px-4 py-3 rounded border border-border bg-background text-sm focus:outline-none focus:ring-2 focus:ring-primary/30 transition-colors";
 
 const Checkout = () => {
   const { items, subtotal } = useCart();
@@ -91,8 +104,6 @@ const Checkout = () => {
   const t = COPY[lang === "no" ? "no" : "nl"];
 
   const [email, setEmail] = useState("");
-  // Debounced email: wacht 600ms na laatste toetsaanslag zodat we niet bij elke
-  // letter een nieuwe PaymentIntent + draft-order aanmaken.
   const [debouncedEmail, setDebouncedEmail] = useState("");
   const debounceRef = useRef<ReturnType<typeof setTimeout> | null>(null);
   useEffect(() => {
@@ -104,35 +115,39 @@ const Checkout = () => {
     return () => { debounceRef.current && clearTimeout(debounceRef.current); };
   }, [email]);
 
-  // Noorwegen: gratis verzending vanaf €75 (≈ 862 kr), rest Europa.
-  // Nederland/België: gratis vanaf €35 — matcht de announcement bar.
+  const [addr, setAddr] = useState<AddressData>({
+    firstName: "", lastName: "", phone: "", address: "",
+    postalCode: "", city: "", country: lang === "no" ? "NO" : "NL",
+  });
+  const set = (k: keyof AddressData) => (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) =>
+    setAddr(prev => ({ ...prev, [k]: e.target.value }));
+
   const FREE_NL = 35;
   const FREE_NO = 75;
   const freeThreshold = lang === "no" ? FREE_NO : FREE_NL;
-  const shippingRate = lang === "no" ? 6.95 : 3.95;
+  const shippingRate  = lang === "no" ? 6.95 : 3.95;
   const shipping = subtotal >= freeThreshold ? 0 : shippingRate;
-  const total = subtotal + shipping;
+  const total    = subtotal + shipping;
 
-  // Betaald wordt in de actieve weergavevaluta: bedragen omgerekend meesturen
   const payCurrency = currency === "NOK" ? "nok" : "eur";
   const buqeItems = useMemo(
     () => items.map((it) => ({
       productId: it.product.id,
-      name: it.product.name,
-      image: it.product.images?.[0] || "",
-      price: convert(it.product.price),
-      quantity: it.quantity,
+      name:      it.product.name,
+      image:     it.product.images?.[0] || "",
+      price:     convert(it.product.price),
+      quantity:  it.quantity,
     })),
     [items, convert]
   );
 
   const { clientSecret, orderId, loading: piLoading, error: piError } = useBuqePaymentIntent({
-    items: buqeItems,
-    email: debouncedEmail,
-    subtotal: convert(subtotal),
-    shipping: convert(shipping),
-    total: convert(total),
-    currency: payCurrency,
+    items:     buqeItems,
+    email:     debouncedEmail,
+    subtotal:  convert(subtotal),
+    shipping:  convert(shipping),
+    total:     convert(total),
+    currency:  payCurrency,
   });
 
   if (items.length === 0) {
@@ -147,17 +162,21 @@ const Checkout = () => {
   return (
     <div className="py-12">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-        <Link to="/shop" className="inline-flex items-center gap-1 text-sm text-muted-foreground hover:text-foreground transition-colors mb-8">
+        <Link
+          to="/shop"
+          className="inline-flex items-center gap-1 text-sm text-muted-foreground hover:text-foreground transition-colors mb-8"
+        >
           <ChevronLeft className="w-4 h-4" /> {t.continueShopping}
         </Link>
 
         <h1 className="font-heading text-3xl md:text-4xl font-semibold mb-10">{t.title}</h1>
 
         <div className="grid grid-cols-1 lg:grid-cols-5 gap-12">
-          {/* Form column */}
+          {/* ── Left column ── */}
           <div className="lg:col-span-3 space-y-8">
-            {/* Email (komt eerst — zonder email kunnen we geen PaymentIntent maken) */}
-            <div>
+
+            {/* 1 — Email */}
+            <section>
               <h2 className="font-heading text-xl font-semibold mb-4">{t.contact}</h2>
               <input
                 required
@@ -165,39 +184,78 @@ const Checkout = () => {
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
                 placeholder={t.emailPlaceholder}
-                className="w-full px-4 py-3 rounded border border-border bg-background text-sm focus:outline-none focus:ring-2 focus:ring-primary/30"
+                className={inputCls}
+                autoComplete="email"
               />
-            </div>
+            </section>
 
-            {/* Stripe sectie — pas zichtbaar als email + clientSecret klaar staan */}
-            {!debouncedEmail && (
-              <div className="text-sm text-muted-foreground italic">
-                {t.emailFirst}
+            {/* 2 — Shipping address (always visible) */}
+            <section>
+              <h2 className="font-heading text-xl font-semibold mb-4">{t.shippingAddress}</h2>
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <input value={addr.firstName} onChange={set("firstName")} placeholder={t.firstName}  className={inputCls} autoComplete="given-name" />
+                <input value={addr.lastName}  onChange={set("lastName")}  placeholder={t.lastName}   className={inputCls} autoComplete="family-name" />
+                <input value={addr.phone}     onChange={set("phone")}     placeholder={t.phone}      className={`${inputCls} sm:col-span-2`} autoComplete="tel" />
+                <input value={addr.address}   onChange={set("address")}   placeholder={t.address}    className={`${inputCls} sm:col-span-2`} autoComplete="street-address" />
+                <input value={addr.postalCode} onChange={set("postalCode")} placeholder={t.postalCode} className={inputCls} autoComplete="postal-code" />
+                <input value={addr.city}      onChange={set("city")}      placeholder={t.city}       className={inputCls} autoComplete="address-level2" />
+                <select
+                  value={addr.country}
+                  onChange={set("country")}
+                  className={`${inputCls} sm:col-span-2`}
+                  autoComplete="country"
+                >
+                  <option value="NL">{t.countries.NL}</option>
+                  <option value="BE">{t.countries.BE}</option>
+                  <option value="DE">{t.countries.DE}</option>
+                  <option value="FR">{t.countries.FR}</option>
+                  <option value="NO">{t.countries.NO}</option>
+                </select>
               </div>
-            )}
+            </section>
 
-            {debouncedEmail && piLoading && (
-              <div className="flex items-center gap-2 text-sm text-muted-foreground">
-                <Loader2 className="w-4 h-4 animate-spin" /> {t.loadingPayment}
-              </div>
-            )}
+            {/* 3 — Payment */}
+            <section>
+              <h2 className="font-heading text-xl font-semibold mb-4">{t.paymentMethod}</h2>
 
-            {piError && (
-              <div className="text-sm text-destructive">
-                {t.errorPrefix}{piError}{t.errorSuffix}
-              </div>
-            )}
+              {/* Error state */}
+              {piError && (
+                <div className="text-sm text-destructive mb-4">
+                  {t.errorPrefix}{piError}{t.errorSuffix}
+                </div>
+              )}
 
-            {clientSecret && orderId && (
-              // key forceert remount bij nieuwe PaymentIntent (bv. valutawissel) — Elements
-              // ondersteunt geen clientSecret-wijziging op een bestaande instantie
-              <BuqeStripeElements key={clientSecret} clientSecret={clientSecret}>
-                <CheckoutInner orderId={orderId} email={email} total={total} />
-              </BuqeStripeElements>
-            )}
+              {/* Not yet a valid email — lock placeholder */}
+              {!debouncedEmail && !piLoading && (
+                <div className="rounded border border-border bg-secondary/40 px-5 py-6 flex items-center gap-3 text-sm text-muted-foreground select-none">
+                  <Lock className="w-4 h-4 shrink-0 opacity-50" />
+                  {t.paymentWaiting}
+                </div>
+              )}
+
+              {/* Loading PaymentIntent */}
+              {debouncedEmail && piLoading && (
+                <div className="rounded border border-border bg-secondary/40 px-5 py-6 flex items-center gap-3 text-sm text-muted-foreground">
+                  <Loader2 className="w-4 h-4 animate-spin shrink-0" />
+                  {t.loadingPayment}
+                </div>
+              )}
+
+              {/* Stripe Elements — only when clientSecret ready */}
+              {clientSecret && orderId && (
+                <BuqeStripeElements key={clientSecret} clientSecret={clientSecret}>
+                  <CheckoutInner
+                    orderId={orderId}
+                    email={email}
+                    addr={addr}
+                    total={total}
+                  />
+                </BuqeStripeElements>
+              )}
+            </section>
           </div>
 
-          {/* Summary */}
+          {/* ── Right column: order summary ── */}
           <div className="lg:col-span-2">
             <div className="bg-secondary rounded p-6 sticky top-28">
               <h2 className="font-heading text-xl font-semibold mb-6">{t.summary}</h2>
@@ -234,19 +292,21 @@ const Checkout = () => {
   );
 };
 
-/**
- * Inner form — moet binnen <Elements> zitten om useStripe/useElements te kunnen gebruiken.
- * Hier zit het adres-form + ExpressCheckout knoppen + PaymentElement + submit.
- */
-const CheckoutInner = ({ orderId, email, total }: { orderId: string; email: string; total: number }) => {
-  const stripe = useStripe();
+interface CheckoutInnerProps {
+  orderId: string;
+  email:   string;
+  addr:    AddressData;
+  total:   number;
+}
+
+const CheckoutInner = ({ orderId, email, addr, total }: CheckoutInnerProps) => {
+  const stripe   = useStripe();
   const elements = useElements();
   const { format: formatPrice } = useCurrency();
   const lang = useLang();
   const t = COPY[lang === "no" ? "no" : "nl"];
   const [submitting, setSubmitting] = useState(false);
 
-  // Apple Pay / Google Pay: submit het formulier via Stripe Express Checkout.
   const handleExpressConfirm = async () => {
     if (!stripe || !elements) return;
     setSubmitting(true);
@@ -260,23 +320,20 @@ const CheckoutInner = ({ orderId, email, total }: { orderId: string; email: stri
     }
   };
 
-  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!stripe || !elements) return;
-
     setSubmitting(true);
     try {
-      const fd = new FormData(e.currentTarget);
-      const firstName = String(fd.get("firstName") || "");
-      const lastName = String(fd.get("lastName") || "");
-      const phone = String(fd.get("phone") || "");
-      const address = String(fd.get("address") || "");
-      const city = String(fd.get("city") || "");
-      const postalCode = String(fd.get("postalCode") || "");
-      const country = String(fd.get("country") || "NL");
-
       await updateBuqeOrder(orderId, {
-        firstName, lastName, email, phone, address, city, postalCode, country,
+        firstName:  addr.firstName,
+        lastName:   addr.lastName,
+        email,
+        phone:      addr.phone,
+        address:    addr.address,
+        city:       addr.city,
+        postalCode: addr.postalCode,
+        country:    addr.country,
       });
 
       const { error } = await stripe.confirmPayment({
@@ -285,14 +342,14 @@ const CheckoutInner = ({ orderId, email, total }: { orderId: string; email: stri
           return_url: `${window.location.origin}/bedankt`,
           payment_method_data: {
             billing_details: {
-              name: `${firstName} ${lastName}`.trim(),
+              name:    `${addr.firstName} ${addr.lastName}`.trim(),
               email,
-              phone: phone || undefined,
+              phone:   addr.phone || undefined,
               address: {
-                line1: address,
-                city,
-                postal_code: postalCode,
-                country,
+                line1:       addr.address,
+                city:        addr.city,
+                postal_code: addr.postalCode,
+                country:     addr.country,
               },
             },
           },
@@ -303,17 +360,15 @@ const CheckoutInner = ({ orderId, email, total }: { orderId: string; email: stri
         toast.error(error.message || t.paymentFailed);
         setSubmitting(false);
       }
-      // Bij success → Stripe redirect zelf naar return_url
     } catch (err) {
-      const msg = err instanceof Error ? err.message : t.unknownError;
-      toast.error(msg);
+      toast.error(err instanceof Error ? err.message : t.unknownError);
       setSubmitting(false);
     }
   };
 
   return (
-    <form onSubmit={handleSubmit} className="space-y-8">
-      {/* Express checkout — Apple Pay / Google Pay / Link */}
+    <form onSubmit={handleSubmit} className="space-y-6">
+      {/* Express checkout (Apple Pay / Google Pay) */}
       <div className="-mx-1">
         <ExpressCheckoutElement
           onConfirm={handleExpressConfirm}
@@ -322,37 +377,15 @@ const CheckoutInner = ({ orderId, email, total }: { orderId: string; email: stri
       </div>
 
       <div className="relative">
-        <div className="absolute inset-0 flex items-center"><div className="w-full border-t border-border" /></div>
+        <div className="absolute inset-0 flex items-center">
+          <div className="w-full border-t border-border" />
+        </div>
         <div className="relative flex justify-center text-xs uppercase">
           <span className="bg-background px-3 text-muted-foreground tracking-widest">{t.orPayWith}</span>
         </div>
       </div>
 
-      {/* Verzendadres */}
-      <div>
-        <h2 className="font-heading text-xl font-semibold mb-4">{t.shippingAddress}</h2>
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-          <input required name="firstName" placeholder={t.firstName} className="px-4 py-3 rounded border border-border bg-background text-sm focus:outline-none focus:ring-2 focus:ring-primary/30" />
-          <input required name="lastName" placeholder={t.lastName} className="px-4 py-3 rounded border border-border bg-background text-sm focus:outline-none focus:ring-2 focus:ring-primary/30" />
-          <input name="phone" placeholder={t.phone} className="sm:col-span-2 px-4 py-3 rounded border border-border bg-background text-sm focus:outline-none focus:ring-2 focus:ring-primary/30" />
-          <input required name="address" placeholder={t.address} className="sm:col-span-2 px-4 py-3 rounded border border-border bg-background text-sm focus:outline-none focus:ring-2 focus:ring-primary/30" />
-          <input required name="postalCode" placeholder={t.postalCode} className="px-4 py-3 rounded border border-border bg-background text-sm focus:outline-none focus:ring-2 focus:ring-primary/30" />
-          <input required name="city" placeholder={t.city} className="px-4 py-3 rounded border border-border bg-background text-sm focus:outline-none focus:ring-2 focus:ring-primary/30" />
-          <select required name="country" defaultValue={lang === "no" ? "NO" : "NL"} className="sm:col-span-2 px-4 py-3 rounded border border-border bg-background text-sm focus:outline-none focus:ring-2 focus:ring-primary/30">
-            <option value="NL">{t.countries.NL}</option>
-            <option value="BE">{t.countries.BE}</option>
-            <option value="DE">{t.countries.DE}</option>
-            <option value="FR">{t.countries.FR}</option>
-            <option value="NO">{t.countries.NO}</option>
-          </select>
-        </div>
-      </div>
-
-      {/* Stripe Payment Element — toont auto iDEAL/Klarna/Card/Bancontact afhankelijk van Stripe Dashboard */}
-      <div>
-        <h2 className="font-heading text-xl font-semibold mb-4">{t.paymentMethod}</h2>
-        <PaymentElement options={{ layout: "tabs" }} />
-      </div>
+      <PaymentElement options={{ layout: "tabs" }} />
 
       <button
         type="submit"
