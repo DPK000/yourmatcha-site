@@ -87,6 +87,7 @@ const AnimatedRoutes = () => {
         <Route path="/recepten" element={<PageTransition><Recipes /></PageTransition>} />
         <Route path="/recepten/:slug" element={<PageTransition><RecipeDetail /></PageTransition>} />
         <Route path="/duurzaamheid" element={<PageTransition><Sustainability /></PageTransition>} />
+        {/* NL landing pages */}
         <Route path="/matcha-poeder" element={<PageTransition><LandingPage slug="matcha-poeder" /></PageTransition>} />
         <Route path="/matcha-accessoires" element={<PageTransition><LandingPage slug="matcha-accessoires" /></PageTransition>} />
         <Route path="/matcha-kits" element={<PageTransition><LandingPage slug="matcha-kits" /></PageTransition>} />
@@ -96,6 +97,16 @@ const AnimatedRoutes = () => {
         <Route path="/matcha-voor-sporters" element={<PageTransition><LandingPage slug="matcha-voor-sporters" /></PageTransition>} />
         <Route path="/cafeinearme-thee" element={<PageTransition><LandingPage slug="cafeinearme-thee" /></PageTransition>} />
         <Route path="/matcha-als-koffievervanger" element={<PageTransition><LandingPage slug="matcha-als-koffievervanger" /></PageTransition>} />
+        {/* NO landing pages — Norwegian keyword URLs */}
+        <Route path="/matcha-pulver" element={<PageTransition><LandingPage slug="matcha-poeder" /></PageTransition>} />
+        <Route path="/matcha-tilbehor" element={<PageTransition><LandingPage slug="matcha-accessoires" /></PageTransition>} />
+        <Route path="/matcha-sett" element={<PageTransition><LandingPage slug="matcha-kits" /></PageTransition>} />
+        <Route path="/japansk-te" element={<PageTransition><LandingPage slug="japanse-thee" /></PageTransition>} />
+        <Route path="/gave-guide" element={<PageTransition><LandingPage slug="cadeau-gids" /></PageTransition>} />
+        <Route path="/matcha-for-nybegynnere" element={<PageTransition><LandingPage slug="matcha-voor-beginners" /></PageTransition>} />
+        <Route path="/matcha-for-utovere" element={<PageTransition><LandingPage slug="matcha-voor-sporters" /></PageTransition>} />
+        <Route path="/koffeinfri-te" element={<PageTransition><LandingPage slug="cafeinearme-thee" /></PageTransition>} />
+        <Route path="/matcha-istedenfor-kaffe" element={<PageTransition><LandingPage slug="matcha-als-koffievervanger" /></PageTransition>} />
         <Route path="/matcha-woordenboek" element={<PageTransition><Glossary /></PageTransition>} />
         <Route path="*" element={<PageTransition><NotFound /></PageTransition>} />
       </Routes>

@@ -20,6 +20,15 @@ import { useState, useRef } from "react";
 import { useTranslation } from "react-i18next";
 import { toast } from "sonner";
 import SEO from "@/components/SEO";
+import { useLang } from "@/i18n";
+
+const DOMAINS: Record<string, string> = {
+  nl: "https://yourmatcha.nl",
+  de: "https://yourmatcha.de",
+  en: "https://yourmatcha.com",
+  fr: "https://yourmatcha.fr",
+  no: "https://yourmatcha.no",
+};
 import RecipeSwiper from "@/components/RecipeSwiper";
 
 const fadeUp = {
@@ -29,6 +38,8 @@ const fadeUp = {
 
 const Homepage = () => {
   const { t } = useTranslation();
+  const lang = useLang();
+  const siteUrl = DOMAINS[lang] || DOMAINS.nl;
   const featured = useFeaturedProducts().slice(0, 4);
   const [email, setEmail] = useState("");
   const heroRef = useRef(null);
@@ -70,8 +81,8 @@ const Homepage = () => {
         description={t("home.seoDesc")}
         canonical="/"
         jsonLd={[
-          { "@context": "https://schema.org", "@type": "Organization", name: "YourMatcha", url: "https://yourmatcha.nl/", sameAs: ["https://www.instagram.com/yourmatcha"] },
-          { "@context": "https://schema.org", "@type": "WebSite", name: "YourMatcha", url: "https://yourmatcha.nl/", potentialAction: { "@type": "SearchAction", target: "https://yourmatcha.nl/shop?q={search_term_string}", "query-input": "required name=search_term_string" } },
+          { "@context": "https://schema.org", "@type": "Organization", name: "YourMatcha", url: `${siteUrl}/`, sameAs: ["https://www.instagram.com/yourmatcha"] },
+          { "@context": "https://schema.org", "@type": "WebSite", name: "YourMatcha", url: `${siteUrl}/`, potentialAction: { "@type": "SearchAction", target: `${siteUrl}/shop?q={search_term_string}`, "query-input": "required name=search_term_string" } },
         ]}
       />
       {/* Hero with Parallax */}

@@ -126,14 +126,22 @@ const inline = (s: string) =>
       '<a href="$2" class="text-primary underline underline-offset-2 hover:no-underline">$1</a>',
     );
 
-const buildSchemas = (page: LandingPageData) => {
-  const url = `https://yourmatcha.nl/${page.slug}`;
+const SITE_DOMAINS: Record<string, string> = {
+  nl: "https://yourmatcha.nl",
+  de: "https://yourmatcha.de",
+  en: "https://yourmatcha.com",
+  fr: "https://yourmatcha.fr",
+  no: "https://yourmatcha.no",
+};
+
+const buildSchemas = (page: LandingPageData, siteUrl: string, urlPath: string) => {
+  const url = `${siteUrl}${urlPath}`;
 
   const breadcrumb = {
     "@context": "https://schema.org",
     "@type": "BreadcrumbList",
     itemListElement: [
-      { "@type": "ListItem", position: 1, name: "Home", item: "https://yourmatcha.nl/" },
+      { "@type": "ListItem", position: 1, name: "Home", item: `${siteUrl}/` },
       { "@type": "ListItem", position: 2, name: page.title, item: url },
     ],
   };
@@ -171,6 +179,9 @@ const LandingPage = ({ slug }: Props) => {
 
   if (!page) return <Navigate to="/" replace />;
 
+  const siteUrl = SITE_DOMAINS[lang] || SITE_DOMAINS.nl;
+  const urlPath = typeof window !== "undefined" ? window.location.pathname : `/${page.slug}`;
+
   const products = page.productSlugs
     .map(s => getProductBySlug(s))
     .filter((p): p is NonNullable<typeof p> => Boolean(p));
@@ -180,8 +191,8 @@ const LandingPage = ({ slug }: Props) => {
       <SEO
         title={page.metaTitle}
         description={page.metaDescription}
-        canonical={`/${page.slug}`}
-        jsonLd={buildSchemas(page)}
+        canonical={urlPath}
+        jsonLd={buildSchemas(page, siteUrl, urlPath)}
       />
 
       <section className="py-16 md:py-24 bg-secondary/30">

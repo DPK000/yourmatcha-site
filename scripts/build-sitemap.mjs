@@ -17,7 +17,8 @@ import { dirname, join } from "node:path";
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const ROOT = join(__dirname, "..");
-const SITE_URL = "https://yourmatcha.nl";
+const SITE_URL    = "https://yourmatcha.nl";
+const SITE_URL_NO = "https://yourmatcha.no";
 const TODAY = new Date().toISOString().slice(0, 10);
 
 // ────────────────────────────────────────────────────────────────────────
@@ -172,3 +173,83 @@ console.log(`✓ public/sitemap.xml — ${deduped.length} URLs`);
 console.log(
   `  static: ${staticEntries.length}  ·  landings: ${landingEntries.length}  ·  products: ${productEntries.length}  ·  knowledge: ${knowledgeEntries.length}  ·  blog: ${blogEntries.length}  ·  recipes: ${recipeEntries.length}`,
 );
+
+// ────────────────────────────────────────────────────────────────────────
+// Norwegian sitemap — yourmatcha.no
+// Same URL structure as .nl except landing pages use Norwegian slugs.
+// ────────────────────────────────────────────────────────────────────────
+const NO_LANDING_SLUGS = {
+  "matcha-poeder":              "matcha-pulver",
+  "matcha-accessoires":         "matcha-tilbehor",
+  "matcha-kits":                "matcha-sett",
+  "japanse-thee":               "japansk-te",
+  "cadeau-gids":                "gave-guide",
+  "matcha-voor-beginners":      "matcha-for-nybegynnere",
+  "matcha-voor-sporters":       "matcha-for-utovere",
+  "cafeinearme-thee":           "koffeinfri-te",
+  "matcha-als-koffievervanger": "matcha-istedenfor-kaffe",
+};
+
+const HIGH_PRIORITY_LANDINGS_NO = new Set([
+  "matcha-pulver",
+  "gave-guide",
+  "matcha-for-nybegynnere",
+]);
+
+const staticEntriesNo = [
+  { loc: "/", priority: 1.0 },
+  { loc: "/shop", priority: 0.9 },
+  { loc: "/bundel", priority: 0.8 },
+  { loc: "/matcha-vergelijken", priority: 0.8 },
+  { loc: "/abonnementen", priority: 0.8 },
+  { loc: "/kennis", priority: 0.8 },
+  { loc: "/blog", priority: 0.8 },
+  { loc: "/recepten", priority: 0.8 },
+  { loc: "/matcha-woordenboek", priority: 0.7 },
+  { loc: "/over-ons", priority: 0.7 },
+  { loc: "/herkomst", priority: 0.8 },
+  { loc: "/duurzaamheid", priority: 0.7 },
+  { loc: "/contact", priority: 0.6 },
+  { loc: "/faq", priority: 0.7 },
+  { loc: "/verzending", priority: 0.6 },
+  { loc: "/privacy", priority: 0.3 },
+  { loc: "/voorwaarden", priority: 0.3 },
+];
+
+const landingEntriesNo = landingSlugs.map((nlSlug) => {
+  const noSlug = NO_LANDING_SLUGS[nlSlug] || nlSlug;
+  return { loc: `/${noSlug}`, priority: HIGH_PRIORITY_LANDINGS_NO.has(noSlug) ? 0.9 : 0.8 };
+});
+
+const allEntriesNo = [
+  ...staticEntriesNo,
+  ...landingEntriesNo,
+  ...productEntries,
+  ...knowledgeEntries,
+  ...blogEntries,
+  ...recipeEntries,
+];
+
+const seenNo = new Set();
+const dedupedNo = allEntriesNo.filter((e) => {
+  if (seenNo.has(e.loc)) return false;
+  seenNo.add(e.loc);
+  return true;
+});
+
+const xmlNo = `<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+${dedupedNo
+  .map(
+    (e) => `  <url>
+    <loc>${SITE_URL_NO}${e.loc}</loc>
+    <lastmod>${TODAY}</lastmod>
+    <priority>${e.priority.toFixed(1)}</priority>
+  </url>`,
+  )
+  .join("\n")}
+</urlset>
+`;
+
+writeFileSync(join(ROOT, "public/sitemap-no.xml"), xmlNo);
+console.log(`✓ public/sitemap-no.xml — ${dedupedNo.length} URLs`);

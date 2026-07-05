@@ -76,7 +76,7 @@ const Contact = () => {
             <div>
               <p className="text-[10px] tracking-[0.3em] uppercase text-muted-foreground mb-3">{c.serviceLabel}</p>
               <ul className="space-y-3 text-sm">
-                <li className="flex items-start gap-3"><Mail className="w-4 h-4 mt-0.5 text-primary" /> info@yourmatcha.nl</li>
+                <li className="flex items-start gap-3"><Mail className="w-4 h-4 mt-0.5 text-primary" /> {({ nl:"info@yourmatcha.nl", de:"info@yourmatcha.de", no:"info@yourmatcha.no", fr:"info@yourmatcha.fr", en:"info@yourmatcha.com" } as Record<string,string>)[lang] ?? "info@yourmatcha.nl"}</li>
                 <li className="flex items-start gap-3"><Phone className="w-4 h-4 mt-0.5 text-primary" /> +31 (0)20 123 45 67</li>
                 <li className="flex items-start gap-3"><MapPin className="w-4 h-4 mt-0.5 text-primary" /> Keizersgracht 123<br />1015 CJ Amsterdam</li>
                 <li className="flex items-start gap-3"><Instagram className="w-4 h-4 mt-0.5 text-primary" /> @yourmatcha</li>

@@ -2,282 +2,672 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://yourmatcha.no/</loc>
-    <lastmod>2026-06-11</lastmod>
+    <lastmod>2026-07-05</lastmod>
     <priority>1.0</priority>
   </url>
   <url>
     <loc>https://yourmatcha.no/shop</loc>
-    <lastmod>2026-06-11</lastmod>
-    <priority>0.8</priority>
+    <lastmod>2026-07-05</lastmod>
+    <priority>0.9</priority>
   </url>
   <url>
     <loc>https://yourmatcha.no/bundel</loc>
-    <lastmod>2026-06-11</lastmod>
+    <lastmod>2026-07-05</lastmod>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://yourmatcha.no/over-ons</loc>
-    <lastmod>2026-06-11</lastmod>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://yourmatcha.no/herkomst</loc>
-    <lastmod>2026-06-11</lastmod>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://yourmatcha.no/kennis</loc>
-    <lastmod>2026-06-11</lastmod>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://yourmatcha.no/blog</loc>
-    <lastmod>2026-06-11</lastmod>
+    <loc>https://yourmatcha.no/matcha-vergelijken</loc>
+    <lastmod>2026-07-05</lastmod>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://yourmatcha.no/abonnementen</loc>
-    <lastmod>2026-06-11</lastmod>
+    <lastmod>2026-07-05</lastmod>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://yourmatcha.no/contact</loc>
-    <lastmod>2026-06-11</lastmod>
+    <loc>https://yourmatcha.no/kennis</loc>
+    <lastmod>2026-07-05</lastmod>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://yourmatcha.no/faq</loc>
-    <lastmod>2026-06-11</lastmod>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://yourmatcha.no/verzending</loc>
-    <lastmod>2026-06-11</lastmod>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://yourmatcha.no/privacy</loc>
-    <lastmod>2026-06-11</lastmod>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://yourmatcha.no/voorwaarden</loc>
-    <lastmod>2026-06-11</lastmod>
+    <loc>https://yourmatcha.no/blog</loc>
+    <lastmod>2026-07-05</lastmod>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://yourmatcha.no/recepten</loc>
-    <lastmod>2026-06-11</lastmod>
+    <lastmod>2026-07-05</lastmod>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://yourmatcha.no/matcha-woordenboek</loc>
+    <lastmod>2026-07-05</lastmod>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://yourmatcha.no/over-ons</loc>
+    <lastmod>2026-07-05</lastmod>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://yourmatcha.no/herkomst</loc>
+    <lastmod>2026-07-05</lastmod>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://yourmatcha.no/duurzaamheid</loc>
-    <lastmod>2026-06-11</lastmod>
+    <lastmod>2026-07-05</lastmod>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://yourmatcha.no/contact</loc>
+    <lastmod>2026-07-05</lastmod>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://yourmatcha.no/faq</loc>
+    <lastmod>2026-07-05</lastmod>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://yourmatcha.no/verzending</loc>
+    <lastmod>2026-07-05</lastmod>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://yourmatcha.no/privacy</loc>
+    <lastmod>2026-07-05</lastmod>
+    <priority>0.3</priority>
+  </url>
+  <url>
+    <loc>https://yourmatcha.no/voorwaarden</loc>
+    <lastmod>2026-07-05</lastmod>
+    <priority>0.3</priority>
+  </url>
+  <url>
+    <loc>https://yourmatcha.no/matcha-pulver</loc>
+    <lastmod>2026-07-05</lastmod>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://yourmatcha.no/matcha-tilbehor</loc>
+    <lastmod>2026-07-05</lastmod>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://yourmatcha.no/matcha-sett</loc>
+    <lastmod>2026-07-05</lastmod>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://yourmatcha.no/japansk-te</loc>
+    <lastmod>2026-07-05</lastmod>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://yourmatcha.no/gave-guide</loc>
+    <lastmod>2026-07-05</lastmod>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://yourmatcha.no/matcha-for-nybegynnere</loc>
+    <lastmod>2026-07-05</lastmod>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://yourmatcha.no/matcha-for-utovere</loc>
+    <lastmod>2026-07-05</lastmod>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://yourmatcha.no/koffeinfri-te</loc>
+    <lastmod>2026-07-05</lastmod>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://yourmatcha.no/matcha-istedenfor-kaffe</loc>
+    <lastmod>2026-07-05</lastmod>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://yourmatcha.no/product/ceremonial-matcha-30g</loc>
-    <lastmod>2026-06-11</lastmod>
+    <lastmod>2026-07-05</lastmod>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://yourmatcha.no/product/ceremonial-matcha-100g</loc>
-    <lastmod>2026-06-11</lastmod>
+    <lastmod>2026-07-05</lastmod>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://yourmatcha.no/product/culinary-matcha-100g</loc>
-    <lastmod>2026-06-11</lastmod>
+    <lastmod>2026-07-05</lastmod>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://yourmatcha.no/product/vanilla-matcha-50g</loc>
-    <lastmod>2026-06-11</lastmod>
+    <lastmod>2026-07-05</lastmod>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://yourmatcha.no/product/starter-kit</loc>
-    <lastmod>2026-06-11</lastmod>
+    <lastmod>2026-07-05</lastmod>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://yourmatcha.no/product/premium-ritual-set</loc>
-    <lastmod>2026-06-11</lastmod>
+    <lastmod>2026-07-05</lastmod>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://yourmatcha.no/product/gift-box</loc>
-    <lastmod>2026-06-11</lastmod>
+    <lastmod>2026-07-05</lastmod>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://yourmatcha.no/product/discovery-tea-box</loc>
-    <lastmod>2026-06-11</lastmod>
+    <lastmod>2026-07-05</lastmod>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://yourmatcha.no/product/bamboe-chasen</loc>
-    <lastmod>2026-06-11</lastmod>
+    <lastmod>2026-07-05</lastmod>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://yourmatcha.no/product/keramische-matcha-kom</loc>
-    <lastmod>2026-06-11</lastmod>
+    <lastmod>2026-07-05</lastmod>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://yourmatcha.no/product/bamboe-chashaku</loc>
-    <lastmod>2026-06-11</lastmod>
+    <lastmod>2026-07-05</lastmod>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://yourmatcha.no/product/elektrische-melkopschuimer</loc>
-    <lastmod>2026-06-11</lastmod>
+    <lastmod>2026-07-05</lastmod>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://yourmatcha.no/product/hojicha-poeder-50g</loc>
-    <lastmod>2026-06-11</lastmod>
+    <lastmod>2026-07-05</lastmod>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://yourmatcha.no/product/sencha-loose-leaf-75g</loc>
-    <lastmod>2026-06-11</lastmod>
+    <lastmod>2026-07-05</lastmod>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://yourmatcha.no/product/genmaicha-loose-leaf-50g</loc>
-    <lastmod>2026-06-11</lastmod>
+    <lastmod>2026-07-05</lastmod>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://yourmatcha.no/product/matcha-yuzu-blend-40g</loc>
-    <lastmod>2026-06-11</lastmod>
+    <lastmod>2026-07-05</lastmod>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://yourmatcha.no/product/mint-matcha-40g</loc>
-    <lastmod>2026-06-11</lastmod>
+    <lastmod>2026-07-05</lastmod>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://yourmatcha.no/product/cacao-matcha-50g</loc>
-    <lastmod>2026-06-11</lastmod>
+    <lastmod>2026-07-05</lastmod>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://yourmatcha.no/product/berry-matcha-40g</loc>
-    <lastmod>2026-06-11</lastmod>
+    <lastmod>2026-07-05</lastmod>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://yourmatcha.no/product/iced-matcha-blend-60g</loc>
-    <lastmod>2026-06-11</lastmod>
+    <lastmod>2026-07-05</lastmod>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://yourmatcha.no/product/ceremonial-reserve-tin</loc>
-    <lastmod>2026-06-11</lastmod>
+    <lastmod>2026-07-05</lastmod>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://yourmatcha.no/product/handmade-cup-set</loc>
-    <lastmod>2026-06-11</lastmod>
+    <lastmod>2026-07-05</lastmod>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://yourmatcha.no/kennis/wat-is-matcha</loc>
-    <lastmod>2026-06-11</lastmod>
+    <lastmod>2026-07-05</lastmod>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://yourmatcha.no/kennis/ceremonial-vs-culinary-matcha</loc>
-    <lastmod>2026-06-11</lastmod>
+    <lastmod>2026-07-05</lastmod>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://yourmatcha.no/kennis/matcha-bereiden</loc>
-    <lastmod>2026-06-11</lastmod>
-    <priority>0.7</priority>
+    <lastmod>2026-07-05</lastmod>
+    <priority>0.9</priority>
   </url>
   <url>
     <loc>https://yourmatcha.no/kennis/matcha-cafeine</loc>
-    <lastmod>2026-06-11</lastmod>
+    <lastmod>2026-07-05</lastmod>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://yourmatcha.no/kennis/matcha-bewaren</loc>
-    <lastmod>2026-06-11</lastmod>
+    <lastmod>2026-07-05</lastmod>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://yourmatcha.no/kennis/matcha-gezondheidsvoordelen</loc>
-    <lastmod>2026-06-11</lastmod>
+    <lastmod>2026-07-05</lastmod>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://yourmatcha.no/kennis/matcha-vs-koffie</loc>
-    <lastmod>2026-05-16</lastmod>
-    <priority>0.7</priority>
+    <lastmod>2026-07-05</lastmod>
+    <priority>0.9</priority>
   </url>
   <url>
     <loc>https://yourmatcha.no/kennis/matcha-vs-groene-thee</loc>
-    <lastmod>2026-05-16</lastmod>
+    <lastmod>2026-07-05</lastmod>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://yourmatcha.no/kennis/matcha-afvallen</loc>
-    <lastmod>2026-05-16</lastmod>
+    <lastmod>2026-07-05</lastmod>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://yourmatcha.no/kennis/matcha-tijdens-zwangerschap</loc>
-    <lastmod>2026-05-16</lastmod>
-    <priority>0.7</priority>
+    <lastmod>2026-07-05</lastmod>
+    <priority>0.9</priority>
   </url>
   <url>
     <loc>https://yourmatcha.no/kennis/matcha-bijwerkingen</loc>
-    <lastmod>2026-05-16</lastmod>
+    <lastmod>2026-07-05</lastmod>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://yourmatcha.no/kennis/matcha-kopen-gids</loc>
-    <lastmod>2026-05-16</lastmod>
+    <lastmod>2026-07-05</lastmod>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://yourmatcha.no/kennis/beste-matcha-merk-nederland</loc>
-    <lastmod>2026-05-16</lastmod>
+    <lastmod>2026-07-05</lastmod>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://yourmatcha.no/kennis/iced-matcha-latte-recept</loc>
-    <lastmod>2026-05-16</lastmod>
+    <lastmod>2026-07-05</lastmod>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://yourmatcha.no/kennis/matcha-latte-zonder-melkopschuimer</loc>
-    <lastmod>2026-05-16</lastmod>
+    <lastmod>2026-07-05</lastmod>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://yourmatcha.no/kennis/matcha-smaak</loc>
-    <lastmod>2026-05-16</lastmod>
+    <lastmod>2026-07-05</lastmod>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://yourmatcha.no/kennis/matcha-latte-maken</loc>
+    <lastmod>2026-07-05</lastmod>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://yourmatcha.no/kennis/matcha-kloppen-zonder-klontjes</loc>
+    <lastmod>2026-07-05</lastmod>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://yourmatcha.no/kennis/iced-matcha-bereiden</loc>
+    <lastmod>2026-07-05</lastmod>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://yourmatcha.no/kennis/beste-melk-voor-matcha-latte</loc>
+    <lastmod>2026-07-05</lastmod>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://yourmatcha.no/kennis/matcha-zonder-chasen</loc>
+    <lastmod>2026-07-05</lastmod>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://yourmatcha.no/kennis/matcha-en-afvallen</loc>
+    <lastmod>2026-07-05</lastmod>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://yourmatcha.no/kennis/matcha-en-slaap</loc>
+    <lastmod>2026-07-05</lastmod>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://yourmatcha.no/kennis/matcha-en-sport</loc>
+    <lastmod>2026-07-05</lastmod>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://yourmatcha.no/kennis/beste-matcha-kopen-2026</loc>
+    <lastmod>2026-07-05</lastmod>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://yourmatcha.no/kennis/matcha-prijs-uitleg</loc>
+    <lastmod>2026-07-05</lastmod>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://yourmatcha.no/kennis/matcha-cadeau-ideeen</loc>
+    <lastmod>2026-07-05</lastmod>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://yourmatcha.no/kennis/matcha-starterspakket</loc>
+    <lastmod>2026-07-05</lastmod>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://yourmatcha.no/kennis/matcha-en-focus</loc>
+    <lastmod>2026-07-05</lastmod>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://yourmatcha.no/kennis/hojicha-uitleg</loc>
+    <lastmod>2026-07-05</lastmod>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://yourmatcha.no/kennis/genmaicha-gids</loc>
+    <lastmod>2026-07-05</lastmod>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://yourmatcha.no/kennis/yuzu-matcha-uitleg</loc>
+    <lastmod>2026-07-05</lastmod>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://yourmatcha.no/kennis/japanse-theeceremonie-chanoyu</loc>
+    <lastmod>2026-07-05</lastmod>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://yourmatcha.no/kennis/uji-matcha-regio</loc>
+    <lastmod>2026-07-05</lastmod>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://yourmatcha.no/kennis/koicha-vs-usucha</loc>
+    <lastmod>2026-07-05</lastmod>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://yourmatcha.no/kennis/matcha-en-huid</loc>
+    <lastmod>2026-07-05</lastmod>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://yourmatcha.no/kennis/matcha-en-intermittent-fasting</loc>
+    <lastmod>2026-07-05</lastmod>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://yourmatcha.no/kennis/matcha-en-menstruatie</loc>
+    <lastmod>2026-07-05</lastmod>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://yourmatcha.no/kennis/matcha-en-cholesterol</loc>
+    <lastmod>2026-07-05</lastmod>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://yourmatcha.no/kennis/matcha-bewaren-seizoen</loc>
+    <lastmod>2026-07-05</lastmod>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://yourmatcha.no/kennis/ichibancha-vs-nibancha</loc>
+    <lastmod>2026-07-05</lastmod>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://yourmatcha.no/kennis/matcha-en-darmgezondheid</loc>
+    <lastmod>2026-07-05</lastmod>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://yourmatcha.no/kennis/matcha-allergie-bijwerkingen</loc>
+    <lastmod>2026-07-05</lastmod>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://yourmatcha.no/kennis/matcha-en-bloeddruk</loc>
+    <lastmod>2026-07-05</lastmod>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://yourmatcha.no/blog/perfecte-matcha-latte</loc>
-    <lastmod>2026-06-11</lastmod>
+    <lastmod>2026-07-05</lastmod>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://yourmatcha.no/blog/ceremonial-vs-culinary</loc>
-    <lastmod>2026-06-11</lastmod>
+    <lastmod>2026-07-05</lastmod>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://yourmatcha.no/blog/5-matcha-recepten</loc>
-    <lastmod>2026-06-11</lastmod>
+    <lastmod>2026-07-05</lastmod>
     <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://yourmatcha.no/blog/7-matcha-fouten-beginners</loc>
+    <lastmod>2026-07-05</lastmod>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://yourmatcha.no/blog/matcha-morning-routine</loc>
+    <lastmod>2026-07-05</lastmod>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://yourmatcha.no/blog/behind-brand-uji-bezoek</loc>
+    <lastmod>2026-07-05</lastmod>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://yourmatcha.no/blog/lente-matcha-recepten-2026</loc>
+    <lastmod>2026-07-05</lastmod>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://yourmatcha.no/blog/ltheanine-wetenschap-matcha</loc>
+    <lastmod>2026-07-05</lastmod>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://yourmatcha.no/recepten/iced-matcha-latte</loc>
+    <lastmod>2026-07-05</lastmod>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://yourmatcha.no/recepten/hot-matcha-latte</loc>
+    <lastmod>2026-07-05</lastmod>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://yourmatcha.no/recepten/hojicha-oat-latte</loc>
+    <lastmod>2026-07-05</lastmod>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://yourmatcha.no/recepten/sparkling-matcha-tonic</loc>
+    <lastmod>2026-07-05</lastmod>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://yourmatcha.no/recepten/matcha-smoothie-bowl</loc>
+    <lastmod>2026-07-05</lastmod>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://yourmatcha.no/recepten/matcha-pancakes</loc>
+    <lastmod>2026-07-05</lastmod>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://yourmatcha.no/recepten/matcha-overnight-oats</loc>
+    <lastmod>2026-07-05</lastmod>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://yourmatcha.no/recepten/matcha-energy-bites</loc>
+    <lastmod>2026-07-05</lastmod>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://yourmatcha.no/recepten/matcha-cookies</loc>
+    <lastmod>2026-07-05</lastmod>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://yourmatcha.no/recepten/matcha-brownies</loc>
+    <lastmod>2026-07-05</lastmod>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://yourmatcha.no/recepten/matcha-cheesecake</loc>
+    <lastmod>2026-07-05</lastmod>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://yourmatcha.no/recepten/matcha-tiramisu</loc>
+    <lastmod>2026-07-05</lastmod>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://yourmatcha.no/recepten/matcha-mochi</loc>
+    <lastmod>2026-07-05</lastmod>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://yourmatcha.no/recepten/matcha-ice-cream</loc>
+    <lastmod>2026-07-05</lastmod>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://yourmatcha.no/recepten/matcha-strawberry-latte</loc>
+    <lastmod>2026-07-05</lastmod>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://yourmatcha.no/recepten/matcha-espresso-tonic</loc>
+    <lastmod>2026-07-05</lastmod>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://yourmatcha.no/recepten/matcha-lemonade</loc>
+    <lastmod>2026-07-05</lastmod>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://yourmatcha.no/recepten/matcha-hot-chocolate</loc>
+    <lastmod>2026-07-05</lastmod>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://yourmatcha.no/recepten/matcha-bubble-tea</loc>
+    <lastmod>2026-07-05</lastmod>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://yourmatcha.no/recepten/matcha-chia-pudding</loc>
+    <lastmod>2026-07-05</lastmod>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://yourmatcha.no/recepten/matcha-waffles</loc>
+    <lastmod>2026-07-05</lastmod>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://yourmatcha.no/recepten/matcha-granola</loc>
+    <lastmod>2026-07-05</lastmod>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://yourmatcha.no/recepten/matcha-french-toast</loc>
+    <lastmod>2026-07-05</lastmod>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://yourmatcha.no/recepten/matcha-yogurt-bowl</loc>
+    <lastmod>2026-07-05</lastmod>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://yourmatcha.no/recepten/matcha-truffles</loc>
+    <lastmod>2026-07-05</lastmod>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://yourmatcha.no/recepten/matcha-popcorn</loc>
+    <lastmod>2026-07-05</lastmod>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://yourmatcha.no/recepten/matcha-macarons</loc>
+    <lastmod>2026-07-05</lastmod>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://yourmatcha.no/recepten/matcha-madeleines</loc>
+    <lastmod>2026-07-05</lastmod>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://yourmatcha.no/recepten/matcha-banana-bread</loc>
+    <lastmod>2026-07-05</lastmod>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://yourmatcha.no/recepten/matcha-scones</loc>
+    <lastmod>2026-07-05</lastmod>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://yourmatcha.no/recepten/matcha-croissants</loc>
+    <lastmod>2026-07-05</lastmod>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://yourmatcha.no/recepten/matcha-affogato</loc>
+    <lastmod>2026-07-05</lastmod>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://yourmatcha.no/recepten/matcha-creme-brulee</loc>
+    <lastmod>2026-07-05</lastmod>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://yourmatcha.no/recepten/matcha-panna-cotta</loc>
+    <lastmod>2026-07-05</lastmod>
+    <priority>0.7</priority>
   </url>
 </urlset>

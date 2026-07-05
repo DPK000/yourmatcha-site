@@ -2,9 +2,20 @@ import { Link } from "react-router-dom";
 import { Instagram, Mail } from "lucide-react";
 import { useTranslation } from "react-i18next";
 import { BrandMark } from "@/components/Logo";
+import { useLang } from "@/i18n";
+
+const CONTACT_EMAIL: Record<string, string> = {
+  nl: "info@yourmatcha.nl",
+  de: "info@yourmatcha.de",
+  no: "info@yourmatcha.no",
+  fr: "info@yourmatcha.fr",
+  en: "info@yourmatcha.com",
+};
 
 const Footer = () => {
   const { t } = useTranslation();
+  const lang = useLang();
+  const contactEmail = CONTACT_EMAIL[lang] || CONTACT_EMAIL.nl;
   return (
     <footer className="bg-primary text-primary-foreground">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-16">
@@ -61,7 +72,7 @@ const Footer = () => {
               <li><Link to="/verzending" className="hover:text-primary-foreground transition-colors">{t("footer.shipping")}</Link></li>
               <li><Link to="/privacy" className="hover:text-primary-foreground transition-colors">{t("footer.privacy")}</Link></li>
               <li><Link to="/voorwaarden" className="hover:text-primary-foreground transition-colors">{t("footer.terms")}</Link></li>
-              <li className="flex items-center gap-2 pt-2"><Mail className="w-4 h-4" /> info@yourmatcha.nl</li>
+              <li className="flex items-center gap-2 pt-2"><Mail className="w-4 h-4" /> {contactEmail}</li>
               <li className="flex items-center gap-2"><Instagram className="w-4 h-4" /> @yourmatcha</li>
             </ul>
           </div>
