@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import { ArrowRight, Clock } from "lucide-react";
-import SEO from "@/components/SEO";
+import SEO, { getSiteUrl } from "@/components/SEO";
 import PageHero from "@/components/PageHero";
 import { knowledgeArticles } from "@/data/knowledge";
 import ScrollReveal from "@/components/ScrollReveal";
@@ -31,6 +31,7 @@ const COPY = {
 
 const Knowledge = () => {
   const lang = useLang();
+  const siteUrl = getSiteUrl(lang);
   const c = lang === "no" ? COPY.no : COPY.nl;
 
   return (
@@ -44,7 +45,7 @@ const Knowledge = () => {
           "@type": "CollectionPage",
           name: c.jsonLdName,
           description: c.jsonLdDescription,
-          url: "https://yourmatcha.nl/kennis",
+          url: `${siteUrl}/kennis`,
         }}
       />
       <PageHero

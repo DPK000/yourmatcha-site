@@ -8,6 +8,7 @@ import Logo from "@/components/Logo";
 import { useTranslation } from "react-i18next";
 import AnnouncementBar from "./AnnouncementBar";
 import LanguageSwitcher from "./LanguageSwitcher";
+import SearchDialog from "./SearchDialog";
 import { useProducts, useFeaturedProducts } from "@/data/products";
 
 const Header = () => {
@@ -16,6 +17,7 @@ const Header = () => {
   const [mobileOpen, setMobileOpen] = useState(false);
   const [megaOpen, setMegaOpen] = useState<string | null>(null);
   const [scrolled, setScrolled] = useState(false);
+  const [searchOpen, setSearchOpen] = useState(false);
   const location = useLocation();
 
   useEffect(() => { setMobileOpen(false); setMegaOpen(null); }, [location.pathname]);
@@ -23,6 +25,16 @@ const Header = () => {
     const onScroll = () => setScrolled(window.scrollY > 8);
     window.addEventListener("scroll", onScroll);
     return () => window.removeEventListener("scroll", onScroll);
+  }, []);
+  useEffect(() => {
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key === "k" && (e.metaKey || e.ctrlKey)) {
+        e.preventDefault();
+        setSearchOpen(o => !o);
+      }
+    };
+    window.addEventListener("keydown", onKey);
+    return () => window.removeEventListener("keydown", onKey);
   }, []);
 
   const { format: formatPrice } = useCurrency();
@@ -96,7 +108,8 @@ const Header = () => {
             {/* Right: Utility */}
             <div className="flex items-center justify-end gap-2 md:gap-3 ml-auto" onMouseEnter={() => setMegaOpen(null)}>
               <button
-                className="hidden sm:inline-flex p-2 text-foreground/70 hover:text-primary transition-colors"
+                onClick={() => setSearchOpen(true)}
+                className="inline-flex p-2 text-foreground/70 hover:text-primary transition-colors"
                 aria-label={t("nav.search")}
               >
                 <Search className="w-[18px] h-[18px]" />
@@ -230,6 +243,7 @@ const Header = () => {
           )}
         </AnimatePresence>
       </header>
+      <SearchDialog open={searchOpen} onOpenChange={setSearchOpen} />
     </>
   );
 };

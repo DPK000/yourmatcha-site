@@ -209,7 +209,7 @@ Full forklaring i [oppbevaring av matcha](/kennis/matcha-bewaren).`,
           },
           {
             q: "Hva koster god matchapulver?",
-            a: "Autentisk japansk ceremonial matcha koster €0,50–€1 per gram. Culinary ligger rundt €0,30–€0,50/g. Under €0,15/g er nesten alltid gammelt eller blandet med billigere grønn te.",
+            a: "Autentisk japansk ceremonial matcha koster 6–12 kr per gram. Culinary ligger rundt 3,50–6 kr/g. Under 2 kr/g er nesten alltid gammelt eller blandet med billigere grønn te.",
           },
           {
             q: "Er matchapulver det samme som grønn te?",
@@ -275,8 +275,6 @@ Bekijk ook onze [chasen onderhoud tips](/kennis/matcha-kloppen-zonder-klontjes).
       "bamboe-chashaku",
       "elektrische-melkopschuimer",
       "handmade-cup-set",
-      "travel-ritual-kit",
-      "the-matcha-ritual-book",
     ],
     faqs: [
       {
@@ -402,7 +400,7 @@ Twijfel je? Een [discovery tea box](/product/discovery-tea-box) bevat alleen poe
     ],
     productsTitle: "Onze matcha kits",
     productsSubtitle: "Compleet, doordacht samengesteld, klaar voor gebruik.",
-    productSlugs: ["starter-kit", "premium-ritual-set", "gift-box", "discovery-tea-box", "travel-ritual-kit"],
+    productSlugs: ["starter-kit", "premium-ritual-set", "gift-box", "discovery-tea-box"],
     faqs: [
       {
         q: "Wat zit er in een matcha starter kit?",
@@ -414,7 +412,7 @@ Twijfel je? Een [discovery tea box](/product/discovery-tea-box) bevat alleen poe
       },
       {
         q: "Wat is het verschil tussen de starter kit en premium ritual set?",
-        a: "Starter kit: culinary matcha + standaard tools (~€60). Premium ritual set: ceremonial matcha + handgemaakte chasen en chawan + boekje (~€110). De premium-set is bedoeld voor liefhebbers en cadeau-momenten.",
+        a: "Starter kit (€39,95): ceremonial matcha 30g + bamboe chasen + keramische kom. Premium ritual set (€79,95): ceremonial matcha 100g + handgemaakte chasen, chawan en chakin doek. De premium-set is bedoeld voor liefhebbers en cadeau-momenten.",
       },
     ],
     relatedLinks: [
@@ -471,7 +469,7 @@ Er du i tvil? En [discovery tea box](/product/discovery-tea-box) inneholder kun 
           },
           {
             q: "Hva er forskjellen mellom startpakken og premium ritual-settet?",
-            a: "Startpakke: culinary matcha + standardredskaper (~€60). Premium ritual-sett: ceremonial matcha + håndlaget chasen og chawan + bok (~€110). Premium-settet er ment for entusiaster og gaveanledninger.",
+            a: "Startpakke (459 kr): seremoniell matcha 30 g + bambus-chasen + keramikkskål. Premium ritual-sett (919 kr): seremoniell matcha 100 g + håndlaget chasen, chawan og chakin-klut. Premium-settet er ment for entusiaster og gaveanledninger.",
           },
         ],
         relatedLinks: [
@@ -624,9 +622,9 @@ Høyere vann = høyere risiko for bitterhet. Hojicha er unntaket fordi den aller
       {
         heading: "Kies op budget",
         body: `- **Tot €25** — Een [bamboe chasen](/product/bamboe-chasen) of [ceremonial 30g](/product/ceremonial-matcha-30g) — kleine attentie met grote impact.
-- **€25–€50** — Een smaakvariant zoals [yuzu matcha](/product/matcha-yuzu-blend-40g) of een [keramische chawan](/product/keramische-matcha-kom).
-- **€50–€80** — Onze [starter kit](/product/starter-kit) — compleet pakket waarmee de ontvanger direct begint.
-- **€80+** — De [premium ritual set](/product/premium-ritual-set) of [gift box](/product/gift-box) — cadeauklaar verpakt.
+- **€25–€50** — Onze [starter kit](/product/starter-kit) (€39,95), een smaakvariant zoals [yuzu matcha](/product/matcha-yuzu-blend-40g) of een [keramische chawan](/product/keramische-matcha-kom).
+- **€50–€80** — De [gift box](/product/gift-box) (€59,95) of [premium ritual set](/product/premium-ritual-set) (€79,95) — cadeauklaar verpakt.
+- **€80+** — De [ceremonial reserve tin](/product/ceremonial-reserve-tin) of stel zelf een [bundel met 15% korting](/bundel) samen.
 
 Volledige uitleg in [matcha cadeau ideeën](/kennis/matcha-cadeau-ideeen).`,
       },
@@ -650,11 +648,11 @@ Volledige uitleg in [matcha cadeau ideeën](/kennis/matcha-cadeau-ideeen).`,
     ],
     productsTitle: "Top cadeau-keuzes",
     productsSubtitle: "Onze meest geliefde cadeau-producten — getest door honderden klanten.",
-    productSlugs: ["gift-box", "premium-ritual-set", "starter-kit", "discovery-tea-box", "ceremonial-matcha-30g", "matcha-yuzu-blend-40g", "the-matcha-ritual-book"],
+    productSlugs: ["gift-box", "premium-ritual-set", "starter-kit", "discovery-tea-box", "ceremonial-matcha-30g", "matcha-yuzu-blend-40g"],
     faqs: [
       {
         q: "Wat is een goed matcha cadeau onder €50?",
-        a: "Een starter kit (€60 — net erover, vaak afgeprijsd onder €50) of een ceremonial 30g met bamboe chasen apart. Beide zijn complete giften zonder dat de ontvanger nog iets nodig heeft.",
+        a: "Onze starter kit (€39,95) — compleet met matcha, chasen en kom. Of een ceremonial 30g met bamboe chasen apart (samen ~€34). Beide zijn complete giften zonder dat de ontvanger nog iets nodig heeft.",
       },
       {
         q: "Is matcha geschikt voor iemand die geen thee drinkt?",
@@ -681,10 +679,10 @@ Volledige uitleg in [matcha cadeau ideeën](/kennis/matcha-cadeau-ideeen).`,
         sections: [
           {
             heading: "Velg etter budsjett",
-            body: `- **Opptil €25** — En [bambus chasen](/product/bamboe-chasen) eller [ceremonial 30g](/product/ceremonial-matcha-30g) — en liten oppmerksomhet med stor effekt.
-- **€25–€50** — En smaksvariant som [yuzu matcha](/product/matcha-yuzu-blend-40g) eller en [keramisk chawan](/product/keramische-matcha-kom).
-- **€50–€80** — [Startpakken vår](/product/starter-kit) — en komplett pakke der mottakeren kommer i gang med en gang.
-- **€80+** — [Premium ritual-settet](/product/premium-ritual-set) eller [gaveesken](/product/gift-box) — ferdig gaveinnpakket.
+            body: `- **Opptil 250 kr** — En [bambus-chasen](/product/bamboe-chasen) eller [seremoniell 30 g](/product/ceremonial-matcha-30g) — en liten oppmerksomhet med stor effekt.
+- **250–500 kr** — [Startpakken vår](/product/starter-kit) (459 kr), en smaksvariant som [yuzu-matcha](/product/matcha-yuzu-blend-40g) eller en [keramisk chawan](/product/keramische-matcha-kom).
+- **500–1000 kr** — [Gaveesken](/product/gift-box) (689 kr) eller [premium ritual-settet](/product/premium-ritual-set) (919 kr) — ferdig gaveinnpakket.
+- **1000 kr+** — [Seremoniell reserve-boks](/product/ceremonial-reserve-tin) eller sett sammen din egen [pakke med 15 % rabatt](/bundel).
 
 Full forklaring i [matcha gaveideer](/kennis/matcha-cadeau-ideeen).`,
           },
@@ -703,15 +701,15 @@ Full forklaring i [matcha gaveideer](/kennis/matcha-cadeau-ideeen).`,
 
 - Håndskrevet kort (gratis ved bestilling)
 - Send direkte til mottakeren (din adresse som avsender)
-- Bestilt før kl. 14:00 = levert i morgen innen NL og BE`,
+- Levering til Norge: 4–7 virkedager, gratis frakt over 400 kr`,
           },
         ],
         productsTitle: "Topp gavevalg",
         productsSubtitle: "Våre mest elskede gaveprodukter — testet av hundrevis av kunder.",
         faqs: [
           {
-            q: "Hva er en god matchagave under €50?",
-            a: "En startpakke (€60 — så vidt over, ofte nedsatt under €50) eller en ceremonial 30g med bambus chasen separat. Begge er komplette gaver uten at mottakeren trenger noe mer.",
+            q: "Hva er en god matchagave under 600 kr?",
+            a: "Startpakken vår (459 kr) — komplett med matcha, chasen og skål. Eller en seremoniell 30 g med bambus-chasen separat (til sammen ca. 390 kr). Begge er komplette gaver uten at mottakeren trenger noe mer.",
           },
           {
             q: "Egner matcha seg for noen som ikke drikker te?",
@@ -818,16 +816,16 @@ Volledige uitleg in onze [matcha bereiden gids](/kennis/matcha-bereiden) en [mat
             heading: "Tre tips når du begynner nå",
             body: `1. **Begynn smått** — en 30g pose er nok til å oppdage om du liker matcha før du investerer i 100g.
 2. **Hopp over cooking-grade** — bitter te i en fin pose. Velg culinary eller ceremonial med en gang.
-3. **Ikke vær redd for prisen** — 1 kopp god matcha koster €0,80, sammenlignbart med en bedre kaffe.`,
+3. **Ikke vær redd for prisen** — 1 kopp god matcha koster rundt 9 kr, sammenlignbart med en bedre kaffe.`,
           },
           {
             heading: "Hva trenger du egentlig?",
             body: `Fire ting:
 
-- **Matchapulver** (~€20)
+- **Matchapulver** (~230 kr)
 - **Vann på 75–80 °C** (vannkoker med temperaturkontroll eller bare kokende + vent 60 sek)
-- **En sil** (~€5, eller en fra kjøkkenskuffen)
-- **En visp** — en liten melkeskummer (€10), chasen (€20) eller til og med en tett krukke
+- **En sil** (~60 kr, eller en fra kjøkkenskuffen)
+- **En visp** — en liten melkeskummer (120 kr), chasen (230 kr) eller til og med en tett krukke
 
 Ikke nødvendig: matcha-blendere, "fancy" siler, kosttilskudd. Les [matcha uten chasen](/kennis/matcha-zonder-chasen) for alle alternativer.`,
           },
@@ -862,7 +860,7 @@ Full forklaring i [tilberedningsguiden vår](/kennis/matcha-bereiden) og [lag ma
         faqs: [
           {
             q: "Hva er det minste jeg trenger for å begynne med matcha?",
-            a: "Matchapulver (€20), vann på 75–80 °C, en kjøkkensil og noe å vispe med. Totalbudsjett: fra €30. Ingen chasen nødvendig.",
+            a: "Matchapulver (230 kr), vann på 75–80 °C, en kjøkkensil og noe å vispe med. Totalbudsjett: fra 350 kr. Ingen chasen nødvendig.",
           },
           {
             q: "Hvilken matcha er best for en nybegynner?",

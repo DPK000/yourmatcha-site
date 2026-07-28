@@ -1,6 +1,6 @@
 import { Link, Navigate } from "react-router-dom";
 import { ArrowRight, ChevronRight } from "lucide-react";
-import SEO from "@/components/SEO";
+import SEO, { getSiteUrl } from "@/components/SEO";
 import { useLandingPage, type LandingPage as LandingPageData } from "@/data/landings";
 import { getProductBySlug } from "@/data/products";
 import { useCurrency } from "@/context/CurrencyContext";
@@ -126,14 +126,6 @@ const inline = (s: string) =>
       '<a href="$2" class="text-primary underline underline-offset-2 hover:no-underline">$1</a>',
     );
 
-const SITE_DOMAINS: Record<string, string> = {
-  nl: "https://yourmatcha.nl",
-  de: "https://yourmatcha.de",
-  en: "https://yourmatcha.com",
-  fr: "https://yourmatcha.fr",
-  no: "https://yourmatcha.no",
-};
-
 const buildSchemas = (page: LandingPageData, siteUrl: string, urlPath: string) => {
   const url = `${siteUrl}${urlPath}`;
 
@@ -174,12 +166,12 @@ const buildSchemas = (page: LandingPageData, siteUrl: string, urlPath: string) =
 const LandingPage = ({ slug }: Props) => {
   const page = useLandingPage(slug);
   const lang = useLang();
+  const siteUrl = getSiteUrl(lang);
   const c = lang === "no" ? COPY.no : COPY.nl;
   const { format: formatPrice } = useCurrency();
 
   if (!page) return <Navigate to="/" replace />;
 
-  const siteUrl = SITE_DOMAINS[lang] || SITE_DOMAINS.nl;
   const urlPath = typeof window !== "undefined" ? window.location.pathname : `/${page.slug}`;
 
   const products = page.productSlugs

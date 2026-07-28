@@ -1,7 +1,9 @@
-import { Check, ArrowRight } from "lucide-react";
+import { useState } from "react";
+import { Check, ArrowRight, Loader2 } from "lucide-react";
 import { motion } from "framer-motion";
 import { toast } from "sonner";
 import SEO from "@/components/SEO";
+import { subscribeToNewsletter } from "@/lib/newsletter";
 import { useCurrency } from "@/context/CurrencyContext";
 import { useLang } from "@/i18n";
 
@@ -46,7 +48,7 @@ const PLANS: Record<"nl" | "no", Plan[]> = {
   no: [
     {
       name: "Starter",
-      description: "1× Ceremonial Grade matcha 30 g",
+      description: "1× Seremoniell matcha 30 g",
       price: 16.11,
       originalPrice: 18.95,
       interval: "/ måned",
@@ -54,7 +56,7 @@ const PLANS: Record<"nl" | "no", Plan[]> = {
     },
     {
       name: "Regular",
-      description: "2× Ceremonial Grade matcha 30 g",
+      description: "2× Seremoniell matcha 30 g",
       price: 32.22,
       originalPrice: 37.90,
       interval: "/ måned",
@@ -63,7 +65,7 @@ const PLANS: Record<"nl" | "no", Plan[]> = {
     },
     {
       name: "Ritual",
-      description: "1× Ceremonial Grade matcha 100 g",
+      description: "1× Seremoniell matcha 100 g",
       price: 42.46,
       originalPrice: 49.95,
       interval: "/ måned",
@@ -80,8 +82,13 @@ const COPY = {
     title: "Start Je Matcha Ritueel",
     intro: "Ontvang elke maand de verste matcha aan huis. Bespaar 15%, geniet van gratis verzending en zeg op wanneer je wilt.",
     mostPopular: "Meest Gekozen",
-    toastSelected: (name: string) => `${name} abonnement geselecteerd!`,
     startRitual: "Start Je Ritueel",
+    emailPlaceholder: "Je e-mailadres",
+    confirm: "Aanmelden",
+    signupNote: "Laat je e-mailadres achter — we sturen je binnen 24 uur een persoonlijke betaallink om je abonnement te starten.",
+    thanks: "Aangemeld! Je ontvangt binnen 24 uur een e-mail om je abonnement te starten.",
+    error: "Er ging iets mis. Probeer het opnieuw of mail ons.",
+    invalidEmail: "Vul een geldig e-mailadres in.",
     whyTitle: "Waarom een Abonnement?",
     benefits: [
       { title: "Bespaar 15%", desc: "Op elke levering, vergeleken met een eenmalige aankoop." },
@@ -96,8 +103,13 @@ const COPY = {
     title: "Start matcharitualet ditt",
     intro: "Få den ferskeste matchaen levert hjem hver måned. Spar 15 %, nyt gratis frakt og si opp når du vil.",
     mostPopular: "Mest populær",
-    toastSelected: (name: string) => `${name}-abonnement valgt!`,
     startRitual: "Start ritualet ditt",
+    emailPlaceholder: "E-postadressen din",
+    confirm: "Meld meg på",
+    signupNote: "Legg igjen e-postadressen din — vi sender deg en personlig betalingslenke innen 24 timer for å starte abonnementet.",
+    thanks: "Påmeldt! Du får en e-post innen 24 timer for å starte abonnementet ditt.",
+    error: "Noe gikk galt. Prøv igjen eller send oss en e-post.",
+    invalidEmail: "Fyll inn en gyldig e-postadresse.",
     whyTitle: "Hvorfor abonnement?",
     benefits: [
       { title: "Spar 15 %", desc: "På hver levering, sammenlignet med et enkeltkjøp." },
@@ -106,6 +118,79 @@ const COPY = {
     ],
   },
 } as const;
+
+/** Inline e-mailaanmelding per plan — lead komt met bron `subscription-<plan>` in de admin. */
+const PlanSignup = ({ plan, t }: { plan: Plan; t: (typeof COPY)["nl" | "no"] }) => {
+  const [open, setOpen] = useState(false);
+  const [email, setEmail] = useState("");
+  const [busy, setBusy] = useState(false);
+  const [done, setDone] = useState(false);
+
+  const submit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    const trimmed = email.trim();
+    if (!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(trimmed)) {
+      toast.error(t.invalidEmail);
+      return;
+    }
+    setBusy(true);
+    const ok = await subscribeToNewsletter(trimmed, `subscription-${plan.name.toLowerCase()}`);
+    setBusy(false);
+    if (ok) {
+      setDone(true);
+      toast.success(t.thanks);
+    } else {
+      toast.error(t.error);
+    }
+  };
+
+  if (done) {
+    return (
+      <p className={`text-sm font-medium flex items-start gap-2 ${plan.popular ? "text-primary-foreground/90" : "text-primary"}`}>
+        <Check className="w-4 h-4 mt-0.5 flex-shrink-0" /> {t.thanks}
+      </p>
+    );
+  }
+
+  if (!open) {
+    return (
+      <button
+        onClick={() => setOpen(true)}
+        className={`w-full flex items-center justify-center gap-2 py-3 rounded font-medium text-sm tracking-wide uppercase transition-opacity hover:opacity-90 ${
+          plan.popular ? "bg-accent text-accent-foreground" : "bg-primary text-primary-foreground"
+        }`}
+      >
+        {t.startRitual} <ArrowRight className="w-4 h-4" />
+      </button>
+    );
+  }
+
+  return (
+    <form onSubmit={submit} className="space-y-2">
+      <p className={`text-xs leading-relaxed ${plan.popular ? "text-primary-foreground/70" : "text-muted-foreground"}`}>
+        {t.signupNote}
+      </p>
+      <input
+        autoFocus
+        type="email"
+        required
+        value={email}
+        onChange={(e) => setEmail(e.target.value)}
+        placeholder={t.emailPlaceholder}
+        className="w-full px-4 py-2.5 rounded border border-border bg-background text-sm text-foreground focus:outline-none focus:ring-2 focus:ring-primary/30"
+      />
+      <button
+        type="submit"
+        disabled={busy}
+        className={`w-full flex items-center justify-center gap-2 py-3 rounded font-medium text-sm tracking-wide uppercase transition-opacity hover:opacity-90 disabled:opacity-60 ${
+          plan.popular ? "bg-accent text-accent-foreground" : "bg-primary text-primary-foreground"
+        }`}
+      >
+        {busy ? <Loader2 className="w-4 h-4 animate-spin" /> : t.confirm}
+      </button>
+    </form>
+  );
+};
 
 const Subscriptions = () => {
   const { format: formatPrice } = useCurrency();
@@ -171,16 +256,7 @@ const Subscriptions = () => {
                 </li>
               ))}
             </ul>
-            <button
-              onClick={() => toast.success(t.toastSelected(plan.name))}
-              className={`w-full flex items-center justify-center gap-2 py-3 rounded font-medium text-sm tracking-wide uppercase transition-opacity hover:opacity-90 ${
-                plan.popular
-                  ? "bg-accent text-accent-foreground"
-                  : "bg-primary text-primary-foreground"
-              }`}
-            >
-              {t.startRitual} <ArrowRight className="w-4 h-4" />
-            </button>
+            <PlanSignup plan={plan} t={t} />
           </motion.div>
         ))}
       </div>

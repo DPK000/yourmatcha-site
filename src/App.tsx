@@ -1,3 +1,4 @@
+import { lazy, Suspense } from "react";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Route, Routes, useLocation } from "react-router-dom";
 import { HelmetProvider } from "react-helmet-async";
@@ -13,46 +14,49 @@ import PageTransition from "@/components/PageTransition";
 import ScrollToTop from "@/components/ScrollToTop";
 import { useGAPageView } from "@/hooks/useGAPageView";
 import NewsletterPopup from "@/components/NewsletterPopup";
+// Homepage blijft eager: dat is de LCP-kritieke route
 import Homepage from "@/pages/Homepage";
-import Shop from "@/pages/Shop";
-import ProductDetail from "@/pages/ProductDetail";
-import About from "@/pages/About";
-import Blog from "@/pages/Blog";
-import BlogPost from "@/pages/BlogPost";
-import Subscriptions from "@/pages/Subscriptions";
-import Checkout from "@/pages/Checkout";
-import ThankYou from "@/pages/ThankYou";
-import Cart from "@/pages/Cart";
-import Contact from "@/pages/Contact";
-import FAQ from "@/pages/FAQ";
-import Shipping from "@/pages/Shipping";
-import Privacy from "@/pages/Privacy";
-import Terms from "@/pages/Terms";
-import Recipes from "@/pages/Recipes";
-import RecipeDetail from "@/pages/RecipeDetail";
-import Sustainability from "@/pages/Sustainability";
-import Origin from "@/pages/Origin";
-import BundleBuilder from "@/pages/BundleBuilder";
-import Knowledge from "@/pages/Knowledge";
-import KnowledgeArticle from "@/pages/KnowledgeArticle";
-import Compare from "@/pages/Compare";
-import LandingPage from "@/pages/LandingPage";
-import Glossary from "@/pages/Glossary";
-import NotFound from "@/pages/NotFound";
 
-// BUQE Commerce admin
-import AdminLayout from "@/pages/admin/AdminLayout";
-import AdminLogin from "@/pages/admin/AdminLogin";
-import AdminDashboard from "@/pages/admin/AdminDashboard";
-import AdminOrders from "@/pages/admin/AdminOrders";
-import AdminOrderDetail from "@/pages/admin/AdminOrderDetail";
-import AdminProducts from "@/pages/admin/AdminProducts";
-import AdminDiscountCodes from "@/pages/admin/AdminDiscountCodes";
-import AdminNewsletter from "@/pages/admin/AdminNewsletter";
-import AdminEmailLog from "@/pages/admin/AdminEmailLog";
-import AdminPartners from "@/pages/admin/AdminPartners";
-import AdminB2B from "@/pages/admin/AdminB2B";
-import AdminPixels from "@/pages/admin/AdminPixels";
+// Alle overige routes lazy — houdt de main bundle klein
+const Shop = lazy(() => import("@/pages/Shop"));
+const ProductDetail = lazy(() => import("@/pages/ProductDetail"));
+const About = lazy(() => import("@/pages/About"));
+const Blog = lazy(() => import("@/pages/Blog"));
+const BlogPost = lazy(() => import("@/pages/BlogPost"));
+const Subscriptions = lazy(() => import("@/pages/Subscriptions"));
+const Checkout = lazy(() => import("@/pages/Checkout"));
+const ThankYou = lazy(() => import("@/pages/ThankYou"));
+const Cart = lazy(() => import("@/pages/Cart"));
+const Contact = lazy(() => import("@/pages/Contact"));
+const FAQ = lazy(() => import("@/pages/FAQ"));
+const Shipping = lazy(() => import("@/pages/Shipping"));
+const Privacy = lazy(() => import("@/pages/Privacy"));
+const Terms = lazy(() => import("@/pages/Terms"));
+const Recipes = lazy(() => import("@/pages/Recipes"));
+const RecipeDetail = lazy(() => import("@/pages/RecipeDetail"));
+const Sustainability = lazy(() => import("@/pages/Sustainability"));
+const Origin = lazy(() => import("@/pages/Origin"));
+const BundleBuilder = lazy(() => import("@/pages/BundleBuilder"));
+const Knowledge = lazy(() => import("@/pages/Knowledge"));
+const KnowledgeArticle = lazy(() => import("@/pages/KnowledgeArticle"));
+const Compare = lazy(() => import("@/pages/Compare"));
+const LandingPage = lazy(() => import("@/pages/LandingPage"));
+const Glossary = lazy(() => import("@/pages/Glossary"));
+const NotFound = lazy(() => import("@/pages/NotFound"));
+
+// BUQE Commerce admin — volledig lazy zodat bezoekers dit nooit downloaden
+const AdminLayout = lazy(() => import("@/pages/admin/AdminLayout"));
+const AdminLogin = lazy(() => import("@/pages/admin/AdminLogin"));
+const AdminDashboard = lazy(() => import("@/pages/admin/AdminDashboard"));
+const AdminOrders = lazy(() => import("@/pages/admin/AdminOrders"));
+const AdminOrderDetail = lazy(() => import("@/pages/admin/AdminOrderDetail"));
+const AdminProducts = lazy(() => import("@/pages/admin/AdminProducts"));
+const AdminDiscountCodes = lazy(() => import("@/pages/admin/AdminDiscountCodes"));
+const AdminNewsletter = lazy(() => import("@/pages/admin/AdminNewsletter"));
+const AdminEmailLog = lazy(() => import("@/pages/admin/AdminEmailLog"));
+const AdminPartners = lazy(() => import("@/pages/admin/AdminPartners"));
+const AdminB2B = lazy(() => import("@/pages/admin/AdminB2B"));
+const AdminPixels = lazy(() => import("@/pages/admin/AdminPixels"));
 
 const queryClient = new QueryClient();
 
@@ -60,9 +64,11 @@ const AnimatedRoutes = () => {
   const location = useLocation();
   useGAPageView();
   return (
+    <>
+    <ScrollToTop />
     <AnimatePresence mode="wait">
-      <ScrollToTop />
-      <Routes location={location} key={location.pathname}>
+      <Suspense fallback={null} key={location.pathname}>
+      <Routes location={location}>
         <Route path="/" element={<PageTransition><Homepage /></PageTransition>} />
         <Route path="/shop" element={<PageTransition><Shop /></PageTransition>} />
         <Route path="/product/:slug" element={<PageTransition><ProductDetail /></PageTransition>} />
@@ -110,7 +116,9 @@ const AnimatedRoutes = () => {
         <Route path="/matcha-woordenboek" element={<PageTransition><Glossary /></PageTransition>} />
         <Route path="*" element={<PageTransition><NotFound /></PageTransition>} />
       </Routes>
+      </Suspense>
     </AnimatePresence>
+    </>
   );
 };
 
@@ -136,8 +144,8 @@ const App = () => (
           <CartProvider>
             <Routes>
               {/* BUQE Commerce Admin — geen header/footer */}
-              <Route path="/admin/login" element={<AdminLogin />} />
-              <Route path="/admin" element={<AdminLayout />}>
+              <Route path="/admin/login" element={<Suspense fallback={null}><AdminLogin /></Suspense>} />
+              <Route path="/admin" element={<Suspense fallback={null}><AdminLayout /></Suspense>}>
                 <Route index element={<AdminDashboard />} />
                 <Route path="orders" element={<AdminOrders />} />
                 <Route path="orders/:id" element={<AdminOrderDetail />} />

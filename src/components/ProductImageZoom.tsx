@@ -1,5 +1,6 @@
 import { useRef, useState } from "react";
 import { ZoomIn } from "lucide-react";
+import { useTranslation } from "react-i18next";
 
 interface Props {
   src: string;
@@ -12,6 +13,7 @@ interface Props {
  * and pinch/tap-to-zoom (mobile). Reveals watercolor texture and gold accents.
  */
 const ProductImageZoom = ({ src, alt, zoom = 2.2 }: Props) => {
+  const { t } = useTranslation();
   const ref = useRef<HTMLDivElement>(null);
   const [pos, setPos] = useState({ x: 50, y: 50 });
   const [active, setActive] = useState(false);
@@ -39,7 +41,7 @@ const ProductImageZoom = ({ src, alt, zoom = 2.2 }: Props) => {
       onTouchEnd={() => setActive(false)}
       onTouchMove={handleMove}
       className="relative aspect-square rounded-2xl overflow-hidden bg-secondary cursor-zoom-in group select-none"
-      aria-label={`${alt} — beweeg om in te zoomen`}
+      aria-label={`${alt} — ${t("product.zoomHint")}`}
     >
       <img
         src={src}
@@ -83,7 +85,7 @@ const ProductImageZoom = ({ src, alt, zoom = 2.2 }: Props) => {
           active ? "opacity-0 -translate-y-1" : "opacity-100 translate-y-0"
         }`}
       >
-        <ZoomIn className="w-3 h-3" /> Hover om in te zoomen
+        <ZoomIn className="w-3 h-3" /> {t("product.zoomHint")}
       </div>
     </div>
   );

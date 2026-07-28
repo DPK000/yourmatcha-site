@@ -2,7 +2,7 @@ import { useParams, Link } from "react-router-dom";
 import { getBlogBySlug, blogPosts } from "@/data/blog";
 import { ChevronLeft, Clock } from "lucide-react";
 import { motion } from "framer-motion";
-import SEO from "@/components/SEO";
+import SEO, { getSiteUrl } from "@/components/SEO";
 import { useLang } from "@/i18n";
 
 const COPY = {
@@ -26,6 +26,7 @@ const BlogPost = () => {
   const { slug } = useParams<{ slug: string }>();
   const post = getBlogBySlug(slug || "");
   const lang = useLang();
+  const siteUrl = getSiteUrl(lang);
   const c = lang === "no" ? COPY.no : COPY.nl;
 
   if (!post) {
@@ -62,11 +63,11 @@ const BlogPost = () => {
     "@context": "https://schema.org",
     "@type": "BlogPosting",
     headline: post.title,
-    image: post.image?.startsWith("http") ? post.image : `https://yourmatcha.nl${post.image}`,
+    image: post.image?.startsWith("http") ? post.image : `${siteUrl}${post.image}`,
     datePublished: post.date,
     author: { "@type": "Organization", name: "YourMatcha" },
-    publisher: { "@type": "Organization", name: "YourMatcha", logo: { "@type": "ImageObject", url: "https://yourmatcha.nl/logo.png" } },
-    mainEntityOfPage: `https://yourmatcha.nl/blog/${post.slug}`,
+    publisher: { "@type": "Organization", name: "YourMatcha", logo: { "@type": "ImageObject", url: `${siteUrl}/logo.png` } },
+    mainEntityOfPage: `${siteUrl}/blog/${post.slug}`,
     articleSection: post.category,
   };
 

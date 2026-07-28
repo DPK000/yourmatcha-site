@@ -3,12 +3,15 @@ import { motion, AnimatePresence } from "framer-motion";
 import { X, Sparkles } from "lucide-react";
 import { toast } from "sonner";
 import { useLang } from "@/i18n";
+import { subscribeToNewsletter } from "@/lib/newsletter";
+import { useCart } from "@/context/CartContext";
 
 const STORAGE_KEY = "yourmatcha-newsletter-popup";
 
 const COPY = {
   nl: {
-    toastSuccess: "Welkom bij YourMatcha — check je inbox voor je code",
+    toastSuccess: "Welkom bij YourMatcha — je korting staat klaar in je winkelwagen",
+    toastError: "Inschrijven lukte niet — probeer het later opnieuw",
     closeAria: "Sluiten",
     eyebrow: "Welkomstcadeau",
     headingTop: "10% korting",
@@ -19,7 +22,8 @@ const COPY = {
     decline: "Nee bedankt",
   },
   no: {
-    toastSuccess: "Velkommen til YourMatcha — sjekk innboksen for koden din",
+    toastSuccess: "Velkommen til YourMatcha — rabatten ligger klar i handlekurven",
+    toastError: "Påmeldingen mislyktes — prøv igjen senere",
     closeAria: "Lukk",
     eyebrow: "Velkomstgave",
     headingTop: "10 % rabatt",
@@ -34,8 +38,10 @@ const COPY = {
 const NewsletterPopup = () => {
   const [open, setOpen] = useState(false);
   const [email, setEmail] = useState("");
+  const [submitting, setSubmitting] = useState(false);
   const lang = useLang();
   const c = lang === "no" ? COPY.no : COPY.nl;
+  const { applyDiscount } = useCart();
 
   useEffect(() => {
     if (typeof window === "undefined") return;
@@ -56,12 +62,20 @@ const NewsletterPopup = () => {
     localStorage.setItem(STORAGE_KEY, "1");
   };
 
-  const submit = (e: React.FormEvent) => {
+  const submit = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (!email.trim()) return;
+    if (!email.trim() || submitting) return;
+    setSubmitting(true);
+    const ok = await subscribeToNewsletter(email, "popup");
+    setSubmitting(false);
+    if (!ok) {
+      toast.error(c.toastError);
+      return;
+    }
     toast.success(c.toastSuccess);
     localStorage.setItem(STORAGE_KEY, "1");
-    localStorage.setItem("yourmatcha-discount", "MATCHA10");
+    // Welkomstkorting meteen op de winkelwagen zetten (code staat ook in discount_codes)
+    applyDiscount({ code: "MATCHA10", type: "percentage", value: 10, minOrder: 0 });
     setOpen(false);
   };
 
@@ -114,7 +128,8 @@ const NewsletterPopup = () => {
               />
               <button
                 type="submit"
-                className="w-full py-3 bg-primary text-primary-foreground text-sm font-bold tracking-widest uppercase rounded-full hover:opacity-90 transition-opacity"
+                disabled={submitting}
+                className="w-full py-3 bg-primary text-primary-foreground text-sm font-bold tracking-widest uppercase rounded-full hover:opacity-90 transition-opacity disabled:opacity-60"
               >
                 {c.submit}
               </button>

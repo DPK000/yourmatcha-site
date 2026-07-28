@@ -5,7 +5,7 @@ import { useEffect, useMemo, useState } from "react";
 import { Minus, Plus, ShoppingBag, ChevronLeft, Star, Truck, Leaf, ShieldCheck, Heart, Zap, Brain, Droplets, Sparkles } from "lucide-react";
 import ProductCard from "@/components/ProductCard";
 import ProductImageZoom from "@/components/ProductImageZoom";
-import SEO from "@/components/SEO";
+import SEO, { getSiteUrl } from "@/components/SEO";
 import { motion } from "framer-motion";
 import { toast } from "sonner";
 import { useTranslation } from "react-i18next";
@@ -31,8 +31,9 @@ const useUserReviews = (productId: string) => {
 
 const ProductDetail = () => {
   const { t, i18n } = useTranslation();
-  const { format: formatPrice } = useCurrency();
+  const { format: formatPrice, convert, currency } = useCurrency();
   const lang = getCurrentLang();
+  const siteUrl = getSiteUrl(lang);
   const tReview = (text: string) => {
     if (lang === "nl") return text;
     return reviewTranslations[text]?.[lang] || text;
@@ -72,10 +73,10 @@ const ProductDetail = () => {
     brand: { "@type": "Brand", name: "YourMatcha" },
     offers: {
       "@type": "Offer",
-      priceCurrency: "EUR",
-      price: product.price.toFixed(2),
+      priceCurrency: currency,
+      price: currency === "NOK" ? String(convert(product.price)) : product.price.toFixed(2),
       availability: "https://schema.org/InStock",
-      url: `https://yourmatcha.nl/product/${product.slug}`,
+      url: `${siteUrl}/product/${product.slug}`,
     },
     ...(avgRating && allReviews.length
       ? {
@@ -93,18 +94,18 @@ const ProductDetail = () => {
           })),
         }
       : {}),
-  }), [product, avgRating, allReviews]);
+  }), [product, avgRating, allReviews, currency, convert, siteUrl]);
 
   const breadcrumbJsonLd = useMemo(() => ({
     "@context": "https://schema.org",
     "@type": "BreadcrumbList",
     itemListElement: [
-      { "@type": "ListItem", position: 1, name: "Home", item: "https://yourmatcha.nl/" },
-      { "@type": "ListItem", position: 2, name: "Shop", item: "https://yourmatcha.nl/shop" },
-      { "@type": "ListItem", position: 3, name: product.categoryLabel, item: `https://yourmatcha.nl/shop?category=${product.category}` },
-      { "@type": "ListItem", position: 4, name: product.name, item: `https://yourmatcha.nl/product/${product.slug}` },
+      { "@type": "ListItem", position: 1, name: "Home", item: `${siteUrl}/` },
+      { "@type": "ListItem", position: 2, name: "Shop", item: `${siteUrl}/shop` },
+      { "@type": "ListItem", position: 3, name: product.categoryLabel, item: `${siteUrl}/shop?category=${product.category}` },
+      { "@type": "ListItem", position: 4, name: product.name, item: `${siteUrl}/product/${product.slug}` },
     ],
-  }), [product]);
+  }), [product, siteUrl]);
 
   // Multiple images: use main + reuse for gallery thumbs (lifestyle effect)
   const gallery = product.images.length > 1 ? product.images : [product.images[0]];
@@ -210,7 +211,7 @@ const ProductDetail = () => {
 
               <div className="flex items-baseline gap-3 mb-1">
                 <p className="text-3xl font-semibold text-foreground">{formatPrice(product.price)}</p>
-                {product.badge === "Voordeel" && (
+                {product.badgeKey === "Voordeel" && (
                   <p className="text-base text-muted-foreground line-through">{formatPrice(product.price * 1.2)}</p>
                 )}
               </div>

@@ -8,19 +8,19 @@ type RateRow = { country: string; rate: string; time: string };
 
 const COPY = {
   nl: {
-    seoTitle: "Verzending & retouren — Gratis bezorging in NL en België",
+    seoTitle: "Verzending & retouren — Gratis bezorging vanaf €35",
     seoDescription:
-      "Bestel je matcha vandaag, ontvang 'm morgen. Gratis verzending vanaf €35 in Nederland en België, zorgvuldig verpakt, 14 dagen retour, track & trace.",
+      "Bestel je matcha vandaag, ontvang 'm morgen. Gratis verzending vanaf €35, zorgvuldig verpakt, 30 dagen retour, track & trace.",
     seoKeywords: "matcha verzendkosten, gratis verzending matcha, levertijd matcha, matcha retourneren",
     heroEyebrow: "Verzending & Retour",
     heroTitle: "Snel, veilig en duurzaam",
     heroSubtitle:
       "Alles wat je moet weten over hoe we jouw matcha bij je thuis bezorgen — en wat je kunt doen als iets niet klopt.",
     items: [
-      { title: "Gratis verzending", text: "Boven €35 binnen Nederland en België." },
+      { title: "Gratis verzending", text: "Bij elke bestelling boven €35." },
       { title: "Snelle levering", text: "Verzonden binnen 1 werkdag, ontvangen in 1–2 dagen." },
       { title: "Zorgvuldig verpakt", text: "Volledig recyclebare verpakking, geen plastic vulling." },
-      { title: "14 dagen retour", text: "Niet tevreden? Stuur ongeopend retour binnen 14 dagen." },
+      { title: "30 dagen retour", text: "Niet tevreden? Meld je retour binnen 30 dagen — geld terug." },
       { title: "Track & trace", text: "Direct na verzending ontvang je een volgnummer per mail." },
       { title: "100% verzekerd", text: "Elk pakket is volledig verzekerd tegen verlies of schade." },
     ],
@@ -30,31 +30,31 @@ const COPY = {
     thTime: "Levertijd",
     rates: [
       { country: "Nederland", rate: "€4,95 (gratis > €35)", time: "1–2 werkdagen" },
-      { country: "België", rate: "€5,95 (gratis > €35)", time: "2–3 werkdagen" },
-      { country: "Duitsland", rate: "€7,95", time: "3–4 werkdagen" },
-      { country: "Frankrijk", rate: "€9,95", time: "3–5 werkdagen" },
-      { country: "Overig EU", rate: "€12,95", time: "4–7 werkdagen" },
+      { country: "België", rate: "€4,95 (gratis > €35)", time: "2–3 werkdagen" },
+      { country: "Duitsland", rate: "€4,95 (gratis > €35)", time: "3–4 werkdagen" },
+      { country: "Frankrijk", rate: "€4,95 (gratis > €35)", time: "3–5 werkdagen" },
+      { country: "Noorwegen", rate: "€4,95 (gratis > €35)", time: "4–7 werkdagen" },
     ] as RateRow[],
     returnsTitle: "Retourneren",
     returnsP1:
-      "Niet helemaal tevreden? Geen probleem. Je hebt 14 dagen na ontvangst de tijd om je bestelling ongeopend en in originele staat retour te sturen. Geopende voedingsproducten kunnen we vanwege hygiëneregels niet terugnemen — voor accessoires geldt deze beperking niet.",
+      "Niet helemaal tevreden? Geen probleem. Je hebt 30 dagen na ontvangst de tijd om je bestelling retour te melden. Ongeopende producten stuur je gewoon terug; heb je de matcha al geproefd en ben je niet tevreden, dan geldt onze niet-goed-geld-teruggarantie.",
     returnsP2a: "Stuur een mail naar ",
     returnsP2b: " en we sturen je een retourlabel. Het bedrag staat binnen 5 werkdagen na ontvangst weer op je rekening.",
   },
   no: {
     seoTitle: "Frakt og retur — Trygg levering til Norge",
     seoDescription:
-      "Bestill matchaen din i dag — vi sender innen 1 virkedag. Frakt til Norge for 149 kr, omsorgsfullt pakket, 14 dagers returrett og sporing hele veien.",
+      "Bestill matchaen din i dag — vi sender innen 1 virkedag. Gratis frakt over 400 kr, omsorgsfullt pakket, 30 dagers åpent kjøp og sporing hele veien.",
     seoKeywords: "matcha fraktkostnader, matcha levering Norge, leveringstid matcha, returnere matcha",
     heroEyebrow: "Frakt og retur",
     heroTitle: "Raskt, trygt og bærekraftig",
     heroSubtitle:
       "Alt du trenger å vite om hvordan vi leverer matchaen hjem til deg — og hva du kan gjøre hvis noe ikke stemmer.",
     items: [
-      { title: "Gratis frakt", text: "Over 400 kr innenfor Nederland og Belgia." },
+      { title: "Gratis frakt", text: "På alle bestillinger over 400 kr — også til Norge." },
       { title: "Rask levering", text: "Sendt innen 1 virkedag — til Norge er pakken fremme på 4–7 virkedager." },
       { title: "Omsorgsfullt pakket", text: "Fullt gjenvinnbar emballasje, uten plastfyll." },
-      { title: "14 dagers returrett", text: "Ikke fornøyd? Returner uåpnet innen 14 dager." },
+      { title: "30 dagers åpent kjøp", text: "Ikke fornøyd? Meld retur innen 30 dager — pengene tilbake." },
       { title: "Sporing", text: "Rett etter forsendelse får du et sporingsnummer på e-post." },
       { title: "100 % forsikret", text: "Hver pakke er fullt forsikret mot tap og skade." },
     ],
@@ -63,16 +63,15 @@ const COPY = {
     thRate: "Pris",
     thTime: "Leveringstid",
     rates: [
-      { country: "Nederland", rate: "57 kr (gratis > 400 kr)", time: "1–2 virkedager" },
-      { country: "Belgia", rate: "68 kr (gratis > 400 kr)", time: "2–3 virkedager" },
-      { country: "Tyskland", rate: "91 kr", time: "3–4 virkedager" },
-      { country: "Frankrike", rate: "114 kr", time: "3–5 virkedager" },
-      { country: "Øvrige EU", rate: "149 kr", time: "4–7 virkedager" },
-      { country: "Norge", rate: "149 kr", time: "4–7 virkedager" },
+      { country: "Norge", rate: "59 kr (gratis > 400 kr)", time: "4–7 virkedager" },
+      { country: "Nederland", rate: "59 kr (gratis > 400 kr)", time: "1–2 virkedager" },
+      { country: "Belgia", rate: "59 kr (gratis > 400 kr)", time: "2–3 virkedager" },
+      { country: "Tyskland", rate: "59 kr (gratis > 400 kr)", time: "3–4 virkedager" },
+      { country: "Frankrike", rate: "59 kr (gratis > 400 kr)", time: "3–5 virkedager" },
     ] as RateRow[],
     returnsTitle: "Retur",
     returnsP1:
-      "Ikke helt fornøyd? Ingen problem. Du har 14 dager fra du mottar bestillingen på å returnere den uåpnet og i original stand. Åpnede matvarer kan vi av hygienehensyn ikke ta i retur — for tilbehør gjelder ikke denne begrensningen.",
+      "Ikke helt fornøyd? Ingen problem. Du har 30 dager fra du mottar bestillingen på å melde retur. Uåpnede produkter sender du bare tilbake; har du allerede smakt matchaen og ikke er fornøyd, gjelder vår fornøyd-eller-pengene-tilbake-garanti.",
     returnsP2a: "Send en e-post til ",
     returnsP2b: ", så sender vi deg en returetikett. Beløpet er tilbake på kontoen din innen 5 virkedager etter at vi har mottatt pakken.",
   },
@@ -141,7 +140,7 @@ const Shipping = () => {
           <ScrollReveal className="mt-16">
             <h2 className="font-heading text-3xl font-semibold mb-4">{c.returnsTitle}</h2>
             <p className="text-muted-foreground leading-relaxed mb-3">{c.returnsP1}</p>
-            <p className="text-muted-foreground leading-relaxed">{c.returnsP2a}<a href="mailto:retour@yourmatcha.nl" className="text-primary underline">retour@yourmatcha.nl</a>{c.returnsP2b}</p>
+            <p className="text-muted-foreground leading-relaxed">{c.returnsP2a}<a href="mailto:info@yourmatcha.nl" className="text-primary underline">info@yourmatcha.nl</a>{c.returnsP2b}</p>
           </ScrollReveal>
         </div>
       </section>

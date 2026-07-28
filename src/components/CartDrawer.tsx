@@ -7,8 +7,9 @@ import { useCurrency } from "@/context/CurrencyContext";
 
 const CartDrawer = () => {
   const { t } = useTranslation();
-  const { format: formatPrice } = useCurrency();
-  const { items, isOpen, setIsOpen, removeItem, updateQuantity, subtotal, totalItems } = useCart();
+  const { format: formatPrice, formatAmount, convert } = useCurrency();
+  const { items, isOpen, setIsOpen, removeItem, updateQuantity, totalItems } = useCart();
+  const subtotal = items.reduce((sum, i) => sum + convert(i.product.price) * i.quantity, 0);
 
   return (
     <AnimatePresence>
@@ -58,8 +59,8 @@ const CartDrawer = () => {
                 <ul className="space-y-6">
                   {items.map(item => (
                     <li key={item.product.id} className="flex gap-4">
-                      <div className="w-20 h-20 bg-secondary rounded flex-shrink-0 flex items-center justify-center">
-                        <img src={item.product.images[0]} alt={item.product.name} className="w-12 h-12 object-contain opacity-50" />
+                      <div className="w-20 h-20 bg-secondary rounded overflow-hidden flex-shrink-0">
+                        <img src={item.product.images[0]} alt={item.product.name} className="w-full h-full object-cover" />
                       </div>
                       <div className="flex-1 min-w-0">
                         <h3 className="text-sm font-medium truncate">{item.product.name}</h3>
@@ -84,7 +85,7 @@ const CartDrawer = () => {
                         <button onClick={() => removeItem(item.product.id)} className="text-muted-foreground hover:text-destructive transition-colors">
                           <X className="w-4 h-4" />
                         </button>
-                        <span className="text-sm font-semibold">{formatPrice(item.product.price * item.quantity)}</span>
+                        <span className="text-sm font-semibold">{formatAmount(convert(item.product.price) * item.quantity)}</span>
                       </div>
                     </li>
                   ))}
@@ -97,7 +98,7 @@ const CartDrawer = () => {
               <div className="border-t border-border p-6 space-y-4">
                 <div className="flex justify-between text-base">
                   <span className="text-muted-foreground">{t("cart.subtotal")}</span>
-                  <span className="font-semibold">{formatPrice(subtotal)}</span>
+                  <span className="font-semibold">{formatAmount(subtotal)}</span>
                 </div>
                 <p className="text-xs text-muted-foreground">{t("cart.shippingNote")}</p>
                 <Link

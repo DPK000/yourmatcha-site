@@ -11,6 +11,8 @@ interface UseBuqePaymentIntentArgs {
   total: number;
   /** ISO-valutacode (bv. "eur" of "nok"). Bedragen moeten in deze valuta zijn. Default: buqeConfig.currency.default */
   currency?: string;
+  /** Kortingscode — wordt server-side gevalideerd en verrekend in de edge function */
+  discountCode?: string;
   /** Re-create when this changes (bv. total verandert door discount). Default: items+total fingerprint */
   recreateKey?: string;
 }
@@ -42,7 +44,7 @@ export function useBuqePaymentIntent(args: UseBuqePaymentIntentArgs): PaymentInt
 
   const fingerprint =
     args.recreateKey ??
-    `${args.email}|${currency}|${args.total.toFixed(2)}|${args.items.length}|${args.items.map(i => `${i.name}x${i.quantity}`).join(",")}`;
+    `${args.email}|${currency}|${args.discountCode ?? ""}|${args.total.toFixed(2)}|${args.items.length}|${args.items.map(i => `${i.name}x${i.quantity}`).join(",")}`;
 
   useEffect(() => {
     if (!args.email || args.items.length === 0 || args.total <= 0) return;
@@ -61,6 +63,7 @@ export function useBuqePaymentIntent(args: UseBuqePaymentIntentArgs): PaymentInt
             total: args.total,
             currency,
             shopSlug: buqeConfig.brand.slug,
+            discountCode: args.discountCode,
           },
         });
         if (cancelled) return;

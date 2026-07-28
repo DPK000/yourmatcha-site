@@ -2,9 +2,11 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Lock, Eye, EyeOff } from "lucide-react";
+import { supabase } from "@/lib/supabase";
 
 const AdminLogin = () => {
   const navigate = useNavigate();
+  const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [showPassword, setShowPassword] = useState(false);
   const [error, setError] = useState("");
@@ -15,17 +17,17 @@ const AdminLogin = () => {
     setLoading(true);
     setError("");
 
-    // Check against env variable
-    const adminPassword = import.meta.env.VITE_ADMIN_PASSWORD || "admin123";
-    await new Promise(r => setTimeout(r, 400)); // small delay for UX
+    const { error: authError } = await supabase.auth.signInWithPassword({
+      email: email.trim(),
+      password,
+    });
 
-    if (password === adminPassword) {
-      sessionStorage.setItem("shop_admin_auth", "true");
-      navigate("/admin");
-    } else {
-      setError("Incorrect password. Please try again.");
+    if (authError) {
+      setError("Onjuiste inloggegevens. Probeer opnieuw.");
+      setLoading(false);
+      return;
     }
-    setLoading(false);
+    navigate("/admin");
   };
 
   return (
@@ -40,14 +42,22 @@ const AdminLogin = () => {
         </div>
 
         <form onSubmit={handleLogin} className="space-y-4">
+          <input
+            type="email"
+            value={email}
+            onChange={e => setEmail(e.target.value)}
+            placeholder="E-mailadres"
+            className="w-full rounded-lg border border-border bg-card px-4 py-3 text-sm font-body outline-none focus:ring-2 focus:ring-primary/40"
+            autoFocus
+            required
+          />
           <div className="relative">
             <input
               type={showPassword ? "text" : "password"}
               value={password}
               onChange={e => setPassword(e.target.value)}
-              placeholder="Admin wachtwoord"
+              placeholder="Wachtwoord"
               className="w-full rounded-lg border border-border bg-card px-4 py-3 pr-10 text-sm font-body outline-none focus:ring-2 focus:ring-primary/40"
-              autoFocus
               required
             />
             <button

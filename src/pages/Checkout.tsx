@@ -1,4 +1,4 @@
-import { useCart } from "@/context/CartContext";
+import { useCart, computeDiscountAmount } from "@/context/CartContext";
 import { Link } from "react-router-dom";
 import { useMemo, useState, useEffect, useRef } from "react";
 import { toast } from "sonner";
@@ -15,6 +15,7 @@ import {
   useStripe,
 } from "@stripe/react-stripe-js";
 import { useCurrency } from "@/context/CurrencyContext";
+import SEO from "@/components/SEO";
 import { useLang } from "@/i18n";
 
 const COPY = {
@@ -30,6 +31,7 @@ const COPY = {
     errorSuffix:      ". Vernieuw de pagina en probeer opnieuw.",
     summary:          "Overzicht",
     subtotal:         "Subtotaal",
+    discount:         "Korting",
     shipping:         "Verzending",
     free:             "Gratis",
     freeShippingFrom: "Gratis verzending vanaf €35",
@@ -62,9 +64,10 @@ const COPY = {
     errorSuffix:      ". Last inn siden på nytt og prøv igjen.",
     summary:          "Oppsummering",
     subtotal:         "Delsum",
+    discount:         "Rabatt",
     shipping:         "Frakt",
     free:             "Gratis",
-    freeShippingFrom: "Gratis frakt fra 862 kr",
+    freeShippingFrom: "Gratis frakt over 400 kr",
     total:            "Totalt",
     paymentFailed:    "Betalingen mislyktes",
     unknownError:     "Ukjent feil",
@@ -98,8 +101,8 @@ interface AddressData {
 const inputCls = "w-full px-4 py-3 rounded border border-border bg-background text-sm focus:outline-none focus:ring-2 focus:ring-primary/30 transition-colors";
 
 const Checkout = () => {
-  const { items, subtotal } = useCart();
-  const { format: formatPrice, currency, convert } = useCurrency();
+  const { items, discount: appliedDiscount } = useCart();
+  const { formatAmount, currency, convert, rate, freeShippingThreshold, shippingCost } = useCurrency();
   const lang = useLang();
   const t = COPY[lang === "no" ? "no" : "nl"];
 
@@ -122,12 +125,16 @@ const Checkout = () => {
   const set = (k: keyof AddressData) => (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) =>
     setAddr(prev => ({ ...prev, [k]: e.target.value }));
 
-  const FREE_NL = 35;
-  const FREE_NO = 75;
-  const freeThreshold = lang === "no" ? FREE_NO : FREE_NL;
-  const shippingRate  = lang === "no" ? 6.95 : 3.95;
-  const shipping = subtotal >= freeThreshold ? 0 : shippingRate;
-  const total    = subtotal + shipping;
+  // Alle bedragen in de actieve valuta, opgebouwd uit afgeronde stuksprijzen —
+  // wat de klant ziet is exact wat via Stripe wordt afgerekend.
+  const subtotal = items.reduce((sum, i) => sum + convert(i.product.price) * i.quantity, 0);
+  const shipping = subtotal >= freeShippingThreshold ? 0 : shippingCost;
+  // Zelfde formule als server-side; het echte bedrag wordt in de edge function bepaald
+  const discountInCurrency = appliedDiscount
+    ? { ...appliedDiscount, value: appliedDiscount.type === "fixed" ? appliedDiscount.value * rate : appliedDiscount.value, minOrder: appliedDiscount.minOrder * rate }
+    : null;
+  const discount = computeDiscountAmount(discountInCurrency, subtotal, shipping);
+  const total = Math.max(0, subtotal + shipping - discount);
 
   const payCurrency = currency === "NOK" ? "nok" : "eur";
   const buqeItems = useMemo(
@@ -142,17 +149,19 @@ const Checkout = () => {
   );
 
   const { clientSecret, orderId, loading: piLoading, error: piError } = useBuqePaymentIntent({
-    items:     buqeItems,
-    email:     debouncedEmail,
-    subtotal:  convert(subtotal),
-    shipping:  convert(shipping),
-    total:     convert(total),
-    currency:  payCurrency,
+    items:        buqeItems,
+    email:        debouncedEmail,
+    subtotal,
+    shipping,
+    total,
+    currency:     payCurrency,
+    discountCode: appliedDiscount?.code,
   });
 
   if (items.length === 0) {
     return (
       <div className="py-20 text-center">
+        <SEO title={t.title} description={t.title} canonical="/checkout" noindex />
         <p className="text-muted-foreground mb-4">{t.emptyCart}</p>
         <Link to="/shop" className="text-primary hover:underline">{t.toShop}</Link>
       </div>
@@ -161,6 +170,7 @@ const Checkout = () => {
 
   return (
     <div className="py-12">
+      <SEO title={t.title} description={t.title} canonical="/checkout" noindex />
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <Link
           to="/shop"
@@ -263,25 +273,31 @@ const Checkout = () => {
                 {items.map(item => (
                   <li key={item.product.id} className="flex justify-between text-sm">
                     <span className="text-foreground">{item.product.name} × {item.quantity}</span>
-                    <span className="font-medium">{formatPrice(item.product.price * item.quantity)}</span>
+                    <span className="font-medium">{formatAmount(convert(item.product.price) * item.quantity)}</span>
                   </li>
                 ))}
               </ul>
               <div className="border-t border-border pt-4 space-y-2">
                 <div className="flex justify-between text-sm">
                   <span className="text-muted-foreground">{t.subtotal}</span>
-                  <span>{formatPrice(subtotal)}</span>
+                  <span>{formatAmount(subtotal)}</span>
                 </div>
+                {discount > 0 && (
+                  <div className="flex justify-between text-sm text-primary">
+                    <span>{t.discount} ({appliedDiscount?.code})</span>
+                    <span>−{formatAmount(discount)}</span>
+                  </div>
+                )}
                 <div className="flex justify-between text-sm">
                   <span className="text-muted-foreground">{t.shipping}</span>
-                  <span>{shipping === 0 ? t.free : formatPrice(shipping)}</span>
+                  <span>{shipping === 0 ? t.free : formatAmount(shipping)}</span>
                 </div>
                 {shipping > 0 && (
                   <p className="text-xs text-muted-foreground">{t.freeShippingFrom}</p>
                 )}
                 <div className="flex justify-between text-base font-semibold pt-2 border-t border-border">
                   <span>{t.total}</span>
-                  <span>{formatPrice(total)}</span>
+                  <span>{formatAmount(total)}</span>
                 </div>
               </div>
             </div>
@@ -302,7 +318,7 @@ interface CheckoutInnerProps {
 const CheckoutInner = ({ orderId, email, addr, total }: CheckoutInnerProps) => {
   const stripe   = useStripe();
   const elements = useElements();
-  const { format: formatPrice } = useCurrency();
+  const { formatAmount } = useCurrency();
   const lang = useLang();
   const t = COPY[lang === "no" ? "no" : "nl"];
   const [submitting, setSubmitting] = useState(false);
@@ -392,7 +408,7 @@ const CheckoutInner = ({ orderId, email, addr, total }: CheckoutInnerProps) => {
         disabled={!stripe || submitting}
         className="w-full py-4 bg-primary text-primary-foreground font-medium text-sm tracking-widest uppercase rounded hover:opacity-90 transition-opacity disabled:opacity-60"
       >
-        {submitting ? t.submitting : t.placeOrder(formatPrice(total))}
+        {submitting ? t.submitting : t.placeOrder(formatAmount(total))}
       </button>
     </form>
   );

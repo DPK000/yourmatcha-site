@@ -55,7 +55,7 @@ const sectionsNo: FaqSection[] = [
     title: "Frakt og levering",
     items: [
       ["Hvor raskt får jeg bestillingen min?", "Vi sender innen 1 virkedag. Til Norge er pakken vanligvis fremme i løpet av 4–7 virkedager."],
-      ["Hva koster frakten?", "Frakt til Norge koster 149 kr. Innenfor Nederland og Belgia starter frakten på 57 kr, og over 400 kr sender vi gratis dit."],
+      ["Hva koster frakten?", "Frakt koster 59 kr — også til Norge. Bestiller du for over 400 kr, sender vi helt gratis."],
       ["Sender dere også internasjonalt?", "Ja — vi sender innenfor hele EU og til Norge. Bor du et annet sted? Send oss en melding, så gir vi deg et skreddersydd tilbud."],
     ],
   },

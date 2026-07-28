@@ -7,29 +7,22 @@ import ProductCard from "@/components/ProductCard";
 import TrustBadges from "@/components/TrustBadges";
 import ScrollReveal from "@/components/ScrollReveal";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
-import heroImg from "@/assets/hero-matcha.jpg";
-import lifestyle1 from "@/assets/lifestyle-1.jpg";
-import lifestyle2 from "@/assets/lifestyle-2.jpg";
-import lifestyle3 from "@/assets/lifestyle-3.jpg";
-import lifestyle4 from "@/assets/lifestyle-4.jpg";
-import productCeremonial from "@/assets/product-ceremonial-30.jpg";
-import productPouchCeremonial from "@/assets/product-pouch-ceremonial-100.jpg";
-import productStarterKit from "@/assets/product-starter-kit.jpg";
-import productPouchHojicha from "@/assets/product-pouch-hojicha.jpg";
-import { useState, useRef } from "react";
+import heroImg from "@/assets/hero-matcha.webp";
+import lifestyle1 from "@/assets/lifestyle-1.webp";
+import lifestyle2 from "@/assets/lifestyle-2.webp";
+import lifestyle3 from "@/assets/lifestyle-3.webp";
+import lifestyle4 from "@/assets/lifestyle-4.webp";
+import productCeremonial from "@/assets/product-pouch-ceremonial-30.webp";
+import productPouchCeremonial from "@/assets/product-pouch-ceremonial-100.webp";
+import productStarterKit from "@/assets/product-starter-kit.webp";
+import productPouchHojicha from "@/assets/product-pouch-hojicha.webp";
+import { useState, useRef, lazy, Suspense } from "react";
 import { useTranslation } from "react-i18next";
 import { toast } from "sonner";
-import SEO from "@/components/SEO";
-import { useLang } from "@/i18n";
-
-const DOMAINS: Record<string, string> = {
-  nl: "https://yourmatcha.nl",
-  de: "https://yourmatcha.de",
-  en: "https://yourmatcha.com",
-  fr: "https://yourmatcha.fr",
-  no: "https://yourmatcha.no",
-};
-import RecipeSwiper from "@/components/RecipeSwiper";
+import { subscribeToNewsletter } from "@/lib/newsletter";
+import SEO, { getSiteUrl } from "@/components/SEO";
+// Lazy: RecipeSwiper trekt de grote recepten-data mee en staat onder de vouw
+const RecipeSwiper = lazy(() => import("@/components/RecipeSwiper"));
 
 const fadeUp = {
   hidden: { opacity: 0, y: 24 },
@@ -37,9 +30,8 @@ const fadeUp = {
 };
 
 const Homepage = () => {
-  const { t } = useTranslation();
-  const lang = useLang();
-  const siteUrl = DOMAINS[lang] || DOMAINS.nl;
+  const { t, i18n } = useTranslation();
+  const siteUrl = getSiteUrl((i18n.language || "nl").slice(0, 2));
   const featured = useFeaturedProducts().slice(0, 4);
   const [email, setEmail] = useState("");
   const heroRef = useRef(null);
@@ -66,11 +58,15 @@ const Homepage = () => {
     { name: "Isabel R.", textKey: "t3", rating: 5 },
   ];
 
-  const handleNewsletter = (e: React.FormEvent) => {
+  const handleNewsletter = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (email.trim()) {
+    if (!email.trim()) return;
+    const ok = await subscribeToNewsletter(email, "homepage");
+    if (ok) {
       toast.success(t("home.newsletterToast"));
       setEmail("");
+    } else {
+      toast.error(t("home.newsletterError"));
     }
   };
 
@@ -81,7 +77,7 @@ const Homepage = () => {
         description={t("home.seoDesc")}
         canonical="/"
         jsonLd={[
-          { "@context": "https://schema.org", "@type": "Organization", name: "YourMatcha", url: `${siteUrl}/`, sameAs: ["https://www.instagram.com/yourmatcha"] },
+          { "@context": "https://schema.org", "@type": "Organization", name: "YourMatcha", url: `${siteUrl}/`, logo: `${siteUrl}/logo.png`, sameAs: ["https://www.instagram.com/yourmatcha"] },
           { "@context": "https://schema.org", "@type": "WebSite", name: "YourMatcha", url: `${siteUrl}/`, potentialAction: { "@type": "SearchAction", target: `${siteUrl}/shop?q={search_term_string}`, "query-input": "required name=search_term_string" } },
         ]}
       />
@@ -90,8 +86,11 @@ const Homepage = () => {
         <motion.div className="absolute inset-0" style={{ y: heroY }}>
           <motion.img
             src={heroImg}
-            alt="Premium matcha thee"
+            alt="YourMatcha ceremonial matcha"
             className="w-full h-full object-cover"
+            fetchPriority="high"
+            width={1920}
+            height={1080}
             initial={{ scale: 1.15 }}
             animate={{ scale: 1.25 }}
             transition={{ duration: 18, ease: "easeOut" }}
@@ -216,7 +215,9 @@ const Homepage = () => {
       </section>
 
       {/* Recipe Swiper */}
-      <RecipeSwiper />
+      <Suspense fallback={null}>
+        <RecipeSwiper />
+      </Suspense>
 
       {/* Bestsellers */}
       <section className="py-20 bg-secondary">
@@ -423,20 +424,6 @@ const Homepage = () => {
                 <h3 className="font-heading text-lg font-semibold mb-2">{t(`home.ritualStep${step}Title`)}</h3>
                 <p className="text-sm text-muted-foreground leading-relaxed">{t(`home.ritualStep${step}Desc`)}</p>
               </motion.div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Press strip */}
-      <section className="py-12 border-y border-border">
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <p className="text-center text-[10px] tracking-[0.3em] uppercase text-muted-foreground mb-6">{t("home.pressEyebrow")}</p>
-          <div className="flex flex-wrap items-center justify-center gap-x-12 gap-y-4">
-            {["VOGUE", "ELLE", "DE VOLKSKRANT", "VICE", "&C MAGAZINE", "LINDA."].map(name => (
-              <span key={name} className="font-heading text-base md:text-lg tracking-[0.3em] text-foreground/40 hover:text-foreground/70 transition-colors">
-                {name}
-              </span>
             ))}
           </div>
         </div>

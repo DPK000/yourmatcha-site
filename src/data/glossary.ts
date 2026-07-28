@@ -78,7 +78,7 @@ const glossaryTermsRaw: RawGlossaryTerm[] = [
     i18n: {
       no: {
         definition:
-          "Den høyeste matchakvaliteten, laget av de yngste bladene (ichibancha). Ment å drikkes ren med vann — søt, full av umami, uten bitterhet. Pris €0,50–€1,50 per gram.",
+          "Den høyeste matchakvaliteten, laget av de yngste bladene (ichibancha). Ment å drikkes ren med vann — søt, full av umami, uten bitterhet. Pris 6–17 kr per gram.",
         relatedLinkLabel: "Ceremonial vs Culinary",
       },
     },
@@ -91,7 +91,7 @@ const glossaryTermsRaw: RawGlossaryTerm[] = [
     i18n: {
       no: {
         definition:
-          "En mer robust matchakvalitet for latter, smoothier og baking. Kommer fra senere innhøstinger og har en litt kraftigere smak. Pris €0,15–€0,50 per gram.",
+          "En mer robust matchakvalitet for latter, smoothier og baking. Kommer fra senere innhøstinger og har en litt kraftigere smak. Pris 2–6 kr per gram.",
       },
     },
   },

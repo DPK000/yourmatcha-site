@@ -31,7 +31,11 @@ interface RequestBody {
   total: number;
   currency: string;
   shopSlug: string;
+  discountCode?: string;
 }
+
+// Moet gelijk blijven aan EUR_TO_NOK in src/context/CurrencyContext.tsx
+const EUR_TO_NOK = 11.5;
 
 const UUID_RE = /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i;
 
@@ -61,7 +65,42 @@ serve(async (req) => {
       ? body.currency.toLowerCase()
       : "eur";
 
-    // 1) Draft order in DB
+    // 1) Kortingscode server-side valideren — de bedragen van de client zijn niet leidend.
+    //    Bedragen in de body staan in de betaalvaluta; discount_value/min_order staan in EUR.
+    const rate = currency === "nok" ? EUR_TO_NOK : 1;
+    let discountAmount = 0;
+    let appliedCode: string | null = null;
+    if (body.discountCode) {
+      const codeInput = body.discountCode.trim().replace(/[%_]/g, "");
+      const { data: dc } = await supabase
+        .from("discount_codes")
+        .select("code, discount_type, discount_value, min_order, max_uses, uses, enabled, expires_at")
+        .ilike("code", codeInput)
+        .maybeSingle();
+
+      const subtotalEur = body.subtotal / rate;
+      const isValid = dc && dc.enabled &&
+        (!dc.expires_at || new Date(dc.expires_at) > new Date()) &&
+        (dc.max_uses == null || dc.uses < dc.max_uses) &&
+        subtotalEur >= (dc.min_order ?? 0);
+
+      if (isValid) {
+        appliedCode = dc.code;
+        if (dc.discount_type === "percentage") {
+          discountAmount = (body.subtotal * dc.discount_value) / 100;
+        } else if (dc.discount_type === "fixed") {
+          discountAmount = dc.discount_value * rate;
+        } else if (dc.discount_type === "free_shipping") {
+          discountAmount = body.shipping;
+        }
+        discountAmount = Math.round(Math.min(discountAmount, body.subtotal + body.shipping) * 100) / 100;
+      }
+    }
+
+    // Stripe accepteert geen bedragen onder ±€0,50
+    const total = Math.max(0.5, Math.round((body.subtotal + body.shipping - discountAmount) * 100) / 100);
+
+    // 2) Draft order in DB
     const { data: order, error: orderErr } = await supabase
       .from("orders")
       .insert({
@@ -77,7 +116,9 @@ serve(async (req) => {
         payment_method: "stripe",
         subtotal: body.subtotal,
         shipping: body.shipping,
-        total: body.total,
+        discount_code: appliedCode,
+        discount_amount: discountAmount,
+        total,
         currency: currency.toUpperCase(),
       })
       .select()
@@ -85,7 +126,7 @@ serve(async (req) => {
 
     if (orderErr || !order) throw new Error(orderErr?.message || "Order insert failed");
 
-    // 2) Order items
+    // 3) Order items
     const orderItems = body.items.map((it) => ({
       order_id: order.id,
       product_id: it.productId && UUID_RE.test(it.productId) ? it.productId : null,
@@ -97,10 +138,10 @@ serve(async (req) => {
     const { error: itemsErr } = await supabase.from("order_items").insert(orderItems);
     if (itemsErr) throw new Error(itemsErr.message);
 
-    // 3) PaymentIntent met automatic_payment_methods (toont iDEAL/Klarna/Card/etc automatisch
+    // 4) PaymentIntent met automatic_payment_methods (toont iDEAL/Klarna/Card/etc automatisch
     //    afhankelijk van wat in Stripe Dashboard staat geactiveerd)
     const paymentIntent = await stripe.paymentIntents.create({
-      amount: Math.round(body.total * 100),
+      amount: Math.round(total * 100),
       currency,
       automatic_payment_methods: { enabled: true },
       receipt_email: body.email,
@@ -110,7 +151,7 @@ serve(async (req) => {
       },
     });
 
-    // 4) Link payment_intent_id terug naar order
+    // 5) Link payment_intent_id terug naar order
     await supabase
       .from("orders")
       .update({ payment_intent_id: paymentIntent.id })
@@ -122,6 +163,9 @@ serve(async (req) => {
         paymentIntentId: paymentIntent.id,
         orderId: order.id,
         orderNumber: order.order_number,
+        discountCode: appliedCode,
+        discountAmount,
+        total,
       }),
       { headers: { ...corsHeaders, "Content-Type": "application/json" } }
     );

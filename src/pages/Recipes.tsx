@@ -41,7 +41,7 @@ const COPY = {
     found: "gevonden",
     resetFilters: "Reset filters",
     emptyState: "Geen recepten gevonden voor deze filters.",
-    moreRecipes: "Wil je nog meer recepten? Ontdek ons receptenboek.",
+    moreRecipes: "Klaar om zelf aan de slag te gaan? Onze culinary matcha is gemaakt om mee te koken en bakken.",
   },
   no: {
     seoTitle: "Matcha-oppskrifter — 20+ ideer til matcha latte, smoothie og baking med japansk matcha",
@@ -63,7 +63,7 @@ const COPY = {
     found: "funnet",
     resetFilters: "Nullstill filtre",
     emptyState: "Ingen oppskrifter funnet med disse filtrene.",
-    moreRecipes: "Vil du ha enda flere oppskrifter? Utforsk oppskriftsboken vår.",
+    moreRecipes: "Klar til å prøve selv? Vår culinary matcha er laget for matlaging og baking.",
   },
 } as const;
 
@@ -186,8 +186,8 @@ const Recipes = () => {
 
           <div className="text-center pt-16 mt-16 border-t border-border">
             <p className="text-muted-foreground mb-5">{c.moreRecipes}</p>
-            <Link to="/product/the-matcha-ritual-book" className="inline-flex items-center gap-2 bg-primary text-primary-foreground px-7 py-3.5 rounded-full text-sm font-bold tracking-wide uppercase hover:scale-105 transition-transform">
-              The Matcha Ritual <ArrowRight className="w-4 h-4" />
+            <Link to="/product/culinary-matcha-100g" className="inline-flex items-center gap-2 bg-primary text-primary-foreground px-7 py-3.5 rounded-full text-sm font-bold tracking-wide uppercase hover:scale-105 transition-transform">
+              Culinary Matcha <ArrowRight className="w-4 h-4" />
             </Link>
           </div>
         </div>

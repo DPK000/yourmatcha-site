@@ -1,6 +1,6 @@
 import { Link, useParams, Navigate } from "react-router-dom";
 import { ChevronLeft, Clock, Calendar, ArrowRight } from "lucide-react";
-import SEO from "@/components/SEO";
+import SEO, { getSiteUrl } from "@/components/SEO";
 import { getKnowledgeBySlug, knowledgeArticles } from "@/data/knowledge";
 import { useLang } from "@/i18n";
 
@@ -96,6 +96,7 @@ const KnowledgeArticle = () => {
   const { slug } = useParams<{ slug: string }>();
   const article = getKnowledgeBySlug(slug || "");
   const lang = useLang();
+  const siteUrl = getSiteUrl(lang);
   const c = lang === "no" ? COPY.no : COPY.nl;
   if (!article) return <Navigate to="/kennis" replace />;
 
@@ -109,8 +110,8 @@ const KnowledgeArticle = () => {
     datePublished: article.updated,
     dateModified: article.updated,
     author: { "@type": "Organization", name: "YourMatcha" },
-    publisher: { "@type": "Organization", name: "YourMatcha", logo: { "@type": "ImageObject", url: "https://yourmatcha.nl/og-default.jpg" } },
-    mainEntityOfPage: `https://yourmatcha.nl/kennis/${article.slug}`,
+    publisher: { "@type": "Organization", name: "YourMatcha", logo: { "@type": "ImageObject", url: `${siteUrl}/logo.png` } },
+    mainEntityOfPage: `${siteUrl}/kennis/${article.slug}`,
   };
 
   const faqSchema = article.faqs?.length
@@ -129,9 +130,9 @@ const KnowledgeArticle = () => {
     "@context": "https://schema.org",
     "@type": "BreadcrumbList",
     itemListElement: [
-      { "@type": "ListItem", position: 1, name: "Home", item: "https://yourmatcha.nl/" },
-      { "@type": "ListItem", position: 2, name: c.breadcrumbKnowledge, item: "https://yourmatcha.nl/kennis" },
-      { "@type": "ListItem", position: 3, name: article.title, item: `https://yourmatcha.nl/kennis/${article.slug}` },
+      { "@type": "ListItem", position: 1, name: "Home", item: `${siteUrl}/` },
+      { "@type": "ListItem", position: 2, name: c.breadcrumbKnowledge, item: `${siteUrl}/kennis` },
+      { "@type": "ListItem", position: 3, name: article.title, item: `${siteUrl}/kennis/${article.slug}` },
     ],
   };
 

@@ -1,4 +1,5 @@
 import PageHero from "@/components/PageHero";
+import SEO from "@/components/SEO";
 import { useLang } from "@/i18n";
 
 const COPY = {
@@ -11,8 +12,8 @@ const COPY = {
       ["Welke gegevens verzamelen we?", "Naam, e-mail, adres, betaalgegevens en bestelhistorie. Daarnaast pseudonieme analyticsgegevens om de website te verbeteren."],
       ["Waarvoor gebruiken we ze?", "Om je bestelling te verwerken, te leveren en je service te bieden. Met jouw toestemming sturen we een occasionele nieuwsbrief."],
       ["Hoe lang bewaren we je gegevens?", "Klantgegevens 7 jaar (fiscale verplichting). Marketing- en accountdata zolang je actief bent of toestemming geeft."],
-      ["Met wie delen we je gegevens?", "Uitsluitend met partijen die nodig zijn voor de uitvoering: betaaldienst (Mollie), verzendpartner (PostNL/DPD), e-mailtool (Mailchimp). Nooit voor commerciële doorverkoop."],
-      ["Jouw rechten", "Inzage, correctie, verwijdering, dataportabiliteit en bezwaar. Mail privacy@yourmatcha.nl en we reageren binnen 14 dagen."],
+      ["Met wie delen we je gegevens?", "Uitsluitend met partijen die nodig zijn voor de uitvoering: betaaldienst (Stripe), verzendpartner en hostingdiensten (Supabase, Vercel). Nooit voor commerciële doorverkoop."],
+      ["Jouw rechten", "Inzage, correctie, verwijdering, dataportabiliteit en bezwaar. Mail info@yourmatcha.nl en we reageren binnen 14 dagen."],
       ["Cookies", "Functionele cookies altijd; analyse- en marketingcookies alleen na expliciete toestemming via onze cookiebanner."],
     ],
   },
@@ -25,8 +26,8 @@ const COPY = {
       ["Hvilke opplysninger samler vi inn?", "Navn, e-post, adresse, betalingsopplysninger og bestillingshistorikk. I tillegg pseudonymiserte analysedata for å forbedre nettsiden."],
       ["Hva bruker vi dem til?", "Til å behandle og levere bestillingen din og gi deg god kundeservice. Med ditt samtykke sender vi et nyhetsbrev fra tid til annen."],
       ["Hvor lenge lagrer vi opplysningene dine?", "Kundeopplysninger i 7 år (lovpålagt etter nederlandsk skattelovgivning). Markedsførings- og kontodata så lenge du er aktiv eller gir samtykke."],
-      ["Hvem deler vi opplysningene dine med?", "Kun med parter som er nødvendige for gjennomføringen: betalingstjeneste (Mollie), fraktpartner (PostNL/DPD), e-postverktøy (Mailchimp). Aldri for kommersielt videresalg."],
-      ["Dine rettigheter", "Innsyn, retting, sletting, dataportabilitet og innsigelse. Send e-post til privacy@yourmatcha.nl, så svarer vi innen 14 dager."],
+      ["Hvem deler vi opplysningene dine med?", "Kun med parter som er nødvendige for gjennomføringen: betalingstjeneste (Stripe), fraktpartner og driftstjenester (Supabase, Vercel). Aldri for kommersielt videresalg."],
+      ["Dine rettigheter", "Innsyn, retting, sletting, dataportabilitet og innsigelse. Send e-post til info@yourmatcha.nl, så svarer vi innen 14 dager."],
       ["Informasjonskapsler (cookies)", "Funksjonelle informasjonskapsler brukes alltid; analyse- og markedsføringskapsler kun etter uttrykkelig samtykke via cookiebanneret vårt."],
     ],
   },
@@ -37,6 +38,11 @@ const Privacy = () => {
   const copy = lang === "no" ? COPY.no : COPY.nl;
   return (
     <>
+      <SEO
+        title={copy.eyebrow}
+        description={copy.subtitle}
+        canonical="/privacy"
+      />
       <PageHero eyebrow={copy.eyebrow} title={copy.title} subtitle={copy.subtitle} />
       <section className="py-20">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-3xl space-y-10">

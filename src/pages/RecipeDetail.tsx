@@ -26,7 +26,7 @@ const recommendedProductSlugs = (recipe: Recipe): string[] => {
     return ["iced-matcha-blend-60g", "culinary-matcha-100g", "ceremonial-matcha-100g"];
   }
 
-  if (recipe.category === "Drinks") {
+  if (recipe.categoryKey === "Drinks") {
     return ["ceremonial-matcha-100g", "culinary-matcha-100g", "starter-kit"];
   }
 
@@ -45,7 +45,7 @@ const reasonKey = (recipe: Recipe): "hojicha" | "iced" | "drinks" | "default" =>
   ) {
     return "iced";
   }
-  if (recipe.category === "Drinks") return "drinks";
+  if (recipe.categoryKey === "Drinks") return "drinks";
   return "default";
 };
 

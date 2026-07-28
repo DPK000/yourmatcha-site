@@ -1,7 +1,7 @@
 import { useMemo, useState } from "react";
 import { Link } from "react-router-dom";
 import { ChevronRight, Search } from "lucide-react";
-import SEO from "@/components/SEO";
+import SEO, { getSiteUrl } from "@/components/SEO";
 import { useGlossaryTerms, groupLabel, type GlossaryTerm } from "@/data/glossary";
 import { useLang } from "@/i18n";
 
@@ -66,6 +66,7 @@ const slugify = (s: string) =>
 const Glossary = () => {
   const [query, setQuery] = useState("");
   const lang = useLang();
+  const siteUrl = getSiteUrl(lang);
   const c = lang === "no" ? COPY.no : COPY.nl;
   const glossaryTerms = useGlossaryTerms();
 
@@ -100,7 +101,7 @@ const Glossary = () => {
       name: t.term,
       alternateName: t.alternativeNames,
       description: t.definition,
-      inDefinedTermSet: "https://yourmatcha.nl/matcha-woordenboek",
+      inDefinedTermSet: `${siteUrl}/matcha-woordenboek`,
     })),
   };
 
@@ -108,8 +109,8 @@ const Glossary = () => {
     "@context": "https://schema.org",
     "@type": "BreadcrumbList",
     itemListElement: [
-      { "@type": "ListItem", position: 1, name: "Home", item: "https://yourmatcha.nl/" },
-      { "@type": "ListItem", position: 2, name: c.title, item: "https://yourmatcha.nl/matcha-woordenboek" },
+      { "@type": "ListItem", position: 1, name: "Home", item: `${siteUrl}/` },
+      { "@type": "ListItem", position: 2, name: c.title, item: `${siteUrl}/matcha-woordenboek` },
     ],
   };
 

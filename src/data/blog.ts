@@ -1,9 +1,9 @@
 import { useMemo } from "react";
 import { useTranslation } from "react-i18next";
 import { type Lang, getCurrentLang } from "@/i18n";
-import blogMatchaLatte from "@/assets/blog-matcha-latte.jpg";
-import blogCeremonialVsCulinary from "@/assets/blog-ceremonial-vs-culinary.jpg";
-import blogSeasonalRecipes from "@/assets/blog-seasonal-recipes.jpg";
+import blogMatchaLatte from "@/assets/blog-matcha-latte.webp";
+import blogCeremonialVsCulinary from "@/assets/blog-ceremonial-vs-culinary.webp";
+import blogSeasonalRecipes from "@/assets/blog-seasonal-recipes.webp";
 
 export interface BlogPost {
   id: string;
@@ -333,6 +333,47 @@ Volg deze zeven regels en je matcha smaakt direct een tier hoger.`,
     readTime: "4 min",
     date: "2026-04-22",
     image: blogMatchaLatte,
+    i18n: {
+      no: {
+        title: "7 matchafeil nybegynnere gjør (og hvordan du unngår dem)",
+        excerpt: "Bitter, klumpete eller flat på smak? I 9 av 10 tilfeller skyldes det én av disse feilene — og alle kan fikses på 30 sekunder.",
+        content: `## De 7 vanligste nybegynnerfeilene
+
+Alle som begynner med matcha gjør minst tre av disse feilene. Gode nyheter: alle er enkle å rette opp.
+
+### 1. Å bruke kokende vann
+Dette er den desidert vanligste feilen. Matcha er ikke svart te — kokende vann (100 °C) brenner pulveret og gir en bitter, skarp smak. Bruk vann på **75–80 °C**. Ikke noe termometer? Kok opp vann og vent 60 sekunder.
+
+### 2. Å ikke sikte
+Matcha er hygroskopisk — den trekker til seg fuktighet, og klumper dannes med en gang. En finmasket sikt (10 sekunders arbeid) løser 80 % av alle problemer.
+
+### 3. Å bruke for mye matcha
+Mer er ikke bedre. **2 gram (1 teskje)** per kopp er standard. Over 3 gram får du en ubehagelig intens, nesten krydret smak — ofte forvekslet med «dårlig matcha».
+
+### 4. Å ha sukker rett i matchaen
+Sukker løser seg ikke opp i ren matcha og vann. Det blir kornete. **Søt alltid melken separat** (honning, vanilje eller agave) og kombiner først etterpå.
+
+### 5. Å drikke gammel matcha
+Åpnet matcha er på sitt beste **de første 4–6 ukene**. Etter det mister smaken finessen, og fargen blekner. Kjøp mindre poser hvis du ikke drikker daglig.
+
+### 6. Å bruke culinary til å drikke ren
+Culinary grade er laget for latter og baking — robust med en lett bitterhet. Drikker du matchaen ren med vann? Velg ceremonial grade.
+
+### 7. Å vispe i sirkler
+En chasen fungerer bare med **horisontale M- eller W-bevegelser**, ikke sirkler. Sirkler blander ikke — de bare skyver matchaen rundt.
+
+## Fiks-sjekklisten
+- Vann: 75–80 °C, ikke kokende
+- Sikting: alltid
+- Dosering: 2 g per kopp
+- Sukker: i melken, ikke i matchaen
+- Ferskhet: ≤6 uker etter åpning
+- Grade: ceremonial for ren drikking, culinary for latter
+- Teknikk: M-form, fra håndleddet
+
+Følg disse syv reglene, og matchaen din smaker umiddelbart et hakk bedre.`,
+      },
+    },
   },
   {
     id: "5",
@@ -376,6 +417,45 @@ Probeer een week lang dezelfde matcha-routine en zie wat het met je energie doet
     readTime: "4 min",
     date: "2026-04-15",
     image: blogSeasonalRecipes,
+    i18n: {
+      no: {
+        title: "Morgenrutinen vår: En dag i matcha hos YourMatcha",
+        excerpt: "Hos YourMatcha drikker vi matcha hele dagen. Slik fordeler vi koppene våre — og derfor er timing alt.",
+        content: `## En arbeidsdag i matcha
+
+Hos YourMatcha er matcha ikke bare bedriften vår, men også et daglig ritual. Slik ser en typisk arbeidsdag ut.
+
+### 7:00 — Morgenens usucha
+Vi starter med **2 gram ceremonial matcha, ren med 60 ml vann på 75 °C**. Ingen melk, ikke noe sukker. Dette er øyeblikket for å virkelig kjenne smaken og starte dagen rolig.
+
+Hvorfor ren? På tom mage merker du effekten av L-theanin og koffein aller tydeligst. Tre minutter fokus uten distraksjoner — og så i gang.
+
+### 9:30 — Varm matcha latte
+Kopp nummer to i løpet av den første arbeidsøkten. En **culinary matcha latte med havremelk barista** — kremet, varer lenger enn ren matcha, og perfekt for en 90-minutters fokusøkt.
+
+### 12:30 — Lunsjpause, ingen matcha
+Etter lunsj ingen matcha før 14:00. Først mat, så ro.
+
+### 14:00 — Iced matcha
+Ettermiddagstoppen. Vår **iced matcha blend** med kaldt vann og havremelk. Koffeinen virker helt til 18:00–19:00 — derfor er dette dagens siste kopp.
+
+### 16:00 — Hojicha (ikke matcha)
+Her bytter vi til **hojicha** — ristet grønn te med bare 7 mg koffein. Samme ritual, ingen forstyrret nattesøvn.
+
+### 19:00 — Genmaicha til maten
+Til middag serverer vi ofte genmaicha — japansk grønn te med ristet ris, nøtteaktig og beroligende.
+
+## Regelen: Maks fire kopper
+
+Vi holder oss til **maksimalt fire kopper matcha om dagen** (3x ceremonial/culinary + 1x hojicha). Nok til stabilt fokus uten å bygge opp koffeintoleranse.
+
+## Hva er din rutine?
+
+Alle har sin egen biorytme. Noen kolleger drikker én perfekt kopp matcha om dagen. Andre bare under deep work. Nøkkelen er konsistens — ikke mengde.
+
+Prøv den samme matcharutinen i en uke, og se hva den gjør med energien din.`,
+      },
+    },
   },
   {
     id: "6",
@@ -421,6 +501,47 @@ Volgend voorjaar gaan we terug — deze keer voor een uitgebreide proefsessie va
     readTime: "5 min",
     date: "2026-04-08",
     image: blogCeremonialVsCulinary,
+    i18n: {
+      no: {
+        title: "Behind the Brand: Vårt besøk på en tegård i Uji",
+        excerpt: "I fjor vår besøkte vi familien Tanaka i Uji. Dette lærte vi om forskjellen mellom markedsførings-matcha og ekte håndverk.",
+        content: `## En reise til kilden
+
+I april 2026 fløy vi for tredje år på rad til Uji — en liten region sør for Kyoto som har produsert premium matcha i 800 år. Målet vårt: å være med på den første innhøstingen (ichibancha) på familiegården der vår ceremonial matcha kommer fra.
+
+### Starten: 04:30 i tåken
+
+Den første innhøstingen skjer tidlig om morgenen, mens tåken fortsatt ligger over temarkene. Tanaka-familien har dyrket de samme markene siden 1872. Ingen turister, ingen Instagram-fotografering — bare arbeid.
+
+### Tjue dager i skyggen
+
+Det som griper oss hver gang: tre uker før innhøstingen dekkes alle plantene til med duk. Det tvinger planten til å produsere mer klorofyll og L-theanin — det som gir den dype grønnfargen og umamismaken. Det er arbeidskrevende og risikabelt (mugg, regn) — og det er nettopp dette som skiller ekte matcha fra resten.
+
+### Håndplukking: Bare de yngste bladene
+
+Ingen maskiner. Bare kvinner som har plukket i flere tiår, og som ser på øyemål hvilke blader som er klare. For 1 kilo ceremonial matcha plukkes det i snitt 30 kilo ferske blader.
+
+### Steinmøllene
+
+Det mest imponerende øyeblikket: **ishi-usu** — steinmøller i granitt som har vært i familien i 60 år. Én mølle produserer **30 gram matcha i timen**. Det er derfor premium matcha er så dyr — du betaler for tid og teknikk som bokstavelig talt ikke kan gå fortere.
+
+### Hva vi lærte
+
+1. **Markedsførings-matcha og ekte håndverk er ikke det samme.** Mye «japansk» matcha på det europeiske markedet kommer fra industrielle kulemøller, ikke stein.
+2. **Familiegårdene er i ferd med å forsvinne.** Unge japanere vil ofte noe annet, så direkte relasjoner med disse gårdene blir stadig sjeldnere.
+3. **Smaken forteller historien.** Vår ceremonial matcha smaker som den gjør takket være 800 år med akkumulert kunnskap — ikke takket være markedsføring.
+
+## Derfor bruker vi ingen mellomledd
+
+Vi har jobbet direkte med denne familien siden 2022. Ingen importør mellom oss og gården. Det betyr en rettferdig pris til bonden — og full åpenhet for deg.
+
+På [opprinnelsessiden vår](/herkomst) ser du hele kjeden — fra mark til pose.
+
+## Hva skjer videre?
+
+Neste vår drar vi tilbake — denne gangen for en grundig smakssesjon med competitive grade matcha (over ceremonial). Følg med på bloggen.`,
+      },
+    },
   },
   {
     id: "7",
@@ -501,6 +622,82 @@ Lees onze [koopgids](/kennis/beste-matcha-kopen-2026) voor de juiste keuze.`,
     readTime: "5 min",
     date: "2026-03-28",
     image: blogSeasonalRecipes,
+    i18n: {
+      no: {
+        title: "Våren 2026: 3 nye matchaoppskrifter for sesongen",
+        excerpt: "Sakura, jordbær og førstehøstet matcha — tre ferske oppskrifter som fanger våren i et glass.",
+        content: `## Tre våroppskrifter med matcha
+
+Våren er matchasesongen fremfor noen — ichibanchaen (den første innhøstingen) er på sitt ferskeste, og smakene er på sitt mest delikate. Her er de tre oppskriftene vi lager mest denne måneden.
+
+### 1. Strawberry Matcha Latte (iced)
+
+En TikTok-favoritt vi har raffinert: tolags latte med jordbærpuré og kald matcha.
+
+**Ingredienser:**
+- 100 g ferske jordbær
+- 1 ts lønnesirup (valgfritt)
+- 200 ml kald havremelk
+- 2 g ceremonial matcha
+- 30 ml kaldt vann
+- Is
+
+**Fremgangsmåte:**
+1. Kjør jordbærene til puré med lønnesirupen, og hell i bunnen av et glass.
+2. Tilsett isbiter.
+3. Hell kald havremelk over jordbærene.
+4. Sikt matcha i en shaker, tilsett 30 ml kaldt vann + 2 isbiter, og rist i 15 sek.
+5. Hell matchaen sakte over melken for en trelags latte.
+
+### 2. Sakura Matcha Mochi
+
+For deg som vil bake: myke mochiboller med matchafyll og et hint av kirsebærblomst.
+
+**Ingredienser:**
+- 200 g mochiko (rismel)
+- 50 g sukker
+- 200 ml vann
+- 2 g matcha (i fyllet)
+- 100 g hvit bønnepasta (shiro-an)
+
+**Fremgangsmåte:**
+1. Bland mochiko, sukker og vann. Damp i 20 min.
+2. Lag fyllet: kna hvit bønnepasta med matcha.
+3. Form boller, og fyll dem med matchapasta.
+4. Dryss lett med potetstivelse.
+
+En komplett versjon finner du i [oppskriftsseksjonen vår](/recepten/matcha-mochi).
+
+### 3. Matcha-asparges-risotto
+
+Overraskende i det salte kjøkkenet — matcha i risotto gir en nydelig grønn farge og en subtil umami som passer perfekt til hvite asparges.
+
+**Ingredienser:**
+- 250 g arborioris
+- 4 hvite asparges (i biter)
+- 1 sjalottløk
+- 750 ml varm grønnsaksbuljong
+- 1 g culinary matcha (helt til slutt)
+- 30 g parmesan
+- Olivenolje + smør
+
+**Fremgangsmåte:**
+1. Surr sjalottløken, og tilsett risen.
+2. Tilsett buljongen litt etter litt, og rør hele tiden.
+3. Tilsett aspargesen etter 15 min.
+4. Helt til slutt: rør matchaen inn i risottoen, sammen med parmesanen.
+
+Matchapulveret må ikke kokes med — varmen brenner det. Tilsett det på slutten, rett før servering.
+
+## Hvilken matcha til disse oppskriftene?
+
+- **Strawberry latte**: culinary eller premium ceremonial — begge fungerer.
+- **Mochi**: ceremonial — den rene smaken kommer til sin rett.
+- **Risotto**: culinary — robust nok til matlaging.
+
+Les [kjøpsguiden vår](/kennis/beste-matcha-kopen-2026) for å velge riktig.`,
+      },
+    },
   },
   {
     id: "8",
@@ -582,6 +779,83 @@ Voor de complete vergelijking lees [matcha vs koffie](/kennis/matcha-vs-koffie) 
     readTime: "6 min",
     date: "2026-03-20",
     image: blogCeremonialVsCulinary,
+    i18n: {
+      no: {
+        title: "Vitenskapen bak L-theanin: Derfor virker matcha annerledes",
+        excerpt: "L-theanin er «den magiske ingrediensen» i matcha — en aminosyre som gir fokus og ro på samme tid. Dette sier over 30 studier om den.",
+        content: `## Stoffet som gjør matcha spesiell
+
+Når noen sier at «matcha gir rolig fokus», snakker de egentlig om **L-theanin** — en aminosyre som nesten utelukkende finnes i grønn te. Ikke et urtetilskudd, ikke en markedsføringspåstand — det står hundrevis av fagfellevurderte studier bak.
+
+### Hva er L-theanin?
+
+L-theanin (γ-glutamyletylamid) ble isolert fra grønn te i 1949 av den japanske forskeren Yajiro Sakato. Det er en aminosyre som passerer blod-hjerne-barrieren — ganske sjeldent for næringsstoffer.
+
+En kopp matcha inneholder omtrent **25–30 mg L-theanin**, sammen med 70 mg koffein — en avgjørende kombinasjon.
+
+### Hva gjør det i hjernen din?
+
+L-theanin har tre hovedeffekter i hjernen:
+
+**1. Øker alfa-hjernebølger**
+Alfabølger (8–12 Hz) oppstår under «relaxed alertness» — tenkning uten stress. EEG-studier (Nobre et al., 2008) viser en økning innen 30–40 min etter inntak.
+
+**2. Øker GABA, dopamin og serotonin**
+L-theanin modulerer disse nevrotransmitterne, noe som gir en lett beroligende effekt uten søvnighet.
+
+**3. Bremser koffeinopptaket**
+Studier viser at L-theanin demper den skarpe koffeintoppen — du får lengre og mer stabil årvåkenhet i stedet for en spike.
+
+### 2:1-ratioen
+
+En metaanalyse fra 2015 (Camfield et al.) konkluderte med at den **optimale ratioen for kognitiv ytelse er koffein:L-theanin = 2:1**. Der ligger matcha helt naturlig (70:30).
+
+Syntetiske pre-workouts prøver å kopiere dette, men mister ofte subtiliteten.
+
+### Hva merker du konkret?
+
+Folk beskriver forskjellen fra kaffe slik:
+
+- **Kaffe**: «god idé, men hendene mine skjelver litt»
+- **Matcha**: «jeg tenker klarere uten at jeg merker det»
+
+Ikke alle kjenner forskjell med en gang — følsomheten for L-theanin varierer. Ved daglig bruk blir effekten tydeligere.
+
+### Forskningen i 3 hovedpunkter
+
+1. **Owen et al. (2008, Nutritional Neuroscience):** 50 mg koffein + 100 mg L-theanin forbedret oppmerksomhetsskifte og årvåkenhet signifikant sammenlignet med placebo.
+2. **Foxe et al. (2012):** kombinasjonen forbedret prestasjonen på multitasking-oppgaver sammenlignet med koffein alene.
+3. **Hidese et al. (2019):** L-theanin alene forbedret arbeidsminne og eksekutive funksjoner.
+
+### Hvordan får du mest ut av det?
+
+Tre tips fra forskningen:
+
+1. **Drikk den ren, ikke med mye sukker.** Sukker gir insulintopper som svekker effekten av L-theanin.
+2. **Ikke rett etter et fettrikt måltid.** Da tas L-theanin langsommere opp.
+3. **Kombiner med fysisk aktivitet.** Trening + matcha gir det tydeligst merkbare fokusløftet.
+
+### L-theanin-tilskudd vs matcha
+
+Det finnes **rene L-theanin-tilskudd** (200 mg per kapsel, ~170 kr i måneden). De fungerer fint, men:
+
+- Du går glipp av EGCG, klorofyll og andre matchastoffer
+- Ikke noe ritual
+- Ikke godt
+
+For de fleste er det minst like effektivt å drikke matcha — og langt hyggeligere.
+
+### Hva med koffeinfølsomme?
+
+L-theanin finnes også i **koffeinfri grønn te** (5–8 mg per kopp) og **hojicha** (10–15 mg). Ikke det skarpe fokuset, men ro og avspenning. Les [hojicha forklart](/kennis/hojicha-uitleg) og [matcha og søvn](/kennis/matcha-en-slaap) for hele bildet.
+
+## Konklusjon
+
+L-theanin er ikke et markedsføringstriks. Det er et grundig undersøkt stoff som skiller matcha fra kaffe og andre koffeinkilder. Når du drikker en kopp matcha, får du en 800 år gammel formel som tilfeldigvis passer perfekt med moderne nevrovitenskap.
+
+For den fullstendige sammenligningen, les [matcha vs kaffe](/kennis/matcha-vs-koffie) og [matcha og fokus](/kennis/matcha-en-focus).`,
+      },
+    },
   },
 ];
 

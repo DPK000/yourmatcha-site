@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
-import aboutHero from "@/assets/about-hero.jpg";
-import lifestyle3 from "@/assets/lifestyle-3.jpg";
+import aboutHero from "@/assets/about-hero.webp";
+import lifestyle3 from "@/assets/lifestyle-3.webp";
 import { Leaf, Award, Heart } from "lucide-react";
 import SEO from "@/components/SEO";
 import { useLang } from "@/i18n";

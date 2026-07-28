@@ -17,12 +17,24 @@ interface SEOProps {
 }
 
 // Multi-domain: each language has its own primary domain
-const DOMAINS: Record<string, string> = {
+export const DOMAINS: Record<string, string> = {
   nl: "https://yourmatcha.nl",
   de: "https://yourmatcha.de",
   en: "https://yourmatcha.com",
   fr: "https://yourmatcha.fr",
   no: "https://yourmatcha.no",
+};
+
+/**
+ * Basis-URL van de actieve site. In de browser wint het echte domein (zodat
+ * yourmatcha.no nooit naar .nl canonicaliseert, ook niet na een taalwissel);
+ * daarbuiten valt het terug op het domein dat bij de taal hoort.
+ */
+export const getSiteUrl = (lang: string): string => {
+  if (typeof window !== "undefined" && /(^|\.)yourmatcha\.(nl|no|de|fr|com)$/.test(window.location.hostname)) {
+    return window.location.origin.replace("://www.", "://");
+  }
+  return DOMAINS[lang] || DOMAINS.nl;
 };
 const DEFAULT_IMAGE = "/og-default.jpg";
 const SUPPORTED_LOCALES = ["nl-NL", "nl-BE", "en-GB", "de-DE", "fr-FR", "nb-NO"];
@@ -59,7 +71,7 @@ const SEO = ({
 }: SEOProps) => {
   const { i18n } = useTranslation();
   const lang = (i18n.language || "nl").slice(0, 2);
-  const siteUrl = DOMAINS[lang] || DOMAINS.nl;
+  const siteUrl = getSiteUrl(lang);
   const ogLocale = locale || OG_LOCALES[lang] || "nl_NL";
 
   const path = canonical || "/";

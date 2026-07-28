@@ -1,7 +1,7 @@
 import PageHero from "@/components/PageHero";
 import ScrollReveal from "@/components/ScrollReveal";
 import { Leaf, Recycle, HandHeart, Globe2 } from "lucide-react";
-import lifestyle3 from "@/assets/lifestyle-3.jpg";
+import lifestyle3 from "@/assets/lifestyle-3.webp";
 import SEO from "@/components/SEO";
 import { useLang } from "@/i18n";
 

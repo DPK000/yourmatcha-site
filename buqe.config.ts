@@ -10,8 +10,8 @@ export const buqeConfig: BuqeConfig = {
   brand: {
     name: "YourMatcha",
     slug: "yourmatcha",
-    domain: "yourmatcha.com",
-    logoUrl: "https://yourmatcha.com/logo.png",
+    domain: "yourmatcha.nl",
+    logoUrl: "https://yourmatcha.nl/logo.png",
     primaryColor: "#3D6B53",
   },
 
@@ -35,9 +35,9 @@ export const buqeConfig: BuqeConfig = {
 
   email: {
     fromName: "YourMatcha",
-    fromEmail: "orders@yourmatcha.com",
-    replyTo: "hello@yourmatcha.com",
-    siteUrl: "https://yourmatcha.com",
+    fromEmail: "info@yourmatcha.nl",
+    replyTo: "info@yourmatcha.nl",
+    siteUrl: "https://yourmatcha.nl",
   },
 
   currency: {

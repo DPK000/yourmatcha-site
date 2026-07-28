@@ -4,6 +4,7 @@ import { Check, Loader2, Clock, Package, Truck, Mail, AlertTriangle, ArrowRight 
 import { useCart } from "@/context/CartContext";
 import { supabase } from "@/lib/buqe-commerce";
 import { useLang } from "@/i18n";
+import SEO from "@/components/SEO";
 
 type Status = "verifying" | "paid" | "processing" | "pending" | "error";
 
@@ -119,6 +120,7 @@ const ThankYou = () => {
 
   return (
     <div className="min-h-[80vh] flex items-start justify-center py-16 px-4">
+      <SEO title={t.verifyingTitle} description={t.verifyingTitle} canonical="/bedankt" noindex />
       <div className="w-full max-w-xl">
 
         {/* ── Verifying ── */}

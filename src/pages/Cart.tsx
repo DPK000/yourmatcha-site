@@ -2,22 +2,24 @@ import { Link } from "react-router-dom";
 import { Minus, Plus, X, ShoppingBag, Truck, ArrowRight, Tag } from "lucide-react";
 import { motion } from "framer-motion";
 import { useState, useMemo } from "react";
-import { useCart } from "@/context/CartContext";
+import { useCart, computeDiscountAmount, type AppliedDiscount } from "@/context/CartContext";
+import { supabase } from "@/lib/supabase";
 import { useProducts } from "@/data/products";
 import SEO from "@/components/SEO";
 import { toast } from "sonner";
 import { useCurrency } from "@/context/CurrencyContext";
 import { useLang } from "@/i18n";
 
-const FREE_SHIPPING = 50;
-
 const COPY = {
   nl: {
     seoTitle: "Winkelwagen",
-    seoDescription: "Bekijk je winkelwagen en reken veilig af. Gratis verzending in Nederland en België vanaf €50.",
-    toastCodeApplied: "Code toegepast — 10% korting",
+    seoDescription: "Bekijk je winkelwagen en reken veilig af. Gratis verzending in Nederland en België vanaf €35.",
+    toastCodeApplied: (pct: number) => `Code toegepast — ${pct}% korting`,
     toastAmountApplied: (amount: string) => `${amount} korting toegepast`,
-    toastInvalidCode: "Ongeldige kortingscode",
+    toastFreeShipping: "Gratis verzending toegepast",
+    toastInvalidCode: "Ongeldige of verlopen kortingscode",
+    toastMinOrder: (min: string) => `Deze code geldt vanaf een bestelbedrag van ${min}`,
+    removeCode: "Verwijderen",
     emptyTitle: "Je winkelwagen is leeg",
     emptySubtitle: "Ontdek onze ceremoniële matcha, thee en rituelen.",
     toShop: "Naar de shop",
@@ -41,14 +43,17 @@ const COPY = {
     free: "Gratis",
     total: "Totaal",
     checkout: "Veilig afrekenen",
-    paymentNote: "Veilig betalen · iDEAL · Bancontact · Creditcard · PayPal",
+    paymentNote: "Veilig betalen · iDEAL · Creditcard · Apple Pay · Google Pay",
   },
   no: {
     seoTitle: "Handlekurv",
-    seoDescription: "Se handlekurven din og betal trygt. Gratis frakt til Nederland og Belgia fra 575 kr.",
-    toastCodeApplied: "Kode aktivert — 10 % rabatt",
+    seoDescription: "Se handlekurven din og betal trygt. Gratis frakt over 400 kr.",
+    toastCodeApplied: (pct: number) => `Kode aktivert — ${pct} % rabatt`,
     toastAmountApplied: (amount: string) => `${amount} rabatt aktivert`,
-    toastInvalidCode: "Ugyldig rabattkode",
+    toastFreeShipping: "Gratis frakt aktivert",
+    toastInvalidCode: "Ugyldig eller utløpt rabattkode",
+    toastMinOrder: (min: string) => `Denne koden gjelder fra en ordreverdi på ${min}`,
+    removeCode: "Fjern",
     emptyTitle: "Handlekurven din er tom",
     emptySubtitle: "Utforsk vår seremonielle matcha, te og ritualer.",
     toShop: "Til butikken",
@@ -72,17 +77,17 @@ const COPY = {
     free: "Gratis",
     total: "Totalt",
     checkout: "Betal trygt",
-    paymentNote: "Trygg betaling · iDEAL · Bancontact · Kort · PayPal",
+    paymentNote: "Trygg betaling · Kort · Apple Pay · Google Pay",
   },
 } as const;
 
 const Cart = () => {
-  const { format: formatPrice } = useCurrency();
+  const { format: formatPrice, formatAmount, convert, rate, freeShippingThreshold, shippingCost: shippingRate } = useCurrency();
   const lang = useLang();
   const t = COPY[lang === "no" ? "no" : "nl"];
-  const { items, removeItem, updateQuantity, subtotal, addItem, clearCart } = useCart();
+  const { items, removeItem, updateQuantity, addItem, clearCart, discount: appliedDiscount, applyDiscount, removeDiscount } = useCart();
   const [code, setCode] = useState("");
-  const [discount, setDiscount] = useState(0);
+  const [validating, setValidating] = useState(false);
   const products = useProducts();
 
   const recommendations = useMemo(() => {
@@ -90,21 +95,47 @@ const Cart = () => {
     return products.filter(p => !inCart.has(p.id) && (p.bestseller || p.badge)).slice(0, 4);
   }, [items, products]);
 
-  const remaining = Math.max(0, FREE_SHIPPING - subtotal);
-  const progress = Math.min(100, (subtotal / FREE_SHIPPING) * 100);
-  const total = Math.max(0, subtotal - discount);
+  // Alle bedragen in de actieve valuta, opgebouwd uit afgeronde stuksprijzen —
+  // zo klopt wat de klant ziet exact met wat wordt afgerekend.
+  const subtotal = items.reduce((sum, i) => sum + convert(i.product.price) * i.quantity, 0);
+  const remaining = Math.max(0, freeShippingThreshold - subtotal);
+  const progress = Math.min(100, (subtotal / freeShippingThreshold) * 100);
+  const shippingCost = remaining > 0 ? shippingRate : 0;
+  const discountInCurrency = appliedDiscount
+    ? { ...appliedDiscount, value: appliedDiscount.type === "fixed" ? appliedDiscount.value * rate : appliedDiscount.value, minOrder: appliedDiscount.minOrder * rate }
+    : null;
+  const discount = computeDiscountAmount(discountInCurrency, subtotal, shippingCost);
+  const total = Math.max(0, subtotal + shippingCost - discount);
 
-  const applyCode = (e: React.FormEvent) => {
+  const applyCode = async (e: React.FormEvent) => {
     e.preventDefault();
-    const c = code.trim().toUpperCase();
-    if (c === "MATCHA10") {
-      setDiscount(subtotal * 0.1);
-      toast.success(t.toastCodeApplied);
-    } else if (c === "WELKOM5") {
-      setDiscount(5);
-      toast.success(t.toastAmountApplied(formatPrice(5)));
-    } else {
-      toast.error(t.toastInvalidCode);
+    const c = code.trim();
+    if (!c || validating) return;
+    setValidating(true);
+    try {
+      const { data, error } = await supabase.rpc("validate_discount_code", { p_code: c });
+      const row = Array.isArray(data) ? data[0] : data;
+      if (error || !row) {
+        toast.error(t.toastInvalidCode);
+        return;
+      }
+      const d: AppliedDiscount = {
+        code: row.code,
+        type: row.discount_type,
+        value: Number(row.discount_value),
+        minOrder: Number(row.min_order ?? 0),
+      };
+      if (subtotal < d.minOrder * rate) {
+        toast.error(t.toastMinOrder(formatAmount(d.minOrder * rate)));
+        return;
+      }
+      applyDiscount(d);
+      setCode("");
+      if (d.type === "percentage") toast.success(t.toastCodeApplied(d.value));
+      else if (d.type === "free_shipping") toast.success(t.toastFreeShipping);
+      else toast.success(t.toastAmountApplied(formatAmount(d.value * rate)));
+    } finally {
+      setValidating(false);
     }
   };
 
@@ -151,7 +182,7 @@ const Cart = () => {
           <div className="flex items-center gap-3 mb-3 text-sm">
             <Truck className="w-4 h-4 text-primary" />
             {remaining > 0 ? (
-              <span>{t.remainingPrefix}<strong>{formatPrice(remaining)}</strong>{t.remainingSuffix}</span>
+              <span>{t.remainingPrefix}<strong>{formatAmount(remaining)}</strong>{t.remainingSuffix}</span>
             ) : (
               <span className="font-semibold text-primary">{t.freeShippingReached}</span>
             )}
@@ -203,7 +234,7 @@ const Cart = () => {
                         <Plus className="w-3 h-3" />
                       </button>
                     </div>
-                    <span className="font-semibold">{formatPrice(item.product.price * item.quantity)}</span>
+                    <span className="font-semibold">{formatAmount(convert(item.product.price) * item.quantity)}</span>
                   </div>
                 </div>
               </motion.div>
@@ -252,41 +283,55 @@ const Cart = () => {
             <div className="sticky top-28 bg-secondary rounded-2xl p-6 space-y-5">
               <h2 className="font-heading text-xl font-semibold">{t.summary}</h2>
 
-              <form onSubmit={applyCode} className="space-y-2">
-                <label className="text-xs tracking-widest uppercase text-muted-foreground flex items-center gap-1.5">
-                  <Tag className="w-3 h-3" /> {t.discountCode}
-                </label>
-                <div className="flex gap-2">
-                  <input
-                    value={code}
-                    onChange={e => setCode(e.target.value)}
-                    placeholder={t.codePlaceholder}
-                    className="flex-1 px-3 py-2 rounded-full border border-border bg-background text-sm focus:outline-none focus:ring-2 focus:ring-primary/30"
-                  />
-                  <button type="submit" className="px-4 py-2 rounded-full bg-foreground text-background text-xs font-bold tracking-wide uppercase hover:opacity-90 transition-opacity">
-                    {t.apply}
-                  </button>
+              {appliedDiscount ? (
+                <div className="space-y-2">
+                  <label className="text-xs tracking-widest uppercase text-muted-foreground flex items-center gap-1.5">
+                    <Tag className="w-3 h-3" /> {t.discountCode}
+                  </label>
+                  <div className="flex items-center justify-between px-3 py-2 rounded-full border border-primary/40 bg-primary/5 text-sm">
+                    <span className="font-semibold tracking-wide">{appliedDiscount.code}</span>
+                    <button type="button" onClick={removeDiscount} className="text-xs text-muted-foreground hover:text-destructive transition-colors">
+                      {t.removeCode}
+                    </button>
+                  </div>
                 </div>
-              </form>
+              ) : (
+                <form onSubmit={applyCode} className="space-y-2">
+                  <label className="text-xs tracking-widest uppercase text-muted-foreground flex items-center gap-1.5">
+                    <Tag className="w-3 h-3" /> {t.discountCode}
+                  </label>
+                  <div className="flex gap-2">
+                    <input
+                      value={code}
+                      onChange={e => setCode(e.target.value)}
+                      placeholder={t.codePlaceholder}
+                      className="flex-1 px-3 py-2 rounded-full border border-border bg-background text-sm focus:outline-none focus:ring-2 focus:ring-primary/30"
+                    />
+                    <button type="submit" disabled={validating} className="px-4 py-2 rounded-full bg-foreground text-background text-xs font-bold tracking-wide uppercase hover:opacity-90 transition-opacity disabled:opacity-60">
+                      {t.apply}
+                    </button>
+                  </div>
+                </form>
+              )}
 
               <div className="border-t border-border pt-4 space-y-2 text-sm">
                 <div className="flex justify-between">
                   <span className="text-muted-foreground">{t.subtotal}</span>
-                  <span>{formatPrice(subtotal)}</span>
+                  <span>{formatAmount(subtotal)}</span>
                 </div>
                 {discount > 0 && (
                   <div className="flex justify-between text-primary">
-                    <span>{t.discount}</span>
-                    <span>−{formatPrice(discount)}</span>
+                    <span>{t.discount} ({appliedDiscount?.code})</span>
+                    <span>−{formatAmount(discount)}</span>
                   </div>
                 )}
                 <div className="flex justify-between">
                   <span className="text-muted-foreground">{t.shipping}</span>
-                  <span>{remaining > 0 ? formatPrice(4.95) : t.free}</span>
+                  <span>{shippingCost > 0 ? formatAmount(shippingCost) : t.free}</span>
                 </div>
                 <div className="flex justify-between text-base font-semibold pt-3 border-t border-border">
                   <span>{t.total}</span>
-                  <span>{formatPrice(total + (remaining > 0 ? 4.95 : 0))}</span>
+                  <span>{formatAmount(total)}</span>
                 </div>
               </div>
 

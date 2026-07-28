@@ -9,7 +9,7 @@ interface LogoProps {
 
 /**
  * Brand mark: a single stylized matcha leaf inside a thin circle.
- * Used everywhere — header, footer, favicon, packaging mockups.
+ * Gebruikt in header en footer; favicon/apple-touch-icon zijn aparte PNG's in public/.
  */
 export const BrandMark = ({ className = "w-6 h-6" }: { className?: string }) => (
   <svg

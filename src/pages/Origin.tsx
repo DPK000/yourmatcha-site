@@ -4,9 +4,9 @@ import { ArrowRight, MapPin, Leaf, Hand, Droplet } from "lucide-react";
 import SEO from "@/components/SEO";
 import ScrollReveal from "@/components/ScrollReveal";
 import { useLang } from "@/i18n";
-import originHero from "@/assets/origin-hero.jpg";
-import originFarmer from "@/assets/origin-farmer.jpg";
-import originStonemill from "@/assets/origin-stonemill.jpg";
+import originHero from "@/assets/origin-hero.webp";
+import originFarmer from "@/assets/origin-farmer.webp";
+import originStonemill from "@/assets/origin-stonemill.webp";
 
 const COPY = {
   nl: {

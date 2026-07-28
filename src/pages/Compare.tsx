@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import { Check, Star } from "lucide-react";
 import { useProduct } from "@/data/products";
-import SEO from "@/components/SEO";
+import SEO, { getSiteUrl } from "@/components/SEO";
 import { motion } from "framer-motion";
 import { useTranslation } from "react-i18next";
 import { useCurrency } from "@/context/CurrencyContext";
@@ -53,7 +53,8 @@ const rows: Row[] = [
 ];
 
 const Compare = () => {
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
+  const siteUrl = getSiteUrl((i18n.language || "nl").slice(0, 2));
   const { format: formatPrice } = useCurrency();
 
   const p1 = useProduct(rows[0].slug);
@@ -76,7 +77,7 @@ const Compare = () => {
           itemListElement: productEntries.map((p, i) => ({
             "@type": "ListItem",
             position: i + 1,
-            url: `https://yourmatcha.nl/product/${p.product.slug}`,
+            url: `${siteUrl}/product/${p.product.slug}`,
             name: p.product.name,
           })),
         }}

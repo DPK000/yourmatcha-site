@@ -3178,7 +3178,7 @@ Kremet, nøytral og lite egensmak — lar matchaen komme godt frem. Skummer midd
 Kombiner **hojicha** ([løs hojicha](/product/hojicha-poeder-50g)) med havremelk i stedet for matcha — mindre koffein, ristet-kremet smak. Les [matcha koffein](/kennis/matcha-cafeine) for den nøyaktige sammenligningen.`,
         faqs: [
           { q: "Hvilken melk skummer best med matcha?", a: "Havremelk barista og soyamelk barista skummer best på grunn av henholdsvis emulgatorer og proteiner. Vanlig havremelk skummer dårlig — velg alltid barista-versjoner." },
-          { q: "Kan jeg bruke vanlig havremelk i stedet for barista?", a: "Det går, men du får knapt skum. For latte art og kremet tekstur lønner det seg å bruke de ekstra 0,30 € på barista-havremelk." },
+          { q: "Kan jeg bruke vanlig havremelk i stedet for barista?", a: "Det går, men du får knapt skum. For latte art og kremet tekstur lønner det seg å bruke de ekstra 3–4 kronene på barista-havremelk." },
           { q: "Er plantemelk sunnere for matcha latte?", a: "Plantemelk har ofte færre kalorier og ingen laktose, men matchaen i seg selv er like sunn med all melk. Velg den melken du synes smaker best." },
         ],
       },
@@ -3269,7 +3269,7 @@ Voor lattes, iced matcha en dagelijks gebruik is een opschuimer praktischer. Onz
 Kort svar: nei. En [bambus-chasen](/product/bamboe-chasen) gir den fineste teksturen og er tradisjonell, men til daglig bruk fungerer alternativene fint. De **virkelige** nøklene er **vann på 75 °C** og **siktet pulver** — ikke verktøyet.
 
 ## 1. Elektrisk melkeskummer (beste alternativ)
-En liten stavskummer (10–20 €) er det desidert beste alternativet. Det roterende hodet skaper fint skum på 10 sekunder — nesten identisk med en chasen.
+En liten stavskummer (120–230 kr) er det desidert beste alternativet. Det roterende hodet skaper fint skum på 10 sekunder — nesten identisk med en chasen.
 
 **Slik:**
 1. Sikt 2 g matcha i en kopp.
@@ -3313,11 +3313,11 @@ Fungerer i nødstilfeller. Ikke ideelt — men hvis du ikke har verktøy:
 ## Sammenligning
 | Verktøy | Skum | Hastighet | Pris | Anbefalt for |
 |---|---|---|---|---|
-| Chasen | ★★★★★ | Rask | 15–25 € | Purister, ceremonial |
-| Skummer | ★★★★ | Veldig rask | 10–20 € | Daglig bruk |
-| Shaker | ★★★ | Rask | 5–15 € | Iset matcha |
-| Blender | ★★★★ | Rask | 30 €+ | Smoothies, latter |
-| Visp | ★★ | Langsom | 3 € | Nødløsning |
+| Chasen | ★★★★★ | Rask | 170–290 kr | Purister, ceremonial |
+| Skummer | ★★★★ | Veldig rask | 120–230 kr | Daglig bruk |
+| Shaker | ★★★ | Rask | 60–170 kr | Iset matcha |
+| Blender | ★★★★ | Rask | 350 kr+ | Smoothies, latter |
+| Visp | ★★ | Langsom | 35 kr | Nødløsning |
 | Krukke | ★ | Rask | Gratis | På farten |
 
 ## Når er en chasen verdt det?
@@ -3329,7 +3329,7 @@ For latter, iset matcha og daglig bruk er en skummer mer praktisk. Vårt [starts
         faqs: [
           { q: "Fungerer en gaffel til å vispe matcha?", a: "Marginalt. En gaffel har for liten kontaktflate til skum, men i en nødssituasjon bryter den klumper. En skummer eller shaker er alltid bedre." },
           { q: "Er matcha uten chasen mindre god?", a: "Nei, smaken endres ikke. Bare teksturen — en chasen gir finere skum. Smaken avhenger av matcha-kvaliteten, vanntemperaturen og doseringen." },
-          { q: "Kan jeg bruke en ministavmikser?", a: "Ja, perfekt. En liten stavmikser eller melkeskummer (10–20 €) er et av de beste alternativene til en chasen — særlig til daglig bruk." },
+          { q: "Kan jeg bruke en ministavmikser?", a: "Ja, perfekt. En liten stavmikser eller melkeskummer (120–230 kr) er et av de beste alternativene til en chasen — særlig til daglig bruk." },
         ],
       },
     },
@@ -3593,10 +3593,10 @@ I kaffe mangler L-theanin. Koffein treffer systemet ditt direkte, gir en rask ad
 **Matcha:** søt, kremet, umami, gressaktig. Enklere profil, men dypere og delikat.
 
 ## Pris per kopp
-- **Filterkaffe**: 0,15–0,30 €
-- **Espresso (hjemme)**: 0,25–0,40 €
-- **Matcha (ceremonial)**: 0,60–1,20 €
-- **Matcha (culinary)**: 0,30–0,50 €
+- **Filterkaffe**: 2–3,50 kr
+- **Espresso (hjemme)**: 3–4,50 kr
+- **Matcha (ceremonial)**: 7–14 kr
+- **Matcha (culinary)**: 3,50–6 kr
 
 Matcha er dyrere, men én god kopp kan erstatte en kaffe + en ettermiddagsdupp-snack.
 
@@ -4199,7 +4199,7 @@ Begin met een **kleinere 30 g verpakking** (€18–€25). Test puur en in latt
 - **Ekte matcha kommer fra Japan** (Uji, Nishio, Kagoshima). Kinesisk "matcha" er som regel malt sencha — et helt annet produkt.
 - **Farge er indikator nr. 1**: klar jadegrønn = fersk, matt oliven = gammel eller lav kvalitet.
 - **Ceremonial** for ren matcha, **culinary** for latter og baking.
-- Forvent **0,50–1 € per gram** for god ceremonial.
+- Forvent **6–12 kr per gram** for god ceremonial.
 
 ## De 7 kjøpskriteriene
 ### 1. Opprinnelse (Japan, med region)
@@ -4239,13 +4239,13 @@ Full forklaring i [ceremonial vs. culinary matcha](/kennis/ceremonial-vs-culinar
 ### 6. Pris (retningslinje 2026)
 | Nivå | Pris/gram | For hvem |
 |---|---|---|
-| Budsjett culinary | 0,15–0,30 € | Baking, smoothies |
-| Premium culinary | 0,30–0,50 € | Daglig latte |
-| Standard ceremonial | 0,50–0,80 € | Ren matcha hjemme |
-| Premium ceremonial | 0,80–1,50 € | Spesielle anledninger |
-| Competitive grade | 2 €+ | Entusiaster, seremoni |
+| Budsjett culinary | 2–3,50 kr | Baking, smoothies |
+| Premium culinary | 3,50–6 kr | Daglig latte |
+| Standard ceremonial | 6–9 kr | Ren matcha hjemme |
+| Premium ceremonial | 9–17 kr | Spesielle anledninger |
+| Competitive grade | 23 kr+ | Entusiaster, seremoni |
 
-Matcha under 0,15 €/g fra Japan er nesten helt sikkert gammel eller blandet.
+Matcha under 2 kr/g fra Japan er nesten helt sikkert gammel eller blandet.
 
 ### 7. Anmeldelser og åpenhet
 En god selger viser:
@@ -4268,17 +4268,17 @@ For den som nettopp begynner, er et **startsett** smartest — du får alt du tr
 
 ## Røde flagg — unngå disse
 - "Matcha av asiatisk opprinnelse" uten region
-- Uforklarlig lav pris (<0,15 €/g)
+- Uforklarlig lav pris (<2 kr/g)
 - Ingen høstdato
 - Gjennomsiktig emballasje
 - Knallgrønn farge som er for klar til å være sann (tilsatt fargestoff)
 - Smak som aldri er umami, bare bitter/gressaktig
 
 ## Smak først, invester etterpå
-Start med en **mindre 30 g-pakke** (18–25 €). Test ren og i latte. Først når du vet hva din smak er, kjøper du en større pose. Matcha mister raskt kvalitet så snart posen er åpnet — les [oppbevare matcha](/kennis/matcha-bewaren).`,
+Start med en **mindre 30 g-pakke** (200–300 kr). Test ren og i latte. Først når du vet hva din smak er, kjøper du en større pose. Matcha mister raskt kvalitet så snart posen er åpnet — les [oppbevare matcha](/kennis/matcha-bewaren).`,
         faqs: [
-          { q: "Hva koster god matcha?", a: "For autentisk japansk ceremonial matcha betaler du 0,50–1 € per gram. Culinary grade ligger rundt 0,30–0,50 €/g. Under 0,15 €/g er nesten alltid gammel eller blandet." },
-          { q: "Er dyr matcha virkelig bedre?", a: "Opptil et visst punkt ja. Opptil ~1 €/g ser og smaker du tydelig forskjell. Over 1,50 €/g gir det avtakende avkastning — særlig relevant for entusiaster." },
+          { q: "Hva koster god matcha?", a: "For autentisk japansk ceremonial matcha betaler du 6–12 kr per gram. Culinary grade ligger rundt 3,50–6 kr/g. Under 2 kr/g er nesten alltid gammel eller blandet." },
+          { q: "Er dyr matcha virkelig bedre?", a: "Opptil et visst punkt ja. Opptil ~12 kr/g ser og smaker du tydelig forskjell. Over 17 kr/g gir det avtakende avkastning — særlig relevant for entusiaster." },
           { q: "Hvor kjøper jeg autentisk japansk matcha?", a: "Velg en spesialist som kommuniserer region, høstdato og grade åpent. YourMatcha henter direkte fra Uji — les opprinnelsessiden vår for kjeden." },
           { q: "Kan jeg kjøpe matcha i butikken?", a: "Det finnes, men kvaliteten er som regel cooking-grade og pulveret er ofte allerede gammelt. For ren matcha bør du heller oppsøke en spesialist." },
         ],
@@ -4388,8 +4388,8 @@ Lees ook [beste matcha kopen](/kennis/beste-matcha-kopen-2026) voor de complete 
       no: {
         title: "Hvorfor er god matcha så dyr? — Prisen forklart",
         metaTitle: "Matchaprisen forklart: hvorfor god matcha er dyr (2026)",
-        metaDescription: "0,15 til 2 € per gram — hvorfor er det så stor forskjell i matchapris? Vi forklarer produksjonskjeden, høsten og kvalitetsnivåene.",
-        excerpt: "Matcha kan koste 15 eller 150 € per 100 gram. Her er hva den prisforskjellen konkret betyr — fra den japanske åkeren til skålen din.",
+        metaDescription: "2 til 23 kr per gram — hvorfor er det så stor forskjell i matchapris? Vi forklarer produksjonskjeden, høsten og kvalitetsnivåene.",
+        excerpt: "Matcha kan koste 170 eller 1 700 kr per 100 gram. Her er hva den prisforskjellen konkret betyr — fra den japanske åkeren til skålen din.",
         category: "Kjøpe",
         content: `## Hvorfor er matcha dyrere enn annen te?
 Tre grunner:
@@ -4413,11 +4413,11 @@ Vanlig grønn te = plukke blad, tørke, pakke. Matcha = skyggelegge, plukke, dam
 ## Prisnivå-oversikt (per 100 g, 2026)
 | Nivå | Pris | Forklaring |
 |---|---|---|
-| **Cooking grade** | 5–15 € | Senhøst, ofte kinesisk eller blandet |
-| **Culinary** | 15–35 € | Ekte japansk matcha, for latter |
-| **Standard ceremonial** | 35–80 € | Første høst, egnet ren |
-| **Premium ceremonial** | 80–150 € | Utvalgte åkre, mer kompleks smak |
-| **Competitive grade** | 150–400 €+ | Konkurransekvalitet, entusiaster |
+| **Cooking grade** | 60–170 kr | Senhøst, ofte kinesisk eller blandet |
+| **Culinary** | 170–400 kr | Ekte japansk matcha, for latter |
+| **Standard ceremonial** | 400–920 kr | Første høst, egnet ren |
+| **Premium ceremonial** | 920–1 700 kr | Utvalgte åkre, mer kompleks smak |
+| **Competitive grade** | 1 700–4 600 kr+ | Konkurransekvalitet, entusiaster |
 
 ## Hvorfor er det så stor forskjell?
 **1. Høsttidspunkt**
@@ -4459,7 +4459,7 @@ Ikke dyrere = alltid bedre. En god **standard ceremonial fra Nishio** kan være 
 | Iset matcha | Nei — spesiell [iset blanding](/product/iced-matcha-blend-60g) |
 
 ## Billig vs. dyr — konkret smaksforskjell
-| Aspekt | Billig (15 €/100g) | Dyr (80 €/100g) |
+| Aspekt | Billig (170 kr/100g) | Dyr (920 kr/100g) |
 |---|---|---|
 | Farge | Gulgrønn, matt | Klar jade |
 | Tørr lukt | Gressaktig, papiraktig | Søt, marin, umami |
@@ -4467,18 +4467,18 @@ Ikke dyrere = alltid bedre. En god **standard ceremonial fra Nishio** kan være 
 | Bitterhet | Sterk | Knapt merkbar |
 | Tekstur | Kornete i munnen | Kremet, fløyelsmyk |
 
-## Hvor mye matcha kan du forvente per €?
+## Hvor mye matcha får du for pengene?
 | Budsjett | Gir deg |
 |---|---|
-| 20 € | 30 g standard ceremonial (≈15 kopper) |
-| 40 € | 100 g culinary (≈50 kopper) eller 50 g ceremonial |
-| 80 € | 100 g standard ceremonial (≈50 kopper) |
-| 150 € | 100 g premium ceremonial eller et komplett [ritual set](/product/premium-ritual-set) |
+| 230 kr | 30 g standard ceremonial (≈15 kopper) |
+| 460 kr | 100 g culinary (≈50 kopper) eller 50 g ceremonial |
+| 920 kr | 100 g standard ceremonial (≈50 kopper) |
+| 1 700 kr | 100 g premium ceremonial eller et komplett [ritual set](/product/premium-ritual-set) |
 
 Les også [kjøpe den beste matchaen](/kennis/beste-matcha-kopen-2026) for den komplette kjøpsguiden.`,
         faqs: [
           { q: "Hvorfor er matcha dyrere enn vanlig te?", a: "Produksjonsprosessen er ti ganger mer arbeidsintensiv: skyggelegging, håndplukking, damping, tørking og timer med steinmaling. Per gram ligger det betydelig mer arbeid i den enn i løs bladte." },
-          { q: "Er dyr matcha virkelig bedre?", a: "Opptil omtrent 1 € per gram ser og smaker du forskjellen tydelig. Over det punktet er gevinstene subtile — særlig for entusiaster og spesielle anledninger." },
+          { q: "Er dyr matcha virkelig bedre?", a: "Opptil omtrent 12 kr per gram ser og smaker du forskjellen tydelig. Over det punktet er gevinstene subtile — særlig for entusiaster og spesielle anledninger." },
           { q: "Kan billig matcha være farlig?", a: "Ikke direkte farlig, men ofte gammel (oksidasjon, ingen næringsfordeler igjen) eller blandet med billigere grønn te. For helsefordeler velger du et nivå med dokumentert opprinnelse." },
         ],
       },
@@ -4571,7 +4571,7 @@ Lees ook [beste matcha kopen 2026](/kennis/beste-matcha-kopen-2026) voor de comp
       no: {
         title: "Matcha-gaveideer — originalt for ethvert budsjett (2026)",
         metaTitle: "Matcha-gaveideer: 12 originale gaver (ethvert budsjett)",
-        metaDescription: "På jakt etter en unik matcha-gave? Fra en chasen til 15 € til et komplett ritual set til 120 € — vi hjelper deg å velge for entusiaster og nysgjerrige.",
+        metaDescription: "På jakt etter en unik matcha-gave? Fra en chasen til 170 kr til et komplett ritual set til 1 400 kr — vi hjelper deg å velge for entusiaster og nysgjerrige.",
         excerpt: "Matcha er en personlig gave som sier: jeg tenker på ditt velvære. Her er tolv ideer, sortert etter budsjett og mottaker.",
         category: "Kjøpe",
         content: `## Hvem er matcha en god gave til?
@@ -4582,44 +4582,44 @@ Lees ook [beste matcha kopen 2026](/kennis/beste-matcha-kopen-2026) voor de comp
 - **Matelsker**: baking og kulinarisk eksperimentering.
 - **Mindfulness-fan**: ritualet er meditativt.
 
-## Gave opptil 25 € (liten oppmerksomhet)
-**1. [Bambus-chasen](/product/bamboe-chasen) (~20 €)**
+## Gave opptil 300 kr (liten oppmerksomhet)
+**1. [Bambus-chasen](/product/bamboe-chasen) (~230 kr)**
 Håndlaget av ett stykke bambus. Uunnværlig for den som ennå ikke har chasen. Føles håndverksmessig i hånden med en gang.
 
-**2. [Ceremonial matcha 30g](/product/ceremonial-matcha-30g) (~22 €)**
+**2. [Ceremonial matcha 30g](/product/ceremonial-matcha-30g) (~260 kr)**
 Autentisk japansk matcha fra Uji i en liten porsjon. Ideelt for å smake uten stor forpliktelse.
 
-**3. [Bambus-chashaku](/product/bamboe-chashaku) (~10 €)**
+**3. [Bambus-chashaku](/product/bamboe-chashaku) (~120 kr)**
 Tradisjonell bambus-teskje. Liten, men gjennomtenkt — skjønnhet i detaljen.
 
-## Gave 25–50 € (personlig)
-**4. [Iset matcha-blanding 60g](/product/iced-matcha-blend-60g) (~28 €)**
+## Gave 300–600 kr (personlig)
+**4. [Iset matcha-blanding 60g](/product/iced-matcha-blend-60g) (~320 kr)**
 For sommerfans eller den som heller drikker kaldt — spesielt malt for kald tilberedning.
 
-**5. [Matcha yuzu-blanding](/product/matcha-yuzu-blend-40g) (~32 €)**
+**5. [Matcha yuzu-blanding](/product/matcha-yuzu-blend-40g) (~370 kr)**
 Japansk sitrus med matcha — en overraskende smak du ikke finner i butikken.
 
-**6. [Keramisk matcha-skål](/product/keramische-matcha-kom) (~38 €)**
+**6. [Keramisk matcha-skål](/product/keramische-matcha-kom) (~440 kr)**
 Håndlaget chawan. Et funksjonelt kunstobjekt på kjøkkenbenken.
 
-**7. [Mint matcha](/product/mint-matcha-40g) eller [berry matcha](/product/berry-matcha-40g) (~30 €)**
+**7. [Mint matcha](/product/mint-matcha-40g) eller [berry matcha](/product/berry-matcha-40g) (~350 kr)**
 For den som liker smaksvarianter — naturlige blandinger, ingen kunstige aromaer.
 
-## Gave 50–80 € (substansiell)
-**8. [Startsett](/product/starter-kit) (~60 €)**
+## Gave 600–900 kr (substansiell)
+**8. [Startsett](/product/starter-kit) (~690 kr)**
 Komplett pakke: matcha + chasen + skål + sil. Man kan komme i gang med en gang — ingen ekstra anskaffelse nødvendig.
 
-**9. [Ceremonial matcha 100g](/product/ceremonial-matcha-100g) (~70 €)**
+**9. [Ceremonial matcha 100g](/product/ceremonial-matcha-100g) (~800 kr)**
 For den som allerede drikker matcha og vil ha den ekte premium-opplevelsen. 100g = 2 måneders daglig bruk.
 
-**10. [Discovery tea box](/product/discovery-tea-box) (~55 €)**
+**10. [Discovery tea box](/product/discovery-tea-box) (~640 kr)**
 Ulike matcha- og tetyper i prøvepakninger. Perfekt for den som liker å eksperimentere.
 
-## Gave 80–150 € (premium)
-**11. [Premium ritual set](/product/premium-ritual-set) (~110 €)**
+## Gave 900–1 700 kr (premium)
+**11. [Premium ritual set](/product/premium-ritual-set) (~1 250 kr)**
 Premium matcha + håndlaget chasen + keramisk chawan + chashaku + hefte. Pakket og klart som gave.
 
-**12. [Gift box](/product/gift-box) (~85 €)**
+**12. [Gift box](/product/gift-box) (~980 kr)**
 Vakker gaveeske med et utvalg av våre mest elskede produkter. Et trygt valg hvis du ikke vet hva mottakeren allerede har.
 
 ## Hva du IKKE bør gi som matcha-gave
@@ -4640,11 +4640,11 @@ Vakker gaveeske med et utvalg av våre mest elskede produkter. Et trygt valg hvi
 | Matelsker | Discovery tea box |
 
 ## Pakker og levering
-Hos YourMatcha leverer vi **luksuriøst innpakket** og kan legge ved et håndskrevet kort. For gaver: bestill før kl. 14 = levert i morgen.
+Hos YourMatcha leverer vi **luksuriøst innpakket** og kan legge ved et håndskrevet kort. For gaver til Norge: regn med 4–7 virkedagers leveringstid.
 
 Les også [kjøpe den beste matchaen 2026](/kennis/beste-matcha-kopen-2026) for den komplette kjøpsguiden.`,
         faqs: [
-          { q: "Hva er en god matcha-gave til en nybegynner?", a: "Et startsett (50–60 €) er ideelt — det inneholder matcha, chasen, skål og sil. Mottakeren kan komme i gang med en gang uten ekstra kjøp." },
+          { q: "Hva er en god matcha-gave til en nybegynner?", a: "Et startsett (600–700 kr) er ideelt — det inneholder matcha, chasen, skål og sil. Mottakeren kan komme i gang med en gang uten ekstra kjøp." },
           { q: "Er matcha en egnet gave til noen som ikke drikker te?", a: "Overraskende ofte ja, særlig for dem som slutter med kaffe. En matcha latte føles annerledes enn te. Et startsett med culinary matcha er en trygg start." },
           { q: "Hvor lenge holder matcha seg som gave?", a: "Uåpnet 12 måneder. La den alltid være i originalemballasjen — åpnet matcha mister kvalitet innen 4–6 uker." },
         ],
@@ -4773,45 +4773,45 @@ Lees ook [beste matcha kopen 2026](/kennis/beste-matcha-kopen-2026) voor diepere
 **Valgfritt:** chasen (bambusvisp), chawan (skål).
 **Ikke nødvendig:** matcha-maskin, spesielle tilskudd, eksotiske verktøy.
 
-**Minimumsbudsjett**: 30 €. **Komplett**: 60–100 €.
+**Minimumsbudsjett**: 350 kr. **Komplett**: 700–1 150 kr.
 
 ## De 4 essensielle
-### 1. Matcha-pulver (~20–30 €)
+### 1. Matcha-pulver (~230–350 kr)
 Start med **culinary grade** hvis du mest drikker latter, eller **ceremonial 30g** for ren matcha.
 - Anbefaling for nybegynnere: [ceremonial matcha 30g](/product/ceremonial-matcha-30g) — liten nok til å bli ferdig innen 4–6 uker.
 
-### 2. Noe for å få vann på 75–80 °C (~0–30 €)
+### 2. Noe for å få vann på 75–80 °C (~0–350 kr)
 - **Alternativ 1 (gratis)**: kok vann, vent 60 sekunder = ~80 °C.
-- **Alternativ 2 (20–30 €)**: vannkoker med temperaturinnstilling.
+- **Alternativ 2 (230–350 kr)**: vannkoker med temperaturinnstilling.
 
 Viktigere enn hvilket verktøy: **aldri kokende vann på matcha**.
 
-### 3. Sil (~3–10 €)
+### 3. Sil (~35–120 kr)
 En vanlig kjøkkensil holder. Å unngå klumper er 80 % av en god matcha. Ikke undervurder det.
 
-### 4. En visp (~0–25 €)
+### 4. En visp (~0–300 kr)
 Fire alternativer, stigende i autentisitet:
 - **Ingenting** — bruk en lukket krukke og rist.
-- **Liten melkeskummer** (~10 €) — vår anbefaling for nybegynnere. Les [matcha uten chasen](/kennis/matcha-zonder-chasen).
-- **[Bambus-chasen](/product/bamboe-chasen)** (~20 €) — tradisjonell, vakker, fineste skum.
-- **[Elektrisk skummer](/product/elektrische-melkopschuimer)** (~15 €) — best til daglig bruk.
+- **Liten melkeskummer** (~120 kr) — vår anbefaling for nybegynnere. Les [matcha uten chasen](/kennis/matcha-zonder-chasen).
+- **[Bambus-chasen](/product/bamboe-chasen)** (~230 kr) — tradisjonell, vakker, fineste skum.
+- **[Elektrisk skummer](/product/elektrische-melkopschuimer)** (~170 kr) — best til daglig bruk.
 
 ## De 3 nice-to-haves (for den som virkelig satser)
 ### 5. Chawan (matcha-skål)
-En [keramisk chawan](/product/keramische-matcha-kom) (~38 €) gjør ritualet verdigere. Den brede formen gir chasenen rom til å vispe. En grunn skål fungerer også fint.
+En [keramisk chawan](/product/keramische-matcha-kom) (~440 kr) gjør ritualet verdigere. Den brede formen gir chasenen rom til å vispe. En grunn skål fungerer også fint.
 
 ### 6. Chashaku (bambusskje)
-En [bambus-chashaku](/product/bamboe-chashaku) (~10 €) doserer tradisjonelt — 2 skjeer ≈ 2 g matcha. Vakker, men ikke nødvendig; en vanlig teskje fungerer også.
+En [bambus-chashaku](/product/bamboe-chashaku) (~120 kr) doserer tradisjonelt — 2 skjeer ≈ 2 g matcha. Vakker, men ikke nødvendig; en vanlig teskje fungerer også.
 
 ### 7. En oppbevaringsboks
 Hold matchaen mørk og lufttett. Originalemballasjen er som regel nok, men en fin boks på benken føles godt.
 
 ## Hva du IKKE trenger
-**1. Matcha-blender-maskin (100 €+)**
+**1. Matcha-blender-maskin (over 1 000 kr)**
 En vannkoker + chasen gjør alt en slik maskin gjør. Markedsføring.
 
 **2. Vibrasjonssikt eller "fancy siler"**
-En kjøkkensil til 5 € gjør samme jobb.
+En kjøkkensil til 60 kr gjør samme jobb.
 
 **3. Spesielle matcha-tilskudd (kapsler, gummies)**
 Bare drikk matcha. Kapsler mister ritualet og er dyrere per porsjon.
@@ -4824,20 +4824,20 @@ En vanlig melkeskummer fungerer både til matcha og til cappuccino. Multifunksjo
 
 ## Tre startbudsjetter
 
-### Minimal (30 €)
-- [Ceremonial matcha 30g](/product/ceremonial-matcha-30g) — 22 €
-- Kjøkkensil (har du sannsynligvis) — 0 €
-- Liten melkeskummer — 8 €
+### Minimal (350 kr)
+- [Ceremonial matcha 30g](/product/ceremonial-matcha-30g) — 260 kr
+- Kjøkkensil (har du sannsynligvis) — 0 kr
+- Liten melkeskummer — 90 kr
 
 Resultat: god matcha hjemme, ingen visuelt ritual.
 
-### Standard (60 €)
-- [Startsett](/product/starter-kit) — 60 € (matcha + chasen + skål + sil)
+### Standard (700 kr)
+- [Startsett](/product/starter-kit) — 690 kr (matcha + chasen + skål + sil)
 
 Resultat: komplett pakke, autentisk ritual, ingenting mer nødvendig.
 
-### Premium (110 €)
-- [Premium ritual set](/product/premium-ritual-set) — 110 € (håndlagde verktøy, premium matcha)
+### Premium (1 250 kr)
+- [Premium ritual set](/product/premium-ritual-set) — 1 250 kr (håndlagde verktøy, premium matcha)
 
 Resultat: gaveverdig oppsett, beste kvalitet, glede i årevis.
 
@@ -4865,8 +4865,8 @@ Resultat: gaveverdig oppsett, beste kvalitet, glede i årevis.
 
 Les også [kjøpe den beste matchaen 2026](/kennis/beste-matcha-kopen-2026) for en dypere kjøpsguide.`,
         faqs: [
-          { q: "Hva er det minste jeg trenger for å lage matcha?", a: "Matcha-pulver, vann på 75–80 °C, en sil og noe å vispe med (chasen, melkeskummer eller til og med en lukket krukke). Totalt fra 30 €." },
-          { q: "Trenger jeg virkelig en chasen?", a: "Nei. En liten elektrisk melkeskummer (10 €) fungerer like godt for de fleste. En chasen er penere og gir finere skum, men er ingen nødvendighet." },
+          { q: "Hva er det minste jeg trenger for å lage matcha?", a: "Matcha-pulver, vann på 75–80 °C, en sil og noe å vispe med (chasen, melkeskummer eller til og med en lukket krukke). Totalt fra 350 kr." },
+          { q: "Trenger jeg virkelig en chasen?", a: "Nei. En liten elektrisk melkeskummer (120 kr) fungerer like godt for de fleste. En chasen er penere og gir finere skum, men er ingen nødvendighet." },
           { q: "Hvilken matcha er best å begynne med?", a: "Ceremonial 30g er ideelt for ren matcha (liten porsjon, lav terskel). Drikker du mest latter? Start med 100g culinary — billigere per gram og varer lengre." },
         ],
       },
@@ -5926,7 +5926,7 @@ Shogunen vernet syv bestemte åkre i 1392:
 6. Oku-no-yama
 7. Atsumi
 
-Noen finnes fortsatt i dag — teen deres er nesten ubetalelig (10 €+/gram) og går til konkurranseteseremonier.
+Noen finnes fortsatt i dag — teen deres er nesten ubetalelig (over 100 kr/gram) og går til konkurranseteseremonier.
 
 ## Hvordan gjenkjenner du ekte Uji matcha?
 **Spør selgeren:**
@@ -7198,9 +7198,9 @@ Oppgir de ikke høsten? **Det er som regel nibancha eller en blanding** — ikke
 ## Prispunkter
 | Kategori | Pris/100g (2026) |
 |---|---|
-| Ichibancha ceremonial | 50–150 € |
-| Sen ichibancha / blanding | 30–60 € |
-| Ren nibancha culinary | 20–40 € |
+| Ichibancha ceremonial | 600–1 700 kr |
+| Sen ichibancha / blanding | 350–700 kr |
+| Ren nibancha culinary | 230–460 kr |
 | Sanbancha (bare for hojicha) | i.r. |
 
 ## Når betyr det noe?

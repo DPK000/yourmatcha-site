@@ -15,7 +15,7 @@ const DISCOUNT_PCT = 0.15;
 const COPY = {
   nl: {
     seoTitle: "Bouw je eigen Matcha Bundel — 15% korting",
-    seoDescription: "Stel je eigen pakket samen van 3 matcha en thee specialiteiten en bespaar automatisch 15%. Gratis verzending in NL & BE vanaf €50.",
+    seoDescription: "Stel je eigen pakket samen van 3 matcha en thee specialiteiten en bespaar automatisch 15%. Gratis verzending in NL & BE vanaf €35.",
     jsonLdName: "YourMatcha Bundel — 3 voor 15% korting",
     jsonLdDescription: "Stel zelf een bundel samen van 3 matcha of thee producten en bespaar 15%.",
     heroEyebrow: "Bundle Builder",
@@ -38,7 +38,7 @@ const COPY = {
   },
   no: {
     seoTitle: "Sett sammen din egen matcha-pakke — 15 % rabatt",
-    seoDescription: "Sett sammen din egen pakke med 3 matcha- og te-spesialiteter og spar automatisk 15 %. Gratis frakt fra 575 kr.",
+    seoDescription: "Sett sammen din egen pakke med 3 matcha- og te-spesialiteter og spar automatisk 15 %. Gratis frakt over 400 kr.",
     jsonLdName: "YourMatcha-pakke — 3 for 15 % rabatt",
     jsonLdDescription: "Sett sammen en pakke med 3 matcha- eller te-produkter og spar 15 %.",
     heroEyebrow: "Bundle Builder",
@@ -62,7 +62,7 @@ const COPY = {
 } as const;
 
 const BundleBuilder = () => {
-  const { format: formatPrice } = useCurrency();
+  const { format: formatPrice, formatAmount, convert } = useCurrency();
   const lang = useLang();
   const t = COPY[lang === "no" ? "no" : "nl"];
   const { addItem } = useCart();
@@ -82,15 +82,33 @@ const BundleBuilder = () => {
     });
   };
 
-  const subtotal = selected.reduce((s, p) => s + p.price, 0);
-  const discount = selected.length === TARGET ? subtotal * DISCOUNT_PCT : 0;
-  const total = subtotal - discount;
+  /** Bundelprijs per stuk in EUR — deze prijs gaat ook echt zo de winkelwagen in. */
+  const discountedUnit = (p: Product) => Math.round(p.price * (1 - DISCOUNT_PCT) * 100) / 100;
+
   const ready = selected.length === TARGET;
+  // Totalen in de actieve valuta, opgebouwd uit afgeronde stuksprijzen zodat de
+  // getoonde bundelprijs exact overeenkomt met wat er in de winkelwagen komt.
+  const subtotal = selected.reduce((s, p) => s + convert(p.price), 0);
+  const total = ready ? selected.reduce((s, p) => s + convert(discountedUnit(p)), 0) : subtotal;
+  const discount = subtotal - total;
 
   const addBundle = () => {
-    selected.forEach(p => addItem(p, 1));
+    const bundleTag = lang === "no" ? " · Pakke −15 %" : " · Bundel −15%";
+    selected.forEach(p =>
+      addItem({ ...p, id: `${p.id}-bundle`, name: `${p.name}${bundleTag}`, price: discountedUnit(p) }, 1)
+    );
     setSelected([]);
   };
+
+  const jsonLdPrices = useMemo(() => {
+    const sorted = eligible.map(p => p.price).sort((a, b) => a - b);
+    const sum = (arr: number[]) => arr.reduce((s, v) => s + v, 0);
+    if (sorted.length < TARGET) return { low: 0, high: 0 };
+    return {
+      low: Math.round(sum(sorted.slice(0, TARGET)) * (1 - DISCOUNT_PCT) * 100) / 100,
+      high: Math.round(sum(sorted.slice(-TARGET)) * (1 - DISCOUNT_PCT) * 100) / 100,
+    };
+  }, [eligible]);
 
   return (
     <>
@@ -104,7 +122,7 @@ const BundleBuilder = () => {
           name: t.jsonLdName,
           description: t.jsonLdDescription,
           brand: { "@type": "Brand", name: "YourMatcha" },
-          offers: { "@type": "AggregateOffer", priceCurrency: "EUR", lowPrice: 35, highPrice: 90 },
+          offers: { "@type": "AggregateOffer", priceCurrency: "EUR", lowPrice: jsonLdPrices.low, highPrice: jsonLdPrices.high },
         }}
       />
       <PageHero
@@ -197,7 +215,7 @@ const BundleBuilder = () => {
               <div className="space-y-1.5 text-sm border-t border-border pt-4">
                 <div className="flex justify-between">
                   <span className="text-muted-foreground">{t.subtotal}</span>
-                  <span>{formatPrice(subtotal)}</span>
+                  <span>{formatAmount(subtotal)}</span>
                 </div>
                 <AnimatePresence>
                   {discount > 0 && (
@@ -208,13 +226,13 @@ const BundleBuilder = () => {
                       className="flex justify-between text-primary font-semibold"
                     >
                       <span>{t.bundleDiscount}</span>
-                      <span>−{formatPrice(discount)}</span>
+                      <span>−{formatAmount(discount)}</span>
                     </motion.div>
                   )}
                 </AnimatePresence>
                 <div className="flex justify-between text-base font-semibold pt-2 border-t border-border">
                   <span>{t.total}</span>
-                  <span>{formatPrice(total)}</span>
+                  <span>{formatAmount(total)}</span>
                 </div>
               </div>
 

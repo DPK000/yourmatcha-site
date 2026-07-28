@@ -1,9 +1,10 @@
-import { useEffect } from "react";
+import { useEffect, Suspense } from "react";
 import { Link, useNavigate, useLocation, Outlet } from "react-router-dom";
 import {
   LayoutDashboard, ShoppingBag, Package, LogOut, ExternalLink, Menu, X, Users, Award, Briefcase, Truck, CircleDollarSign, Tag, Code2, Mail, Send
 } from "lucide-react";
 import { useState } from "react";
+import { supabase } from "@/lib/supabase";
 
 const navItems = [
   { to: "/admin", label: "Dashboard", icon: LayoutDashboard, exact: true },
@@ -24,12 +25,17 @@ const AdminLayout = () => {
   const [sidebarOpen, setSidebarOpen] = useState(false);
 
   useEffect(() => {
-    const auth = sessionStorage.getItem("shop_admin_auth");
-    if (!auth) navigate("/admin/login");
+    supabase.auth.getSession().then(({ data }) => {
+      if (!data.session) navigate("/admin/login");
+    });
+    const { data: sub } = supabase.auth.onAuthStateChange((_event, session) => {
+      if (!session) navigate("/admin/login");
+    });
+    return () => sub.subscription.unsubscribe();
   }, [navigate]);
 
-  const handleLogout = () => {
-    sessionStorage.removeItem("shop_admin_auth");
+  const handleLogout = async () => {
+    await supabase.auth.signOut();
     navigate("/admin/login");
   };
 
@@ -118,7 +124,9 @@ const AdminLayout = () => {
         </header>
 
         <main className="flex-1 overflow-y-auto p-6">
-          <Outlet />
+          <Suspense fallback={null}>
+            <Outlet />
+          </Suspense>
         </main>
       </div>
     </div>
