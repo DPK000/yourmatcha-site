@@ -1,6 +1,7 @@
 import React, { createContext, useContext, useState, useCallback, useEffect } from "react";
 import { Product } from "@/data/products";
 import { toast } from "sonner";
+import { trackAddToCart } from "@/hooks/useMetaPixel";
 import i18n from "@/i18n";
 
 export interface CartItem {
@@ -17,7 +18,7 @@ export interface AppliedDiscount {
   minOrder: number;
 }
 
-/** Kortingsbedrag in EUR — zelfde formule als server-side in stripe-create-payment-intent */
+/** Kortingsbedrag in EUR - zelfde formule als server-side in stripe-create-payment-intent */
 export function computeDiscountAmount(
   discount: AppliedDiscount | null,
   subtotal: number,
@@ -82,6 +83,12 @@ export const CartProvider: React.FC<{ children: React.ReactNode }> = ({ children
     });
     setIsOpen(true);
     toast.success(`${product.name} ${i18n.t("cart.addedSuffix")}`);
+    // Eén plek voor AddToCart - vangt productpagina, kaarten, quick view,
+    // bundelbouwer en cross-sells zonder dat elke knop het zelf moet melden.
+    trackAddToCart(
+      { id: product.id, name: product.name, price: product.price, quantity },
+      "EUR"
+    );
   }, []);
 
   const removeItem = useCallback((productId: string) => {

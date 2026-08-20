@@ -1,5 +1,6 @@
 import { useCart, computeDiscountAmount } from "@/context/CartContext";
-import { Link } from "react-router-dom";
+import { trackInitiateCheckout } from "@/hooks/useMetaPixel";
+import { Link } from "@/components/LocalizedLink";
 import { useMemo, useState, useEffect, useRef } from "react";
 import { toast } from "sonner";
 import { ChevronLeft, Loader2, Lock } from "lucide-react";
@@ -17,6 +18,11 @@ import {
 import { useCurrency } from "@/context/CurrencyContext";
 import SEO from "@/components/SEO";
 import { useLang } from "@/i18n";
+
+/** Voorselectie van het land in de checkout, op basis van de taal. */
+const DEFAULT_COUNTRY: Record<string, string> = {
+  nl: "NL", en: "NL", de: "DE", fr: "FR", no: "NO",
+};
 
 const COPY = {
   nl: {
@@ -49,8 +55,107 @@ const COPY = {
     countries:        { NL: "Nederland", BE: "België", DE: "Duitsland", FR: "Frankrijk", NO: "Noorwegen" },
     paymentMethod:    "Betaalmethode",
     submitting:       "Bezig…",
-    placeOrder:       (total: string) => `Bestelling Plaatsen — ${total}`,
+    placeOrder:       (total: string) => `Bestelling Plaatsen - ${total}`,
     paymentWaiting:   "Vul je e-mailadres in om de betaalopties te laden.",
+  },
+  en: {
+    emptyCart:        "Your cart is empty.",
+    toShop:           "To the shop",
+    continueShopping: "Continue shopping",
+    title:            "Checkout",
+    contact:          "Contact",
+    emailPlaceholder: "Email address",
+    loadingPayment:   "Loading payment options…",
+    errorPrefix:      "Something went wrong: ",
+    errorSuffix:      ". Refresh the page and try again.",
+    summary:          "Summary",
+    subtotal:         "Subtotal",
+    discount:         "Discount",
+    shipping:         "Shipping",
+    free:             "Free",
+    freeShippingFrom: "Free shipping over €35",
+    total:            "Total",
+    paymentFailed:    "Payment failed",
+    unknownError:     "Unknown error",
+    orPayWith:        "Or pay with",
+    shippingAddress:  "Shipping address",
+    firstName:        "First name",
+    lastName:         "Last name",
+    phone:            "Phone number",
+    address:          "Street + house number",
+    postalCode:       "Postcode",
+    city:             "City",
+    countries:        { NL: "Netherlands", BE: "Belgium", DE: "Germany", FR: "France", NO: "Norway" },
+    paymentMethod:    "Payment method",
+    submitting:       "Processing…",
+    placeOrder:       (total: string) => `Place order - ${total}`,
+    paymentWaiting:   "Enter your email address to load the payment options.",
+  },
+  de: {
+    emptyCart:        "Dein Warenkorb ist leer.",
+    toShop:           "Zum Shop",
+    continueShopping: "Weiter einkaufen",
+    title:            "Kasse",
+    contact:          "Kontakt",
+    emailPlaceholder: "E-Mail-Adresse",
+    loadingPayment:   "Zahlungsoptionen werden geladen…",
+    errorPrefix:      "Etwas ist schiefgelaufen: ",
+    errorSuffix:      ". Lade die Seite neu und versuche es erneut.",
+    summary:          "Übersicht",
+    subtotal:         "Zwischensumme",
+    discount:         "Rabatt",
+    shipping:         "Versand",
+    free:             "Gratis",
+    freeShippingFrom: "Gratis Versand ab €35",
+    total:            "Gesamt",
+    paymentFailed:    "Zahlung fehlgeschlagen",
+    unknownError:     "Unbekannter Fehler",
+    orPayWith:        "Oder bezahle mit",
+    shippingAddress:  "Lieferadresse",
+    firstName:        "Vorname",
+    lastName:         "Nachname",
+    phone:            "Telefonnummer",
+    address:          "Straße + Hausnummer",
+    postalCode:       "PLZ",
+    city:             "Stadt",
+    countries:        { NL: "Niederlande", BE: "Belgien", DE: "Deutschland", FR: "Frankreich", NO: "Norwegen" },
+    paymentMethod:    "Zahlungsart",
+    submitting:       "Wird verarbeitet…",
+    placeOrder:       (total: string) => `Bestellung aufgeben - ${total}`,
+    paymentWaiting:   "Gib deine E-Mail-Adresse ein, um die Zahlungsoptionen zu laden.",
+  },
+  fr: {
+    emptyCart:        "Votre panier est vide.",
+    toShop:           "Vers la boutique",
+    continueShopping: "Continuer mes achats",
+    title:            "Paiement",
+    contact:          "Contact",
+    emailPlaceholder: "Adresse e-mail",
+    loadingPayment:   "Chargement des moyens de paiement…",
+    errorPrefix:      "Une erreur est survenue : ",
+    errorSuffix:      ". Rechargez la page et réessayez.",
+    summary:          "Récapitulatif",
+    subtotal:         "Sous-total",
+    discount:         "Réduction",
+    shipping:         "Livraison",
+    free:             "Offerte",
+    freeShippingFrom: "Livraison offerte dès 35 €",
+    total:            "Total",
+    paymentFailed:    "Paiement refusé",
+    unknownError:     "Erreur inconnue",
+    orPayWith:        "Ou payez avec",
+    shippingAddress:  "Adresse de livraison",
+    firstName:        "Prénom",
+    lastName:         "Nom",
+    phone:            "Numéro de téléphone",
+    address:          "Rue + numéro",
+    postalCode:       "Code postal",
+    city:             "Ville",
+    countries:        { NL: "Pays-Bas", BE: "Belgique", DE: "Allemagne", FR: "France", NO: "Norvège" },
+    paymentMethod:    "Moyen de paiement",
+    submitting:       "Traitement…",
+    placeOrder:       (total: string) => `Valider la commande - ${total}`,
+    paymentWaiting:   "Saisissez votre adresse e-mail pour charger les moyens de paiement.",
   },
   no: {
     emptyCart:        "Handlekurven din er tom.",
@@ -82,7 +187,7 @@ const COPY = {
     countries:        { NL: "Nederland", BE: "Belgia", DE: "Tyskland", FR: "Frankrike", NO: "Norge" },
     paymentMethod:    "Betalingsmåte",
     submitting:       "Behandler…",
-    placeOrder:       (total: string) => `Legg inn bestilling — ${total}`,
+    placeOrder:       (total: string) => `Legg inn bestilling - ${total}`,
     paymentWaiting:   "Fyll inn e-postadressen din for å laste betalingsalternativer.",
   },
 } as const;
@@ -104,7 +209,7 @@ const Checkout = () => {
   const { items, discount: appliedDiscount } = useCart();
   const { formatAmount, currency, convert, rate, freeShippingThreshold, shippingCost } = useCurrency();
   const lang = useLang();
-  const t = COPY[lang === "no" ? "no" : "nl"];
+  const t = COPY[lang] ?? COPY.nl;
 
   const [email, setEmail] = useState("");
   const [debouncedEmail, setDebouncedEmail] = useState("");
@@ -120,13 +225,23 @@ const Checkout = () => {
 
   const [addr, setAddr] = useState<AddressData>({
     firstName: "", lastName: "", phone: "", address: "",
-    postalCode: "", city: "", country: lang === "no" ? "NO" : "NL",
+    postalCode: "", city: "", country: DEFAULT_COUNTRY[lang] ?? "NL",
   });
   const set = (k: keyof AddressData) => (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) =>
     setAddr(prev => ({ ...prev, [k]: e.target.value }));
 
-  // Alle bedragen in de actieve valuta, opgebouwd uit afgeronde stuksprijzen —
+  // Alle bedragen in de actieve valuta, opgebouwd uit afgeronde stuksprijzen -
   // wat de klant ziet is exact wat via Stripe wordt afgerekend.
+  // Eén keer per bezoek aan de checkout, niet bij elke herberekening.
+  useEffect(() => {
+    if (!items.length) return;
+    trackInitiateCheckout(
+      items.map(i => ({ id: i.product.id, name: i.product.name, price: i.product.price, quantity: i.quantity })),
+      "EUR"
+    );
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
   const subtotal = items.reduce((sum, i) => sum + convert(i.product.price) * i.quantity, 0);
   const shipping = subtotal >= freeShippingThreshold ? 0 : shippingCost;
   // Zelfde formule als server-side; het echte bedrag wordt in de edge function bepaald
@@ -185,7 +300,7 @@ const Checkout = () => {
           {/* ── Left column ── */}
           <div className="lg:col-span-3 space-y-8">
 
-            {/* 1 — Email */}
+            {/* 1 - Email */}
             <section>
               <h2 className="font-heading text-xl font-semibold mb-4">{t.contact}</h2>
               <input
@@ -199,7 +314,7 @@ const Checkout = () => {
               />
             </section>
 
-            {/* 2 — Shipping address (always visible) */}
+            {/* 2 - Shipping address (always visible) */}
             <section>
               <h2 className="font-heading text-xl font-semibold mb-4">{t.shippingAddress}</h2>
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
@@ -224,7 +339,7 @@ const Checkout = () => {
               </div>
             </section>
 
-            {/* 3 — Payment */}
+            {/* 3 - Payment */}
             <section>
               <h2 className="font-heading text-xl font-semibold mb-4">{t.paymentMethod}</h2>
 
@@ -235,7 +350,7 @@ const Checkout = () => {
                 </div>
               )}
 
-              {/* Not yet a valid email — lock placeholder */}
+              {/* Not yet a valid email - lock placeholder */}
               {!debouncedEmail && !piLoading && (
                 <div className="rounded border border-border bg-secondary/40 px-5 py-6 flex items-center gap-3 text-sm text-muted-foreground select-none">
                   <Lock className="w-4 h-4 shrink-0 opacity-50" />
@@ -251,7 +366,7 @@ const Checkout = () => {
                 </div>
               )}
 
-              {/* Stripe Elements — only when clientSecret ready */}
+              {/* Stripe Elements - only when clientSecret ready */}
               {clientSecret && orderId && (
                 <BuqeStripeElements key={clientSecret} clientSecret={clientSecret}>
                   <CheckoutInner
@@ -320,7 +435,7 @@ const CheckoutInner = ({ orderId, email, addr, total }: CheckoutInnerProps) => {
   const elements = useElements();
   const { formatAmount } = useCurrency();
   const lang = useLang();
-  const t = COPY[lang === "no" ? "no" : "nl"];
+  const t = COPY[lang] ?? COPY.nl;
   const [submitting, setSubmitting] = useState(false);
 
   const handleExpressConfirm = async () => {

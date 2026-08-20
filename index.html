@@ -3,8 +3,8 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>YourMatcha — Premium Japanese Matcha from Uji, Kyoto</title>
-    <meta name="description" content="Single-origin ceremonial matcha, tea and rituals from Uji, Japan. YourMatcha ships across Europe — yourmatcha.nl · yourmatcha.no · yourmatcha.de" />
+    <title>YourMatcha - Premium Japanese Matcha from Uji, Kyoto</title>
+    <meta name="description" content="Single-origin ceremonial matcha, tea and rituals from Uji, Japan. YourMatcha ships across Europe - yourmatcha.nl · yourmatcha.no · yourmatcha.de" />
     <meta name="author" content="YourMatcha" />
     <meta name="format-detection" content="telephone=no" />
     <meta name="theme-color" content="#3F6B5A" />
@@ -29,6 +29,23 @@
     </script>
 
     <!--
+      Meta Pixel - de PageView bij route changes wordt in de SPA afgevuurd via
+      src/hooks/useMetaPixel.ts, net als bij GA4. Daarom hier bewust GEEN
+      fbq('track', 'PageView'): dat zou de eerste paginaweergave dubbel tellen.
+    -->
+    <script>
+      !function(f,b,e,v,n,t,s)
+      {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+      n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+      if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+      n.queue=[];t=b.createElement(e);t.async=!0;
+      t.src=v;s=b.getElementsByTagName(e)[0];
+      s.parentNode.insertBefore(t,s)}(window, document,'script',
+      'https://connect.facebook.net/en_US/fbevents.js');
+      fbq('init', '2084991389561203');
+    </script>
+
+    <!--
       Canonical, hreflang, Open Graph, Twitter en JSON-LD worden per pagina en
       per domein gezet via src/components/SEO.tsx (react-helmet-async).
       Zet hier GEEN statische varianten neer: die gelden dan voor álle domeinen
@@ -37,6 +54,11 @@
   </head>
 
   <body>
+    <!-- Meta Pixel fallback zonder JavaScript. Hoort in de body: een <noscript>
+         met inhoud is niet toegestaan in <head>. -->
+    <noscript><img height="1" width="1" style="display:none"
+      src="https://www.facebook.com/tr?id=2084991389561203&ev=PageView&noscript=1"
+      alt="" /></noscript>
     <div id="root"></div>
     <script type="module" src="/src/main.tsx"></script>
   </body>
