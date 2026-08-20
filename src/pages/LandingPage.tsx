@@ -1,4 +1,5 @@
-import { Link, Navigate } from "react-router-dom";
+import { Navigate } from "react-router-dom";
+import { Link } from "@/components/LocalizedLink";
 import { ArrowRight, ChevronRight } from "lucide-react";
 import SEO, { getSiteUrl } from "@/components/SEO";
 import { useLandingPage, type LandingPage as LandingPageData } from "@/data/landings";
@@ -15,6 +16,21 @@ const COPY = {
     view: "Bekijk",
     faqHeading: "Veelgestelde vragen",
     relatedHeading: "Verder lezen",
+  },
+  en: {
+    view: "View",
+    faqHeading: "Frequently asked questions",
+    relatedHeading: "Read more",
+  },
+  de: {
+    view: "Ansehen",
+    faqHeading: "Häufige Fragen",
+    relatedHeading: "Weiterlesen",
+  },
+  fr: {
+    view: "Voir",
+    faqHeading: "Questions fréquentes",
+    relatedHeading: "Lire la suite",
   },
   no: {
     view: "Se",
@@ -167,7 +183,7 @@ const LandingPage = ({ slug }: Props) => {
   const page = useLandingPage(slug);
   const lang = useLang();
   const siteUrl = getSiteUrl(lang);
-  const c = lang === "no" ? COPY.no : COPY.nl;
+  const c = COPY[lang] ?? COPY.nl;
   const { format: formatPrice } = useCurrency();
 
   if (!page) return <Navigate to="/" replace />;

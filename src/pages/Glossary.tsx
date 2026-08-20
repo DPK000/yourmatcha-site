@@ -1,5 +1,5 @@
 import { useMemo, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link } from "@/components/LocalizedLink";
 import { ChevronRight, Search } from "lucide-react";
 import SEO, { getSiteUrl } from "@/components/SEO";
 import { useGlossaryTerms, groupLabel, type GlossaryTerm } from "@/data/glossary";
@@ -19,7 +19,7 @@ const COPY = {
     eyebrow: "Woordenboek",
     title: "Matcha woordenboek",
     intro: (n: number) =>
-      `Alle termen op één plek. Van chasen tot EGCG, van Uji tot wabi-sabi — ${n} definities, doorzoekbaar.`,
+      `Alle termen op één plek. Van chasen tot EGCG, van Uji tot wabi-sabi - ${n} definities, doorzoekbaar.`,
     searchPlaceholder: "Zoek een term (bv. chasen, koicha, EGCG)...",
     searchAria: "Zoek in woordenboek",
     alsoPrefix: "ook:",
@@ -27,18 +27,75 @@ const COPY = {
     readMore: "Verder lezen",
     seoTitle: "Matcha Woordenboek: Termen, Definities & Uitleg (A-Z)",
     seoDescription:
-      "Het complete matcha lexicon. Van chasen tot EGCG, van Uji tot wabi-sabi — alle Japanse thee- en matcha-termen op één plek.",
+      "Het complete matcha lexicon. Van chasen tot EGCG, van Uji tot wabi-sabi - alle Japanse thee- en matcha-termen op één plek.",
     links: {
       whatIsMatcha: "Wat is matcha?",
       ceremony: "Japanse theeceremonie",
       bestMatcha: "Beste matcha kopen 2026",
     },
   },
+  en: {
+    eyebrow: "Glossary",
+    title: "Matcha glossary",
+    intro: (n: number) =>
+      `Every term in one place. From chasen to EGCG, from Uji to wabi-sabi - ${n} definitions, searchable.`,
+    searchPlaceholder: "Search a term (e.g. chasen, koicha, EGCG)...",
+    searchAria: "Search the glossary",
+    alsoPrefix: "also:",
+    noResults: (q: string) => `No terms found for "${q}".`,
+    readMore: "Read more",
+    seoTitle: "Matcha Glossary: Terms, Definitions & Explanations (A-Z)",
+    seoDescription:
+      "The complete matcha lexicon. From chasen to EGCG, from Uji to wabi-sabi - every Japanese tea and matcha term in one place.",
+    links: {
+      whatIsMatcha: "What is matcha?",
+      ceremony: "Japanese tea ceremony",
+      bestMatcha: "Best matcha to buy in 2026",
+    },
+  },
+  de: {
+    eyebrow: "Glossar",
+    title: "Matcha-Glossar",
+    intro: (n: number) =>
+      `Alle Begriffe an einem Ort. Von Chasen bis EGCG, von Uji bis Wabi-Sabi - ${n} Definitionen, durchsuchbar.`,
+    searchPlaceholder: "Begriff suchen (z. B. Chasen, Koicha, EGCG)...",
+    searchAria: "Im Glossar suchen",
+    alsoPrefix: "auch:",
+    noResults: (q: string) => `Keine Begriffe gefunden für „${q}".`,
+    readMore: "Weiterlesen",
+    seoTitle: "Matcha-Glossar: Begriffe, Definitionen & Erklärungen (A-Z)",
+    seoDescription:
+      "Das komplette Matcha-Lexikon. Von Chasen bis EGCG, von Uji bis Wabi-Sabi - alle japanischen Tee- und Matcha-Begriffe an einem Ort.",
+    links: {
+      whatIsMatcha: "Was ist Matcha?",
+      ceremony: "Japanische Teezeremonie",
+      bestMatcha: "Besten Matcha kaufen 2026",
+    },
+  },
+  fr: {
+    eyebrow: "Glossaire",
+    title: "Glossaire du matcha",
+    intro: (n: number) =>
+      `Tous les termes au même endroit. Du chasen à l'EGCG, d'Uji au wabi-sabi - ${n} définitions, consultables.`,
+    searchPlaceholder: "Rechercher un terme (ex. chasen, koicha, EGCG)...",
+    searchAria: "Rechercher dans le glossaire",
+    alsoPrefix: "aussi :",
+    noResults: (q: string) => `Aucun terme trouvé pour « ${q} ».`,
+    readMore: "Lire la suite",
+    seoTitle: "Glossaire du Matcha : termes, définitions et explications (A-Z)",
+    seoDescription:
+      "Le lexique complet du matcha. Du chasen à l'EGCG, d'Uji au wabi-sabi - tous les termes du thé japonais au même endroit.",
+    links: {
+      whatIsMatcha: "Qu'est-ce que le matcha ?",
+      ceremony: "Cérémonie du thé japonaise",
+      bestMatcha: "Meilleur matcha à acheter en 2026",
+    },
+  },
   no: {
     eyebrow: "Ordbok",
     title: "Matcha-ordbok",
     intro: (n: number) =>
-      `Alle begreper på ett sted. Fra chasen til EGCG, fra Uji til wabi-sabi — ${n} definisjoner, søkbare.`,
+      `Alle begreper på ett sted. Fra chasen til EGCG, fra Uji til wabi-sabi - ${n} definisjoner, søkbare.`,
     searchPlaceholder: "Søk etter et begrep (f.eks. chasen, koicha, EGCG)...",
     searchAria: "Søk i ordboken",
     alsoPrefix: "også:",
@@ -46,7 +103,7 @@ const COPY = {
     readMore: "Les mer",
     seoTitle: "Matcha-ordbok: Begreper, definisjoner og forklaringer (A-Å)",
     seoDescription:
-      "Det komplette matcha-leksikonet. Fra chasen til EGCG, fra Uji til wabi-sabi — alle japanske te- og matcha-begreper på ett sted.",
+      "Det komplette matcha-leksikonet. Fra chasen til EGCG, fra Uji til wabi-sabi - alle japanske te- og matcha-begreper på ett sted.",
     links: {
       whatIsMatcha: "Hva er matcha?",
       ceremony: "Japansk teseremoni",
@@ -67,7 +124,7 @@ const Glossary = () => {
   const [query, setQuery] = useState("");
   const lang = useLang();
   const siteUrl = getSiteUrl(lang);
-  const c = lang === "no" ? COPY.no : COPY.nl;
+  const c = COPY[lang] ?? COPY.nl;
   const glossaryTerms = useGlossaryTerms();
 
   const filtered = useMemo(() => {

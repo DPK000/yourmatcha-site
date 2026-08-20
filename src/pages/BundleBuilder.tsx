@@ -5,7 +5,7 @@ import { useProducts, Product } from "@/data/products";
 import { useCart } from "@/context/CartContext";
 import SEO from "@/components/SEO";
 import PageHero from "@/components/PageHero";
-import { Link } from "react-router-dom";
+import { Link } from "@/components/LocalizedLink";
 import { useCurrency } from "@/context/CurrencyContext";
 import { useLang } from "@/i18n";
 
@@ -14,15 +14,15 @@ const DISCOUNT_PCT = 0.15;
 
 const COPY = {
   nl: {
-    seoTitle: "Bouw je eigen Matcha Bundel — 15% korting",
-    seoDescription: "Stel je eigen pakket samen van 3 matcha en thee specialiteiten en bespaar automatisch 15%. Gratis verzending in NL & BE vanaf €35.",
-    jsonLdName: "YourMatcha Bundel — 3 voor 15% korting",
-    jsonLdDescription: "Stel zelf een bundel samen van 3 matcha of thee producten en bespaar 15%.",
+    seoTitle: "Bouw je eigen Matcha Bundel - 15% korting",
+    seoDescription: "Stel je eigen pakket samen van 3 producten en bespaar automatisch 15%. Gratis verzending vanaf €35.",
+    jsonLdName: "YourMatcha Bundel - 3 voor 15% korting",
+    jsonLdDescription: "Stel zelf een bundel samen van 3 producten en bespaar 15%.",
     heroEyebrow: "Bundle Builder",
     heroTitle: "Bouw je eigen ritueel",
-    heroSubtitle: "Kies 3 favorieten uit onze matcha & thee collectie en bespaar automatisch 15%.",
+    heroSubtitle: "Kies 3 favorieten uit onze collectie en bespaar automatisch 15%.",
     selectPrefix: "Selecteer ",
-    selectMiddle: " producten — ",
+    selectMiddle: " producten - ",
     selectChosen: "gekozen",
     reset: "Reset",
     yourBundle: "Jouw bundel",
@@ -34,18 +34,91 @@ const COPY = {
     total: "Totaal",
     addBundle: "Voeg bundel toe",
     chooseMore: (n: number) => `Kies nog ${n}`,
+    bundleTag: " · Bundel −15%",
     viewShop: "Of bekijk de hele shop →",
   },
+  en: {
+    seoTitle: "Build your own Matcha Bundle - 15% off",
+    seoDescription: "Put together your own set of 3 products and save 15% automatically. Free shipping over €35.",
+    jsonLdName: "YourMatcha Bundle - 3 for 15% off",
+    jsonLdDescription: "Build your own bundle of 3 products and save 15%.",
+    heroEyebrow: "Bundle Builder",
+    heroTitle: "Build your own ritual",
+    heroSubtitle: "Pick 3 favourites from our collection and save 15% automatically.",
+    selectPrefix: "Select ",
+    selectMiddle: " products - ",
+    selectChosen: "chosen",
+    reset: "Reset",
+    yourBundle: "Your bundle",
+    bundleTitlePrefix: "3 for ",
+    bundleTitleItalic: "15% off",
+    slot: "Slot",
+    subtotal: "Subtotal",
+    bundleDiscount: "Bundle discount (15%)",
+    total: "Total",
+    addBundle: "Add bundle",
+    chooseMore: (n: number) => `Choose ${n} more`,
+    bundleTag: " · Bundle −15%",
+    viewShop: "Or browse the whole shop →",
+  },
+  de: {
+    seoTitle: "Stell dein eigenes Matcha-Bundle zusammen - 15% Rabatt",
+    seoDescription: "Stell dein eigenes Set aus 3 Produkten zusammen und spare automatisch 15%. Gratis Versand ab €35.",
+    jsonLdName: "YourMatcha Bundle - 3 für 15% Rabatt",
+    jsonLdDescription: "Stell dein eigenes Bundle aus 3 Produkten zusammen und spare 15%.",
+    heroEyebrow: "Bundle Builder",
+    heroTitle: "Bau dein eigenes Ritual",
+    heroSubtitle: "Wähle 3 Favoriten aus unserer Kollektion und spare automatisch 15%.",
+    selectPrefix: "Wähle ",
+    selectMiddle: " Produkte - ",
+    selectChosen: "gewählt",
+    reset: "Zurücksetzen",
+    yourBundle: "Dein Bundle",
+    bundleTitlePrefix: "3 für ",
+    bundleTitleItalic: "15% Rabatt",
+    slot: "Platz",
+    subtotal: "Zwischensumme",
+    bundleDiscount: "Bundle-Rabatt (15%)",
+    total: "Gesamt",
+    addBundle: "Bundle hinzufügen",
+    chooseMore: (n: number) => `Noch ${n} wählen`,
+    bundleTag: " · Bundle −15%",
+    viewShop: "Oder den ganzen Shop ansehen →",
+  },
+  fr: {
+    seoTitle: "Composez votre coffret Matcha - 15% de réduction",
+    seoDescription: "Composez votre propre coffret de 3 produits et économisez 15% automatiquement. Livraison offerte dès 35 €.",
+    jsonLdName: "Coffret YourMatcha - 3 pour 15% de réduction",
+    jsonLdDescription: "Composez votre coffret de 3 produits et économisez 15%.",
+    heroEyebrow: "Bundle Builder",
+    heroTitle: "Composez votre rituel",
+    heroSubtitle: "Choisissez 3 favoris dans notre collection et économisez 15% automatiquement.",
+    selectPrefix: "Sélectionnez ",
+    selectMiddle: " produits - ",
+    selectChosen: "choisi(s)",
+    reset: "Réinitialiser",
+    yourBundle: "Votre coffret",
+    bundleTitlePrefix: "3 pour ",
+    bundleTitleItalic: "15% de réduction",
+    slot: "Emplacement",
+    subtotal: "Sous-total",
+    bundleDiscount: "Remise coffret (15%)",
+    total: "Total",
+    addBundle: "Ajouter le coffret",
+    chooseMore: (n: number) => `Choisissez-en encore ${n}`,
+    bundleTag: " · Coffret −15%",
+    viewShop: "Ou voir toute la boutique →",
+  },
   no: {
-    seoTitle: "Sett sammen din egen matcha-pakke — 15 % rabatt",
-    seoDescription: "Sett sammen din egen pakke med 3 matcha- og te-spesialiteter og spar automatisk 15 %. Gratis frakt over 400 kr.",
-    jsonLdName: "YourMatcha-pakke — 3 for 15 % rabatt",
-    jsonLdDescription: "Sett sammen en pakke med 3 matcha- eller te-produkter og spar 15 %.",
+    seoTitle: "Sett sammen din egen matcha-pakke - 15 % rabatt",
+    seoDescription: "Sett sammen din egen pakke med 3 produkter og spar automatisk 15 %. Gratis frakt over 400 kr.",
+    jsonLdName: "YourMatcha-pakke - 3 for 15 % rabatt",
+    jsonLdDescription: "Sett sammen en pakke med 3 produkter og spar 15 %.",
     heroEyebrow: "Bundle Builder",
     heroTitle: "Bygg ditt eget ritual",
-    heroSubtitle: "Velg 3 favoritter fra vår matcha- og tekolleksjon og spar automatisk 15 %.",
+    heroSubtitle: "Velg 3 favoritter fra kolleksjonen vår og spar automatisk 15 %.",
     selectPrefix: "Velg ",
-    selectMiddle: " produkter — ",
+    selectMiddle: " produkter - ",
     selectChosen: "valgt",
     reset: "Nullstill",
     yourBundle: "Din pakke",
@@ -57,6 +130,7 @@ const COPY = {
     total: "Totalt",
     addBundle: "Legg til pakken",
     chooseMore: (n: number) => `Velg ${n} til`,
+    bundleTag: " · Pakke −15 %",
     viewShop: "Eller se hele butikken →",
   },
 } as const;
@@ -64,11 +138,12 @@ const COPY = {
 const BundleBuilder = () => {
   const { format: formatPrice, formatAmount, convert } = useCurrency();
   const lang = useLang();
-  const t = COPY[lang === "no" ? "no" : "nl"];
+  const t = COPY[lang] ?? COPY.nl;
   const { addItem } = useCart();
   const products = useProducts();
   const eligible = useMemo(
-    () => products.filter(p => p.category === "matcha-powder" || p.category === "teas-drinks"),
+    // Hele assortiment: met alleen poeders zijn er te weinig producten voor een bundel.
+    () => products,
     [products]
   );
   const [selected, setSelected] = useState<Product[]>([]);
@@ -82,7 +157,7 @@ const BundleBuilder = () => {
     });
   };
 
-  /** Bundelprijs per stuk in EUR — deze prijs gaat ook echt zo de winkelwagen in. */
+  /** Bundelprijs per stuk in EUR - deze prijs gaat ook echt zo de winkelwagen in. */
   const discountedUnit = (p: Product) => Math.round(p.price * (1 - DISCOUNT_PCT) * 100) / 100;
 
   const ready = selected.length === TARGET;
@@ -93,7 +168,7 @@ const BundleBuilder = () => {
   const discount = subtotal - total;
 
   const addBundle = () => {
-    const bundleTag = lang === "no" ? " · Pakke −15 %" : " · Bundel −15%";
+    const bundleTag = t.bundleTag;
     selected.forEach(p =>
       addItem({ ...p, id: `${p.id}-bundle`, name: `${p.name}${bundleTag}`, price: discountedUnit(p) }, 1)
     );

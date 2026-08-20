@@ -1,4 +1,5 @@
-import { Link, useParams, Navigate } from "react-router-dom";
+import { useParams, Navigate } from "react-router-dom";
+import { Link } from "@/components/LocalizedLink";
 import { ChevronLeft, Clock, Calendar, ArrowRight } from "lucide-react";
 import SEO, { getSiteUrl } from "@/components/SEO";
 import { getKnowledgeBySlug, knowledgeArticles } from "@/data/knowledge";
@@ -13,6 +14,33 @@ const COPY = {
     faq: "Veelgestelde vragen",
     moreReading: "Meer lezen",
     readMore: "Lees verder",
+  },
+  en: {
+    back: "Back to knowledge",
+    breadcrumbKnowledge: "Knowledge",
+    lastUpdated: "Last updated",
+    dateLocale: "en-GB",
+    faq: "Frequently asked questions",
+    moreReading: "More reading",
+    readMore: "Read more",
+  },
+  de: {
+    back: "Zurück zum Wissenszentrum",
+    breadcrumbKnowledge: "Wissen",
+    lastUpdated: "Zuletzt aktualisiert",
+    dateLocale: "de-DE",
+    faq: "Häufige Fragen",
+    moreReading: "Mehr lesen",
+    readMore: "Weiterlesen",
+  },
+  fr: {
+    back: "Retour au centre de connaissances",
+    breadcrumbKnowledge: "Savoir",
+    lastUpdated: "Dernière mise à jour",
+    dateLocale: "fr-FR",
+    faq: "Questions fréquentes",
+    moreReading: "À lire aussi",
+    readMore: "Lire la suite",
   },
   no: {
     back: "Tilbake til kunnskapssenteret",
@@ -97,7 +125,7 @@ const KnowledgeArticle = () => {
   const article = getKnowledgeBySlug(slug || "");
   const lang = useLang();
   const siteUrl = getSiteUrl(lang);
-  const c = lang === "no" ? COPY.no : COPY.nl;
+  const c = COPY[lang] ?? COPY.nl;
   if (!article) return <Navigate to="/kennis" replace />;
 
   const related = knowledgeArticles.filter(a => a.slug !== article.slug).slice(0, 3);

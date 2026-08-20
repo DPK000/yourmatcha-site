@@ -7,15 +7,21 @@ import de from "./locales/de";
 import fr from "./locales/fr";
 import no from "./locales/no";
 
-const hostnameLang = (() => {
+const SUPPORTED = ["nl", "en", "de", "fr", "no"] as const;
+
+/**
+ * De taal staat in het eerste padsegment: /no/butikk. Dat is leidend - een
+ * gedeelde link opent altijd in de taal die de afzender zag, ongeacht wat er
+ * in localStorage staat.
+ *
+ * Staat er geen taalprefix (oude URL of kale root), dan valt de detectie terug
+ * op de eerdere keuze van de bezoeker en anders op de browsertaal; de router
+ * stuurt zo'n bezoek meteen door naar de juiste prefix.
+ */
+const pathLang = (() => {
   if (typeof window === "undefined") return null;
-  const h = window.location.hostname.toLowerCase();
-  if (h.endsWith(".de") || h === "yourmatcha.de") return "de";
-  if (h.endsWith(".fr") || h === "yourmatcha.fr") return "fr";
-  if (h.endsWith(".no") || h === "yourmatcha.no") return "no";
-  if (h.endsWith(".com") || h === "yourmatcha.com") return "en";
-  if (h.endsWith(".nl") || h === "yourmatcha.nl") return "nl";
-  return null;
+  const first = window.location.pathname.split("/").filter(Boolean)[0];
+  return (SUPPORTED as readonly string[]).includes(first) ? first : null;
 })();
 
 i18n
@@ -29,12 +35,12 @@ i18n
       fr: { translation: fr },
       no: { translation: no },
     },
-    lng: hostnameLang ?? undefined,
+    lng: pathLang ?? undefined,
     fallbackLng: "nl",
     supportedLngs: ["nl", "en", "de", "fr", "no"],
     interpolation: { escapeValue: false },
     detection: {
-      order: hostnameLang ? ["querystring"] : ["localStorage", "navigator"],
+      order: pathLang ? ["querystring"] : ["localStorage", "navigator"],
       caches: ["localStorage"],
       lookupLocalStorage: "yourmatcha-lang",
     },
@@ -58,7 +64,7 @@ export const getCurrentLang = (): Lang => {
   return "nl";
 };
 
-/** Reactieve variant van getCurrentLang — re-rendert bij taalwissel. */
+/** Reactieve variant van getCurrentLang - re-rendert bij taalwissel. */
 export const useLang = (): Lang => {
   const { i18n: inst } = useTranslation();
   void inst.language;

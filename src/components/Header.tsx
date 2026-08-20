@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
-import { Link, useLocation } from "react-router-dom";
+import { useLocation } from "react-router-dom";
+import { Link } from "@/components/LocalizedLink";
 import { ShoppingBag, Menu, X, Search, ChevronRight } from "lucide-react";
 import { useCart } from "@/context/CartContext";
 import { useCurrency } from "@/context/CurrencyContext";
@@ -47,7 +48,7 @@ const Header = () => {
     { value: "kits-sets", to: "/matcha-kits", count: products.filter(p => p.category === "kits-sets").length },
     { value: "accessories", to: "/matcha-accessoires", count: products.filter(p => p.category === "accessories").length },
     { value: "teas-drinks", to: "/japanse-thee", count: products.filter(p => p.category === "teas-drinks").length },
-  ];
+  ].filter(c => c.count > 0); // categorie zonder producten is een doodlopende klik
 
   const navItems = [
     { key: "shop", to: "/shop", label: t("nav.shopLabel"), hasMega: true },

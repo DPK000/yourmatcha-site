@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { Link } from "@/components/LocalizedLink";
 import { Instagram, Mail } from "lucide-react";
 import { useTranslation } from "react-i18next";
 import { BrandMark } from "@/components/Logo";

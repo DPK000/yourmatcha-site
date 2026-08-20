@@ -1,16 +1,15 @@
 #!/usr/bin/env node
 /**
- * Dynamic multi-domain sitemap generator.
+ * Sitemap-generator voor één domein met taalprefixen.
  *
- * Emits één sitemap per domein — public/sitemap.xml (yourmatcha.nl),
- * public/sitemap-no.xml (yourmatcha.no) en public/sitemap-de.xml
- * (yourmatcha.de) — met xhtml:link hreflang-alternates per URL.
- * Draait automatisch vóór `npm run build` via het `sitemap` script.
+ * De site draait op yourmatcha.com met de taal in het pad (/no/butikk). Dit
+ * script leest de slugs per taal uit src/i18n/routes.ts, zodat er geen tweede
+ * lijst met URL's ontstaat die uit de pas kan lopen: een pagina toevoegen doe
+ * je daar, en de sitemap volgt vanzelf.
  *
- * Landingspagina's gebruiken op .no Noorse slugs (route-aliassen in App.tsx);
- * alle overige paden zijn op elk domein gelijk. Blogposts worden per taal
- * alleen opgenomen als er een vertaling bestaat. Producten met `hidden: true`
- * blijven overal buiten de sitemap.
+ * Emit: public/sitemap.xml met elke pagina in elke taal, plus xhtml:link
+ * hreflang-alternates tussen de taalvarianten. Blogposts komen per taal alleen
+ * in de sitemap als er een vertaling is; producten met `hidden: true` nooit.
  */
 
 import { readFileSync, writeFileSync } from "node:fs";
@@ -21,31 +20,32 @@ const __dirname = dirname(fileURLToPath(import.meta.url));
 const ROOT = join(__dirname, "..");
 const TODAY = new Date().toISOString().slice(0, 10);
 
-const SITES = [
-  { lang: "nl", hreflang: "nl-NL", domain: "https://yourmatcha.nl", file: "public/sitemap.xml" },
-  { lang: "no", hreflang: "nb-NO", domain: "https://yourmatcha.no", file: "public/sitemap-no.xml" },
-  { lang: "de", hreflang: "de-DE", domain: "https://yourmatcha.de", file: "public/sitemap-de.xml" },
-];
+const SITE_URL = "https://yourmatcha.com";
+const LANGS = ["nl", "en", "de", "fr", "no"];
+const HREFLANG = { nl: "nl-NL", en: "en-GB", de: "de-DE", fr: "fr-FR", no: "nb-NO" };
+const DEFAULT_LANG = "nl";
 
-// Noorse slugs voor landingspagina's (zelfde pagina's, eigen keyword-URL's)
-const NO_LANDING_SLUGS = {
-  "matcha-poeder":              "matcha-pulver",
-  "matcha-accessoires":         "matcha-tilbehor",
-  "matcha-kits":                "matcha-sett",
-  "japanse-thee":               "japansk-te",
-  "cadeau-gids":                "gave-guide",
-  "matcha-voor-beginners":      "matcha-for-nybegynnere",
-  "matcha-voor-sporters":       "matcha-for-utovere",
-  "cafeinearme-thee":           "koffeinfri-te",
-  "matcha-als-koffievervanger": "matcha-istedenfor-kaffe",
-};
+// ────────────────────────────────────────────────────────────────────────
+// Routemanifest inlezen: ROUTES[key][lang] = slug
+// ────────────────────────────────────────────────────────────────────────
+const ROUTES = (() => {
+  const src = readFileSync(join(ROOT, "src/i18n/routes.ts"), "utf8");
+  const body = src.slice(
+    src.indexOf("export const ROUTES"),
+    src.indexOf("/** Route-keys die een")
+  );
+  const out = {};
+  for (const m of body.matchAll(/(\w+):\s*\{([^}]*)\}/g)) {
+    const slugs = {};
+    for (const p of m[2].matchAll(/(\w+):\s*"([^"]*)"/g)) slugs[p[1]] = p[2];
+    if (LANGS.every((l) => l in slugs)) out[m[1]] = slugs;
+  }
+  return out;
+})();
 
-/** Vertaalt een pad naar het juiste pad voor een taal (nu alleen landing-slugs voor no). */
-const localizePath = (loc, lang) => {
-  if (lang !== "no") return loc;
-  const slug = loc.replace(/^\//, "");
-  return NO_LANDING_SLUGS[slug] ? `/${NO_LANDING_SLUGS[slug]}` : loc;
-};
+/** Absoluut pad met taalprefix: ("shop", "no") → "/no/butikk" */
+const pathFor = (key, lang, slug) =>
+  "/" + [lang, ROUTES[key][lang], slug].filter(Boolean).join("/");
 
 // ────────────────────────────────────────────────────────────────────────
 // Parse slugs from a data file
@@ -60,8 +60,11 @@ const extractSlugs = (relativePath) => {
  * Per slug-blok (van deze `slug:` tot de volgende) checken of een patroon
  * voorkomt — voor `hidden: true` en voor aanwezige taalblokken (`no:`/`de:`).
  */
-const slugBlocksMatching = (relativePath, pattern, { invert = false } = {}) => {
-  const content = readFileSync(join(ROOT, relativePath), "utf8");
+const slugBlocksMatching = (relativePath, pattern, { invert = false, stopAt } = {}) => {
+  let content = readFileSync(join(ROOT, relativePath), "utf8");
+  // Begrens de scan tot de data-array: code en comments eronder mogen het
+  // laatste slug-blok niet vervuilen (bv. een comment met `hidden: true`).
+  if (stopAt && content.includes(stopAt)) content = content.slice(0, content.indexOf(stopAt));
   const matches = [...content.matchAll(/slug:\s*"([^"]+)"/g)];
   const out = [];
   for (let i = 0; i < matches.length; i++) {
@@ -73,7 +76,10 @@ const slugBlocksMatching = (relativePath, pattern, { invert = false } = {}) => {
   return [...new Set(out)];
 };
 
-const productSlugs = slugBlocksMatching("src/data/products.ts", /hidden:\s*true/, { invert: true });
+const productSlugs = slugBlocksMatching("src/data/products.ts", /hidden:\s*true/, {
+  invert: true,
+  stopAt: "// ─── EINDE productsRaw ───",
+});
 const recipeSlugs = extractSlugs("src/data/recipes.ts");
 const knowledgeSlugs = extractSlugs("src/data/knowledge.ts");
 const landingSlugs = extractSlugs("src/data/landings.ts");
@@ -109,86 +115,111 @@ const HIGH_PRIORITY_KNOWLEDGE = new Set([
 // Build entries (canonical Dutch paths; localizePath vertaalt per site)
 // ────────────────────────────────────────────────────────────────────────
 const staticEntries = [
-  { loc: "/", priority: 1.0 },
+  { key: "home", priority: 1.0 },
 
-  // Commerce hubs
-  { loc: "/shop", priority: 0.9 },
-  { loc: "/bundel", priority: 0.8 },
-  { loc: "/matcha-vergelijken", priority: 0.8 },
-  { loc: "/abonnementen", priority: 0.8 },
+  // Commerce
+  { key: "shop", priority: 0.9 },
+  { key: "bundle", priority: 0.8 },
+  { key: "compare", priority: 0.8 },
+  { key: "subscriptions", priority: 0.8 },
 
-  // Content hubs
-  { loc: "/kennis", priority: 0.8 },
-  { loc: "/blog", priority: 0.8 },
-  { loc: "/recepten", priority: 0.8 },
-  { loc: "/matcha-woordenboek", priority: 0.7 },
+  // Content
+  { key: "knowledge", priority: 0.8 },
+  { key: "blog", priority: 0.8 },
+  { key: "recipes", priority: 0.8 },
+  { key: "glossary", priority: 0.7 },
 
-  // Brand
-  { loc: "/over-ons", priority: 0.7 },
-  { loc: "/herkomst", priority: 0.8 },
-  { loc: "/duurzaamheid", priority: 0.7 },
+  // Merk
+  { key: "about", priority: 0.7 },
+  { key: "origin", priority: 0.8 },
+  { key: "sustainability", priority: 0.7 },
 
   // Support
-  { loc: "/contact", priority: 0.6 },
-  { loc: "/faq", priority: 0.7 },
-  { loc: "/verzending", priority: 0.6 },
+  { key: "contact", priority: 0.6 },
+  { key: "faq", priority: 0.7 },
+  { key: "shipping", priority: 0.6 },
 
-  // Legal (low priority — needed but not promotional)
-  { loc: "/privacy", priority: 0.3 },
-  { loc: "/voorwaarden", priority: 0.3 },
+  // Juridisch — nodig, niet promotioneel
+  { key: "privacy", priority: 0.3 },
+  { key: "terms", priority: 0.3 },
 ];
 
-const entriesForLang = (lang) => {
+/** Landingspagina-slug uit landings.ts → route-key in het manifest. */
+const LANDING_KEYS = {
+  "matcha-poeder": "landingPowder",
+  "matcha-accessoires": "landingAccessories",
+  "matcha-kits": "landingKits",
+  "japanse-thee": "landingTea",
+  "cadeau-gids": "landingGifts",
+  "matcha-voor-beginners": "landingBeginners",
+  "matcha-voor-sporters": "landingAthletes",
+  "cafeinearme-thee": "landingLowCaffeine",
+  "matcha-als-koffievervanger": "landingCoffeeSwap",
+};
+
+/**
+ * Alle pagina's als {key, slug, priority}. Taal-onafhankelijk: pathFor zet ze
+ * later om naar het pad per taal, zodat elke URL in elke taal bestaat.
+ */
+const allPages = (lang) => {
   const entries = [
-    ...staticEntries,
-    ...landingSlugs.map((slug) => ({
-      loc: `/${slug}`,
-      priority: HIGH_PRIORITY_LANDINGS.has(slug) ? 0.9 : 0.8,
-    })),
-    ...productSlugs.map((slug) => ({ loc: `/product/${slug}`, priority: 0.7 })),
+    ...staticEntries.map((e) => ({ key: e.key, priority: e.priority })),
+    ...landingSlugs
+      .filter((slug) => LANDING_KEYS[slug])
+      .map((slug) => ({
+        key: LANDING_KEYS[slug],
+        priority: HIGH_PRIORITY_LANDINGS.has(slug) ? 0.9 : 0.8,
+      })),
+    ...productSlugs.map((slug) => ({ key: "product", slug, priority: 0.7 })),
     ...knowledgeSlugs.map((slug) => ({
-      loc: `/kennis/${slug}`,
+      key: "knowledgeArticle",
+      slug,
       priority: HIGH_PRIORITY_KNOWLEDGE.has(slug) ? 0.9 : 0.7,
     })),
-    ...blogSlugsPerLang[lang].map((slug) => ({ loc: `/blog/${slug}`, priority: 0.6 })),
-    ...recipeSlugs.map((slug) => ({ loc: `/recepten/${slug}`, priority: 0.7 })),
+    ...(blogSlugsPerLang[lang] || blogSlugsPerLang.nl).map((slug) => ({
+      key: "blogPost",
+      slug,
+      priority: 0.6,
+    })),
+    ...recipeSlugs.map((slug) => ({ key: "recipeDetail", slug, priority: 0.7 })),
   ];
   const seen = new Set();
   return entries.filter((e) => {
-    if (seen.has(e.loc)) return false;
-    seen.add(e.loc);
+    const id = e.key + "|" + (e.slug || "");
+    if (seen.has(id)) return false;
+    seen.add(id);
     return true;
   });
 };
 
 // ────────────────────────────────────────────────────────────────────────
-// Emit XML per site, met hreflang-alternates naar de andere domeinen
+// Emit: één sitemap met elke pagina in elke taal
 // ────────────────────────────────────────────────────────────────────────
-const alternates = (loc) =>
+const alternates = (page) =>
   [
-    ...SITES.map(
-      (s) =>
-        `    <xhtml:link rel="alternate" hreflang="${s.hreflang}" href="${s.domain}${localizePath(loc, s.lang)}"/>`,
+    ...LANGS.map(
+      (l) =>
+        `    <xhtml:link rel="alternate" hreflang="${HREFLANG[l]}" href="${SITE_URL}${pathFor(page.key, l, page.slug)}"/>`
     ),
-    `    <xhtml:link rel="alternate" hreflang="x-default" href="https://yourmatcha.nl${loc}"/>`,
+    `    <xhtml:link rel="alternate" hreflang="x-default" href="${SITE_URL}${pathFor(page.key, DEFAULT_LANG, page.slug)}"/>`,
   ].join("\n");
 
-for (const site of SITES) {
-  const entries = entriesForLang(site.lang);
-  const xml = `<?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">
-${entries
-  .map(
-    (e) => `  <url>
-    <loc>${site.domain}${localizePath(e.loc, site.lang)}</loc>
-${alternates(e.loc)}
+const urls = [];
+for (const lang of LANGS) {
+  for (const page of allPages(lang)) {
+    urls.push(`  <url>
+    <loc>${SITE_URL}${pathFor(page.key, lang, page.slug)}</loc>
+${alternates(page)}
     <lastmod>${TODAY}</lastmod>
-    <priority>${e.priority.toFixed(1)}</priority>
-  </url>`,
-  )
-  .join("\n")}
+    <priority>${page.priority.toFixed(1)}</priority>
+  </url>`);
+  }
+}
+
+const xml = `<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">
+${urls.join("\n")}
 </urlset>
 `;
-  writeFileSync(join(ROOT, site.file), xml);
-  console.log(`✓ ${site.file} — ${entries.length} URLs (${site.domain})`);
-}
+writeFileSync(join(ROOT, "public/sitemap.xml"), xml);
+console.log(`✓ public/sitemap.xml — ${urls.length} URLs (${LANGS.length} talen)`);

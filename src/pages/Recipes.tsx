@@ -1,5 +1,5 @@
 import { useMemo, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link } from "@/components/LocalizedLink";
 import { Clock, ChefHat, ArrowRight, Search, X } from "lucide-react";
 import PageHero from "@/components/PageHero";
 import SEO from "@/components/SEO";
@@ -22,12 +22,12 @@ const timeBuckets = [
 
 const COPY = {
   nl: {
-    seoTitle: "Matcha Recepten — 20+ matcha latte, smoothie en bak ideeën met Japanse matcha",
+    seoTitle: "Matcha Recepten - 20+ matcha latte, smoothie en bak ideeën met Japanse matcha",
     seoDescription: "Ontdek heerlijke matcha recepten: ijskoffie matcha latte, matcha smoothie bowl, matcha cookies, hojicha latte en meer. Gemakkelijk te maken met ceremoniële Japanse matcha.",
     seoKeywords: "matcha recepten, matcha latte recept, matcha smoothie, matcha cookies, hojicha latte, matcha bakken, matcha gerechten",
     heroEyebrow: "Recepten",
     heroTitle: "Maak het zelf",
-    heroSubtitle: "Onze favoriete recepten — van klassieke bereidingen tot moderne creaties met matcha en hojicha.",
+    heroSubtitle: "Onze favoriete recepten - van klassieke bereidingen tot moderne creaties met matcha.",
     searchPlaceholder: "Zoek op naam of ingrediënt…",
     searchAria: "Zoek recepten",
     filterCategory: "Categorie",
@@ -41,15 +41,81 @@ const COPY = {
     found: "gevonden",
     resetFilters: "Reset filters",
     emptyState: "Geen recepten gevonden voor deze filters.",
-    moreRecipes: "Klaar om zelf aan de slag te gaan? Onze culinary matcha is gemaakt om mee te koken en bakken.",
+    moreRecipes: "Klaar om zelf aan de slag te gaan? Ons matcha poeder is gemaakt om mee te koken en bakken.",
+  },
+  en: {
+    seoTitle: "Matcha Recipes - 20+ matcha latte, smoothie and baking ideas with Japanese matcha",
+    seoDescription: "Discover delicious matcha recipes: iced matcha latte, matcha smoothie bowl, matcha cookies, hojicha latte and more. Easy to make with ceremonial Japanese matcha.",
+    seoKeywords: "matcha recipes, matcha latte recipe, matcha smoothie, matcha cookies, hojicha latte, matcha baking, matcha dishes",
+    heroEyebrow: "Recipes",
+    heroTitle: "Make it yourself",
+    heroSubtitle: "Our favourite recipes - from classic preparations to modern creations with matcha.",
+    searchPlaceholder: "Search by name or ingredient…",
+    searchAria: "Search recipes",
+    filterCategory: "Category",
+    filterTime: "Time",
+    filterLevel: "Level",
+    allCategories: "All categories",
+    allLevels: "All levels",
+    timeLabels: { all: "Any time", fast: "Under 10 min", mid: "10–30 min", long: "30+ min" },
+    foundOne: "recipe",
+    foundMany: "recipes",
+    found: "found",
+    resetFilters: "Reset filters",
+    emptyState: "No recipes found for these filters.",
+    moreRecipes: "Ready to get started? Our matcha powder is made for cooking and baking.",
+  },
+  de: {
+    seoTitle: "Matcha-Rezepte - 20+ Ideen für Matcha Latte, Smoothies und Gebäck",
+    seoDescription: "Entdecke köstliche Matcha-Rezepte: Iced Matcha Latte, Matcha Smoothie Bowl, Matcha Cookies, Hojicha Latte und mehr. Einfach zuzubereiten mit zeremoniellem japanischem Matcha.",
+    seoKeywords: "Matcha Rezepte, Matcha Latte Rezept, Matcha Smoothie, Matcha Cookies, Hojicha Latte, Matcha backen, Matcha Gerichte",
+    heroEyebrow: "Rezepte",
+    heroTitle: "Selbst gemacht",
+    heroSubtitle: "Unsere Lieblingsrezepte - von klassischen Zubereitungen bis zu modernen Kreationen mit Matcha.",
+    searchPlaceholder: "Nach Name oder Zutat suchen…",
+    searchAria: "Rezepte durchsuchen",
+    filterCategory: "Kategorie",
+    filterTime: "Zeit",
+    filterLevel: "Niveau",
+    allCategories: "Alle Kategorien",
+    allLevels: "Alle Niveaus",
+    timeLabels: { all: "Alle Zeiten", fast: "Unter 10 Min", mid: "10–30 Min", long: "30+ Min" },
+    foundOne: "Rezept",
+    foundMany: "Rezepte",
+    found: "gefunden",
+    resetFilters: "Filter zurücksetzen",
+    emptyState: "Keine Rezepte für diese Filter gefunden.",
+    moreRecipes: "Bereit loszulegen? Unser Matcha-Pulver ist zum Kochen und Backen gemacht.",
+  },
+  fr: {
+    seoTitle: "Recettes Matcha - 20+ idées de latte, smoothies et pâtisseries au matcha japonais",
+    seoDescription: "Découvrez de délicieuses recettes au matcha : latte glacé, smoothie bowl, cookies, hojicha latte et plus. Faciles à réaliser avec du matcha japonais cérémoniel.",
+    seoKeywords: "recettes matcha, recette matcha latte, smoothie matcha, cookies matcha, hojicha latte, pâtisserie matcha",
+    heroEyebrow: "Recettes",
+    heroTitle: "Faites-le vous-même",
+    heroSubtitle: "Nos recettes préférées - des préparations classiques aux créations modernes au matcha.",
+    searchPlaceholder: "Rechercher par nom ou ingrédient…",
+    searchAria: "Rechercher des recettes",
+    filterCategory: "Catégorie",
+    filterTime: "Temps",
+    filterLevel: "Niveau",
+    allCategories: "Toutes les catégories",
+    allLevels: "Tous les niveaux",
+    timeLabels: { all: "Tous les temps", fast: "Moins de 10 min", mid: "10–30 min", long: "30+ min" },
+    foundOne: "recette",
+    foundMany: "recettes",
+    found: "trouvée(s)",
+    resetFilters: "Réinitialiser les filtres",
+    emptyState: "Aucune recette trouvée pour ces filtres.",
+    moreRecipes: "Prêt à vous lancer ? Notre poudre de matcha est faite pour cuisiner et pâtisser.",
   },
   no: {
-    seoTitle: "Matcha-oppskrifter — 20+ ideer til matcha latte, smoothie og baking med japansk matcha",
+    seoTitle: "Matcha-oppskrifter - 20+ ideer til matcha latte, smoothie og baking med japansk matcha",
     seoDescription: "Oppdag deilige matcha-oppskrifter: iskald matcha latte, matcha smoothie bowl, matcha cookies, hojicha latte og mer. Enkle å lage med seremoniell japansk matcha.",
     seoKeywords: "matcha oppskrifter, matcha latte oppskrift, matcha smoothie, matcha cookies, hojicha latte, matcha baking, matcha retter",
     heroEyebrow: "Oppskrifter",
     heroTitle: "Lag det selv",
-    heroSubtitle: "Våre favorittoppskrifter — fra klassiske tilberedninger til moderne kreasjoner med matcha og hojicha.",
+    heroSubtitle: "Våre favorittoppskrifter - fra klassiske tilberedninger til moderne kreasjoner med matcha.",
     searchPlaceholder: "Søk på navn eller ingrediens…",
     searchAria: "Søk i oppskrifter",
     filterCategory: "Kategori",
@@ -63,13 +129,13 @@ const COPY = {
     found: "funnet",
     resetFilters: "Nullstill filtre",
     emptyState: "Ingen oppskrifter funnet med disse filtrene.",
-    moreRecipes: "Klar til å prøve selv? Vår culinary matcha er laget for matlaging og baking.",
+    moreRecipes: "Klar til å prøve selv? Matchapulveret vårt er laget for matlaging og baking.",
   },
 } as const;
 
 const Recipes = () => {
   const lang = useLang();
-  const c = lang === "no" ? COPY.no : COPY.nl;
+  const c = COPY[lang] ?? COPY.nl;
   const [query, setQuery] = useState("");
   const [category, setCategory] = useState<string>("all");
   const [level, setLevel] = useState<string>("all");

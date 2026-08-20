@@ -1,6 +1,8 @@
 import { useTranslation } from "react-i18next";
+import { useLocation, useNavigate } from "react-router-dom";
 import { Globe, Check } from "lucide-react";
-import { languages } from "@/i18n";
+import { languages, type Lang } from "@/i18n";
+import { translatePath } from "@/i18n/routes";
 import { currencies, useCurrency } from "@/context/CurrencyContext";
 import {
   DropdownMenu,
@@ -25,8 +27,15 @@ const LanguageSwitcher = ({ minimal = false }: { minimal?: boolean }) => {
   const current = languages.find(l => l.code === i18n.language.split("-")[0]) ?? languages[0];
   const labels = LABELS[current.code] ?? LABELS.nl;
 
+  const location = useLocation();
+  const navigate = useNavigate();
+
+  /** Wisselt van taal én springt naar dezelfde pagina in die taal, zodat de
+   *  URL de taal blijft weerspiegelen (/no/butikk i.p.v. /nl/shop). */
   const change = (code: string) => {
     i18n.changeLanguage(code);
+    const target = translatePath(location.pathname, code as Lang);
+    navigate(target + location.search + location.hash, { replace: true });
   };
 
   return (

@@ -3,7 +3,7 @@ import { useCart } from "@/context/CartContext";
 import { useCurrency } from "@/context/CurrencyContext";
 import { useTranslation } from "react-i18next";
 import { motion, AnimatePresence } from "framer-motion";
-import { Link } from "react-router-dom";
+import { Link } from "@/components/LocalizedLink";
 import { X, ShoppingBag, ArrowRight, Minus, Plus } from "lucide-react";
 import { useEffect, useState } from "react";
 

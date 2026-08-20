@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link } from "@/components/LocalizedLink";
 import { blogPosts, blogCategories, useBlogCategories } from "@/data/blog";
 import { motion } from "framer-motion";
 import SEO from "@/components/SEO";
@@ -7,15 +7,39 @@ import { useLang } from "@/i18n";
 
 const COPY = {
   nl: {
-    seoTitle: "Matcha Blog — Tips, rituelen en recepten voor matcha liefhebbers",
+    seoTitle: "Matcha Blog - Tips, rituelen en recepten voor matcha liefhebbers",
     seoDescription: "Alles over matcha: bereiding, gezondheidsvoordelen, ceremoniële rituelen, recepten en het verhaal achter Japanse thee. Gratis tips van YourMatcha.",
     seoKeywords: "matcha blog, matcha bereiding tips, matcha gezondheid, Japanse theeceremonie, matcha recepten",
     title: "Blog & Recepten",
     subtitle: "Tips, recepten en alles over matcha",
     readTime: "leestijd",
   },
+  en: {
+    seoTitle: "Matcha Blog - tips, rituals and recipes for matcha lovers",
+    seoDescription: "Everything about matcha: preparation, health benefits, ceremonial rituals, recipes and the story behind Japanese tea. Free tips from YourMatcha.",
+    seoKeywords: "matcha blog, matcha preparation tips, matcha health, Japanese tea ceremony, matcha recipes",
+    title: "Blog & Recipes",
+    subtitle: "Tips, recipes and everything about matcha",
+    readTime: "read",
+  },
+  de: {
+    seoTitle: "Matcha-Blog - Tipps, Rituale und Rezepte für Matcha-Liebhaber",
+    seoDescription: "Alles über Matcha: Zubereitung, Gesundheitsvorteile, zeremonielle Rituale, Rezepte und die Geschichte hinter japanischem Tee. Kostenlose Tipps von YourMatcha.",
+    seoKeywords: "Matcha Blog, Matcha Zubereitung Tipps, Matcha Gesundheit, japanische Teezeremonie, Matcha Rezepte",
+    title: "Blog & Rezepte",
+    subtitle: "Tipps, Rezepte und alles über Matcha",
+    readTime: "Lesezeit",
+  },
+  fr: {
+    seoTitle: "Blog Matcha - conseils, rituels et recettes pour les amateurs",
+    seoDescription: "Tout sur le matcha : préparation, bienfaits, rituels cérémoniels, recettes et l'histoire du thé japonais. Conseils gratuits de YourMatcha.",
+    seoKeywords: "blog matcha, conseils préparation matcha, matcha santé, cérémonie du thé japonaise, recettes matcha",
+    title: "Blog & Recettes",
+    subtitle: "Conseils, recettes et tout sur le matcha",
+    readTime: "de lecture",
+  },
   no: {
-    seoTitle: "Matcha-blogg — tips, ritualer og oppskrifter for matcha-elskere",
+    seoTitle: "Matcha-blogg - tips, ritualer og oppskrifter for matcha-elskere",
     seoDescription: "Alt om matcha: tilberedning, helsefordeler, seremonielle ritualer, oppskrifter og historien bak japansk te. Gratis tips fra YourMatcha.",
     seoKeywords: "matcha blogg, matcha tilberedning tips, matcha helse, japansk teseremoni, matcha oppskrifter",
     title: "Blogg & Oppskrifter",
@@ -26,9 +50,9 @@ const COPY = {
 
 const Blog = () => {
   const lang = useLang();
-  const c = lang === "no" ? COPY.no : COPY.nl;
+  const c = COPY[lang] ?? COPY.nl;
   const localizedCategories = useBlogCategories();
-  const categories = lang === "no" ? localizedCategories : blogCategories;
+  const categories = localizedCategories;
   const [activeCategory, setActiveCategory] = useState(categories[0]);
 
   const filtered = activeCategory === categories[0]

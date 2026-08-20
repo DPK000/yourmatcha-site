@@ -1,11 +1,21 @@
 User-agent: *
 Allow: /
 
-Disallow: /checkout
-Disallow: /winkelwagen
-Disallow: /bedankt
+# Checkout, winkelwagen en bedankt-pagina's in alle talen.
+# De taal staat in het pad (/nl/..., /no/...), vandaar de wildcard.
+Disallow: /*/checkout
+Disallow: /*/kasse
+Disallow: /*/paiement
+Disallow: /*/winkelwagen
+Disallow: /*/cart
+Disallow: /*/warenkorb
+Disallow: /*/panier
+Disallow: /*/handlekurv
+Disallow: /*/bedankt
+Disallow: /*/thank-you
+Disallow: /*/danke
+Disallow: /*/merci
+Disallow: /*/takk
 Disallow: /admin
 
-Sitemap: https://yourmatcha.no/sitemap-no.xml
-Sitemap: https://yourmatcha.nl/sitemap.xml
-Sitemap: https://yourmatcha.de/sitemap-de.xml
+Sitemap: https://yourmatcha.com/sitemap.xml

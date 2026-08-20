@@ -1,10 +1,10 @@
-import { Link } from "react-router-dom";
+import { Link } from "@/components/LocalizedLink";
 import { Minus, Plus, X, ShoppingBag, Truck, ArrowRight, Tag } from "lucide-react";
 import { motion } from "framer-motion";
 import { useState, useMemo } from "react";
 import { useCart, computeDiscountAmount, type AppliedDiscount } from "@/context/CartContext";
 import { supabase } from "@/lib/supabase";
-import { useProducts } from "@/data/products";
+import { useProducts, baseProductId } from "@/data/products";
 import SEO from "@/components/SEO";
 import { toast } from "sonner";
 import { useCurrency } from "@/context/CurrencyContext";
@@ -13,15 +13,15 @@ import { useLang } from "@/i18n";
 const COPY = {
   nl: {
     seoTitle: "Winkelwagen",
-    seoDescription: "Bekijk je winkelwagen en reken veilig af. Gratis verzending in Nederland en België vanaf €35.",
-    toastCodeApplied: (pct: number) => `Code toegepast — ${pct}% korting`,
+    seoDescription: "Bekijk je winkelwagen en reken veilig af. Gratis verzending vanaf €35.",
+    toastCodeApplied: (pct: number) => `Code toegepast - ${pct}% korting`,
     toastAmountApplied: (amount: string) => `${amount} korting toegepast`,
     toastFreeShipping: "Gratis verzending toegepast",
     toastInvalidCode: "Ongeldige of verlopen kortingscode",
     toastMinOrder: (min: string) => `Deze code geldt vanaf een bestelbedrag van ${min}`,
     removeCode: "Verwijderen",
     emptyTitle: "Je winkelwagen is leeg",
-    emptySubtitle: "Ontdek onze ceremoniële matcha, thee en rituelen.",
+    emptySubtitle: "Ontdek onze matcha, sets en accessoires.",
     toShop: "Naar de shop",
     title: "Je winkelwagen",
     itemSingular: "artikel",
@@ -45,17 +45,119 @@ const COPY = {
     checkout: "Veilig afrekenen",
     paymentNote: "Veilig betalen · iDEAL · Creditcard · Apple Pay · Google Pay",
   },
+  en: {
+    seoTitle: "Cart",
+    seoDescription: "Review your cart and check out securely. Free shipping over €35.",
+    toastCodeApplied: (pct: number) => `Code applied - ${pct}% off`,
+    toastAmountApplied: (amount: string) => `${amount} discount applied`,
+    toastFreeShipping: "Free shipping applied",
+    toastInvalidCode: "Invalid or expired discount code",
+    toastMinOrder: (min: string) => `This code applies from an order value of ${min}`,
+    removeCode: "Remove",
+    emptyTitle: "Your cart is empty",
+    emptySubtitle: "Discover our matcha, sets and accessories.",
+    toShop: "To the shop",
+    title: "Your cart",
+    itemSingular: "item",
+    itemPlural: "items",
+    remainingPrefix: "Only ",
+    remainingSuffix: " to free shipping",
+    freeShippingReached: "You qualify for free shipping!",
+    continueShopping: "← Continue shopping",
+    clearCart: "Empty cart",
+    crossSellTitle: "People also bought",
+    add: "Add",
+    summary: "Summary",
+    discountCode: "Discount code",
+    codePlaceholder: "e.g. MATCHA10",
+    apply: "Apply",
+    subtotal: "Subtotal",
+    discount: "Discount",
+    shipping: "Shipping",
+    free: "Free",
+    total: "Total",
+    checkout: "Secure checkout",
+    paymentNote: "Secure payment · Card · Apple Pay · Google Pay",
+  },
+  de: {
+    seoTitle: "Warenkorb",
+    seoDescription: "Sieh dir deinen Warenkorb an und bezahle sicher. Gratis Versand ab €35.",
+    toastCodeApplied: (pct: number) => `Code angewendet - ${pct}% Rabatt`,
+    toastAmountApplied: (amount: string) => `${amount} Rabatt angewendet`,
+    toastFreeShipping: "Gratis Versand angewendet",
+    toastInvalidCode: "Ungültiger oder abgelaufener Rabattcode",
+    toastMinOrder: (min: string) => `Dieser Code gilt ab einem Bestellwert von ${min}`,
+    removeCode: "Entfernen",
+    emptyTitle: "Dein Warenkorb ist leer",
+    emptySubtitle: "Entdecke unseren Matcha, unsere Sets und unser Zubehör.",
+    toShop: "Zum Shop",
+    title: "Dein Warenkorb",
+    itemSingular: "Artikel",
+    itemPlural: "Artikel",
+    remainingPrefix: "Noch ",
+    remainingSuffix: " bis zum Gratisversand",
+    freeShippingReached: "Du erhältst Gratisversand!",
+    continueShopping: "← Weiter einkaufen",
+    clearCart: "Warenkorb leeren",
+    crossSellTitle: "Andere kauften auch",
+    add: "Hinzufügen",
+    summary: "Übersicht",
+    discountCode: "Rabattcode",
+    codePlaceholder: "z. B. MATCHA10",
+    apply: "Anwenden",
+    subtotal: "Zwischensumme",
+    discount: "Rabatt",
+    shipping: "Versand",
+    free: "Gratis",
+    total: "Gesamt",
+    checkout: "Sicher bezahlen",
+    paymentNote: "Sichere Zahlung · Karte · Apple Pay · Google Pay",
+  },
+  fr: {
+    seoTitle: "Panier",
+    seoDescription: "Consultez votre panier et payez en toute sécurité. Livraison offerte dès 35 €.",
+    toastCodeApplied: (pct: number) => `Code appliqué - ${pct}% de réduction`,
+    toastAmountApplied: (amount: string) => `Réduction de ${amount} appliquée`,
+    toastFreeShipping: "Livraison offerte appliquée",
+    toastInvalidCode: "Code de réduction invalide ou expiré",
+    toastMinOrder: (min: string) => `Ce code s'applique à partir de ${min} d'achat`,
+    removeCode: "Retirer",
+    emptyTitle: "Votre panier est vide",
+    emptySubtitle: "Découvrez nos matcha, coffrets et accessoires.",
+    toShop: "Vers la boutique",
+    title: "Votre panier",
+    itemSingular: "article",
+    itemPlural: "articles",
+    remainingPrefix: "Plus que ",
+    remainingSuffix: " avant la livraison offerte",
+    freeShippingReached: "Vous bénéficiez de la livraison offerte !",
+    continueShopping: "← Continuer mes achats",
+    clearCart: "Vider le panier",
+    crossSellTitle: "Souvent achetés ensemble",
+    add: "Ajouter",
+    summary: "Récapitulatif",
+    discountCode: "Code de réduction",
+    codePlaceholder: "ex. MATCHA10",
+    apply: "Appliquer",
+    subtotal: "Sous-total",
+    discount: "Réduction",
+    shipping: "Livraison",
+    free: "Offerte",
+    total: "Total",
+    checkout: "Paiement sécurisé",
+    paymentNote: "Paiement sécurisé · Carte · Apple Pay · Google Pay",
+  },
   no: {
     seoTitle: "Handlekurv",
     seoDescription: "Se handlekurven din og betal trygt. Gratis frakt over 400 kr.",
-    toastCodeApplied: (pct: number) => `Kode aktivert — ${pct} % rabatt`,
+    toastCodeApplied: (pct: number) => `Kode aktivert - ${pct} % rabatt`,
     toastAmountApplied: (amount: string) => `${amount} rabatt aktivert`,
     toastFreeShipping: "Gratis frakt aktivert",
     toastInvalidCode: "Ugyldig eller utløpt rabattkode",
     toastMinOrder: (min: string) => `Denne koden gjelder fra en ordreverdi på ${min}`,
     removeCode: "Fjern",
     emptyTitle: "Handlekurven din er tom",
-    emptySubtitle: "Utforsk vår seremonielle matcha, te og ritualer.",
+    emptySubtitle: "Utforsk matchaen, settene og tilbehøret vårt.",
     toShop: "Til butikken",
     title: "Handlekurven din",
     itemSingular: "vare",
@@ -84,18 +186,18 @@ const COPY = {
 const Cart = () => {
   const { format: formatPrice, formatAmount, convert, rate, freeShippingThreshold, shippingCost: shippingRate } = useCurrency();
   const lang = useLang();
-  const t = COPY[lang === "no" ? "no" : "nl"];
+  const t = COPY[lang] ?? COPY.nl;
   const { items, removeItem, updateQuantity, addItem, clearCart, discount: appliedDiscount, applyDiscount, removeDiscount } = useCart();
   const [code, setCode] = useState("");
   const [validating, setValidating] = useState(false);
   const products = useProducts();
 
   const recommendations = useMemo(() => {
-    const inCart = new Set(items.map(i => i.product.id));
+    const inCart = new Set(items.map(i => baseProductId(i.product.id)));
     return products.filter(p => !inCart.has(p.id) && (p.bestseller || p.badge)).slice(0, 4);
   }, [items, products]);
 
-  // Alle bedragen in de actieve valuta, opgebouwd uit afgeronde stuksprijzen —
+  // Alle bedragen in de actieve valuta, opgebouwd uit afgeronde stuksprijzen -
   // zo klopt wat de klant ziet exact met wat wordt afgerekend.
   const subtotal = items.reduce((sum, i) => sum + convert(i.product.price) * i.quantity, 0);
   const remaining = Math.max(0, freeShippingThreshold - subtotal);

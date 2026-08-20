@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate } from "@/components/LocalizedLink";
 import { useTranslation } from "react-i18next";
 import { BookOpen, Package } from "lucide-react";
 import {
@@ -31,7 +31,7 @@ const SearchDialog = ({ open, onOpenChange }: SearchDialogProps) => {
   const { format: formatPrice } = useCurrency();
   const [articles, setArticles] = useState<SearchArticle[]>([]);
 
-  // Kennisdata pas laden als de dialog opent — houdt de grote data-file uit de main bundle
+  // Kennisdata pas laden als de dialog opent - houdt de grote data-file uit de main bundle
   useEffect(() => {
     if (!open || articles.length > 0) return;
     import("@/data/knowledge").then(mod => {

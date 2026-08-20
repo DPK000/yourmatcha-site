@@ -1,5 +1,7 @@
 import { Helmet } from "react-helmet-async";
 import { useTranslation } from "react-i18next";
+import { useLocation } from "react-router-dom";
+import { translatePath, LANGS } from "@/i18n/routes";
 
 interface SEOProps {
   title: string;
@@ -16,25 +18,24 @@ interface SEOProps {
   author?: string;
 }
 
-// Multi-domain: each language has its own primary domain
-export const DOMAINS: Record<string, string> = {
-  nl: "https://yourmatcha.nl",
-  de: "https://yourmatcha.de",
-  en: "https://yourmatcha.com",
-  fr: "https://yourmatcha.fr",
-  no: "https://yourmatcha.no",
-};
+/**
+ * Eén canoniek domein voor alle talen; de taal staat in het pad (/no/butikk).
+ * Laat eventuele losse landdomeinen hiernaartoe redirecten, anders staat
+ * dezelfde pagina op twee URL's en concurreren ze met elkaar in Google.
+ */
+export const SITE_URL = "https://yourmatcha.com";
 
 /**
- * Basis-URL van de actieve site. In de browser wint het echte domein (zodat
- * yourmatcha.no nooit naar .nl canonicaliseert, ook niet na een taalwissel);
- * daarbuiten valt het terug op het domein dat bij de taal hoort.
+ * Basis-URL van de actieve site. In de browser wint het echte domein waarop de
+ * site draait, zodat previews en staging naar zichzelf canonicaliseren.
+ * De `lang` parameter wordt niet meer gebruikt - de taal zit in het pad - maar
+ * blijft staan zodat bestaande aanroepen ongewijzigd werken.
  */
-export const getSiteUrl = (lang: string): string => {
-  if (typeof window !== "undefined" && /(^|\.)yourmatcha\.(nl|no|de|fr|com)$/.test(window.location.hostname)) {
+export const getSiteUrl = (_lang?: string): string => {
+  if (typeof window !== "undefined") {
     return window.location.origin.replace("://www.", "://");
   }
-  return DOMAINS[lang] || DOMAINS.nl;
+  return SITE_URL;
 };
 const DEFAULT_IMAGE = "/og-default.jpg";
 const SUPPORTED_LOCALES = ["nl-NL", "nl-BE", "en-GB", "de-DE", "fr-FR", "nb-NO"];
@@ -71,10 +72,13 @@ const SEO = ({
 }: SEOProps) => {
   const { i18n } = useTranslation();
   const lang = (i18n.language || "nl").slice(0, 2);
-  const siteUrl = getSiteUrl(lang);
+  const location = useLocation();
+  const siteUrl = getSiteUrl();
   const ogLocale = locale || OG_LOCALES[lang] || "nl_NL";
 
-  const path = canonical || "/";
+  // Het werkelijke pad bevat al de taalprefix en de vertaalde slug; dat is
+  // altijd de juiste canonical. De `canonical` prop blijft als override.
+  const path = canonical && canonical.startsWith("http") ? canonical : location.pathname;
   const url = path.startsWith("http") ? path : `${siteUrl}${path}`;
   const fullTitle = title.includes("YourMatcha") ? title : `${title} | YourMatcha`;
   const ogImage = image
@@ -100,12 +104,17 @@ const SEO = ({
         <meta name="robots" content="index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1" />
       )}
 
-      {/* Hreflang alternates — point each language to its primary domain */}
-      {Object.entries(HREFLANG_MAP).map(([code, hreflang]) => (
-        <link key={hreflang} rel="alternate" hrefLang={hreflang} href={`${DOMAINS[code]}${path}`} />
+      {/* Hreflang - dezelfde pagina in elke taal, via het vertaalde pad. */}
+      {LANGS.map(code => (
+        <link
+          key={code}
+          rel="alternate"
+          hrefLang={HREFLANG_MAP[code] || code}
+          href={`${siteUrl}${translatePath(path, code)}`}
+        />
       ))}
-      <link rel="alternate" hrefLang="nl-BE" href={`${DOMAINS.nl}${path}`} />
-      <link rel="alternate" hrefLang="x-default" href={`${DOMAINS.nl}${path}`} />
+      <link rel="alternate" hrefLang="nl-BE" href={`${siteUrl}${translatePath(path, "nl")}`} />
+      <link rel="alternate" hrefLang="x-default" href={`${siteUrl}${translatePath(path, "nl")}`} />
 
       {/* Open Graph */}
       <meta property="og:title" content={fullTitle} />

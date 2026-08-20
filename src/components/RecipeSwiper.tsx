@@ -1,36 +1,24 @@
 import { useState, useCallback, useEffect } from "react";
-import { Link } from "react-router-dom";
+import { Link } from "@/components/LocalizedLink";
 import useEmblaCarousel from "embla-carousel-react";
 import { ChevronLeft, ChevronRight, Clock, ChefHat, ArrowUpRight } from "lucide-react";
 import { motion } from "framer-motion";
 
 import { recipes } from "@/data/recipes";
-import { useLang } from "@/i18n";
-
-const COPY = {
-  nl: {
-    eyebrow: "Receptenbibliotheek",
-    title: "Swipe door 14 matcha-creaties",
-    subtitle: "Van romige latte tot fudgy brownies — ontdek hoe veelzijdig matcha echt is.",
-    prevAria: "Vorige recept",
-    nextAria: "Volgende recept",
-    viewAria: "Bekijk recept:",
-    swipeHint: "← swipe voor meer recepten →",
-  },
-  no: {
-    eyebrow: "Oppskriftsbibliotek",
-    title: "Sveip gjennom 14 matcha-kreasjoner",
-    subtitle: "Fra kremet latte til fudgy brownies — oppdag hvor allsidig matcha egentlig er.",
-    prevAria: "Forrige oppskrift",
-    nextAria: "Neste oppskrift",
-    viewAria: "Se oppskrift:",
-    swipeHint: "← sveip for flere oppskrifter →",
-  },
-} as const;
+import { useTranslation } from "react-i18next";
 
 const RecipeSwiper = () => {
-  const lang = useLang();
-  const c = lang === "no" ? COPY.no : COPY.nl;
+  const { t } = useTranslation();
+  // Titel telt het werkelijke aantal recepten in de swiper - stond hardcoded op 14.
+  const c = {
+    eyebrow: t("recipeSwiper.eyebrow"),
+    title: t("recipeSwiper.title", { total: recipes.length }),
+    subtitle: t("recipeSwiper.subtitle"),
+    prevAria: t("recipeSwiper.prevAria"),
+    nextAria: t("recipeSwiper.nextAria"),
+    viewAria: t("recipeSwiper.viewAria"),
+    swipeHint: t("recipeSwiper.swipeHint"),
+  };
   const [emblaRef, emblaApi] = useEmblaCarousel({
     align: "start",
     loop: true,

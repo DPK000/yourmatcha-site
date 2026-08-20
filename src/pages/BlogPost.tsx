@@ -1,4 +1,5 @@
-import { useParams, Link } from "react-router-dom";
+import { useParams } from "react-router-dom";
+import { Link } from "@/components/LocalizedLink";
 import { getBlogBySlug, blogPosts } from "@/data/blog";
 import { ChevronLeft, Clock } from "lucide-react";
 import { motion } from "framer-motion";
@@ -9,14 +10,35 @@ const COPY = {
   nl: {
     notFound: "Artikel niet gevonden.",
     backToBlog: "Terug naar blog",
-    seoDescriptionSuffix: "— Lees alles over matcha op de YourMatcha blog.",
+    seoDescriptionSuffix: "- Lees alles over matcha op de YourMatcha blog.",
     readTime: "leestijd",
     moreArticles: "Meer Artikelen",
+  },
+  en: {
+    notFound: "Article not found.",
+    backToBlog: "Back to the blog",
+    seoDescriptionSuffix: "- Read everything about matcha on the YourMatcha blog.",
+    readTime: "read",
+    moreArticles: "More Articles",
+  },
+  de: {
+    notFound: "Artikel nicht gefunden.",
+    backToBlog: "Zurück zum Blog",
+    seoDescriptionSuffix: "- Lies alles über Matcha im YourMatcha-Blog.",
+    readTime: "Lesezeit",
+    moreArticles: "Mehr Artikel",
+  },
+  fr: {
+    notFound: "Article introuvable.",
+    backToBlog: "Retour au blog",
+    seoDescriptionSuffix: "- Lisez tout sur le matcha sur le blog YourMatcha.",
+    readTime: "de lecture",
+    moreArticles: "Plus d'articles",
   },
   no: {
     notFound: "Fant ikke artikkelen.",
     backToBlog: "Tilbake til bloggen",
-    seoDescriptionSuffix: "— Les alt om matcha på YourMatcha-bloggen.",
+    seoDescriptionSuffix: "- Les alt om matcha på YourMatcha-bloggen.",
     readTime: "lesetid",
     moreArticles: "Flere artikler",
   },
@@ -27,7 +49,7 @@ const BlogPost = () => {
   const post = getBlogBySlug(slug || "");
   const lang = useLang();
   const siteUrl = getSiteUrl(lang);
-  const c = lang === "no" ? COPY.no : COPY.nl;
+  const c = COPY[lang] ?? COPY.nl;
 
   if (!post) {
     return (

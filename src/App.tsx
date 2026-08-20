@@ -1,6 +1,6 @@
 import { lazy, Suspense } from "react";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import { BrowserRouter, Route, Routes, useLocation } from "react-router-dom";
+import { BrowserRouter, Navigate, Route, Routes, useLocation } from "react-router-dom";
 import { HelmetProvider } from "react-helmet-async";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
@@ -11,13 +11,17 @@ import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import CartDrawer from "@/components/CartDrawer";
 import PageTransition from "@/components/PageTransition";
+import { resolveProductPath } from "@/data/products";
+import { LANGS, ROUTES, DEFAULT_LANG, localizedPath, matchDutchPath, langFromPath, type RouteKey } from "@/i18n/routes";
+import { getCurrentLang } from "@/i18n";
 import ScrollToTop from "@/components/ScrollToTop";
 import { useGAPageView } from "@/hooks/useGAPageView";
+import { useMetaPixelPageView } from "@/hooks/useMetaPixel";
 import NewsletterPopup from "@/components/NewsletterPopup";
 // Homepage blijft eager: dat is de LCP-kritieke route
 import Homepage from "@/pages/Homepage";
 
-// Alle overige routes lazy — houdt de main bundle klein
+// Alle overige routes lazy - houdt de main bundle klein
 const Shop = lazy(() => import("@/pages/Shop"));
 const ProductDetail = lazy(() => import("@/pages/ProductDetail"));
 const About = lazy(() => import("@/pages/About"));
@@ -44,7 +48,7 @@ const LandingPage = lazy(() => import("@/pages/LandingPage"));
 const Glossary = lazy(() => import("@/pages/Glossary"));
 const NotFound = lazy(() => import("@/pages/NotFound"));
 
-// BUQE Commerce admin — volledig lazy zodat bezoekers dit nooit downloaden
+// BUQE Commerce admin - volledig lazy zodat bezoekers dit nooit downloaden
 const AdminLayout = lazy(() => import("@/pages/admin/AdminLayout"));
 const AdminLogin = lazy(() => import("@/pages/admin/AdminLogin"));
 const AdminDashboard = lazy(() => import("@/pages/admin/AdminDashboard"));
@@ -58,63 +62,106 @@ const AdminPartners = lazy(() => import("@/pages/admin/AdminPartners"));
 const AdminB2B = lazy(() => import("@/pages/admin/AdminB2B"));
 const AdminPixels = lazy(() => import("@/pages/admin/AdminPixels"));
 
+
+/** Pagina's zonder URL-parameter. */
+const PAGE_ROUTES: { key: RouteKey; element: JSX.Element }[] = [
+  { key: "shop", element: <Shop /> },
+  { key: "bundle", element: <BundleBuilder /> },
+  { key: "compare", element: <Compare /> },
+  { key: "cart", element: <Cart /> },
+  { key: "about", element: <About /> },
+  { key: "origin", element: <Origin /> },
+  { key: "knowledge", element: <Knowledge /> },
+  { key: "blog", element: <Blog /> },
+  { key: "subscriptions", element: <Subscriptions /> },
+  { key: "checkout", element: <Checkout /> },
+  { key: "checkoutSuccess", element: <ThankYou /> },
+  { key: "thankYou", element: <ThankYou /> },
+  { key: "contact", element: <Contact /> },
+  { key: "faq", element: <FAQ /> },
+  { key: "shipping", element: <Shipping /> },
+  { key: "privacy", element: <Privacy /> },
+  { key: "terms", element: <Terms /> },
+  { key: "recipes", element: <Recipes /> },
+  { key: "sustainability", element: <Sustainability /> },
+  { key: "glossary", element: <Glossary /> },
+];
+
+/** Pagina's met een `:slug` erachter. */
+const DETAIL_PAGE_ROUTES: { key: RouteKey; element: JSX.Element }[] = [
+  { key: "product", element: <ProductDetail /> },
+  { key: "knowledgeArticle", element: <KnowledgeArticle /> },
+  { key: "blogPost", element: <BlogPost /> },
+  { key: "recipeDetail", element: <RecipeDetail /> },
+];
+
+/** Landingspagina's: eigen URL per taal, dezelfde inhoud via de NL-slug. */
+const LANDING_ROUTES: { key: RouteKey; slug: string }[] = [
+  { key: "landingPowder", slug: "matcha-poeder" },
+  { key: "landingAccessories", slug: "matcha-accessoires" },
+  { key: "landingKits", slug: "matcha-kits" },
+  { key: "landingTea", slug: "japanse-thee" },
+  { key: "landingGifts", slug: "cadeau-gids" },
+  { key: "landingBeginners", slug: "matcha-voor-beginners" },
+  { key: "landingAthletes", slug: "matcha-voor-sporters" },
+  { key: "landingLowCaffeine", slug: "cafeinearme-thee" },
+  { key: "landingCoffeeSwap", slug: "matcha-als-koffievervanger" },
+];
+
+/**
+ * Vangt elke URL zonder taalprefix op. Oude links als /shop of /over-ons
+ * blijven zo werken: ze landen op dezelfde pagina in de voorkeurstaal van de
+ * bezoeker, met een permanente vervanging in de history.
+ */
+const LangRedirect = () => {
+  const { pathname, search, hash } = useLocation();
+  const lang = getCurrentLang() ?? DEFAULT_LANG;
+  const match = matchDutchPath(pathname);
+  const target = match
+    ? localizedPath(match.key, lang, match.slug)
+    : localizedPath("home", lang);
+  return <Navigate to={target + search + hash} replace />;
+};
+
 const queryClient = new QueryClient();
 
 const AnimatedRoutes = () => {
   const location = useLocation();
   useGAPageView();
+  useMetaPixelPageView();
+
+  // Gearchiveerde of onbekende productslugs omleiden vóórdat er iets mount,
+  // zodat de paginaovergang niet halverwege onderbroken wordt.
+  const productRedirect = resolveProductPath(location.pathname);
+  if (productRedirect) return <Navigate to={productRedirect} replace />;
+
   return (
     <>
     <ScrollToTop />
     <AnimatePresence mode="wait">
       <Suspense fallback={null} key={location.pathname}>
       <Routes location={location}>
-        <Route path="/" element={<PageTransition><Homepage /></PageTransition>} />
-        <Route path="/shop" element={<PageTransition><Shop /></PageTransition>} />
-        <Route path="/product/:slug" element={<PageTransition><ProductDetail /></PageTransition>} />
-        <Route path="/bundel" element={<PageTransition><BundleBuilder /></PageTransition>} />
-        <Route path="/matcha-vergelijken" element={<PageTransition><Compare /></PageTransition>} />
-        <Route path="/winkelwagen" element={<PageTransition><Cart /></PageTransition>} />
-        <Route path="/over-ons" element={<PageTransition><About /></PageTransition>} />
-        <Route path="/herkomst" element={<PageTransition><Origin /></PageTransition>} />
-        <Route path="/kennis" element={<PageTransition><Knowledge /></PageTransition>} />
-        <Route path="/kennis/:slug" element={<PageTransition><KnowledgeArticle /></PageTransition>} />
-        <Route path="/blog" element={<PageTransition><Blog /></PageTransition>} />
-        <Route path="/blog/:slug" element={<PageTransition><BlogPost /></PageTransition>} />
-        <Route path="/abonnementen" element={<PageTransition><Subscriptions /></PageTransition>} />
-        <Route path="/checkout" element={<PageTransition><Checkout /></PageTransition>} />
-        <Route path="/checkout/success" element={<PageTransition><ThankYou /></PageTransition>} />
-        <Route path="/bedankt" element={<PageTransition><ThankYou /></PageTransition>} />
-        <Route path="/contact" element={<PageTransition><Contact /></PageTransition>} />
-        <Route path="/faq" element={<PageTransition><FAQ /></PageTransition>} />
-        <Route path="/verzending" element={<PageTransition><Shipping /></PageTransition>} />
-        <Route path="/privacy" element={<PageTransition><Privacy /></PageTransition>} />
-        <Route path="/voorwaarden" element={<PageTransition><Terms /></PageTransition>} />
-        <Route path="/recepten" element={<PageTransition><Recipes /></PageTransition>} />
-        <Route path="/recepten/:slug" element={<PageTransition><RecipeDetail /></PageTransition>} />
-        <Route path="/duurzaamheid" element={<PageTransition><Sustainability /></PageTransition>} />
-        {/* NL landing pages */}
-        <Route path="/matcha-poeder" element={<PageTransition><LandingPage slug="matcha-poeder" /></PageTransition>} />
-        <Route path="/matcha-accessoires" element={<PageTransition><LandingPage slug="matcha-accessoires" /></PageTransition>} />
-        <Route path="/matcha-kits" element={<PageTransition><LandingPage slug="matcha-kits" /></PageTransition>} />
-        <Route path="/japanse-thee" element={<PageTransition><LandingPage slug="japanse-thee" /></PageTransition>} />
-        <Route path="/cadeau-gids" element={<PageTransition><LandingPage slug="cadeau-gids" /></PageTransition>} />
-        <Route path="/matcha-voor-beginners" element={<PageTransition><LandingPage slug="matcha-voor-beginners" /></PageTransition>} />
-        <Route path="/matcha-voor-sporters" element={<PageTransition><LandingPage slug="matcha-voor-sporters" /></PageTransition>} />
-        <Route path="/cafeinearme-thee" element={<PageTransition><LandingPage slug="cafeinearme-thee" /></PageTransition>} />
-        <Route path="/matcha-als-koffievervanger" element={<PageTransition><LandingPage slug="matcha-als-koffievervanger" /></PageTransition>} />
-        {/* NO landing pages — Norwegian keyword URLs */}
-        <Route path="/matcha-pulver" element={<PageTransition><LandingPage slug="matcha-poeder" /></PageTransition>} />
-        <Route path="/matcha-tilbehor" element={<PageTransition><LandingPage slug="matcha-accessoires" /></PageTransition>} />
-        <Route path="/matcha-sett" element={<PageTransition><LandingPage slug="matcha-kits" /></PageTransition>} />
-        <Route path="/japansk-te" element={<PageTransition><LandingPage slug="japanse-thee" /></PageTransition>} />
-        <Route path="/gave-guide" element={<PageTransition><LandingPage slug="cadeau-gids" /></PageTransition>} />
-        <Route path="/matcha-for-nybegynnere" element={<PageTransition><LandingPage slug="matcha-voor-beginners" /></PageTransition>} />
-        <Route path="/matcha-for-utovere" element={<PageTransition><LandingPage slug="matcha-voor-sporters" /></PageTransition>} />
-        <Route path="/koffeinfri-te" element={<PageTransition><LandingPage slug="cafeinearme-thee" /></PageTransition>} />
-        <Route path="/matcha-istedenfor-kaffe" element={<PageTransition><LandingPage slug="matcha-als-koffievervanger" /></PageTransition>} />
-        <Route path="/matcha-woordenboek" element={<PageTransition><Glossary /></PageTransition>} />
-        <Route path="*" element={<PageTransition><NotFound /></PageTransition>} />
+        {LANGS.map(lang => (
+          <Route key={lang} path={`/${lang}`}>
+            <Route index element={<PageTransition><Homepage /></PageTransition>} />
+            {PAGE_ROUTES.map(({ key, element }) => (
+              <Route key={key} path={ROUTES[key][lang]} element={<PageTransition>{element}</PageTransition>} />
+            ))}
+            {DETAIL_PAGE_ROUTES.map(({ key, element }) => (
+              <Route key={key} path={`${ROUTES[key][lang]}/:slug`} element={<PageTransition>{element}</PageTransition>} />
+            ))}
+            {LANDING_ROUTES.map(({ key, slug }) => (
+              <Route
+                key={key}
+                path={ROUTES[key][lang]}
+                element={<PageTransition><LandingPage slug={slug} /></PageTransition>}
+              />
+            ))}
+            <Route path="*" element={<PageTransition><NotFound /></PageTransition>} />
+          </Route>
+        ))}
+        {/* Zonder taalprefix: stuur door naar de juiste taalversie van dezelfde pagina. */}
+        <Route path="*" element={<LangRedirect />} />
       </Routes>
       </Suspense>
     </AnimatePresence>
@@ -143,7 +190,7 @@ const App = () => (
           <CurrencyProvider>
           <CartProvider>
             <Routes>
-              {/* BUQE Commerce Admin — geen header/footer */}
+              {/* BUQE Commerce Admin - geen header/footer */}
               <Route path="/admin/login" element={<Suspense fallback={null}><AdminLogin /></Suspense>} />
               <Route path="/admin" element={<Suspense fallback={null}><AdminLayout /></Suspense>}>
                 <Route index element={<AdminDashboard />} />
@@ -158,7 +205,7 @@ const App = () => (
                 <Route path="pixels" element={<AdminPixels />} />
               </Route>
 
-              {/* Publieke site — met header/footer */}
+              {/* Publieke site - met header/footer */}
               <Route path="/*" element={<PublicShell />} />
             </Routes>
           </CartProvider>

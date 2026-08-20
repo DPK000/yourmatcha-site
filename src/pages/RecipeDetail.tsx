@@ -1,4 +1,5 @@
-import { useParams, Link, Navigate } from "react-router-dom";
+import { useParams, Navigate } from "react-router-dom";
+import { Link } from "@/components/LocalizedLink";
 import { ArrowLeft, Clock, ChefHat, Share2, ArrowRight } from "lucide-react";
 import PageHero from "@/components/PageHero";
 import SEO from "@/components/SEO";
@@ -12,7 +13,7 @@ const recommendedProductSlugs = (recipe: Recipe): string[] => {
   const slug = recipe.slug.toLowerCase();
 
   if (slug.includes("hojicha")) {
-    return ["hojicha-poeder-50g", "ceremonial-matcha-100g", "starter-kit"];
+    return ["matcha-poeder-100g", "matcha-poeder-pot-100g", "matcha-set-compleet"];
   }
 
   const isIced =
@@ -23,14 +24,14 @@ const recommendedProductSlugs = (recipe: Recipe): string[] => {
     slug.includes("strawberry-latte");
 
   if (isIced) {
-    return ["iced-matcha-blend-60g", "culinary-matcha-100g", "ceremonial-matcha-100g"];
+    return ["matcha-poeder-100g", "chasen-bamboe-100", "matcha-set-green"];
   }
 
   if (recipe.categoryKey === "Drinks") {
-    return ["ceremonial-matcha-100g", "culinary-matcha-100g", "starter-kit"];
+    return ["matcha-poeder-100g", "matcha-set-compleet", "chasen-bamboe-100"];
   }
 
-  return ["culinary-matcha-100g", "ceremonial-matcha-30g", "starter-kit"];
+  return ["matcha-poeder-100g", "matcha-poeder-pot-100g", "matcha-set-compleet"];
 };
 
 const reasonKey = (recipe: Recipe): "hojicha" | "iced" | "drinks" | "default" => {
@@ -51,7 +52,7 @@ const reasonKey = (recipe: Recipe): "hojicha" | "iced" | "drinks" | "default" =>
 
 const COPY = {
   nl: {
-    seoTitleSuffix: "— YourMatcha Recept",
+    seoTitleSuffix: "- YourMatcha Recept",
     cuisine: "Japans",
     allRecipes: "Alle recepten",
     ingredients: "Ingrediënten",
@@ -62,14 +63,68 @@ const COPY = {
     pairTitle: "Koop de juiste matcha voor dit recept",
     view: "Bekijk",
     reasons: {
-      hojicha: "Hojicha poeder is essentieel voor dit recept. Onze ceremonial matcha is een mooie tegenhanger voor andere bereidingen.",
-      iced: "Voor koude bereidingen is een speciaal gemalen iced blend ideaal — lost direct op, geen klontjes.",
-      drinks: "Voor een fluweelzachte latte: ceremonial voor de pure smaak, culinary voor dagelijks gebruik.",
-      default: "Voor bakken en koken kies je culinary grade — robuust, hittebestendig en kosteneffectief.",
+      hojicha: "Voor deze bereiding werkt ons matcha poeder het beste. De glazen pot houdt het langer vers.",
+      iced: "Voor koude bereidingen lost ons fijngemalen poeder direct op, zonder klontjes.",
+      drinks: "Voor een fluweelzachte latte: zeef het poeder en klop met een chasen.",
+      default: "Voor bakken en koken kies je ons matcha poeder - robuust, hittebestendig en voordelig.",
+    },
+  },
+  en: {
+    seoTitleSuffix: "- YourMatcha Recipe",
+    cuisine: "Japanese",
+    allRecipes: "All recipes",
+    ingredients: "Ingredients",
+    steps: "Method",
+    share: "Share this recipe",
+    more: "More",
+    pairEyebrow: "For this recipe",
+    pairTitle: "Get the right matcha for this recipe",
+    view: "View",
+    reasons: {
+      hojicha: "Our matcha powder works best for this preparation. The glass jar keeps it fresh longer.",
+      iced: "For cold drinks our finely ground powder dissolves straight away, without clumps.",
+      drinks: "For a velvety latte: sift the powder and whisk with a chasen.",
+      default: "For baking and cooking, choose our matcha powder - robust, heat-resistant and good value.",
+    },
+  },
+  de: {
+    seoTitleSuffix: "- YourMatcha Rezept",
+    cuisine: "Japanisch",
+    allRecipes: "Alle Rezepte",
+    ingredients: "Zutaten",
+    steps: "Zubereitung",
+    share: "Rezept teilen",
+    more: "Mehr",
+    pairEyebrow: "Zu diesem Rezept",
+    pairTitle: "Den passenden Matcha für dieses Rezept",
+    view: "Ansehen",
+    reasons: {
+      hojicha: "Für diese Zubereitung eignet sich unser Matcha-Pulver am besten. Das Vorratsglas hält es länger frisch.",
+      iced: "Für kalte Zubereitungen löst sich unser fein gemahlenes Pulver sofort auf, ohne Klümpchen.",
+      drinks: "Für einen samtigen Latte: Pulver sieben und mit einem Chasen aufschlagen.",
+      default: "Zum Backen und Kochen wählst du unser Matcha-Pulver - kräftig, hitzebeständig und preiswert.",
+    },
+  },
+  fr: {
+    seoTitleSuffix: "- Recette YourMatcha",
+    cuisine: "Japonaise",
+    allRecipes: "Toutes les recettes",
+    ingredients: "Ingrédients",
+    steps: "Préparation",
+    share: "Partager cette recette",
+    more: "Plus",
+    pairEyebrow: "Pour cette recette",
+    pairTitle: "Le matcha qu'il vous faut pour cette recette",
+    view: "Voir",
+    reasons: {
+      hojicha: "Notre poudre de matcha convient le mieux à cette préparation. Le bocal en verre la garde fraîche plus longtemps.",
+      iced: "Pour les préparations froides, notre poudre finement moulue se dissout immédiatement, sans grumeaux.",
+      drinks: "Pour un latte velouté : tamisez la poudre et fouettez au chasen.",
+      default: "Pour la pâtisserie et la cuisine, choisissez notre poudre de matcha - robuste, résistante à la chaleur et économique.",
     },
   },
   no: {
-    seoTitleSuffix: "— YourMatcha-oppskrift",
+    seoTitleSuffix: "- YourMatcha-oppskrift",
     cuisine: "Japansk",
     allRecipes: "Alle oppskrifter",
     ingredients: "Ingredienser",
@@ -80,10 +135,10 @@ const COPY = {
     pairTitle: "Kjøp riktig matcha til denne oppskriften",
     view: "Se",
     reasons: {
-      hojicha: "Hojicha-pulver er essensielt for denne oppskriften. Vår ceremonial matcha er et fint alternativ til andre tilberedninger.",
-      iced: "For kalde tilberedninger er en spesialmalt iced-blanding ideell — løser seg opp umiddelbart, ingen klumper.",
-      drinks: "For en fløyelsmyk latte: ceremonial for den rene smaken, culinary for daglig bruk.",
-      default: "Til baking og matlaging velger du culinary grade — robust, varmebestandig og kostnadseffektiv.",
+      hojicha: "Til denne tilberedningen passer matchapulveret vårt best. Glasset holder det ferskt lenger.",
+      iced: "Til kalde tilberedninger løser det finmalte pulveret vårt seg opp med en gang, uten klumper.",
+      drinks: "Til en fløyelsmyk latte: sikt pulveret og visp med en chasen.",
+      default: "Til baking og matlaging velger du matchapulveret vårt - robust, varmebestandig og rimelig.",
     },
   },
 } as const;
@@ -92,7 +147,7 @@ const RecipeDetail = () => {
   const { slug } = useParams<{ slug: string }>();
   const recipe = slug ? getRecipeBySlug(slug) : undefined;
   const lang = useLang();
-  const c = lang === "no" ? COPY.no : COPY.nl;
+  const c = COPY[lang] ?? COPY.nl;
   const { format: formatPrice } = useCurrency();
 
   if (!recipe) return <Navigate to="/recepten" replace />;
