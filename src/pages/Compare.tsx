@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { Link } from "@/components/LocalizedLink";
 import { Check, Star } from "lucide-react";
 import { useProduct } from "@/data/products";
 import SEO, { getSiteUrl } from "@/components/SEO";
@@ -18,52 +18,55 @@ interface Row {
 
 const rows: Row[] = [
   {
-    slug: "ceremonial-matcha-30g",
-    weight: 30,
+    slug: "matcha-poeder-100g",
+    weight: 100,
     idealKey: "compare.ideal.beginner",
     flavorKey: "compare.flavor.soft",
     color: "bg-[hsl(85,55%,55%)]",
-    useKeys: ["compare.use.pure", "compare.use.latte"],
-  },
-  {
-    slug: "ceremonial-matcha-100g",
-    weight: 100,
-    idealKey: "compare.ideal.frequent",
-    flavorKey: "compare.flavor.soft",
-    color: "bg-[hsl(85,55%,55%)]",
-    useKeys: ["compare.use.pure", "compare.use.latte"],
+    useKeys: ["compare.use.pure", "compare.use.latte", "compare.use.baking"],
     highlight: true,
   },
   {
-    slug: "ceremonial-reserve-tin",
+    slug: "matcha-poeder-pot-100g",
     weight: 100,
-    idealKey: "compare.ideal.connaisseur",
+    idealKey: "compare.ideal.frequent",
     flavorKey: "compare.flavor.deep",
     color: "bg-[hsl(95,60%,40%)]",
-    useKeys: ["compare.use.koicha", "compare.use.ceremony"],
-  },
-  {
-    slug: "culinary-matcha-100g",
-    weight: 100,
-    idealKey: "compare.ideal.cooking",
-    flavorKey: "compare.flavor.robust",
-    color: "bg-[hsl(75,45%,50%)]",
-    useKeys: ["compare.use.latte", "compare.use.baking", "compare.use.smoothie"],
+    useKeys: ["compare.use.pure", "compare.use.ceremony", "compare.use.latte"],
   },
 ];
+
+/** Tailwind heeft de volledige klassenaam nodig - geen template-interpolatie. */
+const GRID_COLS: Record<number, string> = {
+  1: "grid-cols-2",
+  2: "grid-cols-3",
+  3: "grid-cols-4",
+  4: "grid-cols-5",
+};
 
 const Compare = () => {
   const { t, i18n } = useTranslation();
   const siteUrl = getSiteUrl((i18n.language || "nl").slice(0, 2));
-  const { format: formatPrice } = useCurrency();
+  const { format: formatPrice, currency, rate } = useCurrency();
+  // Prijs per gram is te klein voor de charm-afronding van convert(); reken
+  // lineair om en formatteer met 2 decimalen in de actieve valuta.
+  const formatPerGram = (eurPerGram: number) =>
+    new Intl.NumberFormat(currency === "NOK" ? "nb-NO" : i18n.language || "nl-NL", {
+      style: "currency",
+      currency,
+      minimumFractionDigits: 2,
+      maximumFractionDigits: 2,
+    }).format(eurPerGram * rate);
 
-  const p1 = useProduct(rows[0].slug);
-  const p2 = useProduct(rows[1].slug);
-  const p3 = useProduct(rows[2].slug);
-  const p4 = useProduct(rows[3].slug);
+  // Hooks moeten onvoorwaardelijk draaien: vaste bovengrens van 4 kolommen.
+  const p1 = useProduct(rows[0]?.slug);
+  const p2 = useProduct(rows[1]?.slug);
+  const p3 = useProduct(rows[2]?.slug);
+  const p4 = useProduct(rows[3]?.slug);
   const productEntries = [p1, p2, p3, p4]
-    .map((product, i) => (product ? { row: rows[i], product } : null))
+    .map((product, i) => (product && rows[i] ? { row: rows[i], product } : null))
     .filter((x): x is { row: Row; product: NonNullable<typeof p1> } => x !== null);
+  const gridCols = GRID_COLS[productEntries.length] ?? "grid-cols-5";
 
   return (
     <>
@@ -111,7 +114,7 @@ const Compare = () => {
                     <img src={product.images[0]} alt={product.name} className="w-full h-full object-cover" />
                   </div>
                   <h3 className="font-heading text-xl font-semibold mb-1">{product.name}</h3>
-                  <p className="text-2xl font-semibold mb-4">{formatPrice(product.price)} <span className="text-xs text-muted-foreground font-normal">· {formatPrice(product.price/row.weight)}/g</span></p>
+                  <p className="text-2xl font-semibold mb-4">{formatPrice(product.price)} <span className="text-xs text-muted-foreground font-normal">· {formatPerGram(product.price/row.weight)}/g</span></p>
                   <CompareRow label={t("compare.idealFor")} value={t(row.idealKey)} />
                   <CompareRow label={t("compare.flavor")} value={t(row.flavorKey)} />
                   <CompareRow label={t("compare.useFor")} value={row.useKeys.map(k => t(k)).join(" · ")} />
@@ -129,7 +132,7 @@ const Compare = () => {
 
           {/* Desktop table */}
           <div className="hidden md:block rounded-2xl border border-border overflow-hidden bg-card shadow-soft">
-            <div className="grid grid-cols-5">
+            <div className={`grid ${gridCols}`}>
               {/* Header column */}
               <div className="bg-secondary p-6 flex flex-col justify-end">
                 <p className="text-[10px] tracking-[0.3em] uppercase text-muted-foreground">{t("compare.comparison")}</p>
@@ -146,16 +149,16 @@ const Compare = () => {
                   </div>
                   <h3 className="font-heading text-lg font-semibold leading-tight mb-1">{product.name}</h3>
                   <p className="text-xl font-semibold">{formatPrice(product.price)}</p>
-                  <p className="text-xs text-muted-foreground">€{(product.price/row.weight).toFixed(2)} {t("compare.perGram")}</p>
+                  <p className="text-xs text-muted-foreground">{formatPerGram(product.price/row.weight)} {t("compare.perGram")}</p>
                 </div>
               ))}
             </div>
 
-            <TableRow label={t("compare.idealFor")} cells={productEntries.map(p => t(p.row.idealKey))} highlight={productEntries.map(p => !!p.row.highlight)} />
-            <TableRow label={t("compare.flavorProfile")} cells={productEntries.map(p => t(p.row.flavorKey))} highlight={productEntries.map(p => !!p.row.highlight)} />
-            <TableRow label={t("compare.useFor")} cells={productEntries.map(p => p.row.useKeys.map(k => t(k)).join(" · "))} highlight={productEntries.map(p => !!p.row.highlight)} />
+            <TableRow label={t("compare.idealFor")} cells={productEntries.map(p => t(p.row.idealKey))} highlight={productEntries.map(p => !!p.row.highlight)} gridCols={gridCols} />
+            <TableRow label={t("compare.flavorProfile")} cells={productEntries.map(p => t(p.row.flavorKey))} highlight={productEntries.map(p => !!p.row.highlight)} gridCols={gridCols} />
+            <TableRow label={t("compare.useFor")} cells={productEntries.map(p => p.row.useKeys.map(k => t(k)).join(" · "))} highlight={productEntries.map(p => !!p.row.highlight)} gridCols={gridCols} />
 
-            <div className="grid grid-cols-5 border-t border-border">
+            <div className={`grid ${gridCols} border-t border-border`}>
               <div className="p-5 bg-secondary text-xs tracking-wider uppercase text-muted-foreground font-medium">{t("compare.color")}</div>
               {productEntries.map(({ row, product }) => (
                 <div key={product.id} className={`p-5 border-l border-border flex items-center justify-center ${row.highlight ? "bg-primary/5" : ""}`}>
@@ -164,7 +167,7 @@ const Compare = () => {
               ))}
             </div>
 
-            <div className="grid grid-cols-5 border-t border-border">
+            <div className={`grid ${gridCols} border-t border-border`}>
               <div className="p-5 bg-secondary text-xs tracking-wider uppercase text-muted-foreground font-medium">{t("compare.organic")}</div>
               {productEntries.map(({ row, product }) => (
                 <div key={product.id} className={`p-5 border-l border-border flex items-center justify-center ${row.highlight ? "bg-primary/5" : ""}`}>
@@ -173,7 +176,7 @@ const Compare = () => {
               ))}
             </div>
 
-            <div className="grid grid-cols-5 border-t border-border">
+            <div className={`grid ${gridCols} border-t border-border`}>
               <div className="p-5 bg-secondary" />
               {productEntries.map(({ row, product }) => (
                 <div key={product.id} className={`p-5 border-l border-border ${row.highlight ? "bg-primary/5" : ""}`}>
@@ -188,8 +191,8 @@ const Compare = () => {
           {/* Help section */}
           <div className="mt-16 grid grid-cols-1 md:grid-cols-3 gap-5">
             {[
-              { title: t("compare.help1Title"), text: t("compare.help1Text"), cta: t("compare.help1Cta"), to: "/product/discovery-tea-box" },
-              { title: t("compare.help2Title"), text: t("compare.help2Text"), cta: t("compare.help2Cta"), to: "/product/starter-kit" },
+              { title: t("compare.help1Title"), text: t("compare.help1Text"), cta: t("compare.help1Cta"), to: "/product/matcha-poeder-100g" },
+              { title: t("compare.help2Title"), text: t("compare.help2Text"), cta: t("compare.help2Cta"), to: "/product/matcha-set-compleet" },
               { title: t("compare.help3Title"), text: t("compare.help3Text"), cta: t("compare.help3Cta"), to: "/kennis" },
             ].map(c => (
               <div key={c.title} className="bg-secondary rounded-2xl p-7">
@@ -217,8 +220,8 @@ const CompareRow = ({ label, value }: { label: string; value: string }) => (
   </div>
 );
 
-const TableRow = ({ label, cells, highlight }: { label: string; cells: string[]; highlight: boolean[] }) => (
-  <div className="grid grid-cols-5 border-t border-border">
+const TableRow = ({ label, cells, highlight, gridCols }: { label: string; cells: string[]; highlight: boolean[]; gridCols: string }) => (
+  <div className={`grid ${gridCols} border-t border-border`}>
     <div className="p-5 bg-secondary text-xs tracking-wider uppercase text-muted-foreground font-medium">{label}</div>
     {cells.map((c, i) => (
       <div key={i} className={`p-5 border-l border-border text-sm text-foreground/85 leading-relaxed ${highlight[i] ? "bg-primary/5" : ""}`}>
