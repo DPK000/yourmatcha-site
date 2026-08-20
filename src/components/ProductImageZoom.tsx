@@ -41,14 +41,14 @@ const ProductImageZoom = ({ src, alt, zoom = 2.2 }: Props) => {
       onTouchEnd={() => setActive(false)}
       onTouchMove={handleMove}
       className="relative aspect-square rounded-2xl overflow-hidden bg-secondary cursor-zoom-in group select-none"
-      aria-label={`${alt} — ${t("product.zoomHint")}`}
+      aria-label={`${alt} - ${t("product.zoomHint")}`}
     >
       <img
         src={src}
         alt={alt}
         loading="eager"
         decoding="async"
-        className={`w-full h-full object-cover transition-transform duration-300 ease-out will-change-transform ${
+        className={`w-full h-full object-contain transition-transform duration-300 ease-out will-change-transform ${
           active ? "scale-[1.02]" : "scale-100"
         }`}
       />
@@ -60,22 +60,11 @@ const ProductImageZoom = ({ src, alt, zoom = 2.2 }: Props) => {
           active ? "opacity-100" : "opacity-0"
         }`}
         style={{
+          backgroundColor: "hsl(var(--secondary))",
           backgroundImage: `url(${src})`,
           backgroundRepeat: "no-repeat",
           backgroundSize: `${zoom * 100}%`,
           backgroundPosition: `${pos.x}% ${pos.y}%`,
-        }}
-      />
-
-      {/* Soft gold gradient sheen on hover */}
-      <div
-        aria-hidden
-        className={`pointer-events-none absolute inset-0 transition-opacity duration-500 ${
-          active ? "opacity-0" : "opacity-100"
-        }`}
-        style={{
-          background:
-            "radial-gradient(120% 80% at 80% 10%, hsl(var(--accent) / 0.10), transparent 55%), radial-gradient(80% 60% at 10% 95%, hsl(var(--primary) / 0.08), transparent 60%)",
         }}
       />
 

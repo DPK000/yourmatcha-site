@@ -9,6 +9,11 @@ const Toaster = ({ ...props }: ToasterProps) => {
   return (
     <Sonner
       theme={theme as ToasterProps["theme"]}
+      // Bovenaan i.p.v. onderaan: de knoppen die er het meest toe doen
+      // (afrekenen, in winkelwagen, de mobiele sticky balk) staan allemaal
+      // onderin beeld, en daar dekte de melding ze af.
+      position="top-center"
+      offset="88px"
       className="toaster group"
       toastOptions={{
         classNames: {

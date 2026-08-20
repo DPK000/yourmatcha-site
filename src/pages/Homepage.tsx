@@ -1,7 +1,7 @@
-import { Link } from "react-router-dom";
+import { Link } from "@/components/LocalizedLink";
 import { motion, useScroll, useTransform } from "framer-motion";
 import { ArrowRight, Send, Star, Leaf, Sprout, Sparkles, Zap, Brain, ShieldCheck, Sun } from "lucide-react";
-import { useFeaturedProducts } from "@/data/products";
+import { useFeaturedProducts, getReviewAggregate, getLowestPrice } from "@/data/products";
 import { blogPosts } from "@/data/blog";
 import ProductCard from "@/components/ProductCard";
 import TrustBadges from "@/components/TrustBadges";
@@ -12,15 +12,21 @@ import lifestyle1 from "@/assets/lifestyle-1.webp";
 import lifestyle2 from "@/assets/lifestyle-2.webp";
 import lifestyle3 from "@/assets/lifestyle-3.webp";
 import lifestyle4 from "@/assets/lifestyle-4.webp";
-import productCeremonial from "@/assets/product-pouch-ceremonial-30.webp";
-import productPouchCeremonial from "@/assets/product-pouch-ceremonial-100.webp";
-import productStarterKit from "@/assets/product-starter-kit.webp";
-import productPouchHojicha from "@/assets/product-pouch-hojicha.webp";
+import productCeremonial from "@/assets/product-matcha-poeder-pot-100g.webp";
+import productPouchCeremonial from "@/assets/product-matcha-poeder-zak-100g.webp";
+import productStarterKit from "@/assets/product-matcha-set-compleet.webp";
+import productChasen from "@/assets/product-chasen-bamboe-100.webp";
+import ritual1 from "@/assets/ritual-1-zeef.webp";
+import ritual2 from "@/assets/ritual-2-schenk.webp";
+import ritual3 from "@/assets/ritual-3-klop.webp";
+import ritual4 from "@/assets/ritual-4-geniet.webp";
 import { useState, useRef, lazy, Suspense } from "react";
 import { useTranslation } from "react-i18next";
 import { toast } from "sonner";
 import { subscribeToNewsletter } from "@/lib/newsletter";
 import SEO, { getSiteUrl } from "@/components/SEO";
+import ClaimMarquee from "@/components/ClaimMarquee";
+import { useCurrency } from "@/context/CurrencyContext";
 // Lazy: RecipeSwiper trekt de grote recepten-data mee en staat onder de vouw
 const RecipeSwiper = lazy(() => import("@/components/RecipeSwiper"));
 
@@ -33,6 +39,9 @@ const Homepage = () => {
   const { t, i18n } = useTranslation();
   const siteUrl = getSiteUrl((i18n.language || "nl").slice(0, 2));
   const featured = useFeaturedProducts().slice(0, 4);
+  const { format: formatPrice } = useCurrency();
+  const reviewStats = getReviewAggregate();
+  const lowestPrice = getLowestPrice();
   const [email, setEmail] = useState("");
   const heroRef = useRef(null);
   const { scrollYProgress } = useScroll({ target: heroRef, offset: ["start start", "end start"] });
@@ -95,7 +104,7 @@ const Homepage = () => {
             animate={{ scale: 1.25 }}
             transition={{ duration: 18, ease: "easeOut" }}
           />
-          <div className="absolute inset-0 bg-gradient-to-r from-foreground/65 via-foreground/35 to-transparent" />
+          <div className="absolute inset-0 bg-gradient-to-r from-foreground/80 via-foreground/50 to-foreground/10" />
         </motion.div>
         <motion.div style={{ opacity: heroOpacity }} className="relative container mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div
@@ -124,7 +133,7 @@ const Homepage = () => {
                 to="/shop"
                 className="inline-flex items-center justify-center gap-2 px-8 py-4 bg-accent text-accent-foreground font-bold text-sm tracking-widest uppercase rounded-full hover:scale-105 transition-all duration-300 shadow-lg hover:shadow-xl"
               >
-                {t("home.shopNow")} <ArrowRight className="w-4 h-4" />
+                {t("home.shopFrom", { price: formatPrice(lowestPrice) })} <ArrowRight className="w-4 h-4" />
               </Link>
               <Link
                 to="/over-ons"
@@ -133,6 +142,28 @@ const Homepage = () => {
                 {t("home.ourStory")}
               </Link>
             </div>
+
+            {/* Sociaal bewijs - echte cijfers uit het assortiment */}
+            {reviewStats.count > 0 && (
+              <motion.div
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ delay: 0.9, duration: 0.6 }}
+                className="flex items-center gap-3 mt-7"
+              >
+                <div className="flex items-center gap-0.5">
+                  {[1, 2, 3, 4, 5].map(i => (
+                    <Star
+                      key={i}
+                      className={`w-4 h-4 ${i <= Math.round(reviewStats.average) ? "fill-accent text-accent" : "text-cream/30"}`}
+                    />
+                  ))}
+                </div>
+                <span className="text-cream/80 text-sm">
+                  {reviewStats.average.toFixed(1).replace(".", ",")} · {t("home.reviewCount", { count: reviewStats.count })}
+                </span>
+              </motion.div>
+            )}
           </motion.div>
         </motion.div>
 
@@ -187,12 +218,15 @@ const Homepage = () => {
       </section>
 
       {/* Benefits */}
-      <section className="py-20">
+      <section className="py-24 md:py-28">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <ScrollReveal className="text-center mb-14">
+          <ScrollReveal className="mb-14">
             <p className="text-xs tracking-[0.3em] uppercase text-muted-foreground mb-2">{t("home.benefitsEyebrow")}</p>
-            <h2 className="font-heading text-3xl md:text-5xl font-semibold">{t("home.benefitsTitle")}</h2>
-            <p className="text-muted-foreground mt-3 max-w-lg mx-auto">{t("home.benefitsSub")}</p>
+            <div className="flex items-end gap-8">
+              <h2 className="font-heading text-3xl md:text-5xl font-semibold shrink-0">{t("home.benefitsTitle")}</h2>
+              <span className="hidden md:block flex-1 h-px bg-border mb-3" />
+            </div>
+            <p className="text-muted-foreground mt-4 max-w-lg">{t("home.benefitsSub")}</p>
           </ScrollReveal>
           <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6">
             {benefitsList.map((b, i) => (
@@ -342,7 +376,7 @@ const Homepage = () => {
       </section>
 
       {/* Lifestyle Grid */}
-      <section className="py-20">
+      <section className="py-16">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <ScrollReveal className="text-center mb-12">
             <p className="text-xs tracking-[0.3em] uppercase text-muted-foreground mb-2">{t("home.socialEyebrow")}</p>
@@ -365,18 +399,23 @@ const Homepage = () => {
         </div>
       </section>
 
+      <ClaimMarquee />
+
       {/* Collections */}
       <section className="py-20">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <ScrollReveal className="text-center mb-14">
+          <ScrollReveal className="mb-14">
             <p className="text-xs tracking-[0.3em] uppercase text-muted-foreground mb-2">{t("home.collectionsEyebrow")}</p>
-            <h2 className="font-heading text-3xl md:text-5xl font-semibold">{t("home.collectionsTitle")}</h2>
+            <div className="flex items-end gap-8">
+              <h2 className="font-heading text-3xl md:text-5xl font-semibold shrink-0">{t("home.collectionsTitle")}</h2>
+              <span className="hidden md:block flex-1 h-px bg-border mb-3" />
+            </div>
           </ScrollReveal>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
             {[
               { img: productPouchCeremonial, key: "matcha-powder", label: t("categories.matcha-powder") },
               { img: productStarterKit, key: "kits-sets", label: t("categories.kits-sets") },
-              { img: productPouchHojicha, key: "teas-drinks", label: t("categories.teas-drinks") },
+              { img: productChasen, key: "accessories", label: t("categories.accessories") },
             ].map((c, i) => (
               <motion.div
                 key={c.key}
@@ -403,28 +442,42 @@ const Homepage = () => {
       </section>
 
       {/* Ritual: How to prepare */}
-      <section className="py-20 bg-secondary">
+      <section className="py-24 md:py-32 bg-secondary">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <ScrollReveal className="text-center mb-14 max-w-2xl mx-auto">
             <p className="text-xs tracking-[0.3em] uppercase text-muted-foreground mb-2">{t("home.ritualEyebrow")}</p>
             <h2 className="font-heading text-3xl md:text-5xl font-light">{t("home.ritualTitle1")} <span className="italic">{t("home.ritualTitle2")}</span></h2>
             <p className="text-muted-foreground mt-4">{t("home.ritualSub")}</p>
           </ScrollReveal>
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-6 md:gap-10">
-            {[1, 2, 3, 4].map((step, i) => (
-              <motion.div
-                key={step}
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, margin: "-40px" }}
-                transition={{ delay: i * 0.12, duration: 0.6 }}
-                className="text-center"
-              >
-                <div className="font-heading text-5xl md:text-6xl font-light text-primary/30 mb-3">0{step}</div>
-                <h3 className="font-heading text-lg font-semibold mb-2">{t(`home.ritualStep${step}Title`)}</h3>
-                <p className="text-sm text-muted-foreground leading-relaxed">{t(`home.ritualStep${step}Desc`)}</p>
-              </motion.div>
-            ))}
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-6 md:gap-8">
+            {[ritual1, ritual2, ritual3, ritual4].map((img, i) => {
+              const step = i + 1;
+              return (
+                <motion.div
+                  key={step}
+                  initial={{ opacity: 0, y: 30 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true, margin: "-40px" }}
+                  transition={{ delay: i * 0.12, duration: 0.6 }}
+                >
+                  <div className="relative aspect-square rounded-2xl overflow-hidden mb-5 bg-background">
+                    <img
+                      src={img}
+                      alt={t(`home.ritualStep${step}Title`)}
+                      loading="lazy"
+                      width={1200}
+                      height={1200}
+                      className="w-full h-full object-cover"
+                    />
+                    <span className="absolute top-3 left-3 w-9 h-9 rounded-full bg-background/90 backdrop-blur flex items-center justify-center font-heading text-base font-semibold text-primary">
+                      {step}
+                    </span>
+                  </div>
+                  <h3 className="font-heading text-lg font-semibold mb-2">{t(`home.ritualStep${step}Title`)}</h3>
+                  <p className="text-sm text-muted-foreground leading-relaxed">{t(`home.ritualStep${step}Desc`)}</p>
+                </motion.div>
+              );
+            })}
           </div>
         </div>
       </section>
@@ -467,7 +520,7 @@ const Homepage = () => {
       {/* FAQ */}
       <section className="py-20 bg-secondary">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-3xl">
-          <ScrollReveal className="text-center mb-12">
+          <ScrollReveal className="mb-12">
             <p className="text-xs tracking-[0.3em] uppercase text-muted-foreground mb-2">{t("home.faqEyebrow")}</p>
             <h2 className="font-heading text-3xl md:text-5xl font-semibold">{t("home.faqTitle")}</h2>
           </ScrollReveal>
