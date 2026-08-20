@@ -1,8 +1,9 @@
-import { useParams, Link, Navigate } from "react-router-dom";
+import { useParams, Navigate } from "react-router-dom";
+import { Link } from "@/components/LocalizedLink";
 import { useProduct, useRelatedProducts } from "@/data/products";
 import { useCart } from "@/context/CartContext";
 import { useEffect, useMemo, useState } from "react";
-import { Minus, Plus, ShoppingBag, ChevronLeft, Star, Truck, Leaf, ShieldCheck, Heart, Zap, Brain, Droplets, Sparkles } from "lucide-react";
+import { ShoppingBag, ChevronLeft, Star, Truck, Leaf, ShieldCheck, Heart, Zap, Brain, Droplets, Sparkles } from "lucide-react";
 import ProductCard from "@/components/ProductCard";
 import ProductImageZoom from "@/components/ProductImageZoom";
 import SEO, { getSiteUrl } from "@/components/SEO";
@@ -12,6 +13,18 @@ import { useTranslation } from "react-i18next";
 import { getCurrentLang } from "@/i18n";
 import { useCurrency } from "@/context/CurrencyContext";
 import { reviewTranslations } from "@/data/reviewTranslations";
+import { trackViewContent } from "@/hooks/useMetaPixel";
+
+/**
+ * Staffelkorting op de productpagina. Dezelfde 15% bij drie stuks als in de
+ * bundelbouwer, zodat een klant nooit twee verschillende kortingen ziet voor
+ * hetzelfde aantal.
+ */
+const BUNDLE_TIERS = [
+  { qty: 1, discount: 0 },
+  { qty: 2, discount: 0.10, popular: true },
+  { qty: 3, discount: 0.15 },
+] as const;
 
 interface UserReview { name: string; rating: number; text: string; date: string }
 
@@ -31,7 +44,7 @@ const useUserReviews = (productId: string) => {
 
 const ProductDetail = () => {
   const { t, i18n } = useTranslation();
-  const { format: formatPrice, convert, currency } = useCurrency();
+  const { format: formatPrice, formatAmount, convert, currency, freeShippingThreshold } = useCurrency();
   const lang = getCurrentLang();
   const siteUrl = getSiteUrl(lang);
   const tReview = (text: string) => {
@@ -41,7 +54,7 @@ const ProductDetail = () => {
   const { slug } = useParams<{ slug: string }>();
   const product = useProduct(slug);
   const { addItem } = useCart();
-  const [quantity, setQuantity] = useState(1);
+  const [tierIdx, setTierIdx] = useState(0);
   const [activeImg, setActiveImg] = useState(0);
   const [openAccordion, setOpenAccordion] = useState<string | null>("ingredients");
   const [showReviewForm, setShowReviewForm] = useState(false);
@@ -49,7 +62,32 @@ const ProductDetail = () => {
   const { list: userReviews, add: addReview } = useUserReviews(product?.id || "");
   const related = useRelatedProducts(product);
 
+  // Hook staat vóór de early return zodat de volgorde per render gelijk blijft.
+  useEffect(() => {
+    if (!product) return;
+    trackViewContent({ id: product.id, name: product.name, price: product.price }, "EUR");
+  }, [product]);
+
+  // Vangnet: redirects worden in de router afgehandeld (resolveProductPath).
   if (!product) return <Navigate to="/shop" replace />;
+
+  const tier = BUNDLE_TIERS[tierIdx];
+  const unitPrice = Math.round(product.price * (1 - tier.discount) * 100) / 100;
+  const bundleTotal = Math.round(unitPrice * tier.qty * 100) / 100;
+  const bundleSaving = Math.round((product.price * tier.qty - bundleTotal) * 100) / 100;
+
+  /** Voegt de gekozen staffel toe. Bij korting krijgt het item een eigen id en
+   *  de verlaagde stuksprijs, zodat de winkelwagen het los van het normale
+   *  product optelt - zelfde patroon als de bundelbouwer. */
+  const addBundle = () => {
+    if (tier.discount === 0) {
+      addItem(product, tier.qty);
+    } else {
+      addItem({ ...product, id: `${product.id}-x${tier.qty}`, price: unitPrice }, tier.qty);
+    }
+  };
+
+  const addOn = related[0];
 
   const allReviews = [...userReviews, ...product.reviews];
   const accordionItems = [
@@ -122,7 +160,7 @@ const ProductDetail = () => {
   return (
     <>
       <SEO
-        title={`${product.name} — ${formatPrice(product.price)}`}
+        title={`${product.name} - ${formatPrice(product.price)}`}
         description={product.shortDescription + " " + t("product.seoSuffix")}
         canonical={`/product/${product.slug}`}
         type="product"
@@ -188,7 +226,7 @@ const ProductDetail = () => {
 
               <p className="text-foreground/85 leading-relaxed mb-6">{product.shortDescription}</p>
 
-              {/* Benefit icons strip — only for matcha & tea */}
+              {/* Benefit icons strip - only for matcha & tea */}
               {(product.category === "matcha-powder" || product.category === "teas-drinks") && (
                 <div className="grid grid-cols-4 gap-2 mb-6 bg-secondary/60 rounded-2xl p-4">
                   {[
@@ -215,7 +253,9 @@ const ProductDetail = () => {
                   <p className="text-base text-muted-foreground line-through">{formatPrice(product.price * 1.2)}</p>
                 )}
               </div>
-              <p className="text-xs text-muted-foreground mb-6">{t("product.priceInfo")}</p>
+              <p className="text-xs text-muted-foreground mb-6">
+                {t("product.priceInfo", { threshold: formatAmount(freeShippingThreshold) })}
+              </p>
 
               {/* Subscription inline upsell */}
               <Link
@@ -229,29 +269,130 @@ const ProductDetail = () => {
                 <span className="text-xs font-bold text-primary tracking-widest uppercase shrink-0 group-hover:translate-x-1 transition-transform">−15% →</span>
               </Link>
 
-              <div className="flex items-center gap-3 mb-4">
-                <div className="flex items-center border border-border rounded-full">
-                  <button onClick={() => setQuantity(q => Math.max(1, q - 1))} className="w-10 h-12 flex items-center justify-center hover:bg-secondary rounded-l-full transition-colors">
-                    <Minus className="w-4 h-4" />
-                  </button>
-                  <span className="px-4 text-sm font-medium min-w-[3rem] text-center">{quantity}</span>
-                  <button onClick={() => setQuantity(q => q + 1)} className="w-10 h-12 flex items-center justify-center hover:bg-secondary rounded-r-full transition-colors">
-                    <Plus className="w-4 h-4" />
-                  </button>
+              {/* Staffelkorting - meer stuks, lagere stuksprijs */}
+              <fieldset className="mb-5">
+                <legend className="text-xs uppercase tracking-widest text-muted-foreground mb-3">
+                  {t("product.bundleTitle")}
+                </legend>
+                <div className="space-y-2.5">
+                  {BUNDLE_TIERS.map((b, i) => {
+                    const unit = Math.round(product.price * (1 - b.discount) * 100) / 100;
+                    const total = Math.round(unit * b.qty * 100) / 100;
+                    const saving = Math.round((product.price * b.qty - total) * 100) / 100;
+                    const selected = i === tierIdx;
+                    const isPopular = "popular" in b && b.popular === true;
+                    return (
+                      <label
+                        key={b.qty}
+                        className={`relative flex items-center gap-3 px-4 py-3.5 rounded-2xl border-2 cursor-pointer transition-colors ${
+                          selected ? "border-primary bg-primary/5" : "border-border hover:border-primary/40"
+                        }`}
+                      >
+                        <input
+                          type="radio"
+                          name="bundle"
+                          checked={selected}
+                          onChange={() => setTierIdx(i)}
+                          className="sr-only"
+                        />
+                        <span
+                          aria-hidden="true"
+                          className={`w-5 h-5 rounded-full border-2 shrink-0 flex items-center justify-center transition-colors ${
+                            selected ? "border-primary" : "border-border"
+                          }`}
+                        >
+                          {selected && <span className="w-2.5 h-2.5 rounded-full bg-primary" />}
+                        </span>
+
+                        <span className="flex-1 min-w-0">
+                          <span className="block text-sm font-semibold text-foreground">
+                            {t(`product.bundleQty${b.qty}`)}
+                          </span>
+                          <span className="block text-xs text-muted-foreground mt-0.5">
+                            {b.discount > 0
+                              ? t("product.bundlePerUnit", { price: formatPrice(unit) })
+                              : t(`product.bundleQty${b.qty}Sub`)}
+                          </span>
+                        </span>
+
+                        <span className="text-right shrink-0">
+                          <span className="block text-sm font-bold text-foreground">{formatPrice(total)}</span>
+                          {saving > 0 && (
+                            <span className="block text-[11px] font-semibold text-primary mt-0.5">
+                              {t("product.bundleSave", { amount: formatPrice(saving) })}
+                            </span>
+                          )}
+                        </span>
+
+                        {isPopular && (
+                          <span className="absolute -top-2.5 right-4 px-2.5 py-0.5 bg-accent text-accent-foreground text-[9px] font-bold tracking-widest uppercase rounded-full">
+                            {t("product.bundleMostChosen")}
+                          </span>
+                        )}
+                      </label>
+                    );
+                  })}
                 </div>
+              </fieldset>
+
+              <div className="flex items-center gap-3 mb-4">
                 <button
-                  onClick={() => { addItem(product, quantity); setQuantity(1); }}
-                  className="flex-1 inline-flex items-center justify-center gap-2 px-6 h-12 bg-primary text-primary-foreground font-bold text-xs tracking-widest uppercase rounded-full hover:opacity-90 transition-opacity"
+                  onClick={addBundle}
+                  className="flex-1 inline-flex items-center justify-center gap-2 px-6 h-14 bg-primary text-primary-foreground font-bold text-xs tracking-widest uppercase rounded-full hover:opacity-90 transition-opacity"
                 >
-                  <ShoppingBag className="w-4 h-4" /> {t("product.addToCart")}
+                  <ShoppingBag className="w-4 h-4" />
+                  {t("product.addToCartPrice", { price: formatPrice(bundleTotal) })}
                 </button>
                 <button
                   aria-label={t("product.wishlist")}
-                  className="w-12 h-12 flex items-center justify-center border border-border rounded-full hover:bg-secondary transition-colors"
+                  className="w-14 h-14 flex items-center justify-center border border-border rounded-full hover:bg-secondary transition-colors shrink-0"
                 >
                   <Heart className="w-4 h-4" />
                 </button>
               </div>
+
+              {/* Verzendbelofte - feitelijke levertijd, geen kunstmatige urgentie.
+                  De vlag volgt de taal, zodat een Noorse bezoeker zijn eigen land ziet. */}
+              <div className="flex items-start gap-3 px-4 py-3.5 mb-6 rounded-2xl bg-secondary/60">
+                <span className="text-lg leading-none mt-0.5 shrink-0" aria-hidden="true">
+                  {t("product.shipCountryFlag")}
+                </span>
+                <div>
+                  <p className="text-sm font-semibold text-foreground">{t("product.shipCountryTitle")}</p>
+                  <p className="text-xs text-muted-foreground mt-0.5">{t("product.shipPromiseText")}</p>
+                </div>
+              </div>
+
+              {/* Cross-sell: één gerelateerd product, direct toe te voegen */}
+              {addOn && (
+                <div className="mb-6">
+                  <p className="text-xs uppercase tracking-widest text-muted-foreground mb-2.5">
+                    {t("product.addOnTitle")}
+                  </p>
+                  <div className="flex items-center gap-3 px-3 py-3 rounded-2xl border border-border">
+                    <Link to={`/product/${addOn.slug}`} className="shrink-0">
+                      <img
+                        src={addOn.images[0]}
+                        alt={addOn.name}
+                        loading="lazy"
+                        className="w-14 h-14 rounded-xl object-contain bg-secondary p-1"
+                      />
+                    </Link>
+                    <div className="flex-1 min-w-0">
+                      <Link to={`/product/${addOn.slug}`} className="block text-sm font-semibold text-foreground truncate hover:underline">
+                        {addOn.name}
+                      </Link>
+                      <p className="text-sm font-bold text-primary mt-0.5">{formatPrice(addOn.price)}</p>
+                    </div>
+                    <button
+                      onClick={() => addItem(addOn, 1)}
+                      className="shrink-0 px-4 h-10 rounded-full bg-foreground text-background text-[11px] font-bold tracking-widest uppercase hover:opacity-90 transition-opacity"
+                    >
+                      + {t("product.addOnAdd")}
+                    </button>
+                  </div>
+                </div>
+              )}
 
               {/* Money-back callout */}
               <div className="relative bg-primary/5 border border-primary/15 rounded-2xl px-5 py-4 mb-6 text-center">
@@ -403,7 +544,7 @@ const ProductDetail = () => {
                       </span>
                     </div>
                     <p className="text-sm text-foreground/85 leading-relaxed mb-4">"{tReview(review.text)}"</p>
-                    <p className="text-xs font-semibold">— {review.name}</p>
+                    <p className="text-xs font-semibold">- {review.name}</p>
                     <p className="text-[10px] text-muted-foreground mt-0.5">{new Date(review.date).toLocaleDateString(i18n.language || "nl-NL")}</p>
                   </div>
                 ))}
@@ -430,10 +571,10 @@ const ProductDetail = () => {
           <img src={product.images[0]} alt="" className="w-12 h-12 rounded-lg object-cover bg-secondary shrink-0" />
           <div className="flex-1 min-w-0">
             <p className="text-xs font-semibold truncate">{product.name}</p>
-            <p className="text-sm font-bold text-primary">{formatPrice(product.price)}</p>
+            <p className="text-sm font-bold text-primary">{formatPrice(bundleTotal)}</p>
           </div>
           <button
-            onClick={() => addItem(product, quantity)}
+            onClick={addBundle}
             className="shrink-0 inline-flex items-center justify-center gap-1.5 px-5 h-11 bg-primary text-primary-foreground font-bold text-[11px] tracking-widest uppercase rounded-full"
           >
             <ShoppingBag className="w-4 h-4" /> {t("product.addShort")}
