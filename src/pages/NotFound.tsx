@@ -5,11 +5,23 @@ import SEO from "@/components/SEO";
 
 const COPY = {
   nl: {
-    message: "Oops! Page not found",
-    backHome: "Return to Home",
+    message: "Deze pagina bestaat niet",
+    backHome: "Terug naar de homepage",
+  },
+  en: {
+    message: "This page does not exist",
+    backHome: "Back to the homepage",
+  },
+  de: {
+    message: "Diese Seite gibt es nicht",
+    backHome: "Zurück zur Startseite",
+  },
+  fr: {
+    message: "Cette page n'existe pas",
+    backHome: "Retour à l'accueil",
   },
   no: {
-    message: "Oi! Siden ble ikke funnet",
+    message: "Denne siden finnes ikke",
     backHome: "Tilbake til forsiden",
   },
 } as const;
@@ -17,7 +29,7 @@ const COPY = {
 const NotFound = () => {
   const location = useLocation();
   const lang = useLang();
-  const t = COPY[lang === "no" ? "no" : "nl"];
+  const t = COPY[lang] ?? COPY.nl;
 
   useEffect(() => {
     console.error("404 Error: User attempted to access non-existent route:", location.pathname);

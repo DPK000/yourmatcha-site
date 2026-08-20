@@ -10,8 +10,8 @@ const STORAGE_KEY = "yourmatcha-newsletter-popup";
 
 const COPY = {
   nl: {
-    toastSuccess: "Welkom bij YourMatcha — je korting staat klaar in je winkelwagen",
-    toastError: "Inschrijven lukte niet — probeer het later opnieuw",
+    toastSuccess: "Welkom bij YourMatcha - je korting staat klaar in je winkelwagen",
+    toastError: "Inschrijven lukte niet - probeer het later opnieuw",
     closeAria: "Sluiten",
     eyebrow: "Welkomstcadeau",
     headingTop: "10% korting",
@@ -21,9 +21,45 @@ const COPY = {
     submit: "Claim je 10% korting",
     decline: "Nee bedankt",
   },
+  en: {
+    toastSuccess: "Welcome to YourMatcha - your discount is waiting in your cart",
+    toastError: "Sign-up failed - please try again later",
+    closeAria: "Close",
+    eyebrow: "Welcome gift",
+    headingTop: "10% off",
+    headingBottom: "your first order",
+    body: "Join the YourMatcha community and receive exclusive recipes, new products and a welcome code.",
+    emailPlaceholder: "Your email address",
+    submit: "Claim your 10% off",
+    decline: "No thanks",
+  },
+  de: {
+    toastSuccess: "Willkommen bei YourMatcha - dein Rabatt liegt im Warenkorb bereit",
+    toastError: "Anmeldung fehlgeschlagen - bitte versuche es später erneut",
+    closeAria: "Schließen",
+    eyebrow: "Willkommensgeschenk",
+    headingTop: "10% Rabatt",
+    headingBottom: "auf deine erste Bestellung",
+    body: "Werde Teil der YourMatcha-Community und erhalte exklusive Rezepte, Produktneuheiten und einen Willkommenscode.",
+    emailPlaceholder: "Deine E-Mail-Adresse",
+    submit: "10% Rabatt sichern",
+    decline: "Nein danke",
+  },
+  fr: {
+    toastSuccess: "Bienvenue chez YourMatcha - votre réduction vous attend dans le panier",
+    toastError: "L'inscription a échoué - réessayez plus tard",
+    closeAria: "Fermer",
+    eyebrow: "Cadeau de bienvenue",
+    headingTop: "10% de réduction",
+    headingBottom: "sur votre première commande",
+    body: "Rejoignez la communauté YourMatcha et recevez des recettes exclusives, les nouveautés et un code de bienvenue.",
+    emailPlaceholder: "Votre adresse e-mail",
+    submit: "Obtenir 10% de réduction",
+    decline: "Non merci",
+  },
   no: {
-    toastSuccess: "Velkommen til YourMatcha — rabatten ligger klar i handlekurven",
-    toastError: "Påmeldingen mislyktes — prøv igjen senere",
+    toastSuccess: "Velkommen til YourMatcha - rabatten ligger klar i handlekurven",
+    toastError: "Påmeldingen mislyktes - prøv igjen senere",
     closeAria: "Lukk",
     eyebrow: "Velkomstgave",
     headingTop: "10 % rabatt",
@@ -40,7 +76,7 @@ const NewsletterPopup = () => {
   const [email, setEmail] = useState("");
   const [submitting, setSubmitting] = useState(false);
   const lang = useLang();
-  const c = lang === "no" ? COPY.no : COPY.nl;
+  const c = COPY[lang] ?? COPY.nl;
   const { applyDiscount } = useCart();
 
   useEffect(() => {

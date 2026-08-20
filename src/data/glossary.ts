@@ -62,6 +62,9 @@ const glossaryTermsRaw: RawGlossaryTerm[] = [
     group: "Types",
     relatedLink: { label: "Wat is matcha?", to: "/kennis/wat-is-matcha" },
     i18n: {
+      de: { relatedLinkLabel: "Was ist Matcha?" },
+      en: { relatedLinkLabel: "What is matcha?" },
+      fr: { relatedLinkLabel: "Qu'est-ce que le matcha ?" },
       no: {
         definition:
           "Finmalte japanske grønne teblader (Camellia sinensis). I motsetning til løsbladte drikker du hele bladet, slik at du får i deg mer koffein, L-teanin og antioksidanter.",
@@ -72,13 +75,16 @@ const glossaryTermsRaw: RawGlossaryTerm[] = [
   {
     term: "Ceremonial grade",
     definition:
-      "De hoogste matcha-kwaliteit, gemaakt van de jongste blaadjes (ichibancha). Bedoeld om puur met water te drinken — zoet, vol umami, geen bitterheid. Prijs €0,50–€1,50 per gram.",
+      "De hoogste matcha-kwaliteit, gemaakt van de jongste blaadjes (ichibancha). Bedoeld om puur met water te drinken - zoet, vol umami, geen bitterheid. Prijs €0,50–€1,50 per gram.",
     group: "Types",
     relatedLink: { label: "Ceremonial vs Culinary", to: "/kennis/ceremonial-vs-culinary-matcha" },
     i18n: {
+      de: { relatedLinkLabel: "Ceremonial vs Culinary" },
+      en: { relatedLinkLabel: "Ceremonial vs culinary" },
+      fr: { relatedLinkLabel: "Ceremonial vs culinary" },
       no: {
         definition:
-          "Den høyeste matchakvaliteten, laget av de yngste bladene (ichibancha). Ment å drikkes ren med vann — søt, full av umami, uten bitterhet. Pris 6–17 kr per gram.",
+          "Den høyeste matchakvaliteten, laget av de yngste bladene (ichibancha). Ment å drikkes ren med vann - søt, full av umami, uten bitterhet. Pris 6–17 kr per gram.",
         relatedLinkLabel: "Ceremonial vs Culinary",
       },
     },
@@ -127,13 +133,16 @@ const glossaryTermsRaw: RawGlossaryTerm[] = [
     term: "Hojicha",
     alternativeNames: ["焙茶"],
     definition:
-      "Geroosterde Japanse groene thee met nootachtige, karamel-achtige smaak. Bevat slechts 7–15 mg cafeïne per kop — vijf tot tien keer minder dan matcha. Ideaal voor de avond.",
+      "Geroosterde Japanse groene thee met nootachtige, karamel-achtige smaak. Bevat slechts 7–15 mg cafeïne per kop - vijf tot tien keer minder dan matcha. Ideaal voor de avond.",
     group: "Types",
     relatedLink: { label: "Hojicha uitleg", to: "/kennis/hojicha-uitleg" },
     i18n: {
+      de: { relatedLinkLabel: "Hojicha erklärt" },
+      en: { relatedLinkLabel: "Hojicha explained" },
+      fr: { relatedLinkLabel: "Le hojicha expliqué" },
       no: {
         definition:
-          "Ristet japansk grønn te med en nøtteaktig, karamellaktig smak. Inneholder bare 7–15 mg koffein per kopp — fem til ti ganger mindre enn matcha. Ideell for kvelden.",
+          "Ristet japansk grønn te med en nøtteaktig, karamellaktig smak. Inneholder bare 7–15 mg koffein per kopp - fem til ti ganger mindre enn matcha. Ideell for kvelden.",
         relatedLinkLabel: "Hojicha forklart",
       },
     },
@@ -146,6 +155,9 @@ const glossaryTermsRaw: RawGlossaryTerm[] = [
     group: "Types",
     relatedLink: { label: "Genmaicha gids", to: "/kennis/genmaicha-gids" },
     i18n: {
+      de: { relatedLinkLabel: "Genmaicha-Guide" },
+      en: { relatedLinkLabel: "Genmaicha guide" },
+      fr: { relatedLinkLabel: "Guide du genmaicha" },
       no: {
         definition:
           "Japansk grønn te blandet med ristet brun ris. Fyldig, popcornaktig og med bare ~10 mg koffein per kopp.",
@@ -157,12 +169,12 @@ const glossaryTermsRaw: RawGlossaryTerm[] = [
     term: "Sencha",
     alternativeNames: ["煎茶"],
     definition:
-      "De meest gedronken Japanse groene thee — losse blaadjes, gestoomd en gedroogd. Fris, grasachtig, ~30 mg cafeïne per kop.",
+      "De meest gedronken Japanse groene thee - losse blaadjes, gestoomd en gedroogd. Fris, grasachtig, ~30 mg cafeïne per kop.",
     group: "Types",
     i18n: {
       no: {
         definition:
-          "Den mest drukne japanske grønne teen — løse blader, dampet og tørket. Frisk, gressaktig, ~30 mg koffein per kopp.",
+          "Den mest drukne japanske grønne teen - løse blader, dampet og tørket. Frisk, gressaktig, ~30 mg koffein per kopp.",
       },
     },
   },
@@ -183,25 +195,28 @@ const glossaryTermsRaw: RawGlossaryTerm[] = [
     term: "Tencha",
     alternativeNames: ["碾茶"],
     definition:
-      "De basis-thee waaruit matcha wordt gemalen. Gestoomde, gedroogde en van stelen ontdane theeblaadjes — klaar om in stenen molens fijngemalen te worden.",
+      "De basis-thee waaruit matcha wordt gemalen. Gestoomde, gedroogde en van stelen ontdane theeblaadjes - klaar om in stenen molens fijngemalen te worden.",
     group: "Types",
     i18n: {
       no: {
         definition:
-          "Basisteen som matcha males fra. Dampede, tørkede teblader med stilkene fjernet — klare til å finmales i steinkverner.",
+          "Basisteen som matcha males fra. Dampede, tørkede teblader med stilkene fjernet - klare til å finmales i steinkverner.",
       },
     },
   },
   {
     term: "Matcha latte",
     definition:
-      "Matcha gemengd met opgeschuimde melk (vaak haver- of amandelmelk). Romiger en milder dan pure matcha — populair als koffievervanger.",
+      "Matcha gemengd met opgeschuimde melk (vaak haver- of amandelmelk). Romiger en milder dan pure matcha - populair als koffievervanger.",
     group: "Bereiding",
     relatedLink: { label: "Matcha latte maken", to: "/kennis/matcha-latte-maken" },
     i18n: {
+      de: { relatedLinkLabel: "Matcha Latte zubereiten" },
+      en: { relatedLinkLabel: "How to make a matcha latte" },
+      fr: { relatedLinkLabel: "Préparer un matcha latte" },
       no: {
         definition:
-          "Matcha blandet med skummet melk (ofte havre- eller mandelmelk). Kremere og mildere enn ren matcha — populær som kaffeerstatning.",
+          "Matcha blandet med skummet melk (ofte havre- eller mandelmelk). Kremere og mildere enn ren matcha - populær som kaffeerstatning.",
         relatedLinkLabel: "Lag matcha latte",
       },
     },
@@ -213,6 +228,9 @@ const glossaryTermsRaw: RawGlossaryTerm[] = [
     group: "Bereiding",
     relatedLink: { label: "Iced matcha bereiden", to: "/kennis/iced-matcha-bereiden" },
     i18n: {
+      de: { relatedLinkLabel: "Iced Matcha zubereiten" },
+      en: { relatedLinkLabel: "How to make iced matcha" },
+      fr: { relatedLinkLabel: "Préparer un matcha glacé" },
       no: {
         definition:
           "En kald matchatilberedning, ofte som iskald latte. Krever mer mekanisk kraft (shaker, blender) eller en spesiell kaldmalt blanding for å unngå klumper.",
@@ -230,6 +248,9 @@ const glossaryTermsRaw: RawGlossaryTerm[] = [
     group: "Tools",
     relatedLink: { label: "Bekijk chasen", to: "/product/bamboe-chasen" },
     i18n: {
+      de: { relatedLinkLabel: "Chasen ansehen" },
+      en: { relatedLinkLabel: "View chasen" },
+      fr: { relatedLinkLabel: "Voir le chasen" },
       no: {
         alternativeNames: ["茶筅", "bambusvisp"],
         definition:
@@ -242,14 +263,17 @@ const glossaryTermsRaw: RawGlossaryTerm[] = [
     term: "Chawan",
     alternativeNames: ["茶碗", "matcha kom"],
     definition:
-      "De ceremoniële matcha-kom — breed en met ondiepe bodem, zodat de chasen ruimte heeft. Vorm verschilt per seizoen: dieper in winter, lager in zomer.",
+      "De ceremoniële matcha-kom - breed en met ondiepe bodem, zodat de chasen ruimte heeft. Vorm verschilt per seizoen: dieper in winter, lager in zomer.",
     group: "Tools",
     relatedLink: { label: "Bekijk chawan", to: "/product/keramische-matcha-kom" },
     i18n: {
+      de: { relatedLinkLabel: "Chawan ansehen" },
+      en: { relatedLinkLabel: "View chawan" },
+      fr: { relatedLinkLabel: "Voir le chawan" },
       no: {
         alternativeNames: ["茶碗", "matchaskål"],
         definition:
-          "Den seremonielle matchaskålen — bred og med grunn bunn, slik at chasen har plass. Formen varierer med årstidene: dypere om vinteren, lavere om sommeren.",
+          "Den seremonielle matchaskålen - bred og med grunn bunn, slik at chasen har plass. Formen varierer med årstidene: dypere om vinteren, lavere om sommeren.",
         relatedLinkLabel: "Se chawan",
       },
     },
@@ -258,13 +282,16 @@ const glossaryTermsRaw: RawGlossaryTerm[] = [
     term: "Chashaku",
     alternativeNames: ["茶杓"],
     definition:
-      "Lange, smalle bamboe theelepel voor matcha. Twee schepjes ≈ 2 g — de standaard dosering. Vaak met een naam (mei) gegeven door de maker.",
+      "Lange, smalle bamboe theelepel voor matcha. Twee schepjes ≈ 2 g - de standaard dosering. Vaak met een naam (mei) gegeven door de maker.",
     group: "Tools",
     relatedLink: { label: "Bekijk chashaku", to: "/product/bamboe-chashaku" },
     i18n: {
+      de: { relatedLinkLabel: "Chashaku ansehen" },
+      en: { relatedLinkLabel: "View chashaku" },
+      fr: { relatedLinkLabel: "Voir le chashaku" },
       no: {
         definition:
-          "En lang, smal teskje av bambus for matcha. To skjeer ≈ 2 g — standarddoseringen. Ofte gitt et navn (mei) av lagemakeren.",
+          "En lang, smal teskje av bambus for matcha. To skjeer ≈ 2 g - standarddoseringen. Ofte gitt et navn (mei) av lagemakeren.",
         relatedLinkLabel: "Se chashaku",
       },
     },
@@ -286,25 +313,25 @@ const glossaryTermsRaw: RawGlossaryTerm[] = [
     term: "Ishi-usu",
     alternativeNames: ["石臼", "stenen molen"],
     definition:
-      "Traditionele granieten stenen molen waarmee matcha wordt gemalen. Produceert slechts 30 g per uur — daarom is goede matcha relatief duur.",
+      "Traditionele granieten stenen molen waarmee matcha wordt gemalen. Produceert slechts 30 g per uur - daarom is goede matcha relatief duur.",
     group: "Tools",
     i18n: {
       no: {
         alternativeNames: ["石臼", "steinkvern"],
         definition:
-          "En tradisjonell steinkvern av granitt som matcha males med. Produserer bare 30 g i timen — derfor er god matcha relativt dyr.",
+          "En tradisjonell steinkvern av granitt som matcha males med. Produserer bare 30 g i timen - derfor er god matcha relativt dyr.",
       },
     },
   },
   {
     term: "Kusari",
     definition:
-      "Een houder of standaard waarop je een chasen rechtop bewaart. Belangrijk voor levensduur — een chasen die plat ligt vervormt sneller.",
+      "Een houder of standaard waarop je een chasen rechtop bewaart. Belangrijk voor levensduur - een chasen die plat ligt vervormt sneller.",
     group: "Tools",
     i18n: {
       no: {
         definition:
-          "En holder eller stativ der du oppbevarer en chasen stående. Viktig for levetiden — en chasen som ligger flatt mister fasongen raskere.",
+          "En holder eller stativ der du oppbevarer en chasen stående. Viktig for levetiden - en chasen som ligger flatt mister fasongen raskere.",
       },
     },
   },
@@ -340,13 +367,13 @@ const glossaryTermsRaw: RawGlossaryTerm[] = [
     term: "Ichibancha",
     alternativeNames: ["一番茶", "eerste oogst"],
     definition:
-      "De eerste oogst van het jaar, doorgaans in mei. De jongste, meest aromatische blaadjes — met het hoogste L-theanine en chlorofyl. Gebruikt voor premium ceremonial matcha.",
+      "De eerste oogst van het jaar, doorgaans in mei. De jongste, meest aromatische blaadjes - met het hoogste L-theanine en chlorofyl. Gebruikt voor premium ceremonial matcha.",
     group: "Bereiding",
     i18n: {
       no: {
         alternativeNames: ["一番茶", "første innhøsting"],
         definition:
-          "Årets første innhøsting, vanligvis i mai. De yngste, mest aromatiske bladene — med høyest innhold av L-teanin og klorofyll. Brukes til ceremonial matcha av premiumkvalitet.",
+          "Årets første innhøsting, vanligvis i mai. De yngste, mest aromatiske bladene - med høyest innhold av L-teanin og klorofyll. Brukes til ceremonial matcha av premiumkvalitet.",
       },
     },
   },
@@ -381,25 +408,25 @@ const glossaryTermsRaw: RawGlossaryTerm[] = [
   {
     term: "Tana",
     definition:
-      "Het beschaduwingsdoek dat 20 dagen voor de oogst over theeplanten wordt gespannen. Verhoogt chlorofyl en aminozuren — essentieel voor matcha's umami.",
+      "Het beschaduwingsdoek dat 20 dagen voor de oogst over theeplanten wordt gespannen. Verhoogt chlorofyl en aminozuren - essentieel voor matcha's umami.",
     group: "Bereiding",
     i18n: {
       no: {
         definition:
-          "Skyggeleggingsduken som spennes over teplantene 20 dager før innhøsting. Øker klorofyll og aminosyrer — avgjørende for matchaens umami.",
+          "Skyggeleggingsduken som spennes over teplantene 20 dager før innhøsting. Øker klorofyll og aminosyrer - avgjørende for matchaens umami.",
       },
     },
   },
   {
     term: "Tencha-oogst",
     definition:
-      "De specifieke handpluk van blaadjes bestemd voor matcha — alleen de jongste 3 blaadjes worden geplukt om tencha te maken.",
+      "De specifieke handpluk van blaadjes bestemd voor matcha - alleen de jongste 3 blaadjes worden geplukt om tencha te maken.",
     group: "Bereiding",
     i18n: {
       no: {
         term: "Tencha-innhøsting",
         definition:
-          "Den spesifikke håndplukkingen av blader beregnet på matcha — kun de tre yngste bladene plukkes for å lage tencha.",
+          "Den spesifikke håndplukkingen av blader beregnet på matcha - kun de tre yngste bladene plukkes for å lage tencha.",
       },
     },
   },
@@ -413,6 +440,9 @@ const glossaryTermsRaw: RawGlossaryTerm[] = [
     group: "Regio & Herkomst",
     relatedLink: { label: "Uji matcha regio", to: "/kennis/uji-matcha-regio" },
     i18n: {
+      de: { relatedLinkLabel: "Die Region Uji" },
+      en: { relatedLinkLabel: "The Uji region" },
+      fr: { relatedLinkLabel: "La région d'Uji" },
       no: {
         definition:
           "En region sør for Kyoto, det historiske hjertet av japansk matcha. I 800 år en kilde til premiumkvalitet takket være et unikt klima og århundrer med erfaring.",
@@ -462,12 +492,12 @@ const glossaryTermsRaw: RawGlossaryTerm[] = [
   {
     term: "Camellia sinensis",
     definition:
-      "De wetenschappelijke naam voor de theeplant. Alle 'echte' thee — groene, zwarte, oolong, witte, matcha — komt van deze plant.",
+      "De wetenschappelijke naam voor de theeplant. Alle 'echte' thee - groene, zwarte, oolong, witte, matcha - komt van deze plant.",
     group: "Regio & Herkomst",
     i18n: {
       no: {
         definition:
-          "Det vitenskapelige navnet på teplanten. All «ekte» te — grønn, svart, oolong, hvit, matcha — kommer fra denne planten.",
+          "Det vitenskapelige navnet på teplanten. All «ekte» te - grønn, svart, oolong, hvit, matcha - kommer fra denne planten.",
       },
     },
   },
@@ -480,6 +510,9 @@ const glossaryTermsRaw: RawGlossaryTerm[] = [
     group: "Gezondheid & Stoffen",
     relatedLink: { label: "Wetenschap achter L-theanine", to: "/blog/ltheanine-wetenschap-matcha" },
     i18n: {
+      de: { relatedLinkLabel: "Die Wissenschaft hinter L-Theanin" },
+      en: { relatedLinkLabel: "The science behind L-theanine" },
+      fr: { relatedLinkLabel: "La science derrière la L-théanine" },
       no: {
         term: "L-teanin",
         definition:
@@ -518,14 +551,17 @@ const glossaryTermsRaw: RawGlossaryTerm[] = [
   {
     term: "Cafeïne in matcha",
     definition:
-      "Een standaard kop matcha (2 g) bevat ~60–70 mg cafeïne — iets minder dan filterkoffie maar door L-theanine veel langduriger werkend (4–6 uur).",
+      "Een standaard kop matcha (2 g) bevat ~60–70 mg cafeïne - iets minder dan filterkoffie maar door L-theanine veel langduriger werkend (4–6 uur).",
     group: "Gezondheid & Stoffen",
     relatedLink: { label: "Matcha cafeïne", to: "/kennis/matcha-cafeine" },
     i18n: {
+      de: { relatedLinkLabel: "Koffein in Matcha" },
+      en: { relatedLinkLabel: "Caffeine in matcha" },
+      fr: { relatedLinkLabel: "La caféine du matcha" },
       no: {
         term: "Koffein i matcha",
         definition:
-          "En standard kopp matcha (2 g) inneholder ~60–70 mg koffein — litt mindre enn filterkaffe, men virker mye lengre (4–6 timer) takket være L-teanin.",
+          "En standard kopp matcha (2 g) inneholder ~60–70 mg koffein - litt mindre enn filterkaffe, men virker mye lengre (4–6 timer) takket være L-teanin.",
         relatedLinkLabel: "Matcha-koffein",
       },
     },
@@ -546,12 +582,12 @@ const glossaryTermsRaw: RawGlossaryTerm[] = [
   {
     term: "Umami",
     definition:
-      "De 'vijfde smaak' — hartig, vol, savoury. In matcha komt umami voort uit aminozuren (vooral L-theanine en glutaminezuur) die door beschaduwing toenemen.",
+      "De 'vijfde smaak' - hartig, vol, savoury. In matcha komt umami voort uit aminozuren (vooral L-theanine en glutaminezuur) die door beschaduwing toenemen.",
     group: "Gezondheid & Stoffen",
     i18n: {
       no: {
         definition:
-          "Den «femte smaken» — fyldig, full, hjertelig. I matcha stammer umamien fra aminosyrer (særlig L-teanin og glutaminsyre) som øker ved skyggelegging.",
+          "Den «femte smaken» - fyldig, full, hjertelig. I matcha stammer umamien fra aminosyrer (særlig L-teanin og glutaminsyre) som øker ved skyggelegging.",
       },
     },
   },
@@ -561,14 +597,17 @@ const glossaryTermsRaw: RawGlossaryTerm[] = [
     term: "Chanoyu",
     alternativeNames: ["茶の湯", "Japanse theeceremonie"],
     definition:
-      "De geritualiseerde Japanse theeceremonie. Niet alleen thee zetten — een meditatieve oefening met 500 jaar geschiedenis. Vier principes: wa (harmonie), kei (respect), sei (zuiverheid), jaku (rust).",
+      "De geritualiseerde Japanse theeceremonie. Niet alleen thee zetten - een meditatieve oefening met 500 jaar geschiedenis. Vier principes: wa (harmonie), kei (respect), sei (zuiverheid), jaku (rust).",
     group: "Cultuur",
     relatedLink: { label: "Theeceremonie uitgelegd", to: "/kennis/japanse-theeceremonie-chanoyu" },
     i18n: {
+      de: { relatedLinkLabel: "Die Teezeremonie erklärt" },
+      en: { relatedLinkLabel: "The tea ceremony explained" },
+      fr: { relatedLinkLabel: "La cérémonie du thé expliquée" },
       no: {
         alternativeNames: ["茶の湯", "japansk teseremoni"],
         definition:
-          "Den ritualiserte japanske teseremonien. Ikke bare det å lage te — en meditativ øvelse med 500 års historie. Fire prinsipper: wa (harmoni), kei (respekt), sei (renhet), jaku (ro).",
+          "Den ritualiserte japanske teseremonien. Ikke bare det å lage te - en meditativ øvelse med 500 års historie. Fire prinsipper: wa (harmoni), kei (respekt), sei (renhet), jaku (ro).",
         relatedLinkLabel: "Teseremonien forklart",
       },
     },
@@ -601,12 +640,12 @@ const glossaryTermsRaw: RawGlossaryTerm[] = [
     term: "Chashitsu",
     alternativeNames: ["茶室"],
     definition:
-      "De traditionele theekamer — bewust klein (4,5 tatami mat) en eenvoudig. Heeft een lage ingang (nijiriguchi) waardoor gasten moeten buigen.",
+      "De traditionele theekamer - bewust klein (4,5 tatami mat) en eenvoudig. Heeft een lage ingang (nijiriguchi) waardoor gasten moeten buigen.",
     group: "Cultuur",
     i18n: {
       no: {
         definition:
-          "Det tradisjonelle terommet — bevisst lite (4,5 tatami-matter) og enkelt. Har en lav inngang (nijiriguchi) som tvinger gjestene til å bøye seg.",
+          "Det tradisjonelle terommet - bevisst lite (4,5 tatami-matter) og enkelt. Har en lav inngang (nijiriguchi) som tvinger gjestene til å bøye seg.",
       },
     },
   },
@@ -662,12 +701,12 @@ const glossaryTermsRaw: RawGlossaryTerm[] = [
   {
     term: "Tokonoma",
     definition:
-      "Alkove in de theekamer waar een hangrol (kakemono) en bloemstuk worden geplaatst — beide aangepast aan het seizoen en de gasten.",
+      "Alkove in de theekamer waar een hangrol (kakemono) en bloemstuk worden geplaatst - beide aangepast aan het seizoen en de gasten.",
     group: "Cultuur",
     i18n: {
       no: {
         definition:
-          "En alkove i terommet der en hengerull (kakemono) og et blomsteroppsats plasseres — begge tilpasset årstiden og gjestene.",
+          "En alkove i terommet der en hengerull (kakemono) og et blomsteroppsats plasseres - begge tilpasset årstiden og gjestene.",
       },
     },
   },

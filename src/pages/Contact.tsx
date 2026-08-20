@@ -9,9 +9,9 @@ import { useLang } from "@/i18n";
 const COPY = {
   nl: {
     toast: "Bedankt! We reageren binnen 1 werkdag",
-    seoTitle: "Contact — Vragen over matcha of je bestelling? We helpen je",
+    seoTitle: "Contact - Vragen over matcha of je bestelling? We helpen je",
     seoDescription:
-      "Neem contact op met YourMatcha — bereikbaar via e-mail, telefoon en Instagram. We reageren binnen 1 werkdag op vragen over matcha, bestellingen of samenwerkingen.",
+      "Neem contact op met YourMatcha - bereikbaar via e-mail, telefoon en Instagram. We reageren binnen 1 werkdag op vragen over matcha, bestellingen of samenwerkingen.",
     heroEyebrow: "Contact",
     heroTitle: "Laat van je horen",
     heroSubtitle: "Vragen over een product, bestelling of samenwerking? We helpen je graag persoonlijk verder.",
@@ -26,11 +26,68 @@ const COPY = {
     messagePlaceholder: "Je bericht…",
     submit: "Verstuur bericht",
   },
+  en: {
+    toast: "Thank you! We will reply within 1 working day",
+    seoTitle: "Contact - Questions about matcha or your order? We are here to help",
+    seoDescription:
+      "Get in touch with YourMatcha - reachable by email, phone and Instagram. We reply within 1 working day to questions about matcha, orders or partnerships.",
+    heroEyebrow: "Contact",
+    heroTitle: "Get in touch",
+    heroSubtitle: "Questions about a product, an order or a partnership? We are happy to help you personally.",
+    serviceLabel: "Customer service",
+    hoursLabel: "Opening hours",
+    hoursLine1: "Mon–Fri · 09:00 – 17:30",
+    hoursLine2: "Sat · 10:00 – 16:00",
+    hoursLine3: "Sun · closed",
+    namePlaceholder: "Your name",
+    emailPlaceholder: "Email address",
+    subjectPlaceholder: "Subject",
+    messagePlaceholder: "Your message…",
+    submit: "Send message",
+  },
+  de: {
+    toast: "Vielen Dank! Wir antworten innerhalb von 1 Werktag",
+    seoTitle: "Kontakt - Fragen zu Matcha oder deiner Bestellung? Wir helfen dir",
+    seoDescription:
+      "Nimm Kontakt mit YourMatcha auf - erreichbar per E-Mail, Telefon und Instagram. Wir antworten innerhalb von 1 Werktag auf Fragen zu Matcha, Bestellungen oder Kooperationen.",
+    heroEyebrow: "Kontakt",
+    heroTitle: "Lass von dir hören",
+    heroSubtitle: "Fragen zu einem Produkt, einer Bestellung oder einer Zusammenarbeit? Wir helfen dir gerne persönlich weiter.",
+    serviceLabel: "Kundenservice",
+    hoursLabel: "Öffnungszeiten",
+    hoursLine1: "Mo–Fr · 09:00 – 17:30",
+    hoursLine2: "Sa · 10:00 – 16:00",
+    hoursLine3: "So · geschlossen",
+    namePlaceholder: "Dein Name",
+    emailPlaceholder: "E-Mail-Adresse",
+    subjectPlaceholder: "Betreff",
+    messagePlaceholder: "Deine Nachricht…",
+    submit: "Nachricht senden",
+  },
+  fr: {
+    toast: "Merci ! Nous répondons sous 1 jour ouvré",
+    seoTitle: "Contact - Des questions sur le matcha ou votre commande ? Nous sommes là",
+    seoDescription:
+      "Contactez YourMatcha - joignable par e-mail, téléphone et Instagram. Nous répondons sous 1 jour ouvré à vos questions sur le matcha, les commandes ou les partenariats.",
+    heroEyebrow: "Contact",
+    heroTitle: "Écrivez-nous",
+    heroSubtitle: "Une question sur un produit, une commande ou un partenariat ? Nous vous répondons personnellement.",
+    serviceLabel: "Service client",
+    hoursLabel: "Horaires",
+    hoursLine1: "Lun–Ven · 09:00 – 17:30",
+    hoursLine2: "Sam · 10:00 – 16:00",
+    hoursLine3: "Dim · fermé",
+    namePlaceholder: "Votre nom",
+    emailPlaceholder: "Adresse e-mail",
+    subjectPlaceholder: "Sujet",
+    messagePlaceholder: "Votre message…",
+    submit: "Envoyer le message",
+  },
   no: {
     toast: "Tusen takk! Vi svarer deg innen 1 virkedag",
-    seoTitle: "Kontakt — Spørsmål om matcha eller bestillingen din? Vi hjelper deg",
+    seoTitle: "Kontakt - Spørsmål om matcha eller bestillingen din? Vi hjelper deg",
     seoDescription:
-      "Ta kontakt med YourMatcha — vi er tilgjengelige på e-post, telefon og Instagram. Vi svarer innen 1 virkedag på spørsmål om matcha, bestillinger eller samarbeid.",
+      "Ta kontakt med YourMatcha - vi er tilgjengelige på e-post, telefon og Instagram. Vi svarer innen 1 virkedag på spørsmål om matcha, bestillinger eller samarbeid.",
     heroEyebrow: "Kontakt",
     heroTitle: "Vi hører gjerne fra deg",
     heroSubtitle: "Lurer du på noe om et produkt, en bestilling eller et samarbeid? Vi hjelper deg gjerne personlig.",
@@ -49,7 +106,7 @@ const COPY = {
 
 const Contact = () => {
   const lang = useLang();
-  const c = COPY[lang === "no" ? "no" : "nl"];
+  const c = COPY[lang] ?? COPY.nl;
   const [form, setForm] = useState({ name: "", email: "", subject: "", message: "" });
 
   const submit = (e: React.FormEvent) => {

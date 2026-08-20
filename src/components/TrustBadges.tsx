@@ -6,20 +6,38 @@ const COPY = {
   nl: [
     { icon: Truck, label: "Gratis verzending", sub: "Boven €35" },
     { icon: Leaf, label: "100% Biologisch", sub: "Ceremoniële kwaliteit" },
-    { icon: RotateCcw, label: "14 dagen", sub: "Retourgarantie" },
+    { icon: RotateCcw, label: "30 dagen", sub: "Retourgarantie" },
     { icon: ShieldCheck, label: "Veilig betalen", sub: "iDEAL & meer" },
+  ],
+  en: [
+    { icon: Truck, label: "Free shipping", sub: "Over €35" },
+    { icon: Leaf, label: "100% organic", sub: "Ceremonial grade" },
+    { icon: RotateCcw, label: "30 days", sub: "Return guarantee" },
+    { icon: ShieldCheck, label: "Secure payment", sub: "Card & more" },
+  ],
+  de: [
+    { icon: Truck, label: "Gratis Versand", sub: "Ab €35" },
+    { icon: Leaf, label: "100% biologisch", sub: "Zeremonielle Qualität" },
+    { icon: RotateCcw, label: "30 Tage", sub: "Rückgaberecht" },
+    { icon: ShieldCheck, label: "Sicher bezahlen", sub: "Karte & mehr" },
+  ],
+  fr: [
+    { icon: Truck, label: "Livraison offerte", sub: "Dès 35 €" },
+    { icon: Leaf, label: "100% bio", sub: "Qualité cérémonielle" },
+    { icon: RotateCcw, label: "30 jours", sub: "Satisfait ou remboursé" },
+    { icon: ShieldCheck, label: "Paiement sécurisé", sub: "Carte & plus" },
   ],
   no: [
     { icon: Truck, label: "Gratis frakt", sub: "Over 400 kr" },
     { icon: Leaf, label: "100 % økologisk", sub: "Seremoniell kvalitet" },
-    { icon: RotateCcw, label: "14 dager", sub: "Returgaranti" },
+    { icon: RotateCcw, label: "30 dager", sub: "Returgaranti" },
     { icon: ShieldCheck, label: "Trygg betaling", sub: "Kort & mer" },
   ],
 } as const;
 
 const TrustBadges = () => {
   const lang = useLang();
-  const badges = lang === "no" ? COPY.no : COPY.nl;
+  const badges = COPY[lang] ?? COPY.nl;
 
   return (
     <section className="py-6 border-b border-border/50">

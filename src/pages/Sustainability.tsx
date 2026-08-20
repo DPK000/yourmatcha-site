@@ -7,7 +7,7 @@ import { useLang } from "@/i18n";
 
 const COPY = {
   nl: {
-    seoTitle: "Duurzaamheid — Biologische matcha, direct trade en CO₂-gecompenseerde verzending",
+    seoTitle: "Duurzaamheid - Biologische matcha, direct trade en CO₂-gecompenseerde verzending",
     seoDescription:
       "YourMatcha is biologisch gecertificeerd (EU-Bio + JAS), werkt direct met Japanse familieboerderijen in Uji en Kagoshima, en compenseert 100% van de verzendingen.",
     seoKeywords: "biologische matcha, duurzame matcha, direct trade thee, eerlijke matcha, CO2 neutraal verzenden",
@@ -24,7 +24,7 @@ const COPY = {
     partnersTitlePart1: "Vier generaties ",
     partnersTitlePart2: "vakmanschap",
     partnersP1:
-      "De familie Tanaka verzorgt al sinds 1924 de tuinen waar onze ceremonial matcha groeit. We bezoeken hen jaarlijks, proeven elke nieuwe oogst en betalen direct — zonder tussenpersonen.",
+      "De familie Tanaka verzorgt al sinds 1924 de tuinen waar onze ceremonial matcha groeit. We bezoeken hen jaarlijks, proeven elke nieuwe oogst en betalen direct - zonder tussenpersonen.",
     partnersP2:
       "Door deze directe relatie kunnen we niet alleen de hoogste kwaliteit garanderen, maar ook eerlijke werkomstandigheden en investeringen in duurzame teeltmethodes.",
     partnersAlt: "Theeboerderij Uji",
@@ -37,8 +37,101 @@ const COPY = {
       ["0", "Plastic in verpakking"],
     ] as [string, string][],
   },
+  en: {
+    seoTitle: "Sustainability - Organic matcha, direct trade and carbon-offset shipping",
+    seoDescription:
+      "YourMatcha is certified organic (EU-Bio + JAS), works directly with Japanese family farms in Uji and Kagoshima, and offsets 100% of its shipments.",
+    seoKeywords: "organic matcha, sustainable matcha, direct trade tea, fair matcha, carbon neutral shipping",
+    heroEyebrow: "Sustainability",
+    heroTitle: "With respect for the land, the people and the plant",
+    heroSubtitle: "For us, premium matcha also means caring for the people and places it comes from.",
+    pillars: [
+      { title: "100% organic", text: "All our tea is certified organic (EU-Bio and JAS). No pesticides, no artificial fertiliser, no shortcuts." },
+      { title: "Direct trade", text: "We have worked with the same family farms in Uji and Kagoshima for years. Fair prices, long-term relationships, no middlemen." },
+      { title: "Recyclable", text: "Our pouches are fully recyclable and our shipping boxes are made from 100% recycled cardboard with no plastic filler." },
+      { title: "Carbon offset", text: "We offset 100% of our shipments through verified reforestation projects in the Netherlands and Indonesia." },
+    ],
+    partnersBadge: "🇯🇵 Our partners",
+    partnersTitlePart1: "Four generations of ",
+    partnersTitlePart2: "craftsmanship",
+    partnersP1:
+      "The Tanaka family has tended the gardens where our ceremonial matcha grows since 1924. We visit every year, taste each new harvest and pay them directly - no middlemen.",
+    partnersP2:
+      "This direct relationship lets us guarantee not just the highest quality, but also fair working conditions and investment in sustainable growing methods.",
+    partnersAlt: "Tea farm in Uji",
+    impactEyebrow: "Our impact 2025",
+    impactTitle: "In numbers",
+    stats: [
+      ["12,400", "Trees planted"],
+      ["100%", "Carbon offset"],
+      ["8", "Family farms"],
+      ["0", "Plastic in packaging"],
+    ] as [string, string][],
+  },
+  de: {
+    seoTitle: "Nachhaltigkeit - Bio-Matcha, Direct Trade und CO₂-kompensierter Versand",
+    seoDescription:
+      "YourMatcha ist bio-zertifiziert (EU-Bio + JAS), arbeitet direkt mit japanischen Familienbetrieben in Uji und Kagoshima und kompensiert 100% aller Sendungen.",
+    seoKeywords: "Bio-Matcha, nachhaltiger Matcha, Direct Trade Tee, fairer Matcha, klimaneutraler Versand",
+    heroEyebrow: "Nachhaltigkeit",
+    heroTitle: "Mit Respekt für Boden, Mensch und Pflanze",
+    heroSubtitle: "Premium-Matcha heißt für uns auch: sorgsam umgehen mit den Menschen und Orten, aus denen er kommt.",
+    pillars: [
+      { title: "100% biologisch", text: "Unser gesamter Tee ist bio-zertifiziert (EU-Bio und JAS). Keine Pestizide, kein Kunstdünger, keine Abkürzungen." },
+      { title: "Direct Trade", text: "Wir arbeiten seit Jahren mit denselben Familienbetrieben in Uji und Kagoshima. Faire Preise, langfristige Beziehungen, kein Zwischenhandel." },
+      { title: "Recycelbar", text: "Unsere Beutel sind vollständig recycelbar und unsere Versandkartons bestehen aus 100% Recyclingpappe ohne Plastikfüllung." },
+      { title: "CO₂-kompensiert", text: "Wir kompensieren 100% unserer Sendungen über verifizierte Aufforstungsprojekte in den Niederlanden und Indonesien." },
+    ],
+    partnersBadge: "🇯🇵 Unsere Partner",
+    partnersTitlePart1: "Vier Generationen ",
+    partnersTitlePart2: "Handwerk",
+    partnersP1:
+      "Die Familie Tanaka pflegt die Gärten, in denen unser zeremonieller Matcha wächst, bereits seit 1924. Wir besuchen sie jedes Jahr, verkosten jede neue Ernte und zahlen direkt - ohne Zwischenhändler.",
+    partnersP2:
+      "Durch diese direkte Beziehung können wir nicht nur höchste Qualität garantieren, sondern auch faire Arbeitsbedingungen und Investitionen in nachhaltige Anbaumethoden.",
+    partnersAlt: "Teegarten in Uji",
+    impactEyebrow: "Unsere Wirkung 2025",
+    impactTitle: "In Zahlen",
+    stats: [
+      ["12.400", "Bäume gepflanzt"],
+      ["100%", "CO₂ kompensiert"],
+      ["8", "Familienbetriebe"],
+      ["0", "Plastik in der Verpackung"],
+    ] as [string, string][],
+  },
+  fr: {
+    seoTitle: "Durabilité - Matcha bio, direct trade et livraison compensée en CO₂",
+    seoDescription:
+      "YourMatcha est certifié bio (EU-Bio + JAS), travaille directement avec des fermes familiales japonaises à Uji et Kagoshima, et compense 100% de ses expéditions.",
+    seoKeywords: "matcha bio, matcha durable, thé direct trade, matcha équitable, livraison neutre en carbone",
+    heroEyebrow: "Durabilité",
+    heroTitle: "Avec respect pour la terre, les gens et la plante",
+    heroSubtitle: "Pour nous, un matcha premium implique aussi de prendre soin des personnes et des lieux dont il vient.",
+    pillars: [
+      { title: "100% bio", text: "Tous nos thés sont certifiés biologiques (EU-Bio et JAS). Sans pesticides, sans engrais de synthèse, sans raccourcis." },
+      { title: "Direct trade", text: "Nous travaillons depuis des années avec les mêmes fermes familiales à Uji et Kagoshima. Prix justes, relations de long terme, aucun intermédiaire." },
+      { title: "Recyclable", text: "Nos sachets sont entièrement recyclables et nos cartons d'expédition sont en carton 100% recyclé, sans calage plastique." },
+      { title: "Compensé en CO₂", text: "Nous compensons 100% de nos expéditions via des projets de reforestation vérifiés aux Pays-Bas et en Indonésie." },
+    ],
+    partnersBadge: "🇯🇵 Nos partenaires",
+    partnersTitlePart1: "Quatre générations de ",
+    partnersTitlePart2: "savoir-faire",
+    partnersP1:
+      "La famille Tanaka entretient depuis 1924 les jardins où pousse notre matcha cérémoniel. Nous leur rendons visite chaque année, goûtons chaque nouvelle récolte et les payons directement - sans intermédiaire.",
+    partnersP2:
+      "Cette relation directe nous permet de garantir non seulement la plus haute qualité, mais aussi des conditions de travail justes et des investissements dans des méthodes de culture durables.",
+    partnersAlt: "Ferme de thé à Uji",
+    impactEyebrow: "Notre impact 2025",
+    impactTitle: "En chiffres",
+    stats: [
+      ["12 400", "Arbres plantés"],
+      ["100%", "CO₂ compensé"],
+      ["8", "Fermes familiales"],
+      ["0", "Plastique dans l'emballage"],
+    ] as [string, string][],
+  },
   no: {
-    seoTitle: "Bærekraft — Økologisk matcha, direct trade og CO₂-kompensert frakt",
+    seoTitle: "Bærekraft - Økologisk matcha, direct trade og CO₂-kompensert frakt",
     seoDescription:
       "YourMatcha er økologisk sertifisert (EU-Bio + JAS), samarbeider direkte med japanske familiegårder i Uji og Kagoshima, og kompenserer 100 % av alle forsendelser.",
     seoKeywords: "økologisk matcha, bærekraftig matcha, direct trade te, rettferdig matcha, klimanøytral frakt",
@@ -55,7 +148,7 @@ const COPY = {
     partnersTitlePart1: "Fire generasjoner ",
     partnersTitlePart2: "håndverk",
     partnersP1:
-      "Familien Tanaka har stelt hagene der vår ceremonial matcha vokser, helt siden 1924. Vi besøker dem hvert år, smaker på hver nye høst og betaler direkte — uten mellomledd.",
+      "Familien Tanaka har stelt hagene der vår ceremonial matcha vokser, helt siden 1924. Vi besøker dem hvert år, smaker på hver nye høst og betaler direkte - uten mellomledd.",
     partnersP2:
       "Denne direkte relasjonen lar oss ikke bare garantere den høyeste kvaliteten, men også sikre rettferdige arbeidsforhold og investeringer i bærekraftige dyrkingsmetoder.",
     partnersAlt: "Tegård i Uji",
@@ -74,7 +167,7 @@ const pillarIcons = [Leaf, HandHeart, Recycle, Globe2];
 
 const Sustainability = () => {
   const lang = useLang();
-  const c = COPY[lang === "no" ? "no" : "nl"];
+  const c = COPY[lang] ?? COPY.nl;
 
   return (
     <>

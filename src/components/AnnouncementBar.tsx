@@ -1,29 +1,32 @@
 import { motion } from "framer-motion";
 import { Truck, Leaf, Heart, Sparkles } from "lucide-react";
-import { useLang } from "@/i18n";
+import { useTranslation } from "react-i18next";
+import { useCurrency } from "@/context/CurrencyContext";
 
-const COPY = {
-  nl: [
-    "Gratis verzending vanaf €35",
-    "Levering binnen 48 uur in NL & BE",
-    "100% biologisch uit Uji, Japan",
-    "30 dagen niet goed, geld terug",
-  ],
-  no: [
-    "Gratis frakt over 400 kr",
-    "Rask levering",
-    "100 % økologisk fra Uji, Japan",
-    "30 dagers åpent kjøp",
-  ],
-} as const;
-
-const icons = [Truck, Sparkles, Leaf, Heart];
+const ITEMS = [
+  { key: "freeShipping", icon: Truck },
+  { key: "delivery", icon: Sparkles },
+  { key: "organic", icon: Leaf },
+  { key: "guarantee", icon: Heart },
+] as const;
 
 const AnnouncementBar = () => {
-  const lang = useLang();
-  const texts = lang === "no" ? COPY.no : COPY.nl;
-  const items = texts.map((text, i) => ({ icon: icons[i], text }));
-  const doubled = [...items, ...items, ...items];
+  const { t, i18n } = useTranslation();
+  const { currency, freeShippingThreshold } = useCurrency();
+
+  // Drempel zonder decimalen: "€35" leest prettiger dan "€35,00" in een balk.
+  const threshold = new Intl.NumberFormat(currency === "NOK" ? "nb-NO" : i18n.language || "nl-NL", {
+    style: "currency",
+    currency,
+    maximumFractionDigits: 0,
+  }).format(freeShippingThreshold);
+
+  const items = ITEMS.map(({ key, icon }) => ({
+    icon,
+    text: t(`announcement.${key}`, { amount: threshold }),
+  }));
+  // Drie kopieën: de animatie loopt tot -33,333% en sluit dan naadloos aan.
+  const tripled = [...items, ...items, ...items];
 
   return (
     <div className="bg-primary text-primary-foreground py-2 overflow-hidden border-b border-primary/20">
@@ -32,7 +35,7 @@ const AnnouncementBar = () => {
         animate={{ x: ["0%", "-33.333%"] }}
         transition={{ duration: 35, repeat: Infinity, ease: "linear" }}
       >
-        {doubled.map((item, i) => (
+        {tripled.map((item, i) => (
           <span key={i} className="flex items-center gap-2 px-8 text-[11px] font-medium tracking-[0.18em] uppercase">
             <item.icon className="w-3.5 h-3.5 opacity-80" />
             {item.text}
