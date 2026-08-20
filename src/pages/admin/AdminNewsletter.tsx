@@ -233,11 +233,11 @@ export default function AdminNewsletter() {
                       <span className="text-sm font-body font-medium text-foreground">{sub.email}</span>
                     </td>
                     <td className="px-4 py-3">
-                      <span className="text-sm font-body text-muted-foreground">{sub.name || "—"}</span>
+                      <span className="text-sm font-body text-muted-foreground">{sub.name || "-"}</span>
                     </td>
                     <td className="px-4 py-3">
                       <span className="text-sm font-body">
-                        {sub.country ? (countryNames[sub.country] || sub.country) : "—"}
+                        {sub.country ? (countryNames[sub.country] || sub.country) : "-"}
                       </span>
                     </td>
                     <td className="px-4 py-3">

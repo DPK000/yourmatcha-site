@@ -44,7 +44,7 @@ function typeIcon(type: DiscountCode["type"]) {
 }
 
 function ValueCell({ code }: { code: DiscountCode }) {
-  if (code.type === "free_shipping") return <span className="text-muted-foreground">—</span>;
+  if (code.type === "free_shipping") return <span className="text-muted-foreground">-</span>;
   return (
     <span className="flex items-center gap-1">
       {code.type === "percentage" ? `${code.value}%` : `€${code.value.toFixed(2)}`}
@@ -251,7 +251,7 @@ const AdminDiscountCodes = () => {
 
                   {/* Min order */}
                   <span className="text-sm font-body text-muted-foreground">
-                    {code.min_order_amount > 0 ? `€${code.min_order_amount.toFixed(2)}` : "—"}
+                    {code.min_order_amount > 0 ? `€${code.min_order_amount.toFixed(2)}` : "-"}
                   </span>
 
                   {/* Uses */}
@@ -263,7 +263,7 @@ const AdminDiscountCodes = () => {
                   <span className="text-sm font-body text-muted-foreground">
                     {code.expires_at
                       ? format(new Date(code.expires_at), "dd MMM yyyy", { locale: nl })
-                      : "—"}
+                      : "-"}
                   </span>
 
                   {/* Status */}
@@ -340,7 +340,7 @@ const AdminDiscountCodes = () => {
                 </select>
               </div>
 
-              {/* Value — hidden for free_shipping */}
+              {/* Value - hidden for free_shipping */}
               {formData.type !== "free_shipping" && (
                 <div>
                   <label className={labelClass}>
@@ -357,7 +357,7 @@ const AdminDiscountCodes = () => {
                 </div>
               )}
 
-              {/* Free shipping checkbox — for percentage/fixed */}
+              {/* Free shipping checkbox - for percentage/fixed */}
               {formData.type !== "free_shipping" && (
                 <label className="flex items-center gap-2.5 text-sm font-body cursor-pointer">
                   <input

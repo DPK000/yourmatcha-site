@@ -9,7 +9,7 @@ declare global {
 
 /**
  * Fire GA4 page_view event op elke route change in de React SPA.
- * Standaard tracked GA alleen de initial page load — voor SPA's moeten we 't zelf doen.
+ * Standaard tracked GA alleen de initial page load - voor SPA's moeten we 't zelf doen.
  * `send_page_view: false` in index.html voorkomt dubbele tracking op first load.
  */
 export function useGAPageView() {

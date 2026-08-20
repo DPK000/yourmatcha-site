@@ -60,11 +60,11 @@ export const reviewTranslations: Record<string, { en: string; de: string; fr: st
     "fr": "Umami clair et longue finale. Meilleur rapport qualité-prix.",
     "no": "Klar umami og lang ettersmak. Beste pris i forhold til kvalitet."
   },
-  "Voor mijn ochtend ritueel — dagelijks genot.": {
-    "en": "For my morning ritual — daily enjoyment.",
-    "de": "Für mein Morgenritual — täglicher Genuss.",
-    "fr": "Pour mon rituel matinal — un plaisir quotidien.",
-    "no": "Til morgenritualet mitt — daglig nytelse."
+  "Voor mijn ochtend ritueel - dagelijks genot.": {
+    "en": "For my morning ritual - daily enjoyment.",
+    "de": "Für mein Morgenritual - täglicher Genuss.",
+    "fr": "Pour mon rituel matinal - un plaisir quotidien.",
+    "no": "Til morgenritualet mitt - daglig nytelse."
   },
   "Hoge kwaliteit, levering keurig binnen 2 dagen.": {
     "en": "High quality, delivery neatly within 2 days.",
@@ -108,11 +108,11 @@ export const reviewTranslations: Record<string, { en: string; de: string; fr: st
     "fr": "Délicieusement addictif en latte !",
     "no": "Avhengighetsskapende god i en latte!"
   },
-  "De vanille is écht echt — geen kunstmatige smaak.": {
-    "en": "The vanilla is really real — no artificial flavor.",
-    "de": "Die Vanille ist wirklich echt — kein künstlicher Geschmack.",
-    "fr": "La vanille est vraiment authentique — pas de goût artificiel.",
-    "no": "Vaniljen er helt ekte — ingen kunstig smak."
+  "De vanille is écht echt - geen kunstmatige smaak.": {
+    "en": "The vanilla is really real - no artificial flavor.",
+    "de": "Die Vanille ist wirklich echt - kein künstlicher Geschmack.",
+    "fr": "La vanille est vraiment authentique - pas de goût artificiel.",
+    "no": "Vaniljen er helt ekte - ingen kunstig smak."
   },
   "Mijn favoriete avond drankje, zo romig.": {
     "en": "My favorite evening drink, so creamy.",
@@ -148,7 +148,7 @@ export const reviewTranslations: Record<string, { en: string; de: string; fr: st
     "en": "Nicely packaged, ideal as a birthday gift.",
     "de": "Schön verpackt, ideal als Geburtstagsgeschenk.",
     "fr": "Joliment emballé, idéal comme cadeau d'anniversaire.",
-    "no": "Pent pakket inn, ga den bort som bursdagsgave — perfekt."
+    "no": "Pent pakket inn, ga den bort som bursdagsgave - perfekt."
   },
   "Fijne starter, kom is prachtig handgemaakt.": {
     "en": "Nice starter, bowl is beautifully handmade.",
@@ -168,11 +168,11 @@ export const reviewTranslations: Record<string, { en: string; de: string; fr: st
     "fr": "Magnifique ! On dirait un rituel de luxe.",
     "no": "Strålende! Føles som et luksuriøst ritual."
   },
-  "Verpakking is een belevenis op zich. Cadeau gegeven aan moeder — ze was sprakeloos.": {
-    "en": "Packaging is an experience in itself. Gave it as a gift to my mom — she was speechless.",
-    "de": "Verpackung ist ein Erlebnis für sich. Meiner Mutter geschenkt — sie war sprachlos.",
-    "fr": "L'emballage est une expérience en soi. Je l'ai offert en cadeau à ma mère — elle était sans voix.",
-    "no": "Emballasjen er en opplevelse i seg selv. Ga den i gave til mamma — hun var målløs."
+  "Verpakking is een belevenis op zich. Cadeau gegeven aan moeder - ze was sprakeloos.": {
+    "en": "Packaging is an experience in itself. Gave it as a gift to my mom - she was speechless.",
+    "de": "Verpackung ist ein Erlebnis für sich. Meiner Mutter geschenkt - sie war sprachlos.",
+    "fr": "L'emballage est une expérience en soi. Je l'ai offert en cadeau à ma mère - elle était sans voix.",
+    "no": "Emballasjen er en opplevelse i seg selv. Ga den i gave til mamma - hun var målløs."
   },
   "De kom is een kunstwerk en de matcha is sublime.": {
     "en": "The bowl is a work of art and the matcha is sublime.",
@@ -192,11 +192,11 @@ export const reviewTranslations: Record<string, { en: string; de: string; fr: st
     "fr": "Mon rituel quotidien depuis que j'ai ce set. Génial.",
     "no": "Mitt daglige ritual siden jeg fikk dette settet. Fantastisk."
   },
-  "Cadeau gegeven aan mijn zus — ze was helemaal verrast door de mooie verpakking.": {
-    "en": "Gave it as a gift to my sister — she was completely surprised by the beautiful packaging.",
-    "de": "Meiner Schwester geschenkt — sie war total überrascht von der schönen Verpackung.",
-    "fr": "Offert à ma sœur — elle a été totalement surprise par le bel emballage.",
-    "no": "Ga den i gave til søsteren min — hun ble helt overrasket over den fine emballasjen."
+  "Cadeau gegeven aan mijn zus - ze was helemaal verrast door de mooie verpakking.": {
+    "en": "Gave it as a gift to my sister - she was completely surprised by the beautiful packaging.",
+    "de": "Meiner Schwester geschenkt - sie war total überrascht von der schönen Verpackung.",
+    "fr": "Offert à ma sœur - elle a été totalement surprise par le bel emballage.",
+    "no": "Ga den i gave til søsteren min - hun ble helt overrasket over den fine emballasjen."
   },
   "Perfect Sinterklaas cadeau. Voelt echt premium aan.": {
     "en": "Perfect Sinterklaas gift. Feels really premium.",
@@ -246,11 +246,11 @@ export const reviewTranslations: Record<string, { en: string; de: string; fr: st
     "fr": "Fouet de belle qualité.",
     "no": "Visp av fin kvalitet."
   },
-  "Veel beter dan goedkope varianten — schuim is veel fijner.": {
-    "en": "Much better than cheap variants — foam is much finer.",
-    "de": "Viel besser als billige Varianten — der Schaum ist viel feiner.",
-    "fr": "Bien mieux que les variantes bon marché — la mousse est bien plus fine.",
-    "no": "Mye bedre enn billige varianter — skummet er mye finere."
+  "Veel beter dan goedkope varianten - schuim is veel fijner.": {
+    "en": "Much better than cheap variants - foam is much finer.",
+    "de": "Viel besser als billige Varianten - der Schaum ist viel feiner.",
+    "fr": "Bien mieux que les variantes bon marché - la mousse est bien plus fine.",
+    "no": "Mye bedre enn billige varianter - skummet er mye finere."
   },
   "Echte vakmanschap, voelt licht en stevig tegelijk.": {
     "en": "True craftsmanship, feels light and sturdy at the same time.",
@@ -324,11 +324,11 @@ export const reviewTranslations: Record<string, { en: string; de: string; fr: st
     "fr": "Fonctionne bien, les piles durent longtemps.",
     "no": "Fungerer bra, batteriene varer lenge."
   },
-  "Voor wie geen chasen wil — dit is de oplossing.": {
-    "en": "For those who don't want a chasen — this is the solution.",
+  "Voor wie geen chasen wil - dit is de oplossing.": {
+    "en": "For those who don't want a chasen - this is the solution.",
     "de": "Für alle, die keinen Chasen wollen – das ist die Lösung.",
-    "fr": "Pour ceux qui ne veulent pas de chasen — c'est la solution.",
-    "no": "For deg som ikke vil ha en chasen — dette er løsningen."
+    "fr": "Pour ceux qui ne veulent pas de chasen - c'est la solution.",
+    "no": "For deg som ikke vil ha en chasen - dette er løsningen."
   },
   "Heerlijk voor 's avonds, laag in cafeïne.": {
     "en": "Delicious for evenings, low in caffeine.",
@@ -354,11 +354,11 @@ export const reviewTranslations: Record<string, { en: string; de: string; fr: st
     "fr": "Goût chaleureux, parfait pour les soirées d'automne.",
     "no": "Varm smak, perfekt for høstkvelder."
   },
-  "Zacht grasachtig en zoet — niet bitter zoals andere sencha's.": {
-    "en": "Soft grassy and sweet — not bitter like other senchas.",
+  "Zacht grasachtig en zoet - niet bitter zoals andere sencha's.": {
+    "en": "Soft grassy and sweet - not bitter like other senchas.",
     "de": "Sanft grasig und süß – nicht bitter wie andere Senchas.",
-    "fr": "Doux, herbeux et sucré — pas amer comme d'autres senchas.",
-    "no": "Mykt gressaktig og søt — ikke bitter som andre senchaer."
+    "fr": "Doux, herbeux et sucré - pas amer comme d'autres senchas.",
+    "no": "Mykt gressaktig og søt - ikke bitter som andre senchaer."
   },
   "Mijn dagelijkse middagthee. Hoge kwaliteit losse blad.": {
     "en": "My daily afternoon tea. High-quality loose leaf.",
@@ -456,11 +456,11 @@ export const reviewTranslations: Record<string, { en: string; de: string; fr: st
     "fr": "Goût joyeux, délicieux dans les smoothies à la banane.",
     "no": "Munter smak, nydelig i smoothier med banan."
   },
-  "Mooie roze matcha latte gemaakt — Instagram-waardig.": {
-    "en": "Made a beautiful pink matcha latte — Instagram-worthy.",
-    "de": "Wunderschöne rosa Matcha Latte gemacht — Instagram-würdig.",
-    "fr": "J'ai fait un magnifique matcha latte rose — digne d'Instagram.",
-    "no": "Lagde en nydelig rosa matcha latte — Instagram-verdig."
+  "Mooie roze matcha latte gemaakt - Instagram-waardig.": {
+    "en": "Made a beautiful pink matcha latte - Instagram-worthy.",
+    "de": "Wunderschöne rosa Matcha Latte gemacht - Instagram-würdig.",
+    "fr": "J'ai fait un magnifique matcha latte rose - digne d'Instagram.",
+    "no": "Lagde en nydelig rosa matcha latte - Instagram-verdig."
   },
   "Fruitig en niet te zoet, leuke afwisseling.": {
     "en": "Fruity and not too sweet, a nice change.",
@@ -552,11 +552,11 @@ export const reviewTranslations: Record<string, { en: string; de: string; fr: st
     "fr": "Inspirant et magnifiquement conçu.",
     "no": "Inspirerende og lekkert utformet."
   },
-  "Veel meer dan alleen recepten — ook prachtige verhalen.": {
-    "en": "Much more than just recipes — also wonderful stories.",
-    "de": "Viel mehr als nur Rezepte — auch wunderschöne Geschichten.",
-    "fr": "Bien plus que des recettes — de belles histoires aussi.",
-    "no": "Mye mer enn bare oppskrifter — også nydelige historier."
+  "Veel meer dan alleen recepten - ook prachtige verhalen.": {
+    "en": "Much more than just recipes - also wonderful stories.",
+    "de": "Viel mehr als nur Rezepte - auch wunderschöne Geschichten.",
+    "fr": "Bien plus que des recettes - de belles histoires aussi.",
+    "no": "Mye mer enn bare oppskrifter - også nydelige historier."
   },
   "Goed boek, recepten zijn duidelijk en goed te volgen.": {
     "en": "Good book, recipes are clear and easy to follow.",

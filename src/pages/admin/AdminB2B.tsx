@@ -444,7 +444,7 @@ const AdminB2B = () => {
                         <p className="text-[10px] text-muted-foreground uppercase tracking-wider mb-0.5">
                           Website
                         </p>
-                        <p>{app.website || "—"}</p>
+                        <p>{app.website || "-"}</p>
                       </div>
                       <div>
                         <p className="text-[10px] text-muted-foreground uppercase tracking-wider mb-0.5">
@@ -472,7 +472,7 @@ const AdminB2B = () => {
                         <p className="text-[10px] text-muted-foreground uppercase tracking-wider mb-0.5">
                           KvK / BTW-nr
                         </p>
-                        <p>{app.business_number || "—"}</p>
+                        <p>{app.business_number || "-"}</p>
                       </div>
                       {app.message && (
                         <div className="sm:col-span-2">

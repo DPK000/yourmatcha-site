@@ -1,8 +1,8 @@
 /**
- * BUQE Commerce — vendored package.
+ * BUQE Commerce - vendored package.
  * Source of truth: https://github.com/DPK000/buqe-commerce
  *
- * Per-shop config in `/buqe.config.ts`. Geen UI in deze map — alleen logica/hooks/types.
+ * Per-shop config in `/buqe.config.ts`. Geen UI in deze map - alleen logica/hooks/types.
  */
 
 export { supabase } from "./supabase";

@@ -16,7 +16,7 @@ const navItems = [
   { to: "/admin/newsletter", label: "Nieuwsbrief", icon: Mail },
   { to: "/admin/email-log", label: "Email Log", icon: Send },
   { to: "/admin/pixels", label: "Pixel Manager", icon: Code2 },
-  // TODO: rewire wanneer hooks geport zijn — Klanten (/accounts), Verzending & BTW (/shipping), Valuta (/currencies)
+  // TODO: rewire wanneer hooks geport zijn - Klanten (/accounts), Verzending & BTW (/shipping), Valuta (/currencies)
 ];
 
 const AdminLayout = () => {

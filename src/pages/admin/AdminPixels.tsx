@@ -92,7 +92,7 @@ const PIXEL_TYPES = [
     label: "Custom Script (Head)",
     icon: "🔧",
     placeholder: "<script>...</script>",
-    description: "Eigen script in de <head> — bijv. Klaviyo, Crisp, etc.",
+    description: "Eigen script in de <head> - bijv. Klaviyo, Crisp, etc.",
     fields: [],
     isCode: true,
   },
@@ -331,7 +331,7 @@ const AdminPixels = () => {
           <li>• Google Ads purchase conversions worden automatisch getriggerd na een succesvolle betaling</li>
           <li>• Meta/TikTok/Pinterest pixels tracken automatisch PageView en Purchase events</li>
           <li>• Gebruik de aan/uit toggle om pixels tijdelijk uit te schakelen zonder ze te verwijderen</li>
-          <li>• Custom scripts worden in de &lt;head&gt; geïnjecteerd — handig voor Klaviyo, Crisp, etc.</li>
+          <li>• Custom scripts worden in de &lt;head&gt; geïnjecteerd - handig voor Klaviyo, Crisp, etc.</li>
         </ul>
       </div>
     </div>

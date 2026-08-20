@@ -132,7 +132,7 @@ const AdminDashboard = () => {
 
       {/* Revenue chart */}
       <div className="bg-card border border-border rounded-xl p-5">
-        <h2 className="font-display font-semibold mb-4">Omzet — afgelopen 14 dagen</h2>
+        <h2 className="font-display font-semibold mb-4">Omzet - afgelopen 14 dagen</h2>
         <ResponsiveContainer width="100%" height={220}>
           <AreaChart data={chartData}>
             <defs>

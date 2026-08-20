@@ -1,5 +1,5 @@
 /**
- * BUQE Commerce config type — re-export voor gebruik in buqe.config.ts.
+ * BUQE Commerce config type - re-export voor gebruik in buqe.config.ts.
  * Origineel staat in de buqe-commerce repo (buqe.config.example.ts).
  */
 

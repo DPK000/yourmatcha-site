@@ -40,7 +40,7 @@ export type Recipe = {
   slug: string;
   title: string;
   category: string;
-  /** Onvertaalde categorie (bv. "Drinks") — voor logica, nooit voor weergave. */
+  /** Onvertaalde categorie (bv. "Drinks") - voor logica, nooit voor weergave. */
   categoryKey?: string;
   time: string;
   level: string;
@@ -91,7 +91,7 @@ const recipesRaw: RawRecipe[] = [
     time: "5 min",
     level: "Eenvoudig",
     image: recipeIcedLatte,
-    description: "De klassieke verfrissing — romig, koel, met een diepe matchasmaak.",
+    description: "De klassieke verfrissing - romig, koel, met een diepe matchasmaak.",
     intro: "Ons favoriete zomerrecept. De combinatie van vol-romige havermelk en pure ceremonial matcha geeft een prachtige tweelaagse latte.",
     ingredients: ["2 g matcha", "30 ml warm water (80°C)", "200 ml havermelk", "Handvol ijs", "Optioneel: 1 tl ahornsiroop"],
     steps: [
@@ -106,7 +106,7 @@ const recipesRaw: RawRecipe[] = [
         title: "Iced Matcha Latte",
         category: "Getränke",
         level: "Einfach",
-        description: "Die klassische Erfrischung — cremig, kühl, mit tiefem Matcha-Geschmack.",
+        description: "Die klassische Erfrischung - cremig, kühl, mit tiefem Matcha-Geschmack.",
         intro: "Unser Lieblingsrezept für den Sommer. Die Kombination aus vollmundiger Hafermilch und purem Ceremonial Matcha ergibt eine wunderschöne zweischichtige Latte.",
         ingredients: ["2 g Matcha", "30 ml warmes Wasser (80°C)", "200 ml Hafermilch", "Eine Handvoll Eis", "Optional: 1 TL Ahornsirup"],
         steps: [
@@ -121,7 +121,7 @@ const recipesRaw: RawRecipe[] = [
         title: "Iced Matcha Latte",
         category: "Drikker",
         level: "Enkel",
-        description: "Den klassiske forfriskningen — kremet, kjølig og med dyp matchasmak.",
+        description: "Den klassiske forfriskningen - kremet, kjølig og med dyp matchasmak.",
         intro: "Vår sommerfavoritt. Kombinasjonen av fyldig havremelk og ren ceremonial matcha gir en nydelig tolags latte.",
         ingredients: ["2 g matcha", "30 ml varmt vann (80°C)", "200 ml havremelk", "En håndfull isbiter", "Valgfritt: 1 ts lønnesirup"],
         steps: [
@@ -141,7 +141,7 @@ const recipesRaw: RawRecipe[] = [
     time: "5 min",
     level: "Eenvoudig",
     image: recipeHotLatte,
-    description: "Warme troost in een kop — fluweelzacht met perfecte latte art.",
+    description: "Warme troost in een kop - fluweelzacht met perfecte latte art.",
     ingredients: ["2 g ceremonial matcha", "60 ml water (80°C)", "200 ml warme havermelk", "Optioneel: honing"],
     steps: [
       "Zeef de matcha in een kom.",
@@ -155,7 +155,7 @@ const recipesRaw: RawRecipe[] = [
         title: "Hot Matcha Latte",
         category: "Getränke",
         level: "Einfach",
-        description: "Warmer Trost in einer Tasse — samtweich mit perfekter Latte Art.",
+        description: "Warmer Trost in einer Tasse - samtweich mit perfekter Latte Art.",
         ingredients: ["2 g Ceremonial Matcha", "60 ml Wasser (80°C)", "200 ml warme Hafermilch", "Optional: Honig"],
         steps: [
           "Siebe den Matcha in eine Schale.",
@@ -169,7 +169,7 @@ const recipesRaw: RawRecipe[] = [
         title: "Hot Matcha Latte",
         category: "Drikker",
         level: "Enkel",
-        description: "Varm trøst i en kopp — fløyelsmyk med perfekt latte art.",
+        description: "Varm trøst i en kopp - fløyelsmyk med perfekt latte art.",
         ingredients: ["2 g ceremonial matcha", "60 ml vann (80°C)", "200 ml varm havremelk", "Valgfritt: honning"],
         steps: [
           "Sikt matchaen i en bolle.",
@@ -188,7 +188,7 @@ const recipesRaw: RawRecipe[] = [
     time: "5 min",
     level: "Eenvoudig",
     image: recipeHojichaLatte,
-    description: "Geroosterd, nootachtig en zacht — de perfecte avondthee.",
+    description: "Geroosterd, nootachtig en zacht - de perfecte avondthee.",
     ingredients: ["2 g hojicha poeder", "30 ml heet water", "200 ml havermelk", "1 tl honing"],
     steps: [
       "Zeef hojicha in een kop.",
@@ -201,7 +201,7 @@ const recipesRaw: RawRecipe[] = [
         title: "Hojicha Oat Latte",
         category: "Getränke",
         level: "Einfach",
-        description: "Geröstet, nussig und mild — der perfekte Abendtee.",
+        description: "Geröstet, nussig und mild - der perfekte Abendtee.",
         ingredients: ["2 g Hojicha-Pulver", "30 ml heißes Wasser", "200 ml Hafermilch", "1 TL Honig"],
         steps: [
           "Siebe Hojicha in eine Tasse.",
@@ -214,7 +214,7 @@ const recipesRaw: RawRecipe[] = [
         title: "Hojicha Oat Latte",
         category: "Drikker",
         level: "Enkel",
-        description: "Ristet, nøtteaktig og mild — den perfekte kveldsteen.",
+        description: "Ristet, nøtteaktig og mild - den perfekte kveldsteen.",
         ingredients: ["2 g hojicha-pulver", "30 ml varmt vann", "200 ml havremelk", "1 ts honning"],
         steps: [
           "Sikt hojicha i en kopp.",
@@ -361,7 +361,7 @@ const recipesRaw: RawRecipe[] = [
     time: "5 min + nacht",
     level: "Eenvoudig",
     image: recipeOats,
-    description: "Bereid 's avonds — ontbijt klaar als je wakker wordt.",
+    description: "Bereid 's avonds - ontbijt klaar als je wakker wordt.",
     ingredients: ["50 g havermout", "150 ml havermelk", "1 tl matcha", "1 tl chiazaad", "1 tl ahornsiroop", "Topping naar keuze"],
     steps: [
       "Meng alle ingrediënten in een potje.",
@@ -373,7 +373,7 @@ const recipesRaw: RawRecipe[] = [
         title: "Matcha Overnight Oats",
         category: "Frühstück",
         level: "Einfach",
-        description: "Am Abend zubereiten — Frühstück fertig, wenn du aufwachst.",
+        description: "Am Abend zubereiten - Frühstück fertig, wenn du aufwachst.",
         ingredients: ["50 g Haferflocken", "150 ml Hafermilch", "1 TL Matcha", "1 TL Chiasamen", "1 TL Ahornsirup", "Topping nach Wahl"],
         steps: [
           "Alle Zutaten in einem Glas vermischen.",
@@ -385,7 +385,7 @@ const recipesRaw: RawRecipe[] = [
         title: "Matcha Overnight Oats",
         category: "Frokost",
         level: "Enkel",
-        description: "Lag den kvelden før — frokosten er klar når du våkner.",
+        description: "Lag den kvelden før - frokosten er klar når du våkner.",
         ingredients: ["50 g havregryn", "150 ml havremelk", "1 ts matcha", "1 ts chiafrø", "1 ts lønnesirup", "Valgfri topping"],
         steps: [
           "Bland alle ingrediensene i et glass med lokk.",
@@ -493,7 +493,7 @@ const recipesRaw: RawRecipe[] = [
     time: "40 min",
     level: "Medium",
     image: recipeBrownies,
-    description: "Fudgy met witte chocolade — onweerstaanbaar.",
+    description: "Fudgy met witte chocolade - onweerstaanbaar.",
     ingredients: ["200 g witte chocolade", "100 g boter", "2 eieren", "120 g suiker", "150 g bloem", "3 el matcha", "Snufje zout"],
     steps: [
       "Smelt witte chocolade en boter au bain-marie.",
@@ -507,7 +507,7 @@ const recipesRaw: RawRecipe[] = [
         title: "Matcha Brownies",
         category: "Backen",
         level: "Mittel",
-        description: "Fudgy mit weißer Schokolade — unwiderstehlich.",
+        description: "Fudgy mit weißer Schokolade - unwiderstehlich.",
         ingredients: ["200 g weiße Schokolade", "100 g Butter", "2 Eier", "120 g Zucker", "150 g Mehl", "3 EL Matcha", "Eine Prise Salz"],
         steps: [
           "Weiße Schokolade und Butter im Wasserbad schmelzen.",
@@ -521,7 +521,7 @@ const recipesRaw: RawRecipe[] = [
         title: "Matcha Brownies",
         category: "Bakverk",
         level: "Middels",
-        description: "Fudgy med hvit sjokolade — uimotståelig.",
+        description: "Fudgy med hvit sjokolade - uimotståelig.",
         ingredients: ["200 g hvit sjokolade", "100 g smør", "2 egg", "120 g sukker", "150 g hvetemel", "3 ss matcha", "En klype salt"],
         steps: [
           "Smelt hvit sjokolade og smør over vannbad.",
@@ -719,7 +719,7 @@ const recipesRaw: RawRecipe[] = [
     time: "7 min",
     level: "Eenvoudig",
     image: recipeStrawberryLatte,
-    description: "Roze-groene droom — zoete aardbeienpuree onder romige matcha.",
+    description: "Roze-groene droom - zoete aardbeienpuree onder romige matcha.",
     ingredients: ["100 g aardbeien", "1 el suiker", "2 g matcha", "30 ml warm water", "200 ml havermelk", "IJs"],
     steps: [
       "Pureer aardbeien met suiker tot een coulis.",
@@ -732,7 +732,7 @@ const recipesRaw: RawRecipe[] = [
         title: "Strawberry Matcha Latte",
         category: "Getränke",
         level: "Einfach",
-        description: "Rosa-grüner Traum — süßes Erdbeerpüree unter cremigem Matcha.",
+        description: "Rosa-grüner Traum - süßes Erdbeerpüree unter cremigem Matcha.",
         ingredients: ["100 g Erdbeeren", "1 EL Zucker", "2 g Matcha", "30 ml warmes Wasser", "200 ml Hafermilch", "Eis"],
         steps: [
           "Erdbeeren mit Zucker zu einem Coulis pürieren.",
@@ -745,7 +745,7 @@ const recipesRaw: RawRecipe[] = [
         title: "Strawberry Matcha Latte",
         category: "Drikker",
         level: "Enkel",
-        description: "En rosa-grønn drøm — søt jordbærpuré under kremet matcha.",
+        description: "En rosa-grønn drøm - søt jordbærpuré under kremet matcha.",
         ingredients: ["100 g jordbær", "1 ss sukker", "2 g matcha", "30 ml varmt vann", "200 ml havremelk", "Is"],
         steps: [
           "Kjør jordbær og sukker til en coulis.",
@@ -763,7 +763,7 @@ const recipesRaw: RawRecipe[] = [
     time: "5 min",
     level: "Medium",
     image: recipeEspressoTonic,
-    description: "Drie lagen energie — matcha, espresso en tonic in één glas.",
+    description: "Drie lagen energie - matcha, espresso en tonic in één glas.",
     ingredients: ["2 g matcha", "30 ml warm water", "1 shot espresso", "150 ml tonic", "IJs", "Citrusschil"],
     steps: [
       "Klop matcha met water tot schuimig.",
@@ -776,7 +776,7 @@ const recipesRaw: RawRecipe[] = [
         title: "Matcha Espresso Tonic",
         category: "Getränke",
         level: "Mittel",
-        description: "Drei Schichten Energie — Matcha, Espresso und Tonic in einem Glas.",
+        description: "Drei Schichten Energie - Matcha, Espresso und Tonic in einem Glas.",
         ingredients: ["2 g Matcha", "30 ml warmes Wasser", "1 Shot Espresso", "150 ml Tonic", "Eis", "Zitrusschale"],
         steps: [
           "Matcha mit Wasser schaumig schlagen.",
@@ -789,7 +789,7 @@ const recipesRaw: RawRecipe[] = [
         title: "Matcha Espresso Tonic",
         category: "Drikker",
         level: "Middels",
-        description: "Tre lag energi — matcha, espresso og tonic i ett glass.",
+        description: "Tre lag energi - matcha, espresso og tonic i ett glass.",
         ingredients: ["2 g matcha", "30 ml varmt vann", "1 shot espresso", "150 ml tonic", "Is", "Sitrusskall"],
         steps: [
           "Visp matcha med vann til det skummer.",
@@ -807,7 +807,7 @@ const recipesRaw: RawRecipe[] = [
     time: "5 min",
     level: "Eenvoudig",
     image: recipeLemonade,
-    description: "Bruisend, citrusachtig en levendig — zomer in een glas.",
+    description: "Bruisend, citrusachtig en levendig - zomer in een glas.",
     ingredients: ["2 g matcha", "30 ml warm water", "Sap van 1 citroen", "1 el honing", "200 ml bruiswater", "Munt"],
     steps: [
       "Klop matcha en water tot schuimig.",
@@ -820,7 +820,7 @@ const recipesRaw: RawRecipe[] = [
         title: "Matcha Lemonade",
         category: "Getränke",
         level: "Einfach",
-        description: "Prickelnd, zitronig und lebendig — Sommer im Glas.",
+        description: "Prickelnd, zitronig und lebendig - Sommer im Glas.",
         ingredients: ["2 g Matcha", "30 ml warmes Wasser", "Saft von 1 Zitrone", "1 EL Honig", "200 ml Sprudelwasser", "Minze"],
         steps: [
           "Matcha und Wasser schaumig schlagen.",
@@ -833,7 +833,7 @@ const recipesRaw: RawRecipe[] = [
         title: "Matcha Lemonade",
         category: "Drikker",
         level: "Enkel",
-        description: "Boblende, sitrusfrisk og livlig — sommer i et glass.",
+        description: "Boblende, sitrusfrisk og livlig - sommer i et glass.",
         ingredients: ["2 g matcha", "30 ml varmt vann", "Saften av 1 sitron", "1 ss honning", "200 ml kullsyrevann", "Mynte"],
         steps: [
           "Visp matcha og vann til det skummer.",
@@ -895,7 +895,7 @@ const recipesRaw: RawRecipe[] = [
     time: "20 min",
     level: "Medium",
     image: recipeBubbleTea,
-    description: "Speels, kauwbaar en verfrissend — met zachte tapioca pareltjes.",
+    description: "Speels, kauwbaar en verfrissend - met zachte tapioca pareltjes.",
     ingredients: ["50 g tapioca parels", "2 g matcha", "30 ml warm water", "200 ml havermelk", "1 el rietsuikersiroop", "IJs"],
     steps: [
       "Kook tapioca parels volgens verpakking.",
@@ -908,7 +908,7 @@ const recipesRaw: RawRecipe[] = [
         title: "Matcha Bubble Tea",
         category: "Getränke",
         level: "Mittel",
-        description: "Verspielt, kaubar und erfrischend — mit weichen Tapioka-Perlen.",
+        description: "Verspielt, kaubar und erfrischend - mit weichen Tapioka-Perlen.",
         ingredients: ["50 g Tapioka-Perlen", "2 g Matcha", "30 ml warmes Wasser", "200 ml Hafermilch", "1 EL Rohrzuckersirup", "Eis"],
         steps: [
           "Tapioka-Perlen nach Packungsanleitung kochen.",
@@ -921,7 +921,7 @@ const recipesRaw: RawRecipe[] = [
         title: "Matcha Bubble Tea",
         category: "Drikker",
         level: "Middels",
-        description: "Leken, tyggbar og forfriskende — med myke tapiokaperler.",
+        description: "Leken, tyggbar og forfriskende - med myke tapiokaperler.",
         ingredients: ["50 g tapiokaperler", "2 g matcha", "30 ml varmt vann", "200 ml havremelk", "1 ss rørsukkersirup", "Is"],
         steps: [
           "Kok tapiokaperlene etter anvisningen på pakken.",
@@ -983,7 +983,7 @@ const recipesRaw: RawRecipe[] = [
     time: "25 min",
     level: "Eenvoudig",
     image: recipeWaffles,
-    description: "Knapperig buiten, fluffy binnen — perfect voor luie weekenden.",
+    description: "Knapperig buiten, fluffy binnen - perfect voor luie weekenden.",
     ingredients: ["200 g bloem", "2 el matcha", "1 tl bakpoeder", "300 ml melk", "2 eieren", "50 g boter", "2 el suiker"],
     steps: [
       "Meng droge en natte ingrediënten apart.",
@@ -996,7 +996,7 @@ const recipesRaw: RawRecipe[] = [
         title: "Matcha Waffles",
         category: "Frühstück",
         level: "Einfach",
-        description: "Außen knusprig, innen fluffig — perfekt für faule Wochenenden.",
+        description: "Außen knusprig, innen fluffig - perfekt für faule Wochenenden.",
         ingredients: ["200 g Mehl", "2 EL Matcha", "1 TL Backpulver", "300 ml Milch", "2 Eier", "50 g Butter", "2 EL Zucker"],
         steps: [
           "Trockene und feuchte Zutaten getrennt vermischen.",
@@ -1009,7 +1009,7 @@ const recipesRaw: RawRecipe[] = [
         title: "Matcha Waffles",
         category: "Frokost",
         level: "Enkel",
-        description: "Sprø utenpå, luftige inni — perfekte til late helger.",
+        description: "Sprø utenpå, luftige inni - perfekte til late helger.",
         ingredients: ["200 g hvetemel", "2 ss matcha", "1 ts bakepulver", "300 ml melk", "2 egg", "50 g smør", "2 ss sukker"],
         steps: [
           "Bland tørre og våte ingredienser hver for seg.",
@@ -1071,7 +1071,7 @@ const recipesRaw: RawRecipe[] = [
     time: "15 min",
     level: "Eenvoudig",
     image: recipeFrenchToast,
-    description: "Brioche gedoopt in matcha-eimengsel — pure morgenluxe.",
+    description: "Brioche gedoopt in matcha-eimengsel - pure morgenluxe.",
     ingredients: ["4 sneetjes brioche", "2 eieren", "150 ml melk", "1 tl matcha", "1 tl vanille", "Boter", "Ahornsiroop"],
     steps: [
       "Klop eieren, melk, matcha en vanille.",
@@ -1084,7 +1084,7 @@ const recipesRaw: RawRecipe[] = [
         title: "Matcha French Toast",
         category: "Frühstück",
         level: "Einfach",
-        description: "Brioche in Matcha-Eier-Mischung getunkt — purer Morgenluxus.",
+        description: "Brioche in Matcha-Eier-Mischung getunkt - purer Morgenluxus.",
         ingredients: ["4 Scheiben Brioche", "2 Eier", "150 ml Milch", "1 TL Matcha", "1 TL Vanille", "Butter", "Ahornsirup"],
         steps: [
           "Eier, Milch, Matcha und Vanille verquirlen.",
@@ -1097,7 +1097,7 @@ const recipesRaw: RawRecipe[] = [
         title: "Matcha French Toast",
         category: "Frokost",
         level: "Enkel",
-        description: "Brioche dyppet i matcha-eggeblanding — ren morgenluksus.",
+        description: "Brioche dyppet i matcha-eggeblanding - ren morgenluksus.",
         ingredients: ["4 skiver brioche", "2 egg", "150 ml melk", "1 ts matcha", "1 ts vanilje", "Smør", "Lønnesirup"],
         steps: [
           "Visp sammen egg, melk, matcha og vanilje.",
@@ -1156,7 +1156,7 @@ const recipesRaw: RawRecipe[] = [
     time: "30 min + koelen",
     level: "Medium",
     image: recipeTruffles,
-    description: "Witte chocolade truffels gerold in matcha — pure indulgence.",
+    description: "Witte chocolade truffels gerold in matcha - pure indulgence.",
     ingredients: ["200 g witte chocolade", "100 ml slagroom", "2 el matcha", "Extra matcha om te rollen"],
     steps: [
       "Verwarm slagroom met matcha.",
@@ -1169,7 +1169,7 @@ const recipesRaw: RawRecipe[] = [
         title: "Matcha Truffles",
         category: "Snacks",
         level: "Mittel",
-        description: "Weiße-Schokolade-Trüffel, gewälzt in Matcha — purer Genuss.",
+        description: "Weiße-Schokolade-Trüffel, gewälzt in Matcha - purer Genuss.",
         ingredients: ["200 g weiße Schokolade", "100 ml Sahne", "2 EL Matcha", "Extra Matcha zum Wälzen"],
         steps: [
           "Sahne mit Matcha erhitzen.",
@@ -1182,7 +1182,7 @@ const recipesRaw: RawRecipe[] = [
         title: "Matcha Truffles",
         category: "Snacks",
         level: "Middels",
-        description: "Trøfler av hvit sjokolade rullet i matcha — ren nytelse.",
+        description: "Trøfler av hvit sjokolade rullet i matcha - ren nytelse.",
         ingredients: ["200 g hvit sjokolade", "100 ml kremfløte", "2 ss matcha", "Ekstra matcha til rulling"],
         steps: [
           "Varm opp kremfløten med matchaen.",
@@ -1291,7 +1291,7 @@ const recipesRaw: RawRecipe[] = [
     time: "30 min",
     level: "Medium",
     image: recipeMadeleines,
-    description: "Schelpvormige Franse koekjes — perfect bij een kop matcha.",
+    description: "Schelpvormige Franse koekjes - perfect bij een kop matcha.",
     ingredients: ["100 g bloem", "1 el matcha", "100 g suiker", "100 g boter", "2 eieren", "1 tl bakpoeder"],
     steps: [
       "Klop eieren en suiker bleek.",
@@ -1304,7 +1304,7 @@ const recipesRaw: RawRecipe[] = [
         title: "Matcha Madeleines",
         category: "Backen",
         level: "Mittel",
-        description: "Muschelförmige französische Gebäckstücke — perfekt zu einer Tasse Matcha.",
+        description: "Muschelförmige französische Gebäckstücke - perfekt zu einer Tasse Matcha.",
         ingredients: ["100 g Mehl", "1 EL Matcha", "100 g Zucker", "100 g Butter", "2 Eier", "1 TL Backpulver"],
         steps: [
           "Eier und Zucker hell schlagen.",
@@ -1317,7 +1317,7 @@ const recipesRaw: RawRecipe[] = [
         title: "Matcha Madeleines",
         category: "Bakverk",
         level: "Middels",
-        description: "Skjellformede franske småkaker — perfekte til en kopp matcha.",
+        description: "Skjellformede franske småkaker - perfekte til en kopp matcha.",
         ingredients: ["100 g hvetemel", "1 ss matcha", "100 g sukker", "100 g smør", "2 egg", "1 ts bakepulver"],
         steps: [
           "Visp egg og sukker lyst og luftig.",
@@ -1379,7 +1379,7 @@ const recipesRaw: RawRecipe[] = [
     time: "30 min",
     level: "Medium",
     image: recipeScones,
-    description: "Engelse scones met matcha — heerlijk bij high tea.",
+    description: "Engelse scones met matcha - heerlijk bij high tea.",
     ingredients: ["300 g bloem", "2 el matcha", "60 g suiker", "100 g boter (koud)", "200 ml karnemelk", "1 tl bakpoeder"],
     steps: [
       "Wrijf boter door bloem, matcha, suiker en bakpoeder.",
@@ -1392,7 +1392,7 @@ const recipesRaw: RawRecipe[] = [
         title: "Matcha Scones",
         category: "Backen",
         level: "Mittel",
-        description: "Englische Scones mit Matcha — herrlich zum High Tea.",
+        description: "Englische Scones mit Matcha - herrlich zum High Tea.",
         ingredients: ["300 g Mehl", "2 EL Matcha", "60 g Zucker", "100 g Butter (kalt)", "200 ml Buttermilch", "1 TL Backpulver"],
         steps: [
           "Butter mit Mehl, Matcha, Zucker und Backpulver verreiben.",
@@ -1405,7 +1405,7 @@ const recipesRaw: RawRecipe[] = [
         title: "Matcha Scones",
         category: "Bakverk",
         level: "Middels",
-        description: "Engelske scones med matcha — herlige til high tea.",
+        description: "Engelske scones med matcha - herlige til high tea.",
         ingredients: ["300 g hvetemel", "2 ss matcha", "60 g sukker", "100 g smør (kaldt)", "200 ml kjernemelk", "1 ts bakepulver"],
         steps: [
           "Smuldre smøret inn i mel, matcha, sukker og bakepulver.",
@@ -1467,7 +1467,7 @@ const recipesRaw: RawRecipe[] = [
     time: "5 min",
     level: "Eenvoudig",
     image: recipeAffogato,
-    description: "Vanille-ijs verdronken in hete matcha — Italiaans-Japanse fusion.",
+    description: "Vanille-ijs verdronken in hete matcha - Italiaans-Japanse fusion.",
     ingredients: ["2 bollen vanille-ijs", "2 g matcha", "60 ml warm water"],
     steps: [
       "Schep ijs in een glas of kom.",
@@ -1480,7 +1480,7 @@ const recipesRaw: RawRecipe[] = [
         title: "Matcha Affogato",
         category: "Desserts",
         level: "Einfach",
-        description: "Vanilleeis ertränkt in heißem Matcha — italienisch-japanische Fusion.",
+        description: "Vanilleeis ertränkt in heißem Matcha - italienisch-japanische Fusion.",
         ingredients: ["2 Kugeln Vanilleeis", "2 g Matcha", "60 ml warmes Wasser"],
         steps: [
           "Eis in ein Glas oder eine Schale geben.",
@@ -1493,7 +1493,7 @@ const recipesRaw: RawRecipe[] = [
         title: "Matcha Affogato",
         category: "Desserter",
         level: "Enkel",
-        description: "Vaniljeis druknet i varm matcha — italiensk-japansk fusion.",
+        description: "Vaniljeis druknet i varm matcha - italiensk-japansk fusion.",
         ingredients: ["2 kuler vaniljeis", "2 g matcha", "60 ml varmt vann"],
         steps: [
           "Legg isen i et glass eller en bolle.",

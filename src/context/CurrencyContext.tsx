@@ -8,7 +8,7 @@ export const currencies: { code: Currency; label: string; symbol: string }[] = [
   { code: "NOK", label: "Norske kroner (kr)", symbol: "kr" },
 ];
 
-/** Vaste koers voor NOK-prijzen — de checkout rekent ook in NOK af. */
+/** Vaste koers voor NOK-prijzen - de checkout rekent ook in NOK af. */
 export const EUR_TO_NOK = 11.5;
 
 /** Gratis-verzenddrempel en verzendkosten per valuta. Eén bron van waarheid. */
@@ -19,7 +19,7 @@ export const SHIPPING_COST_NOK = 59;
 
 /**
  * Nette Noorse prijzen: rond af naar het dichtstbijzijnde bedrag dat op 9 eindigt
- * (218,5 kr → 219 kr). Alleen voor stuksprijzen — totalen worden opgebouwd uit
+ * (218,5 kr → 219 kr). Alleen voor stuksprijzen - totalen worden opgebouwd uit
  * afgeronde stuksprijzen zodat wat de klant ziet exact is wat wordt afgerekend.
  */
 const charmNOK = (nok: number) => {

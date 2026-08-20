@@ -8,7 +8,7 @@ function getStripe() {
   if (!stripePromise) {
     const key = buqeConfig.payments.stripe.publicKey;
     if (!key) {
-      console.error("[BUQE Commerce] VITE_STRIPE_PUBLIC_KEY ontbreekt — voeg toe aan .env");
+      console.error("[BUQE Commerce] VITE_STRIPE_PUBLIC_KEY ontbreekt - voeg toe aan .env");
       return null;
     }
     stripePromise = loadStripe(key);

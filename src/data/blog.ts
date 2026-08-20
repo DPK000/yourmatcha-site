@@ -68,11 +68,11 @@ Een matcha latte is meer dan alleen matcha en melk. Het is een ritueel, een mome
 - Optioneel: een snufje vanille of honing
 
 ### Stappen
-1. **Zeef je matcha** — Dit voorkomt klontjes en zorgt voor een gladde textuur.
-2. **Voeg warm water toe** — Gebruik water van 80°C, niet kokend.
-3. **Klop tot schuimig** — Gebruik een chasen of melkopschuimer.
-4. **Schuim je melk op** — Verwarm en schuim je melk apart.
-5. **Combineer** — Giet de opgeschuimde melk over de matcha.
+1. **Zeef je matcha** - Dit voorkomt klontjes en zorgt voor een gladde textuur.
+2. **Voeg warm water toe** - Gebruik water van 80°C, niet kokend.
+3. **Klop tot schuimig** - Gebruik een chasen of melkopschuimer.
+4. **Schuim je melk op** - Verwarm en schuim je melk apart.
+5. **Combineer** - Giet de opgeschuimde melk over de matcha.
 
 ### Tips
 - Gebruik altijd gezeefde matcha voor de beste resultaten
@@ -97,11 +97,11 @@ Eine Matcha Latte ist mehr als nur Matcha und Milch. Es ist ein Ritual, ein Mome
 - Optional: eine Prise Vanille oder Honig
 
 ### Schritte
-1. **Sieb deinen Matcha** — Das verhindert Klümpchen und sorgt für eine glatte Textur.
-2. **Warmes Wasser hinzufügen** — Verwende Wasser bei 80°C, nicht kochend.
-3. **Schaumig schlagen** — Verwende einen Chasen oder Milchaufschäumer.
-4. **Milch aufschäumen** — Erhitze und schäume deine Milch separat auf.
-5. **Kombinieren** — Gieße die aufgeschäumte Milch über den Matcha.
+1. **Sieb deinen Matcha** - Das verhindert Klümpchen und sorgt für eine glatte Textur.
+2. **Warmes Wasser hinzufügen** - Verwende Wasser bei 80°C, nicht kochend.
+3. **Schaumig schlagen** - Verwende einen Chasen oder Milchaufschäumer.
+4. **Milch aufschäumen** - Erhitze und schäume deine Milch separat auf.
+5. **Kombinieren** - Gieße die aufgeschäumte Milch über den Matcha.
 
 ### Tipps
 - Verwende immer gesiebten Matcha für die besten Ergebnisse
@@ -122,11 +122,11 @@ En matcha latte er mer enn bare matcha og melk. Det er et ritual, et øyeblikk a
 - Valgfritt: en klype vanilje eller honning
 
 ### Steg
-1. **Sikt matchaen** — Dette forhindrer klumper og gir en glatt tekstur.
-2. **Tilsett varmt vann** — Bruk vann på 80 °C, ikke kokende.
-3. **Visp til det skummer** — Bruk en chasen eller melkeskummer.
-4. **Skum melken** — Varm og skum melken separat.
-5. **Kombiner** — Hell den skummede melken over matchaen.
+1. **Sikt matchaen** - Dette forhindrer klumper og gir en glatt tekstur.
+2. **Tilsett varmt vann** - Bruk vann på 80 °C, ikke kokende.
+3. **Visp til det skummer** - Bruk en chasen eller melkeskummer.
+4. **Skum melken** - Varm og skum melken separat.
+5. **Kombiner** - Hell den skummede melken over matchaen.
 
 ### Tips
 - Bruk alltid siktet matcha for best resultat
@@ -167,7 +167,7 @@ Drink je matcha puur met alleen water? Kies ceremonial grade. Meng je het met me
     i18n: {
       de: {
         title: "Ceremonial vs Culinary Grade: Was ist der Unterschied?",
-        excerpt: "Lerne den Unterschied zwischen Ceremonial und Culinary Grade Matcha — und wann du welchen verwendest.",
+        excerpt: "Lerne den Unterschied zwischen Ceremonial und Culinary Grade Matcha - und wann du welchen verwendest.",
         content: `## Ceremonial vs Culinary Grade Matcha
 
 Nicht jeder Matcha ist gleich. Der wichtigste Unterschied ist der zwischen Ceremonial und Culinary Grade. Aber was bedeutet das genau?
@@ -191,7 +191,7 @@ Trinkst du Matcha pur mit Wasser? Wähle Ceremonial Grade. Mischst du ihn mit Mi
       },
       no: {
         title: "Ceremonial vs Culinary Grade: Hva er forskjellen?",
-        excerpt: "Lær forskjellen mellom ceremonial og culinary grade matcha — og når du bruker hvilken.",
+        excerpt: "Lær forskjellen mellom ceremonial og culinary grade matcha - og når du bruker hvilken.",
         content: `## Ceremonial vs Culinary Grade matcha
 
 Ikke all matcha er skapt lik. Det viktigste skillet går mellom ceremonial og culinary grade. Men hva betyr det egentlig?
@@ -293,19 +293,19 @@ Den tidløse favoritten som alltid fungerer.`,
     id: "4",
     slug: "7-matcha-fouten-beginners",
     title: "7 Matcha Fouten die Beginners Maken (en Hoe Je Ze Vermijdt)",
-    excerpt: "Bitter, klonterig of vlak van smaak? In 9 van de 10 gevallen is het één van deze fouten — en allemaal zijn ze in 30 seconden te fixen.",
+    excerpt: "Bitter, klonterig of vlak van smaak? In 9 van de 10 gevallen is het één van deze fouten - en allemaal zijn ze in 30 seconden te fixen.",
     content: `## De Top 7 Beginner-fouten
 
 Iedereen die met matcha begint maakt minstens drie van deze fouten. Goed nieuws: ze zijn allemaal makkelijk te corrigeren.
 
 ### 1. Kokend water gebruiken
-Dit is veruit de meest gemaakte fout. Matcha is geen zwarte thee — kokend water (100 °C) verbrandt het poeder en geeft een bittere, scherpe smaak. Gebruik water van **75–80 °C**. Geen thermometer? Kook water en wacht 60 seconden.
+Dit is veruit de meest gemaakte fout. Matcha is geen zwarte thee - kokend water (100 °C) verbrandt het poeder en geeft een bittere, scherpe smaak. Gebruik water van **75–80 °C**. Geen thermometer? Kook water en wacht 60 seconden.
 
 ### 2. Niet zeven
-Matcha is hygroscopisch — het trekt vocht aan en klontjes vormen meteen. Een fijne zeef (10 seconden werk) lost 80% van alle problemen op.
+Matcha is hygroscopisch - het trekt vocht aan en klontjes vormen meteen. Een fijne zeef (10 seconden werk) lost 80% van alle problemen op.
 
 ### 3. Te veel matcha gebruiken
-Meer is niet beter. **2 gram (1 theelepel)** per kop is standaard. Boven 3 gram krijg je een onaangenaam intens, bijna kruidige smaak — vaak verward met "slechte matcha".
+Meer is niet beter. **2 gram (1 theelepel)** per kop is standaard. Boven 3 gram krijg je een onaangenaam intens, bijna kruidige smaak - vaak verward met "slechte matcha".
 
 ### 4. Suiker direct in de matcha doen
 Suiker lost niet op in pure matcha-water. Het wordt korrelig. **Zoet altijd de melk apart** (honing, vanille of agave) en combineer pas daarna.
@@ -314,10 +314,10 @@ Suiker lost niet op in pure matcha-water. Het wordt korrelig. **Zoet altijd de m
 Geopende matcha is op zijn best in **de eerste 4–6 weken**. Daarna verliest de smaak fineur en de kleur dofts uit. Koop kleinere zakjes als je niet dagelijks drinkt.
 
 ### 6. Culinary gebruiken om puur te drinken
-Culinary grade is bedoeld voor lattes en bakken — robuust met lichte bitterheid. Drink je puur met water? Kies dan ceremonial grade.
+Culinary grade is bedoeld voor lattes en bakken - robuust met lichte bitterheid. Drink je puur met water? Kies dan ceremonial grade.
 
 ### 7. Cirkels kloppen
-Een chasen werkt alleen met **horizontale M- of W-bewegingen**, niet met cirkels. Cirkels mengen niet — ze duwen matcha alleen rond.
+Een chasen werkt alleen met **horizontale M- of W-bewegingen**, niet met cirkels. Cirkels mengen niet - ze duwen matcha alleen rond.
 
 ## De Fix-Checklist
 - Water: 75–80 °C, niet kokend
@@ -336,19 +336,19 @@ Volg deze zeven regels en je matcha smaakt direct een tier hoger.`,
     i18n: {
       no: {
         title: "7 matchafeil nybegynnere gjør (og hvordan du unngår dem)",
-        excerpt: "Bitter, klumpete eller flat på smak? I 9 av 10 tilfeller skyldes det én av disse feilene — og alle kan fikses på 30 sekunder.",
+        excerpt: "Bitter, klumpete eller flat på smak? I 9 av 10 tilfeller skyldes det én av disse feilene - og alle kan fikses på 30 sekunder.",
         content: `## De 7 vanligste nybegynnerfeilene
 
 Alle som begynner med matcha gjør minst tre av disse feilene. Gode nyheter: alle er enkle å rette opp.
 
 ### 1. Å bruke kokende vann
-Dette er den desidert vanligste feilen. Matcha er ikke svart te — kokende vann (100 °C) brenner pulveret og gir en bitter, skarp smak. Bruk vann på **75–80 °C**. Ikke noe termometer? Kok opp vann og vent 60 sekunder.
+Dette er den desidert vanligste feilen. Matcha er ikke svart te - kokende vann (100 °C) brenner pulveret og gir en bitter, skarp smak. Bruk vann på **75–80 °C**. Ikke noe termometer? Kok opp vann og vent 60 sekunder.
 
 ### 2. Å ikke sikte
-Matcha er hygroskopisk — den trekker til seg fuktighet, og klumper dannes med en gang. En finmasket sikt (10 sekunders arbeid) løser 80 % av alle problemer.
+Matcha er hygroskopisk - den trekker til seg fuktighet, og klumper dannes med en gang. En finmasket sikt (10 sekunders arbeid) løser 80 % av alle problemer.
 
 ### 3. Å bruke for mye matcha
-Mer er ikke bedre. **2 gram (1 teskje)** per kopp er standard. Over 3 gram får du en ubehagelig intens, nesten krydret smak — ofte forvekslet med «dårlig matcha».
+Mer er ikke bedre. **2 gram (1 teskje)** per kopp er standard. Over 3 gram får du en ubehagelig intens, nesten krydret smak - ofte forvekslet med «dårlig matcha».
 
 ### 4. Å ha sukker rett i matchaen
 Sukker løser seg ikke opp i ren matcha og vann. Det blir kornete. **Søt alltid melken separat** (honning, vanilje eller agave) og kombiner først etterpå.
@@ -357,10 +357,10 @@ Sukker løser seg ikke opp i ren matcha og vann. Det blir kornete. **Søt alltid
 Åpnet matcha er på sitt beste **de første 4–6 ukene**. Etter det mister smaken finessen, og fargen blekner. Kjøp mindre poser hvis du ikke drikker daglig.
 
 ### 6. Å bruke culinary til å drikke ren
-Culinary grade er laget for latter og baking — robust med en lett bitterhet. Drikker du matchaen ren med vann? Velg ceremonial grade.
+Culinary grade er laget for latter og baking - robust med en lett bitterhet. Drikker du matchaen ren med vann? Velg ceremonial grade.
 
 ### 7. Å vispe i sirkler
-En chasen fungerer bare med **horisontale M- eller W-bevegelser**, ikke sirkler. Sirkler blander ikke — de bare skyver matchaen rundt.
+En chasen fungerer bare med **horisontale M- eller W-bevegelser**, ikke sirkler. Sirkler blander ikke - de bare skyver matchaen rundt.
 
 ## Fiks-sjekklisten
 - Vann: 75–80 °C, ikke kokende
@@ -379,30 +379,30 @@ Følg disse syv reglene, og matchaen din smaker umiddelbart et hakk bedre.`,
     id: "5",
     slug: "matcha-morning-routine",
     title: "Onze Morning Routine: Een Dag in Matcha bij YourMatcha",
-    excerpt: "Bij YourMatcha drinken we matcha de hele dag door. Hier is hoe we onze koppen verdelen — en waarom timing alles is.",
+    excerpt: "Bij YourMatcha drinken we matcha de hele dag door. Hier is hoe we onze koppen verdelen - en waarom timing alles is.",
     content: `## Een Werkdag in Matcha
 
 Bij YourMatcha hebben we matcha niet alleen als bedrijf, maar ook als dagelijkse ritueel. Zo ziet een typische werkdag eruit.
 
-### 7:00 — Ochtend usucha
+### 7:00 - Ochtend usucha
 We beginnen met **2 gram ceremonial matcha, puur met 60 ml water op 75 °C**. Geen melk, geen suiker. Dit is het moment om de smaak echt te proeven en de dag rustig in te zetten.
 
 Waarom puur? Op een nuchtere maag voel je het effect van L-theanine en cafeïne het scherpst. Drie minuten focus zonder afleiding, en dan starten.
 
-### 9:30 — Hot matcha latte
-Tweede kop tijdens de eerste werkblok. Een **culinary matcha latte met havermelk barista** — romig, langer-houdbaar dan puur, en perfect voor een 90-minuten focusblok.
+### 9:30 - Hot matcha latte
+Tweede kop tijdens de eerste werkblok. Een **culinary matcha latte met havermelk barista** - romig, langer-houdbaar dan puur, en perfect voor een 90-minuten focusblok.
 
-### 12:30 — Lunchpauze, geen matcha
+### 12:30 - Lunchpauze, geen matcha
 Na de lunch geen matcha tot 14:00. Eerst eten, dan rust.
 
-### 14:00 — Iced matcha
-De middagpiek. Onze **iced matcha blend** met koud water en havermelk. Cafeïne werkt nog tot 18:00–19:00 — daarom is dit onze laatste kop.
+### 14:00 - Iced matcha
+De middagpiek. Onze **iced matcha blend** met koud water en havermelk. Cafeïne werkt nog tot 18:00–19:00 - daarom is dit onze laatste kop.
 
-### 16:00 — Hojicha (geen matcha)
-Hier schakelen we over naar **hojicha** — geroosterde groene thee met slechts 7 mg cafeïne. Hetzelfde ritueel, geen slaapverstoring.
+### 16:00 - Hojicha (geen matcha)
+Hier schakelen we over naar **hojicha** - geroosterde groene thee met slechts 7 mg cafeïne. Hetzelfde ritueel, geen slaapverstoring.
 
-### 19:00 — Genmaicha bij eten
-Bij het diner serveren we vaak genmaicha — Japanse rijstthee, nootachtig, kalmerend.
+### 19:00 - Genmaicha bij eten
+Bij het diner serveren we vaak genmaicha - Japanse rijstthee, nootachtig, kalmerend.
 
 ## De Regel: Vier Koppen Maximum
 
@@ -410,7 +410,7 @@ We houden ons aan **maximaal vier matcha-koppen per dag** (3x ceremonial/culinar
 
 ## Wat is Jouw Routine?
 
-Iedereen heeft een andere bioritme. Sommige collega's drinken één perfecte kop matcha per dag. Anderen alleen tijdens deep work. De sleutel is consistentie — niet hoeveelheid.
+Iedereen heeft een andere bioritme. Sommige collega's drinken één perfecte kop matcha per dag. Anderen alleen tijdens deep work. De sleutel is consistentie - niet hoeveelheid.
 
 Probeer een week lang dezelfde matcha-routine en zie wat het met je energie doet.`,
     category: "Behind the Brand",
@@ -420,30 +420,30 @@ Probeer een week lang dezelfde matcha-routine en zie wat het met je energie doet
     i18n: {
       no: {
         title: "Morgenrutinen vår: En dag i matcha hos YourMatcha",
-        excerpt: "Hos YourMatcha drikker vi matcha hele dagen. Slik fordeler vi koppene våre — og derfor er timing alt.",
+        excerpt: "Hos YourMatcha drikker vi matcha hele dagen. Slik fordeler vi koppene våre - og derfor er timing alt.",
         content: `## En arbeidsdag i matcha
 
 Hos YourMatcha er matcha ikke bare bedriften vår, men også et daglig ritual. Slik ser en typisk arbeidsdag ut.
 
-### 7:00 — Morgenens usucha
+### 7:00 - Morgenens usucha
 Vi starter med **2 gram ceremonial matcha, ren med 60 ml vann på 75 °C**. Ingen melk, ikke noe sukker. Dette er øyeblikket for å virkelig kjenne smaken og starte dagen rolig.
 
-Hvorfor ren? På tom mage merker du effekten av L-theanin og koffein aller tydeligst. Tre minutter fokus uten distraksjoner — og så i gang.
+Hvorfor ren? På tom mage merker du effekten av L-theanin og koffein aller tydeligst. Tre minutter fokus uten distraksjoner - og så i gang.
 
-### 9:30 — Varm matcha latte
-Kopp nummer to i løpet av den første arbeidsøkten. En **culinary matcha latte med havremelk barista** — kremet, varer lenger enn ren matcha, og perfekt for en 90-minutters fokusøkt.
+### 9:30 - Varm matcha latte
+Kopp nummer to i løpet av den første arbeidsøkten. En **culinary matcha latte med havremelk barista** - kremet, varer lenger enn ren matcha, og perfekt for en 90-minutters fokusøkt.
 
-### 12:30 — Lunsjpause, ingen matcha
+### 12:30 - Lunsjpause, ingen matcha
 Etter lunsj ingen matcha før 14:00. Først mat, så ro.
 
-### 14:00 — Iced matcha
-Ettermiddagstoppen. Vår **iced matcha blend** med kaldt vann og havremelk. Koffeinen virker helt til 18:00–19:00 — derfor er dette dagens siste kopp.
+### 14:00 - Iced matcha
+Ettermiddagstoppen. Vår **iced matcha blend** med kaldt vann og havremelk. Koffeinen virker helt til 18:00–19:00 - derfor er dette dagens siste kopp.
 
-### 16:00 — Hojicha (ikke matcha)
-Her bytter vi til **hojicha** — ristet grønn te med bare 7 mg koffein. Samme ritual, ingen forstyrret nattesøvn.
+### 16:00 - Hojicha (ikke matcha)
+Her bytter vi til **hojicha** - ristet grønn te med bare 7 mg koffein. Samme ritual, ingen forstyrret nattesøvn.
 
-### 19:00 — Genmaicha til maten
-Til middag serverer vi ofte genmaicha — japansk grønn te med ristet ris, nøtteaktig og beroligende.
+### 19:00 - Genmaicha til maten
+Til middag serverer vi ofte genmaicha - japansk grønn te med ristet ris, nøtteaktig og beroligende.
 
 ## Regelen: Maks fire kopper
 
@@ -451,7 +451,7 @@ Vi holder oss til **maksimalt fire kopper matcha om dagen** (3x ceremonial/culin
 
 ## Hva er din rutine?
 
-Alle har sin egen biorytme. Noen kolleger drikker én perfekt kopp matcha om dagen. Andre bare under deep work. Nøkkelen er konsistens — ikke mengde.
+Alle har sin egen biorytme. Noen kolleger drikker én perfekt kopp matcha om dagen. Andre bare under deep work. Nøkkelen er konsistens - ikke mengde.
 
 Prøv den samme matcharutinen i en uke, og se hva den gjør med energien din.`,
       },
@@ -464,15 +464,15 @@ Prøv den samme matcharutinen i en uke, og se hva den gjør med energien din.`,
     excerpt: "Vorig voorjaar bezochten we de familie Tanaka in Uji. Dit is wat we leerden over het verschil tussen marketing-matcha en echt ambacht.",
     content: `## Een Reis naar de Bron
 
-In april 2026 vlogen we voor het derde jaar op rij naar Uji — een kleine regio ten zuiden van Kyoto die al 800 jaar premium matcha produceert. Ons doel: de eerste oogst (ichibancha) bijwonen op de familieboerderij waar onze ceremonial matcha vandaan komt.
+In april 2026 vlogen we voor het derde jaar op rij naar Uji - een kleine regio ten zuiden van Kyoto die al 800 jaar premium matcha produceert. Ons doel: de eerste oogst (ichibancha) bijwonen op de familieboerderij waar onze ceremonial matcha vandaan komt.
 
 ### Het Begin: 04:30 in de Mist
 
-De eerste oogst gebeurt in de vroege ochtend, wanneer de mist nog over de theevelden hangt. De Tanaka-familie werkt al sinds 1872 op dezelfde velden. Geen toeristen, geen Instagram-shoots — gewoon werken.
+De eerste oogst gebeurt in de vroege ochtend, wanneer de mist nog over de theevelden hangt. De Tanaka-familie werkt al sinds 1872 op dezelfde velden. Geen toeristen, geen Instagram-shoots - gewoon werken.
 
 ### Twintig Dagen Beschaduwen
 
-Wat ons elke keer raakt: drie weken voor de oogst worden alle planten met doek bedekt. Dit dwingt de plant om meer chlorofyl en L-theanine te produceren — verantwoordelijk voor het diepe groen en de umami-smaak. Het is arbeidsintensief en risicovol (schimmel, regen) — en het is wat echte matcha onderscheidt.
+Wat ons elke keer raakt: drie weken voor de oogst worden alle planten met doek bedekt. Dit dwingt de plant om meer chlorofyl en L-theanine te produceren - verantwoordelijk voor het diepe groen en de umami-smaak. Het is arbeidsintensief en risicovol (schimmel, regen) - en het is wat echte matcha onderscheidt.
 
 ### Handpluk: Alleen de Jongste Blaadjes
 
@@ -480,23 +480,23 @@ Geen machines. Alleen vrouwen die al decennia plukken, op het oog herkennend wel
 
 ### De Stenen Molens
 
-Het meest indrukwekkende moment: de **ishi-usu** — granieten stenen molens die al 60 jaar in de familie zijn. Eén molen produceert **30 gram matcha per uur**. Dat is waarom premium matcha zo duur is — je betaalt voor tijd en techniek die letterlijk niet sneller kan.
+Het meest indrukwekkende moment: de **ishi-usu** - granieten stenen molens die al 60 jaar in de familie zijn. Eén molen produceert **30 gram matcha per uur**. Dat is waarom premium matcha zo duur is - je betaalt voor tijd en techniek die letterlijk niet sneller kan.
 
 ### Wat We Leerden
 
 1. **Marketing-matcha en echt ambacht zijn niet hetzelfde**. Veel "Japanse" matcha op Europese markten komt van industriële ball-mills, niet stenen.
 2. **Familieboerderijen zijn een aflopende zaak**. Jonge Japanners willen vaak iets anders, dus directe relaties met deze boerderijen worden steeds zeldzamer.
-3. **Smaak vertelt het verhaal**. Onze ceremonial matcha smaakt zoals het smaakt door deze 800 jaar accumulatie — niet door marketing.
+3. **Smaak vertelt het verhaal**. Onze ceremonial matcha smaakt zoals het smaakt door deze 800 jaar accumulatie - niet door marketing.
 
 ## Waarom We Geen Tussenhandelaren Gebruiken
 
 We werken sinds 2022 direct met deze familie. Geen importeur tussen ons en de boerderij. Dat betekent een eerlijke prijs voor de boer én transparantie voor jou.
 
-In onze [herkomst-pagina](/herkomst) zie je de complete keten — van veld tot zakje.
+In onze [herkomst-pagina](/herkomst) zie je de complete keten - van veld tot zakje.
 
 ## Wat Komt Hierna?
 
-Volgend voorjaar gaan we terug — deze keer voor een uitgebreide proefsessie van competitieve grade matcha (boven ceremonial). Houd de blog in de gaten.`,
+Volgend voorjaar gaan we terug - deze keer voor een uitgebreide proefsessie van competitieve grade matcha (boven ceremonial). Houd de blog in de gaten.`,
     category: "Behind the Brand",
     readTime: "5 min",
     date: "2026-04-08",
@@ -507,15 +507,15 @@ Volgend voorjaar gaan we terug — deze keer voor een uitgebreide proefsessie va
         excerpt: "I fjor vår besøkte vi familien Tanaka i Uji. Dette lærte vi om forskjellen mellom markedsførings-matcha og ekte håndverk.",
         content: `## En reise til kilden
 
-I april 2026 fløy vi for tredje år på rad til Uji — en liten region sør for Kyoto som har produsert premium matcha i 800 år. Målet vårt: å være med på den første innhøstingen (ichibancha) på familiegården der vår ceremonial matcha kommer fra.
+I april 2026 fløy vi for tredje år på rad til Uji - en liten region sør for Kyoto som har produsert premium matcha i 800 år. Målet vårt: å være med på den første innhøstingen (ichibancha) på familiegården der vår ceremonial matcha kommer fra.
 
 ### Starten: 04:30 i tåken
 
-Den første innhøstingen skjer tidlig om morgenen, mens tåken fortsatt ligger over temarkene. Tanaka-familien har dyrket de samme markene siden 1872. Ingen turister, ingen Instagram-fotografering — bare arbeid.
+Den første innhøstingen skjer tidlig om morgenen, mens tåken fortsatt ligger over temarkene. Tanaka-familien har dyrket de samme markene siden 1872. Ingen turister, ingen Instagram-fotografering - bare arbeid.
 
 ### Tjue dager i skyggen
 
-Det som griper oss hver gang: tre uker før innhøstingen dekkes alle plantene til med duk. Det tvinger planten til å produsere mer klorofyll og L-theanin — det som gir den dype grønnfargen og umamismaken. Det er arbeidskrevende og risikabelt (mugg, regn) — og det er nettopp dette som skiller ekte matcha fra resten.
+Det som griper oss hver gang: tre uker før innhøstingen dekkes alle plantene til med duk. Det tvinger planten til å produsere mer klorofyll og L-theanin - det som gir den dype grønnfargen og umamismaken. Det er arbeidskrevende og risikabelt (mugg, regn) - og det er nettopp dette som skiller ekte matcha fra resten.
 
 ### Håndplukking: Bare de yngste bladene
 
@@ -523,23 +523,23 @@ Ingen maskiner. Bare kvinner som har plukket i flere tiår, og som ser på øyem
 
 ### Steinmøllene
 
-Det mest imponerende øyeblikket: **ishi-usu** — steinmøller i granitt som har vært i familien i 60 år. Én mølle produserer **30 gram matcha i timen**. Det er derfor premium matcha er så dyr — du betaler for tid og teknikk som bokstavelig talt ikke kan gå fortere.
+Det mest imponerende øyeblikket: **ishi-usu** - steinmøller i granitt som har vært i familien i 60 år. Én mølle produserer **30 gram matcha i timen**. Det er derfor premium matcha er så dyr - du betaler for tid og teknikk som bokstavelig talt ikke kan gå fortere.
 
 ### Hva vi lærte
 
 1. **Markedsførings-matcha og ekte håndverk er ikke det samme.** Mye «japansk» matcha på det europeiske markedet kommer fra industrielle kulemøller, ikke stein.
 2. **Familiegårdene er i ferd med å forsvinne.** Unge japanere vil ofte noe annet, så direkte relasjoner med disse gårdene blir stadig sjeldnere.
-3. **Smaken forteller historien.** Vår ceremonial matcha smaker som den gjør takket være 800 år med akkumulert kunnskap — ikke takket være markedsføring.
+3. **Smaken forteller historien.** Vår ceremonial matcha smaker som den gjør takket være 800 år med akkumulert kunnskap - ikke takket være markedsføring.
 
 ## Derfor bruker vi ingen mellomledd
 
-Vi har jobbet direkte med denne familien siden 2022. Ingen importør mellom oss og gården. Det betyr en rettferdig pris til bonden — og full åpenhet for deg.
+Vi har jobbet direkte med denne familien siden 2022. Ingen importør mellom oss og gården. Det betyr en rettferdig pris til bonden - og full åpenhet for deg.
 
-På [opprinnelsessiden vår](/herkomst) ser du hele kjeden — fra mark til pose.
+På [opprinnelsessiden vår](/herkomst) ser du hele kjeden - fra mark til pose.
 
 ## Hva skjer videre?
 
-Neste vår drar vi tilbake — denne gangen for en grundig smakssesjon med competitive grade matcha (over ceremonial). Følg med på bloggen.`,
+Neste vår drar vi tilbake - denne gangen for en grundig smakssesjon med competitive grade matcha (over ceremonial). Følg med på bloggen.`,
       },
     },
   },
@@ -547,10 +547,10 @@ Neste vår drar vi tilbake — denne gangen for en grundig smakssesjon med compe
     id: "7",
     slug: "lente-matcha-recepten-2026",
     title: "Lente 2026: 3 Nieuwe Matcha Recepten voor het Seizoen",
-    excerpt: "Sakura, aardbeien en eerste-oogst matcha — drie verse recepten die de lente in een glas vangen.",
+    excerpt: "Sakura, aardbeien en eerste-oogst matcha - drie verse recepten die de lente in een glas vangen.",
     content: `## Drie Lente-recepten met Matcha
 
-De lente is hét matcha-seizoen — de ichibancha (eerste oogst) is op zijn frist en de smaken zijn op hun delicaatst. Hier zijn drie recepten die we deze maand het meest maken.
+De lente is hét matcha-seizoen - de ichibancha (eerste oogst) is op zijn frist en de smaken zijn op hun delicaatst. Hier zijn drie recepten die we deze maand het meest maken.
 
 ### 1. Strawberry Matcha Latte (iced)
 
@@ -592,7 +592,7 @@ Een complete versie staat in onze [recepten-sectie](/recepten/matcha-mochi).
 
 ### 3. Matcha Asparagus Risotto
 
-Verrassend hartig — matcha door risotto geeft een prachtige groene kleur en subtiele umami die past bij witte asperges.
+Verrassend hartig - matcha door risotto geeft een prachtige groene kleur en subtiele umami die past bij witte asperges.
 
 **Ingrediënten:**
 - 250 g arborio rijst
@@ -609,13 +609,13 @@ Verrassend hartig — matcha door risotto geeft een prachtige groene kleur en su
 3. Voeg na 15 min asperges toe.
 4. Op het laatste moment: matcha door de risotto, samen met Parmezaan.
 
-Het matcha-poeder mag niet meekoken — hitte verbrandt het. Toevoegen aan het einde, vlak voor serveren.
+Het matcha-poeder mag niet meekoken - hitte verbrandt het. Toevoegen aan het einde, vlak voor serveren.
 
 ## Welke Matcha Bij Deze Recepten?
 
-- **Strawberry latte**: culinary of premium ceremonial — beide werken.
-- **Mochi**: ceremonial — de pure smaak komt door.
-- **Risotto**: culinary — robuust genoeg voor cooking.
+- **Strawberry latte**: culinary of premium ceremonial - beide werken.
+- **Mochi**: ceremonial - de pure smaak komt door.
+- **Risotto**: culinary - robuust genoeg voor cooking.
 
 Lees onze [koopgids](/kennis/beste-matcha-kopen-2026) voor de juiste keuze.`,
     category: "Recepten",
@@ -625,10 +625,10 @@ Lees onze [koopgids](/kennis/beste-matcha-kopen-2026) voor de juiste keuze.`,
     i18n: {
       no: {
         title: "Våren 2026: 3 nye matchaoppskrifter for sesongen",
-        excerpt: "Sakura, jordbær og førstehøstet matcha — tre ferske oppskrifter som fanger våren i et glass.",
+        excerpt: "Sakura, jordbær og førstehøstet matcha - tre ferske oppskrifter som fanger våren i et glass.",
         content: `## Tre våroppskrifter med matcha
 
-Våren er matchasesongen fremfor noen — ichibanchaen (den første innhøstingen) er på sitt ferskeste, og smakene er på sitt mest delikate. Her er de tre oppskriftene vi lager mest denne måneden.
+Våren er matchasesongen fremfor noen - ichibanchaen (den første innhøstingen) er på sitt ferskeste, og smakene er på sitt mest delikate. Her er de tre oppskriftene vi lager mest denne måneden.
 
 ### 1. Strawberry Matcha Latte (iced)
 
@@ -670,7 +670,7 @@ En komplett versjon finner du i [oppskriftsseksjonen vår](/recepten/matcha-moch
 
 ### 3. Matcha-asparges-risotto
 
-Overraskende i det salte kjøkkenet — matcha i risotto gir en nydelig grønn farge og en subtil umami som passer perfekt til hvite asparges.
+Overraskende i det salte kjøkkenet - matcha i risotto gir en nydelig grønn farge og en subtil umami som passer perfekt til hvite asparges.
 
 **Ingredienser:**
 - 250 g arborioris
@@ -687,13 +687,13 @@ Overraskende i det salte kjøkkenet — matcha i risotto gir en nydelig grønn f
 3. Tilsett aspargesen etter 15 min.
 4. Helt til slutt: rør matchaen inn i risottoen, sammen med parmesanen.
 
-Matchapulveret må ikke kokes med — varmen brenner det. Tilsett det på slutten, rett før servering.
+Matchapulveret må ikke kokes med - varmen brenner det. Tilsett det på slutten, rett før servering.
 
 ## Hvilken matcha til disse oppskriftene?
 
-- **Strawberry latte**: culinary eller premium ceremonial — begge fungerer.
-- **Mochi**: ceremonial — den rene smaken kommer til sin rett.
-- **Risotto**: culinary — robust nok til matlaging.
+- **Strawberry latte**: culinary eller premium ceremonial - begge fungerer.
+- **Mochi**: ceremonial - den rene smaken kommer til sin rett.
+- **Risotto**: culinary - robust nok til matlaging.
 
 Les [kjøpsguiden vår](/kennis/beste-matcha-kopen-2026) for å velge riktig.`,
       },
@@ -703,29 +703,29 @@ Les [kjøpsguiden vår](/kennis/beste-matcha-kopen-2026) for å velge riktig.`,
     id: "8",
     slug: "ltheanine-wetenschap-matcha",
     title: "De Wetenschap Achter L-Theanine: Waarom Matcha Anders Werkt",
-    excerpt: "L-theanine is het 'magic ingredient' in matcha — een aminozuur dat focus en kalmte tegelijk geeft. Dit is wat 30+ studies erover zeggen.",
+    excerpt: "L-theanine is het 'magic ingredient' in matcha - een aminozuur dat focus en kalmte tegelijk geeft. Dit is wat 30+ studies erover zeggen.",
     content: `## Het Stofje dat Matcha Bijzonder Maakt
 
-Als iemand zegt "matcha geeft kalme focus", praten ze eigenlijk over **L-theanine** — een aminozuur dat bijna uitsluitend in groene thee voorkomt. Geen kruidensupplement, geen marketingclaim — er staan honderden peer-reviewed studies achter.
+Als iemand zegt "matcha geeft kalme focus", praten ze eigenlijk over **L-theanine** - een aminozuur dat bijna uitsluitend in groene thee voorkomt. Geen kruidensupplement, geen marketingclaim - er staan honderden peer-reviewed studies achter.
 
 ### Wat is L-Theanine?
 
-L-theanine (γ-glutamylethylamide) werd in 1949 geïsoleerd uit groene thee door Japanse onderzoeker Yajiro Sakato. Het is een aminozuur dat de bloed-hersenbarrière passeert — vrij zeldzaam voor voedingsstoffen.
+L-theanine (γ-glutamylethylamide) werd in 1949 geïsoleerd uit groene thee door Japanse onderzoeker Yajiro Sakato. Het is een aminozuur dat de bloed-hersenbarrière passeert - vrij zeldzaam voor voedingsstoffen.
 
-In matcha zit per kop ongeveer **25–30 mg L-theanine**, samen met 70 mg cafeïne — een cruciale combinatie.
+In matcha zit per kop ongeveer **25–30 mg L-theanine**, samen met 70 mg cafeïne - een cruciale combinatie.
 
 ### Wat Doet Het in Je Brein?
 
 L-theanine heeft drie hoofdeffecten in het brein:
 
 **1. Verhoogt alfa-hersengolven**
-Alfa-golven (8–12 Hz) treden op tijdens "relaxed alertness" — denken zonder stress. EEG-studies (Nobre et al., 2008) tonen verhoging binnen 30–40 min na inname.
+Alfa-golven (8–12 Hz) treden op tijdens "relaxed alertness" - denken zonder stress. EEG-studies (Nobre et al., 2008) tonen verhoging binnen 30–40 min na inname.
 
 **2. Verhoogt GABA, dopamine en serotonine**
 L-theanine moduleert deze neurotransmitters wat een licht kalmerend effect geeft zonder slaperigheid.
 
 **3. Vertraagt cafeïne-opname**
-Studies tonen dat L-theanine de scherpe piek van cafeïne afzwakt — je krijgt langere, stabielere alertheid in plaats van een spike.
+Studies tonen dat L-theanine de scherpe piek van cafeïne afzwakt - je krijgt langere, stabielere alertheid in plaats van een spike.
 
 ### De 2:1 Ratio
 
@@ -740,7 +740,7 @@ Mensen beschrijven het verschil met koffie zo:
 - **Koffie**: "geweldig idee, maar mijn handen trillen lichtjes"
 - **Matcha**: "ik denk helderder zonder dat ik het merk"
 
-Niet iedereen voelt direct verschil — gevoeligheid voor L-theanine varieert. Bij dagelijks gebruik wordt het effect duidelijker.
+Niet iedereen voelt direct verschil - gevoeligheid voor L-theanine varieert. Bij dagelijks gebruik wordt het effect duidelijker.
 
 ### Onderzoek in 3 Hoofdpunten
 
@@ -764,7 +764,7 @@ Er bestaan **pure L-theanine supplementen** (200 mg per capsule, ~€15 per maan
 - Geen ritueel
 - Niet lekker
 
-Voor de meeste mensen is matcha drinken minstens zo effectief — en aangenamer.
+Voor de meeste mensen is matcha drinken minstens zo effectief - en aangenamer.
 
 ### Wat met Cafeïnegevoelige Mensen?
 
@@ -782,29 +782,29 @@ Voor de complete vergelijking lees [matcha vs koffie](/kennis/matcha-vs-koffie) 
     i18n: {
       no: {
         title: "Vitenskapen bak L-theanin: Derfor virker matcha annerledes",
-        excerpt: "L-theanin er «den magiske ingrediensen» i matcha — en aminosyre som gir fokus og ro på samme tid. Dette sier over 30 studier om den.",
+        excerpt: "L-theanin er «den magiske ingrediensen» i matcha - en aminosyre som gir fokus og ro på samme tid. Dette sier over 30 studier om den.",
         content: `## Stoffet som gjør matcha spesiell
 
-Når noen sier at «matcha gir rolig fokus», snakker de egentlig om **L-theanin** — en aminosyre som nesten utelukkende finnes i grønn te. Ikke et urtetilskudd, ikke en markedsføringspåstand — det står hundrevis av fagfellevurderte studier bak.
+Når noen sier at «matcha gir rolig fokus», snakker de egentlig om **L-theanin** - en aminosyre som nesten utelukkende finnes i grønn te. Ikke et urtetilskudd, ikke en markedsføringspåstand - det står hundrevis av fagfellevurderte studier bak.
 
 ### Hva er L-theanin?
 
-L-theanin (γ-glutamyletylamid) ble isolert fra grønn te i 1949 av den japanske forskeren Yajiro Sakato. Det er en aminosyre som passerer blod-hjerne-barrieren — ganske sjeldent for næringsstoffer.
+L-theanin (γ-glutamyletylamid) ble isolert fra grønn te i 1949 av den japanske forskeren Yajiro Sakato. Det er en aminosyre som passerer blod-hjerne-barrieren - ganske sjeldent for næringsstoffer.
 
-En kopp matcha inneholder omtrent **25–30 mg L-theanin**, sammen med 70 mg koffein — en avgjørende kombinasjon.
+En kopp matcha inneholder omtrent **25–30 mg L-theanin**, sammen med 70 mg koffein - en avgjørende kombinasjon.
 
 ### Hva gjør det i hjernen din?
 
 L-theanin har tre hovedeffekter i hjernen:
 
 **1. Øker alfa-hjernebølger**
-Alfabølger (8–12 Hz) oppstår under «relaxed alertness» — tenkning uten stress. EEG-studier (Nobre et al., 2008) viser en økning innen 30–40 min etter inntak.
+Alfabølger (8–12 Hz) oppstår under «relaxed alertness» - tenkning uten stress. EEG-studier (Nobre et al., 2008) viser en økning innen 30–40 min etter inntak.
 
 **2. Øker GABA, dopamin og serotonin**
 L-theanin modulerer disse nevrotransmitterne, noe som gir en lett beroligende effekt uten søvnighet.
 
 **3. Bremser koffeinopptaket**
-Studier viser at L-theanin demper den skarpe koffeintoppen — du får lengre og mer stabil årvåkenhet i stedet for en spike.
+Studier viser at L-theanin demper den skarpe koffeintoppen - du får lengre og mer stabil årvåkenhet i stedet for en spike.
 
 ### 2:1-ratioen
 
@@ -819,7 +819,7 @@ Folk beskriver forskjellen fra kaffe slik:
 - **Kaffe**: «god idé, men hendene mine skjelver litt»
 - **Matcha**: «jeg tenker klarere uten at jeg merker det»
 
-Ikke alle kjenner forskjell med en gang — følsomheten for L-theanin varierer. Ved daglig bruk blir effekten tydeligere.
+Ikke alle kjenner forskjell med en gang - følsomheten for L-theanin varierer. Ved daglig bruk blir effekten tydeligere.
 
 ### Forskningen i 3 hovedpunkter
 
@@ -843,7 +843,7 @@ Det finnes **rene L-theanin-tilskudd** (200 mg per kapsel, ~170 kr i måneden). 
 - Ikke noe ritual
 - Ikke godt
 
-For de fleste er det minst like effektivt å drikke matcha — og langt hyggeligere.
+For de fleste er det minst like effektivt å drikke matcha - og langt hyggeligere.
 
 ### Hva med koffeinfølsomme?
 

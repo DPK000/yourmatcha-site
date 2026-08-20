@@ -227,7 +227,7 @@ export default function AdminEmailLog() {
                     </td>
                     <td className="px-4 py-3 text-center">
                       <span className="text-xs font-body font-medium text-muted-foreground uppercase">
-                        {entry.language ? (langLabels[entry.language] ?? entry.language.toUpperCase()) : "—"}
+                        {entry.language ? (langLabels[entry.language] ?? entry.language.toUpperCase()) : "-"}
                       </span>
                     </td>
                   </tr>
@@ -240,7 +240,7 @@ export default function AdminEmailLog() {
           <div className="px-4 py-3 border-t border-border bg-muted/20">
             <p className="text-xs text-muted-foreground font-body">
               {filtered.length} {filtered.length === 1 ? "email" : "emails"}
-              {typeFilter !== "all" && ` — type: ${typeLabels[typeFilter] ?? typeFilter}`}
+              {typeFilter !== "all" && ` - type: ${typeLabels[typeFilter] ?? typeFilter}`}
             </p>
           </div>
         )}

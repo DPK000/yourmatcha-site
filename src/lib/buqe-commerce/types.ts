@@ -1,5 +1,5 @@
 /**
- * BUQE Commerce types — gedeeld tussen client en Edge Functions.
+ * BUQE Commerce types - gedeeld tussen client en Edge Functions.
  */
 
 export interface CheckoutLineItem {

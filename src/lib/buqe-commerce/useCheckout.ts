@@ -29,7 +29,7 @@ interface StartCheckoutError {
  * 2. Roept Edge Function `stripe-create-checkout` aan
  * 3. Redirect naar Stripe Checkout hosted page
  *
- * Geen UI — returnt enkel state + functies. UI in de shop blijft hetzelfde.
+ * Geen UI - returnt enkel state + functies. UI in de shop blijft hetzelfde.
  */
 export function useBuqeCheckout() {
   const [submitting, setSubmitting] = useState(false);

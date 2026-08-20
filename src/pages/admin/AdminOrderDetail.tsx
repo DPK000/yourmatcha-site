@@ -279,7 +279,7 @@ const AdminOrderDetail = () => {
     await logActivity(
       order.id,
       "tracking_updated",
-      `Track & trace bijgewerkt: ${CARRIERS.find(c => c.value === trackingCarrier)?.label} — ${trackingCode.trim()}`,
+      `Track & trace bijgewerkt: ${CARRIERS.find(c => c.value === trackingCarrier)?.label} - ${trackingCode.trim()}`,
       { tracking_code: oldCode },
       { tracking_code: trackingCode.trim(), tracking_carrier: trackingCarrier }
     );
@@ -623,7 +623,7 @@ const AdminOrderDetail = () => {
             </div>
             <div className="text-sm font-body space-y-1">
               <p className="capitalize text-muted-foreground">
-                {order.payment_method?.replace(/_/g, " ") ?? "—"}
+                {order.payment_method?.replace(/_/g, " ") ?? "-"}
               </p>
               {order.payment_intent_id && (
                 <p className="text-xs text-muted-foreground truncate">ID: {order.payment_intent_id}</p>
@@ -644,7 +644,7 @@ const AdminOrderDetail = () => {
         <div className="bg-card border border-border rounded-xl p-5">
           <div className="flex items-center gap-2 mb-4">
             <ShoppingBag className="h-4 w-4 text-primary" />
-            <h2 className="font-body font-semibold text-sm">Klanthistorie — {order.email}</h2>
+            <h2 className="font-body font-semibold text-sm">Klanthistorie - {order.email}</h2>
           </div>
           <div className="grid grid-cols-3 gap-4">
             <div className="text-center p-3 rounded-lg bg-secondary/40">
@@ -968,7 +968,7 @@ const AdminOrderDetail = () => {
             <CheckCircle2 className="h-4 w-4 text-green-600 shrink-0" />
             <div className="flex-1 min-w-0">
               <p className="text-sm font-body font-semibold text-green-800">
-                {CARRIERS.find(c => c.value === order.tracking_carrier)?.label ?? order.tracking_carrier} — {order.tracking_code}
+                {CARRIERS.find(c => c.value === order.tracking_carrier)?.label ?? order.tracking_carrier} - {order.tracking_code}
               </p>
             </div>
             {url && (
@@ -1067,7 +1067,7 @@ const AdminOrderDetail = () => {
         <div className="p-4 rounded-xl bg-gray-50 border border-gray-200 text-sm font-body text-gray-700 flex items-center gap-2">
           <CheckCircle2 className="h-4 w-4 text-gray-500 shrink-0" />
           Terugbetaling verwerkt via PayPal.
-          {order.refund_reason && <span className="text-muted-foreground ml-1">— {order.refund_reason}</span>}
+          {order.refund_reason && <span className="text-muted-foreground ml-1">- {order.refund_reason}</span>}
         </div>
       )}
 

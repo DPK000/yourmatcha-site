@@ -11,7 +11,7 @@ interface UseBuqePaymentIntentArgs {
   total: number;
   /** ISO-valutacode (bv. "eur" of "nok"). Bedragen moeten in deze valuta zijn. Default: buqeConfig.currency.default */
   currency?: string;
-  /** Kortingscode — wordt server-side gevalideerd en verrekend in de edge function */
+  /** Kortingscode - wordt server-side gevalideerd en verrekend in de edge function */
   discountCode?: string;
   /** Re-create when this changes (bv. total verandert door discount). Default: items+total fingerprint */
   recreateKey?: string;
